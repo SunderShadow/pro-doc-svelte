@@ -2,6 +2,9 @@
   import PolyclinicIcon from "$ui-kit/icons/Polyclinic.svelte"
   import DoctorIcon from "$ui-kit/icons/Doctor.svelte"
   import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte";
+  import LogoBlue from "$ui-kit/images/LogoBlue.png";
+  import SearchGroup from "$ui-kit/Search/SearchGroup.svelte";
+  import Tag from "$ui-kit/Tag/Tag.svelte";
 </script>
 <header>
   <div class="layer_1">
@@ -32,6 +35,36 @@
       </div>
     </div>
   </div>
+  <section class="navigation">
+    <img src={LogoBlue} alt=""/>
+    <nav>
+      <a href="/">Врачи</a>
+      <a href="/">Клиники</a>
+      <a href="/">Диагностика</a>
+      <a href="/">Онлайн-консультации</a>
+      <a href="/">Библиотека</a>
+      <a href="/">Акции</a>
+      <a href="/">О нас</a>
+      <a href="/">Контакты</a>
+    </nav>
+  </section>
+  <section class="search-container">
+    <h3>Выберете клинику или запишитесь на приём</h3>
+    <SearchGroup/>
+    <div class="tags">
+      <Tag tag="Простуда"/>
+      <Tag tag="Женское здоровье"/>
+      <Tag tag="Мужское здоровье"/>
+      <Tag tag="Заболел ребёнок"/>
+      <Tag tag="Аллергия и сыпь"/>
+      <Tag tag="Травма"/>
+      <Tag tag="Головная боль"/>
+      <Tag tag="Тревога и депрессия"/>
+      <Tag tag="Расстройство пищеварения"/>
+      <Tag tag="Расшифровка анализов"/>
+      <Tag tag="Проблемы с сердцем"/>
+    </div>
+  </section>
 </header>
 
 <style lang="scss">
@@ -107,6 +140,52 @@
     a + a::before {
       content: "|";
       margin-right: var(--gap);
+    }
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2rem 10.5rem;
+
+    border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);
+
+    > img {
+      width: 8.5rem;
+      height: 3.5rem;
+    }
+
+    > nav {
+      display: flex;
+      gap: 1.5rem;
+
+      > a {
+        line-height: 1.75rem;
+        font-weight: 600;
+        color: var(--color-text);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin: 2rem 10rem;
+
+    > h3 {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
   }
 </style>

@@ -1,6 +1,11 @@
 <script lang="ts">
+
 </script>
 
-<main class="page-container">
+<main>
 
 </main>
+
+<style lang="scss">
+
+</style>
