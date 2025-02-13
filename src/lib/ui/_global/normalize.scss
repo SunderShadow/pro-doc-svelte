@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "$ui-kit/env";
+
+body, html {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: map.get(env.$color, primary);
+}

@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "$ui-kit/env";
+
+.page-container {
+  max-width: env.$container-size;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  $gap: map.get(env.$container-gap, desktop);
+
+  @media (max-width: env.$container-size + $gap * 2) {
+    margin-left: $gap;
+    margin-right: $gap;
+  }
+
+  @each $screen, $gap in env.$container-gap {
+    @media (max-width: map.get(env.$screen-size, $screen) + $gap * 2) {
+      margin-left: $gap;
+      margin-right: $gap;
+    }
+  }
+}
