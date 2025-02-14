@@ -1,9 +1,21 @@
 <script lang="ts">
-  const props = $props()
+  import type {Snippet} from "svelte";
+
+  type Props = {
+      children: Snippet,
+      type?: "default" | "icon",
+      _class?: string
+  }
+
+  const {
+      children,
+      type = "default",
+      _class = ''
+  }: Props = $props()
 </script>
 
-<button {...props}>
-  {@render props.children?.()}
+<button class={_class} class:icon={type === 'icon'}>
+  {@render children?.()}
 </button>
 
 <style lang="scss">
@@ -11,8 +23,6 @@
   @use "env";
 
   button {
-    width: 100%;
-
     background-color: env.$bg-default;
     padding: .875em 2em;
 
@@ -24,6 +34,7 @@
     outline: none;
     cursor: pointer;
     border: none;
+    border-radius: .75em;
 
     transition-property: box-shadow, background-color;
     transition-duration: 300ms;
@@ -37,5 +48,18 @@
     &:active {
       background-color: env.$bg-pressing;
     }
+
+    &.icon {
+      width: 32px;
+      height: 32px;
+
+      padding: 0;
+      border-radius: 100em;
+    }
+  }
+
+  button.disabled,
+  button[disabled] {
+    opacity: .1;
   }
 </style>
