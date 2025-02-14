@@ -2,7 +2,7 @@
   import PolyclinicIcon from "$ui-kit/icons/Polyclinic.svelte"
   import DoctorIcon from "$ui-kit/icons/Doctor.svelte"
   import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte";
-  import LogoBlue from "$ui-kit/images/LogoBlue.png";
+  import LogoBlue from "../../lib/assets/images/LogoBlue.png";
   import InputGroup from "$ui-kit/Form/Group/Group.svelte";
   import Tag from "$ui-kit/Tag/Tag.svelte";
   import Select from "$ui-kit/Form/Select/Select.svelte";

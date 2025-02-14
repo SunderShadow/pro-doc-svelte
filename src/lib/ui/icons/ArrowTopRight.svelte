@@ -5,7 +5,7 @@
 </script>
 
 <SvgContainer {...props}>
-    <svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.49422 1.17578H15.9742V13.6558M1.57422 15.5758L15.9742 1.17578" stroke="black" stroke-opacity="0.9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg class="stroke-only" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.49422 5.17578H18.9742V17.6558M4.57422 19.5758L18.9742 5.17578" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 </SvgContainer>
