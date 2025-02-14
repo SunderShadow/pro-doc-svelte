@@ -6,7 +6,7 @@
 </script>
 
 <Header />
-<!--<slot />-->
+<slot />
 <Footer />
 
 <style lang="scss">
