@@ -1,7 +1,7 @@
 <script lang="ts">
   import '@splidejs/svelte-splide/css/core'
 
-  import SliderImgSrc from "$lib/assets/images/slider/1.webp?enhanced&quality=80"
+  import SliderImgSrc from "$lib/assets/images/slider/1.webp?enhanced&quality=80&format=webp"
   import {Splide, SplideSlide, SplideTrack} from '@splidejs/svelte-splide'
   import Button from "$ui-kit/Button/Button.svelte"
 
