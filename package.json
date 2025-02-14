@@ -23,6 +23,8 @@
 	"dependencies": {
 		"@splidejs/splide": "^4.1.4",
 		"@splidejs/svelte-splide": "^0.2.9",
+		"@sveltejs/adapter-static": "^3.0.8",
+		"@sveltejs/enhanced-img": "^0.4.4",
 		"sass": "^1.84.0"
 	}
 }

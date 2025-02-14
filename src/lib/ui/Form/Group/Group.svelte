@@ -35,6 +35,11 @@
       border-left-color: transparent;
     }
 
+    .search-group > button:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
 
     .search-group > button {
       width: auto !important;

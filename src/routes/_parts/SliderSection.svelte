@@ -1,19 +1,26 @@
 <script lang="ts">
   import '@splidejs/svelte-splide/css/core'
 
+  import SliderImgSrc from "$lib/assets/images/slider/1.webp?enhanced&quality=80"
   import {Splide, SplideSlide, SplideTrack} from '@splidejs/svelte-splide'
   import Button from "$ui-kit/Button/Button.svelte"
+
 
   const sliderOptions = {
       type: 'loop',
       perPage: 1,
   }
 </script>
+
+<svelte:head>
+  <link as="image" rel="preload" href={SliderImgSrc.img.src}>
+</svelte:head>
+
 <section class="page-container">
   <Splide hasTrack={false} options={sliderOptions}>
     <SplideTrack>
       <SplideSlide>
-        <div class="slider-slide" style:--img="url(/slider/1.jpeg)" >
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
           <div class="slider-info">
             <div>
               <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
@@ -26,22 +33,7 @@
         </div>
       </SplideSlide>
       <SplideSlide>
-        <div class="slider-slide" style:--img="url(/slider/1.jpeg)" >
-          <div class="slider-info">
-            <div>
-              <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
-              <div class="slider-subtitle">Мы поможем вам подобрать специалиста и записаться на приём</div>
-            </div>
-            <div class="slider-button">
-              <Button>Выбрать врача</Button>
-            </div>
-          </div>
-
-          <img class="slider-img" src="" alt="">
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="slider-slide" style:--img="url(/slider/1.jpeg)" >
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
           <div class="slider-info">
             <div>
               <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
@@ -56,7 +48,22 @@
         </div>
       </SplideSlide>
       <SplideSlide>
-        <div class="slider-slide" style:--img="url(/slider/1.jpeg)" >
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
+          <div class="slider-info">
+            <div>
+              <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
+              <div class="slider-subtitle">Мы поможем вам подобрать специалиста и записаться на приём</div>
+            </div>
+            <div class="slider-button">
+              <Button>Выбрать врача</Button>
+            </div>
+          </div>
+
+          <img class="slider-img" src="" alt="">
+        </div>
+      </SplideSlide>
+      <SplideSlide>
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
           <div class="slider-info">
             <div>
               <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
