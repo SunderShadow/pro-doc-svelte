@@ -43,12 +43,14 @@
 
       svg {
         flex-grow: 1;
+        transition-property: stroke, fill;
+        transition-duration: 200ms;
       }
 
       // Size
-      &.sm { --size: #{env.$size-sm} }
-      &.md { --size:  #{env.$size-md} }
-      &.lg { --size:  #{env.$size-lg} }
+      &.sm { --size:  #{env.$size-sm}; }
+      &.md { --size:  #{env.$size-md}; }
+      &.lg { --size:  #{env.$size-lg}; }
 
       // Color
       &.primary {

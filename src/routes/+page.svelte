@@ -2,6 +2,7 @@
     import SliderSection from "./_parts/SliderSection.svelte"
     import ServiceUniqueSection from "./_parts/ServiceUniqueSection.svelte"
     import ServicesSection from "./_parts/ServicesSection.svelte"
+    import AboutUsSection from "./_parts/AboutUsSection.svelte";
 </script>
 
 <svelte:head>
@@ -12,5 +13,6 @@
   <SliderSection />
   <ServicesSection />
   <ServiceUniqueSection />
+  <AboutUsSection />
 </main>
 
