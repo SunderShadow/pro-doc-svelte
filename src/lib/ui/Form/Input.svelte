@@ -1,7 +1,8 @@
 <script>
   let props = $props()
 </script>
-<input type="text" {...props}>
+
+<input class="form-control" type="text" {...props}>
 
 <style lang="scss">
   @use "sass:map";
@@ -19,6 +20,7 @@
     border-radius: .75em;
 
     font-family: "Helvetica", Gilroy, sans-serif;
+    font-size: 1rem;
 
     transition-property: border, box-shadow;
     transition-duration: 300ms;
@@ -32,5 +34,11 @@
     --border-opacity: 1;
 
     box-shadow: 0 4px 6px rgba(map.get(env.$color, primary), .06);
+  }
+
+  :global {
+    label + .form-control {
+      margin-top: 6px;
+    }
   }
 </style>

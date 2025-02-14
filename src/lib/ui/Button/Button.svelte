@@ -4,17 +4,19 @@
   type Props = {
       children: Snippet,
       type?: "default" | "icon",
-      _class?: string
+      _class?: string,
+      _type?: "button" | "submit" | "reset"
   }
 
   const {
       children,
       type = "default",
-      _class = ''
+      _class = '',
+      _type = 'button'
   }: Props = $props()
 </script>
 
-<button class={_class} class:icon={type === 'icon'}>
+<button type={_type} class={_class} class:icon={type === 'icon'}>
   {@render children?.()}
 </button>
 

@@ -3,6 +3,7 @@
     import ServiceUniqueSection from "./_parts/ServiceUniqueSection.svelte"
     import ServicesSection from "./_parts/ServicesSection.svelte"
     import AboutUsSection from "./_parts/AboutUsSection.svelte";
+    import NewsLetterSection from "./_parts/NewsLetterSection.svelte";
 </script>
 
 <svelte:head>
@@ -14,5 +15,6 @@
   <ServicesSection />
   <ServiceUniqueSection />
   <AboutUsSection />
+  <NewsLetterSection />
 </main>
 
