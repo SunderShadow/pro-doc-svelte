@@ -47,8 +47,8 @@
 
       // Size
       &.sm { --size: #{env.$size-sm} }
-      &.md { width:  #{env.$size-md} }
-      &.lg { width:  #{env.$size-lg} }
+      &.md { --size:  #{env.$size-md} }
+      &.lg { --size:  #{env.$size-lg} }
 
       // Color
       &.primary {
