@@ -1,32 +1,41 @@
 <script lang="ts">
+    import type {Snippet} from "svelte"
+
     type Props = {
-        tag: string
+        children: Snippet,
+        active?: boolean
     }
 
-    const {
-        tag,
-    }: Props = $props()
+    const {children, active}: Props = $props()
 </script>
 
-<div class="tag">{tag}</div>
+<div class="tag" class:active>
+  {@render children?.()}
+</div>
 
 <style lang="scss">
   @use "sass:map";
   @use "$lib/ui/env";
 
-    .tag {
-      font-weight: 600;
-      font-size: .9rem;
-      line-height: 22.4px;
-      color: map.get(env.$color, primary);
+  .tag {
+    padding: 0.3rem .55rem;
 
-      padding: 0.25rem .5rem;
+    font-weight: 600;
+    font-size: .875rem;
 
-      width: fit-content;
+    color: map.get(env.$color, primary);
 
-      border: 1px solid rgba(map.get(env.$color, primary), .1);
-      border-radius: 8px;
+    border: 1px solid rgba(map.get(env.$color, primary), .1);
+    border-radius: .5rem;
 
-      cursor: pointer;
+    cursor: pointer;
+
+    transition: background-color 200ms;
+    user-select: none;
+
+    &.active,
+    &:hover {
+      background-color: rgba(map.get(env.$color, primary), .1);
     }
+  }
 </style>
