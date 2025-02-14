@@ -1,12 +1,13 @@
 <script lang="ts">
+  import Logo from "$lib/assets/Logo.png"
+
   import PolyclinicIcon from "$ui-kit/icons/Polyclinic.svelte"
   import DoctorIcon from "$ui-kit/icons/Doctor.svelte"
-  import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte";
-  import LogoBlue from "$ui-kit/images/LogoBlue.png";
-  import InputGroup from "$ui-kit/Form/Group/Group.svelte";
-  import Tag from "$ui-kit/Tag/Tag.svelte";
-  import Select from "$ui-kit/Form/Select/Select.svelte";
-  import Button from "$ui-kit/Button/Button.svelte";
+  import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte"
+  import InputGroup from "$ui-kit/Form/Group/Group.svelte"
+  import Tag from "$ui-kit/Tag/Tag.svelte"
+  import Select from "$ui-kit/Form/Select/Select.svelte"
+  import Button from "$ui-kit/Button/Button.svelte"
 </script>
 <header>
   <div class="layer_1">
@@ -39,7 +40,7 @@
   </div>
   <section class="navigation page-container">
     <a href="/">
-      <img class="logo" src={LogoBlue} alt=""/>
+      <img class="logo" src={Logo} alt=""/>
     </a>
     <nav>
       <a href="/">Врачи</a>
