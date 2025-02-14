@@ -28,6 +28,7 @@
 
       input {
         height: 100%;
+        padding-right: calc(1em + 24px);
       }
 
       &__chevron {
@@ -35,6 +36,8 @@
         right: 10px;
         top: 50%;
         transform: translateY(-50%);
+
+        opacity: .5;
       }
     }
   }

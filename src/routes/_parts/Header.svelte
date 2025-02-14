@@ -59,7 +59,9 @@
     <InputGroup>
       <Select placeholder="Врач, клиника, болезнь, услуга" />
       <Select placeholder="Метро, район, округ, город МО" />
-      <Select placeholder="Дата приёма" />
+      <div class="date-select">
+        <Select placeholder="Дата приёма" />
+      </div>
       <Button>Найти</Button>
     </InputGroup>
 
@@ -176,6 +178,7 @@
       gap: 0 1.5rem;
 
       > a {
+        padding: .5em;
         line-height: 1.75rem;
         font-weight: 600;
       }
@@ -196,10 +199,19 @@
     }
 
     .tags {
-      width: 75%;
+      @media (min-width: map.get(env.$screen-size, desktop)) {
+        width: 75%;
+      }
+
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+    }
+  }
+
+  @media (max-width: map.get(env.$screen-size, netbook)) {
+    .date-select {
+      width: 15%;
     }
   }
 </style>
