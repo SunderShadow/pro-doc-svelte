@@ -1,0 +1,20 @@
+@use "$ui-kit/env";
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  transition: color 200ms;
+
+  &:hover {
+    color: #5856D6;
+  }
+
+  &.active {
+    color: #4341DFE5;
+  }
+
+  &.disabled {
+    color: rgba(#000, .5) !important;
+  }
+}

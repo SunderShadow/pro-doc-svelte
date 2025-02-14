@@ -3,8 +3,10 @@
   import DoctorIcon from "$ui-kit/icons/Doctor.svelte"
   import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte";
   import LogoBlue from "$ui-kit/images/LogoBlue.png";
-  import SearchGroup from "$ui-kit/Search/SearchGroup.svelte";
+  import InputGroup from "$ui-kit/Form/Group/Group.svelte";
   import Tag from "$ui-kit/Tag/Tag.svelte";
+  import Select from "$ui-kit/Form/Select/Select.svelte";
+  import Button from "$ui-kit/Button/Button.svelte";
 </script>
 <header>
   <div class="layer_1">
@@ -35,8 +37,10 @@
       </div>
     </div>
   </div>
-  <section class="navigation">
-    <img src={LogoBlue} alt=""/>
+  <section class="navigation page-container">
+    <a href="/">
+      <img class="logo" src={LogoBlue} alt=""/>
+    </a>
     <nav>
       <a href="/">Врачи</a>
       <a href="/">Клиники</a>
@@ -48,21 +52,28 @@
       <a href="/">Контакты</a>
     </nav>
   </section>
-  <section class="search-container">
+  <section class="search-container page-container">
     <h3>Выберете клинику или запишитесь на приём</h3>
-    <SearchGroup/>
+
+    <InputGroup>
+      <Select placeholder="Врач, клиника, болезнь, услуга" />
+      <Select placeholder="Метро, район, округ, город МО" />
+      <Select placeholder="Дата приёма" />
+      <Button>Найти</Button>
+    </InputGroup>
+
     <div class="tags">
-      <Tag tag="Простуда"/>
-      <Tag tag="Женское здоровье"/>
-      <Tag tag="Мужское здоровье"/>
-      <Tag tag="Заболел ребёнок"/>
-      <Tag tag="Аллергия и сыпь"/>
-      <Tag tag="Травма"/>
-      <Tag tag="Головная боль"/>
-      <Tag tag="Тревога и депрессия"/>
-      <Tag tag="Расстройство пищеварения"/>
-      <Tag tag="Расшифровка анализов"/>
-      <Tag tag="Проблемы с сердцем"/>
+      <Tag>Простуда</Tag>
+      <Tag>Женское здоровье</Tag>
+      <Tag>Мужское здоровье</Tag>
+      <Tag>Заболел ребёнок</Tag>
+      <Tag>Аллергия и сыпь</Tag>
+      <Tag>Травма</Tag>
+      <Tag>Головная боль</Tag>
+      <Tag>Тревога и депрессия</Tag>
+      <Tag>Расстройство пищеварения</Tag>
+      <Tag>Расшифровка анализов</Tag>
+      <Tag>Проблемы с сердцем</Tag>
     </div>
   </section>
 </header>
@@ -147,25 +158,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 135px;
 
-    padding: 2rem 10.5rem;
+    padding: 2rem 0;
 
     border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);
 
-    > img {
+    .logo {
       width: 8.5rem;
       height: 3.5rem;
     }
 
     > nav {
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
 
       > a {
         line-height: 1.75rem;
         font-weight: 600;
-        color: var(--color-text);
-        text-decoration: none;
       }
     }
   }
@@ -175,7 +186,8 @@
     flex-direction: column;
     gap: 1rem;
 
-    margin: 2rem 10rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
     > h3 {
       font-weight: 600;
@@ -183,6 +195,7 @@
     }
 
     .tags {
+      width: 75%;
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
