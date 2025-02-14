@@ -36,7 +36,7 @@
 
     background-image: var(--img);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
