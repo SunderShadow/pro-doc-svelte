@@ -38,7 +38,7 @@
       --size: #{env.$size-md};
       --color: #{env.$color-default};
 
-      fill:   var(--color);
+      fill: var(--color);
       stroke: var(--color);
 
       svg {

@@ -3,7 +3,7 @@
   import Link from "$ui-kit/Link/Link.svelte";
 </script>
 
-<section class="page-container">z
+<section class="page-container">
   <h2>О нас</h2>
 
   <div class="content">

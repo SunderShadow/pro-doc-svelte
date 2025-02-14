@@ -13,13 +13,16 @@
     }: Props = $props()
 
     let is_Active = $state(false)
+    const handleActiveAccordion = () => {
+        is_Active = !is_Active
+    }
 
 </script>
 
 <div class="accordion">
-    <button class="title-1" onclick={is_Active = !is_Active}>
+    <button class="title-1" onclick={handleActiveAccordion}>
         {question}
-        <Button/>
+        <Button is_Active={is_Active}/>
     </button>
     {#if is_Active}
         <p class="body-text-2" transition:slide>{answer}</p>
@@ -64,4 +67,16 @@
         opacity: 0.5;
       }
     }
+
+  :global {
+    .accordion {
+      &:hover &__button {
+        background-color: map.get(env.$color, primary);
+      }
+
+      &:hover &__button .svg-icon-container {
+        --color: #{map.get(env.$color, secondary)};
+      }
+    }
+  }
 </style>
