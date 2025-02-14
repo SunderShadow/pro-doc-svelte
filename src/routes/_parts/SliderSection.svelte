@@ -115,6 +115,10 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  section {
+    padding: 96px 0;
+  }
+
   .statistics {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
