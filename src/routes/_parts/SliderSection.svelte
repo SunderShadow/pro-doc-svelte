@@ -140,6 +140,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
+    gap: 0 27px;
     margin-top: 2rem;
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);

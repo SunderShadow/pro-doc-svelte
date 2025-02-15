@@ -36,6 +36,7 @@
 
     background-image: var(--img);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);
@@ -43,9 +44,20 @@
 
     cursor: pointer;
 
-    h2 {}
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      height: 200px;
+    }
+
     &.double {
       grid-column: span 2;
+
+      @media (min-width: map.get(env.$screen-size, netbook)) {
+        background-position: right;
+      }
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        grid-column: span 1;
+      }
     }
   }
 </style>

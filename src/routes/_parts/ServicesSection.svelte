@@ -5,7 +5,7 @@
     import Consultation from "$lib/assets/images/consultation.jpg?enhanced&format=webp"
     import Pediatrician from "$lib/assets/images/pediatrician.jpg?enhanced&format=webp"
     import Directory from "$lib/assets/images/directory.png?enhanced&format=webp"
-    import Card from "./Card.svelte"
+    import Card from "./ServiceSection/Card.svelte"
 </script>
 
 <svelte:head>
@@ -30,6 +30,9 @@
   </section>
 
 <style lang="scss">
+  @use "sass:map";
+  @use "$lib/ui/env";
+
   section {
     padding: 96px 0;
 
@@ -39,6 +42,18 @@
       gap: 32px;
 
       margin-top: 64px;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (max-width: (map.get(env.$screen-size, tablet) - 100px)) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        grid-template-columns: 1fr;
+      }
     }
   }
 </style>
