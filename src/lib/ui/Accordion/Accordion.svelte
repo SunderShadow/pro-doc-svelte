@@ -49,6 +49,9 @@
         justify-content: space-between;
         align-items: center;
 
+        gap: 16px;
+
+        text-align: left;
         width: 100%;
 
         padding: 1.5rem;
