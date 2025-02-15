@@ -53,35 +53,51 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-    section {
-      padding-top: 192px;
+  section {
+    padding-top: 192px;
 
-      .reviews {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+
+      gap: 32px;
+
+      margin-top: 64px;
+
+      @media (min-width: (map.get(env.$screen-size, netbook) + 1px)) {
         grid-template-rows: repeat(6, 1fr);
         grid-auto-flow: column;
-        column-gap: 32px;
-        row-gap: 32px;
+      }
 
-        margin-top: 64px;
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        grid-template-columns: 1fr;
+      }
 
-        > div {
-          grid-column: span 4;
-          grid-row: span 3;
+      > div {
+        grid-column: span 4;
+        grid-row: span 3;
 
-          &.left-comment {
-            grid-column: span 8;
-          }
-
-          &.right-comment {
-            grid-row: span 4;
-          }
+        @media (max-width: map.get(env.$screen-size, netbook)) {
+          grid-column: span 1 !important;
+          grid-row: span 1 !important;
         }
 
-        .all-reviews {
-          grid-row: span 2;
+        &.left-comment {
+          grid-column: span 8;
+        }
+
+        &.right-comment {
+          grid-row: span 4;
+        }
+      }
+
+      .all-reviews {
+        grid-row: span 2;
+
+        @media (max-width: map.get(env.$screen-size, netbook)) {
+          height: 150px;
         }
       }
     }
+  }
 </style>
