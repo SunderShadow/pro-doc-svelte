@@ -7,19 +7,66 @@
   import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte"
   import InputGroup from "$ui-kit/Form/Group/Group.svelte"
   import Tag from "$ui-kit/Tag/Tag.svelte"
-  import Select from "$ui-kit/Form/Select/Select.svelte"
+  import Select from "$ui-kit/Form/Select/Template.svelte"
   import Button from "$ui-kit/Button/Button.svelte"
   import Magnifier from "$ui-kit/icons/Magnifier.svelte"
   import Account from "$ui-kit/icons/Account.svelte";
   import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
   import Telegram from "$ui-kit/icons/Telegram.svelte";
   import Vk from "$ui-kit/icons/Vk.svelte";
+  import ColorsSelect from "$ui-kit/Form/Select/Colors.svelte";
 
   let headerHeight = $state(0)
-
   let mobileMenuVisible = $state(false)
-
   let mobileNav = $state()
+
+  let colorsInputData = [
+      {
+          color: '#82C0C0',
+          title: 'Авиамоторная',
+          value: 1
+      },
+      {
+          color: '#FFCB31',
+          title: 'Авиамоторная',
+          value: 2
+      },
+      {
+          color: '#FFABB2',
+          title: 'Авиамоторная',
+          value: 3
+      },
+      {
+          color: '#44B85C',
+          title: 'Авиамоторная',
+          value: 4
+      },
+      {
+          color: '#44B85C',
+          title: 'Авиамоторная',
+          value: 5
+      },
+      {
+          color: '#82C0C0',
+          title: 'Авиамоторная',
+          value: 6
+      },
+      {
+          color: '#82C0C0',
+          title: 'Авиамоторная',
+          value: 7
+      },
+      {
+          color: '#82C0C0',
+          title: 'Авиамоторная',
+          value: 8
+      },
+      {
+          color: '#82C0C0',
+          title: 'Авиамоторная',
+          value: 9
+      }
+  ]
   function toggleMobileMenuVisible(): void {
       mobileMenuVisible = !mobileMenuVisible
 
@@ -94,9 +141,9 @@
 
     <InputGroup>
       <Select placeholder="Врач, клиника, болезнь, услуга" />
-      <Select placeholder="Метро, район, округ, город МО" />
+      <ColorsSelect data={colorsInputData} placeholder="Метро, район, округ, город МО" />
       <div class="date-select">
-        <Select placeholder="Дата приёма" />
+        <Select  placeholder="Дата приёма" />
       </div>
       <Button>Найти</Button>
     </InputGroup>
@@ -293,6 +340,12 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+    }
+  }
+
+  :global {
+    .date-select .select-input {
+      height: 100%;
     }
   }
 
