@@ -15,6 +15,7 @@
   import Telegram from "$ui-kit/icons/Telegram.svelte";
   import Vk from "$ui-kit/icons/Vk.svelte";
   import ColorsSelect from "$ui-kit/Form/Select/Colors.svelte";
+  import Titled from "$ui-kit/Form/Select/Sections.svelte";
 
   let headerHeight = $state(0)
   let mobileMenuVisible = $state(false)
@@ -67,6 +68,48 @@
           value: 9
       }
   ]
+
+  let titleInputData = [
+      {
+          title: 'Специальность',
+          name: 'speciality',
+          items: [
+              {
+                  title: "Невролог взрослый",
+                  value: 'nevr_vzr'
+              },
+              {
+                  title: "Невролог детский",
+                  value: 'nevr_child'
+              }
+          ]
+      },
+      {
+          title: 'Клиника',
+          name: 'clinic',
+          items: [
+              {
+                  title: "Клиника востановительной неврологии",
+                  value: 'nevr'
+              },
+              {
+                  title: "Невролог детский",
+                  value: 'nevr_child'
+              }
+          ]
+      },
+      {
+          title: 'Услуга',
+          name: "service",
+          items: [
+              {
+                  title: "Неврология",
+                  value: 'nevr'
+              },
+          ]
+      }
+  ]
+
   function toggleMobileMenuVisible(): void {
       mobileMenuVisible = !mobileMenuVisible
 
@@ -140,7 +183,7 @@
     <h3>Выберете клинику или запишитесь на приём</h3>
 
     <InputGroup>
-      <Select placeholder="Врач, клиника, болезнь, услуга" />
+      <Titled data={titleInputData} placeholder="Врач, клиника, болезнь, услуга" />
       <ColorsSelect data={colorsInputData} placeholder="Метро, район, округ, город МО" />
       <div class="date-select">
         <Select  placeholder="Дата приёма" />
