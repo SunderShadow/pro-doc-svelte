@@ -33,6 +33,8 @@
 
     color: #fff;
 
+    line-height: 27.2px;
+
     outline: none;
     cursor: pointer;
     border: none;
@@ -52,11 +54,19 @@
     }
 
     &.icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       width: 32px;
       height: 32px;
 
       padding: 0;
       border-radius: 100em;
+
+      svg {
+        flex-grow: 1;
+      }
     }
   }
 

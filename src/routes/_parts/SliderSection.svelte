@@ -2,6 +2,7 @@
   import '@splidejs/svelte-splide/css/core'
 
   import SliderImgSrc from "$lib/assets/images/slider/1.webp?enhanced&quality=80&format=webp"
+  import SliderImgMobileSrc from "$lib/assets/images/slider/mobile.png?enhanced&quality=80&format=webp"
   import {Splide, SplideSlide, SplideTrack} from '@splidejs/svelte-splide'
   import Button from "$ui-kit/Button/Button.svelte"
 
@@ -13,18 +14,19 @@
 </script>
 
 <svelte:head>
-  <link as="image" rel="preload" href={SliderImgSrc.img.src}>
+  <link as="image" rel="preload" href={SliderImgSrc.img.src} media="min-width: 361px">
+  <link as="image" rel="preload" href={SliderImgMobileSrc.img.src} media="max-width: 360px">
 </svelte:head>
 
 <section class="page-container">
   <Splide hasTrack={false} options={sliderOptions}>
     <SplideTrack>
       <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
           <div class="slider-info">
             <div>
-              <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
-              <div class="slider-subtitle">Мы поможем вам подобрать специалиста и записаться на приём</div>
+              <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
+              <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
             </div>
             <div class="slider-button">
               <Button>Выбрать врача</Button>
@@ -33,22 +35,7 @@
         </div>
       </SplideSlide>
       <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
-          <div class="slider-info">
-            <div>
-              <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
-              <div class="slider-subtitle">Мы поможем вам подобрать специалиста и записаться на приём</div>
-            </div>
-            <div class="slider-button">
-              <Button>Выбрать врача</Button>
-            </div>
-          </div>
-
-          <img class="slider-img" src="" alt="">
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`}  style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
           <div class="slider-info">
             <div>
               <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
@@ -63,7 +50,22 @@
         </div>
       </SplideSlide>
       <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} >
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`}  style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
+          <div class="slider-info">
+            <div>
+              <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
+              <div class="slider-subtitle">Мы поможем вам подобрать специалиста и записаться на приём</div>
+            </div>
+            <div class="slider-button">
+              <Button>Выбрать врача</Button>
+            </div>
+          </div>
+
+          <img class="slider-img" src="" alt="">
+        </div>
+      </SplideSlide>
+      <SplideSlide>
+        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`}  style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
           <div class="slider-info">
             <div>
               <div class="slider-title">Найти врача за 5 минут <br> в твоём городе</div>
@@ -124,6 +126,14 @@
 
   section {
     padding: 96px 0;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      padding: 64px 0;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 32px 0;
+    }
   }
 
   .statistics {
@@ -135,6 +145,11 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: .75rem;
     padding: 2rem;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      grid-template-columns: 1fr;
+      gap: 64px;
+    }
   }
 
   .statistic {
@@ -151,8 +166,19 @@
     gap: 20px;
 
     position: absolute;
+
     bottom: 96px;
     right: 136px;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      bottom: 60px;
+      right: 80px;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      bottom: 60px;
+      right: 60px;
+    }
   }
 
   :global {
@@ -160,9 +186,14 @@
       display: flex;
       gap: 16px;
 
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        gap: 8px;
+      }
+
       .splide__pagination__page {
         width: 8px;
         height: 8px;
+
         background-color: map.get(env.$bg-color, primary);
         border-radius: 100%;
         border: none;
@@ -170,6 +201,25 @@
 
         &.is-active {
           background-color: map.get(env.$color, primary);
+        }
+
+        @media (max-width: map.get(env.$screen-size, mobile)) {
+          &:not(.is-active) {
+            background-color: rgba(map.get(env.$color, primary), .1);
+          }
+        }
+      }
+    }
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      .slider-control {
+        position: static !important;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+
+        .splide__arrows {
+          display: none !important;
         }
       }
     }
@@ -182,35 +232,89 @@
 
   .slider {
     &-slide {
-      height: 610px;
-
       background-image: var(--img);
       background-size: 100% 100%;
+      background-position: center;
       background-repeat: no-repeat;
 
       border-radius: 12px;
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        background-size: 120% 100%;
+      }
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        background-size: 130% 100%;
+      }
+
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        background: var(--img-mobile) no-repeat;
+        background-size: 100% 210px;
+        background-position: top;
+      }
     }
 
     &-info {
       padding: 160px 136px;
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        padding: 60px 30% 60px 80px;
+      }
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        padding: 60px 30% 60px 60px;
+      }
+
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        padding: 234px 16px 0;
+      }
     }
 
     &-title {
-      font-size: 4rem;
       font-weight: 600;
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        font-size: 1.5rem;
+      }
     }
 
     &-subtitle {
       font-size: 1.2rem;
       opacity: .5;
+
+      line-height: 28.8px;
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        margin-right: 60px;
+      }
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        font-size: 1rem;
+      }
     }
 
     &-title + &-subtitle {
       margin-top: 2rem;
+      font-weight: 400;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        margin-top: 1rem;
+      }
     }
 
     * + &-button {
       margin-top: 2rem;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        margin-top: 1.5rem;
+      }
+    }
+  }
+
+  :global {
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      .slider-button button{
+        width: 100%;
+      }
     }
   }
 </style>

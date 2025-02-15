@@ -86,7 +86,7 @@
     <SearchSection {headerHeight} />
   {/if}
 </header>
-{#if screenWidth < 768}
+{#if screenWidth <= 768}
   <MobileNav bind:toggleMobileMenuVisible bind:visible={mobileNavVisible} {headerHeight}/>
 {/if}
 
