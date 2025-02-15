@@ -116,9 +116,7 @@
   function canBeSelected(day: number): boolean {
       return !earlierThanToday(day)
   }
-  onMount(() => {
-      console.log(true)
-  })
+
 </script>
 
 <div class="date_picker">

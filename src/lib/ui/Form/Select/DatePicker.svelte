@@ -34,6 +34,7 @@
   })
 
   let dropdownWidth = $state(-1)
+
   onMount(() => {
       open()
       tick().then(() => {
@@ -55,6 +56,7 @@
       {dropdown}
       bind:close
       bind:open
+      useScaleTransition
 
       value={selected}
   />
