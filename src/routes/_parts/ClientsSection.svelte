@@ -3,6 +3,7 @@
     import ClientImage2 from "$lib/assets/images/clients/2.png"
     import ClientImage3 from "$lib/assets/images/clients/3.png"
     import ClientReview from "./ClientReview.svelte";
+    import LinkBlock from "$ui-kit/LinkBlock/LinkBlock.svelte";
 </script>
 
 <svelte:head>
@@ -42,7 +43,7 @@
                           author="Ирина Смирнова" authorImage={ClientImage3} />
         </div>
         <div class="all-reviews">
-            <h4 class="title-1">Посмотреть все отзывы</h4>
+            <LinkBlock />
         </div>
     </div>
 
@@ -79,23 +80,7 @@
         }
 
         .all-reviews {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-
           grid-row: span 2;
-
-          padding: 1.5rem;
-
-          background-color: map.get(env.$color, primary);
-
-          border-radius: 12px;
-
-          cursor: pointer;
-
-          > h4 {
-            color: map.get(env.$color, secondary);
-          }
         }
       }
     }
