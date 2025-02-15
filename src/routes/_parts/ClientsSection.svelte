@@ -7,9 +7,9 @@
 </script>
 
 <svelte:head>
-    <link rel="preload" as="image" href={ClientImage1} />
-    <link rel="preload" as="image" href={ClientImage2} />
-    <link rel="preload" as="image" href={ClientImage3} />
+    <link rel="preload" as="image" href={ClientImage1.img.src} />
+    <link rel="preload" as="image" href={ClientImage2.img.src} />
+    <link rel="preload" as="image" href={ClientImage3.img.src} />
 </svelte:head>
 
 <section class="page-container">
@@ -22,7 +22,7 @@
                     много услуг, отзывы про врачей и негативные и позитивные —
                      можно составить своё сравнительно объективное мнение о враче и примерно
                       представлять что тебя ждёт."
-                          author="Ирина Смирнова" authorImage={ClientImage1} />
+                          author="Ирина Смирнова" authorImage={ClientImage1.img.src} />
         </div>
         <div class="left-comment">
             <ClientReview title="«Огромный выбор врачей, большой выбор‥»."
@@ -31,7 +31,7 @@
                     много услуг, отзывы про врачей и негативные и позитивные —
                      можно составить своё сравнительно объективное мнение о враче и примерно
                       представлять что тебя ждёт."
-                          author="Ирина Смирнова" authorImage={ClientImage2} />
+                          author="Ирина Смирнова" authorImage={ClientImage2.img.src} />
         </div>
         <div class="right-comment">
             <ClientReview title="«Огромный выбор врачей, большой выбор‥»."
@@ -40,7 +40,7 @@
                     много услуг, отзывы про врачей и негативные и позитивные —
                      можно составить своё сравнительно объективное мнение о враче и примерно
                       представлять что тебя ждёт."
-                          author="Ирина Смирнова" authorImage={ClientImage3} />
+                          author="Ирина Смирнова" authorImage={ClientImage3.img.src} />
         </div>
         <div class="all-reviews">
             <LinkBlock />

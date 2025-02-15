@@ -1,6 +1,6 @@
 <script lang="ts">
     import Star from "$ui-kit/icons/Star.svelte";
-    import EmpyStar from "$ui-kit/icons/EmpyStar.svelte";
+    import EmptyStar from "$ui-kit/icons/EmpyStar.svelte";
 
     type Props = {
         title: string,
@@ -32,7 +32,7 @@
                 <Star size="sm" type="primary"/>
                 <Star size="sm" type="primary"/>
                 <Star size="sm" type="primary"/>
-                <EmpyStar size="sm" type="primary"/>
+                <EmptyStar size="sm" type="primary"/>
             </span>
         </div>
     </div>
