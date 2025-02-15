@@ -118,6 +118,8 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  $mobile-screen: 550px;
+  
   section {
     padding: 96px 0;
 
@@ -181,7 +183,7 @@
       display: flex;
       gap: 16px;
 
-      @media (max-width: map.get(env.$screen-size, mobile)) {
+      @media (max-width: $mobile-screen) {
         gap: 8px;
       }
 
@@ -198,7 +200,7 @@
           background-color: map.get(env.$color, primary);
         }
 
-        @media (max-width: map.get(env.$screen-size, mobile)) {
+        @media (max-width: $mobile-screen) {
           &:not(.is-active) {
             background-color: rgba(map.get(env.$color, primary), .1);
           }
@@ -206,7 +208,7 @@
       }
     }
 
-    @media (max-width: map.get(env.$screen-size, mobile)) {
+    @media (max-width: $mobile-screen) {
       .slider-control {
         position: static !important;
         width: fit-content;
@@ -242,7 +244,7 @@
         background-size: 130% 100%;
       }
 
-      @media (max-width: map.get(env.$screen-size, mobile)) {
+      @media (max-width: $mobile-screen) {
         background: var(--img-mobile) no-repeat;
         background-size: 100% 210px;
         background-position: top;
@@ -260,14 +262,14 @@
         padding: 60px 30% 60px 60px;
       }
 
-      @media (max-width: map.get(env.$screen-size, mobile)) {
+      @media (max-width: $mobile-screen) {
         padding: 234px 16px 0;
       }
     }
 
     &-title {
       font-weight: 600;
-      @media (max-width: map.get(env.$screen-size, mobile)) {
+      @media (max-width: $mobile-screen) {
         font-size: 1.5rem;
       }
     }
@@ -306,7 +308,7 @@
   }
 
   :global {
-    @media (max-width: map.get(env.$screen-size, mobile)) {
+    @media (max-width: $mobile-screen) {
       .slider-button button{
         width: 100%;
       }
