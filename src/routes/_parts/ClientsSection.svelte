@@ -1,0 +1,87 @@
+<script lang="ts">
+    import ClientImage1 from "$lib/assets/images/clients/1.png?enhanced&format=webp"
+    import ClientImage2 from "$lib/assets/images/clients/2.png?enhanced&format=webp"
+    import ClientImage3 from "$lib/assets/images/clients/3.png?enhanced&format=webp"
+    import ClientReview from "./ClientReview.svelte";
+    import LinkBlock from "$ui-kit/LinkBlock/LinkBlock.svelte";
+</script>
+
+<svelte:head>
+    <link rel="preload" as="image" href={ClientImage1.img.src} />
+    <link rel="preload" as="image" href={ClientImage2.img.src} />
+    <link rel="preload" as="image" href={ClientImage3.img.src} />
+</svelte:head>
+
+<section class="page-container">
+    <h2>Что говорят о нас наши клиенты</h2>
+    <div class="reviews">
+        <div class="left-comment">
+            <ClientReview title="«Огромный выбор врачей, большой выбор‥»."
+                          description="Самый продуманный и постоянно развивающийся сервис по поиску вр чей и онлайн записи к ним.
+                   Есть все популярные клиники и даже государственные больницы,
+                    много услуг, отзывы про врачей и негативные и позитивные —
+                     можно составить своё сравнительно объективное мнение о враче и примерно
+                      представлять что тебя ждёт."
+                          author="Ирина Смирнова" authorImage={ClientImage1.img.src} />
+        </div>
+        <div class="left-comment">
+            <ClientReview title="«Огромный выбор врачей, большой выбор‥»."
+                          description="Самый продуманный и постоянно развивающийся сервис по поиску вр чей и онлайн записи к ним.
+                   Есть все популярные клиники и даже государственные больницы,
+                    много услуг, отзывы про врачей и негативные и позитивные —
+                     можно составить своё сравнительно объективное мнение о враче и примерно
+                      представлять что тебя ждёт."
+                          author="Ирина Смирнова" authorImage={ClientImage2.img.src} />
+        </div>
+        <div class="right-comment">
+            <ClientReview title="«Огромный выбор врачей, большой выбор‥»."
+                          description="Самый продуманный и постоянно развивающийся сервис по поиску вр чей и онлайн записи к ним.
+                   Есть все популярные клиники и даже государственные больницы,
+                    много услуг, отзывы про врачей и негативные и позитивные —
+                     можно составить своё сравнительно объективное мнение о враче и примерно
+                      представлять что тебя ждёт."
+                          author="Ирина Смирнова" authorImage={ClientImage3.img.src} />
+        </div>
+        <div class="all-reviews">
+            <LinkBlock />
+        </div>
+    </div>
+
+</section>
+
+<style lang="scss">
+  @use "sass:map";
+  @use "$lib/ui/env";
+
+    section {
+      padding-top: 192px;
+
+      .reviews {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-auto-flow: column;
+        column-gap: 32px;
+        row-gap: 32px;
+
+        margin-top: 64px;
+
+        > div {
+          grid-column: span 4;
+          grid-row: span 3;
+
+          &.left-comment {
+            grid-column: span 8;
+          }
+
+          &.right-comment {
+            grid-row: span 4;
+          }
+        }
+
+        .all-reviews {
+          grid-row: span 2;
+        }
+      }
+    }
+</style>

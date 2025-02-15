@@ -5,6 +5,7 @@
     import AboutUsSection from "./_parts/AboutUsSection.svelte"
     import NewsLetterSection from "./_parts/NewsLetterSection.svelte"
     import QuestionAnswerSection from "./_parts/QuestionAnswerSection.svelte"
+    import ClientsSection from "./_parts/ClientsSection.svelte";
 </script>
 
 <svelte:head>
@@ -18,5 +19,6 @@
   <AboutUsSection />
   <NewsLetterSection />
   <QuestionAnswerSection />
+  <ClientsSection />
 </main>
 
