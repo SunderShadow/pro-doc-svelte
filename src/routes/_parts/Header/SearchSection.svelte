@@ -6,6 +6,8 @@
   import ColorsSelect from "$ui-kit/Form/Select/Colors.svelte"
   import DatePickerSelect from "$ui-kit/Form/Select/DatePicker.svelte"
   import Titled from "$ui-kit/Form/Select/Sections.svelte"
+  import {onDestroy, onMount} from "svelte"
+  import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
 
   let colorsInputData = [
       {
@@ -96,11 +98,21 @@
       }
   ]
 
+  let allowScrolling
+
+  onMount(() => {
+      PreventScrolling(allowScrolling)
+  })
+
+  onDestroy(() => {
+      ReEnableScrolling()
+  })
+
   let {
       headerHeight
   } = $props()
 </script>
-<section class="search-container page-container" style:--top={headerHeight + 'px'} transition:slide>
+<section class="search-container page-container" style:--top={headerHeight + 'px'} transition:slide bind:this={allowScrolling}>
   <h2 class="title-1">Поиск</h2>
   <h3>Выберете клинику или запишитесь на приём</h3>
 
