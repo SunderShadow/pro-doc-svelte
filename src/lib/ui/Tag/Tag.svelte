@@ -33,6 +33,7 @@
     transition: background-color 200ms;
     user-select: none;
 
+    &:active,
     &.active,
     &:hover {
       background-color: rgba(map.get(env.$color, primary), .1);
