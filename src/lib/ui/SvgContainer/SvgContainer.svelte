@@ -4,8 +4,8 @@
 
   type Props = {
       children: Snippet,
-      type: IconType,
-      size: IconSize
+      type?: IconType,
+      size?: IconSize
   }
 
   let {
