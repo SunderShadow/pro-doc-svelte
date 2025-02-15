@@ -1,5 +1,6 @@
 <script lang="ts">
     import type {Snippet} from "svelte";
+    import { slide } from 'svelte/transition';
     import Button from "$ui-kit/Accordion/parts/Button.svelte";
 
     type Props = {
@@ -25,7 +26,9 @@
         <Button isActive={isActive}/>
     </button>
     {#if isActive}
-        {@render children?.()}
+        <div transition:slide>
+            {@render children?.()}
+        </div>
     {/if}
 </div>
 
