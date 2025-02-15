@@ -1,15 +1,16 @@
 <script lang="ts">
-    import Button from "$ui-kit/Accordion/parts/Button.svelte";
+    import type {Snippet} from "svelte";
     import { slide } from 'svelte/transition';
+    import Button from "$ui-kit/Accordion/parts/Button.svelte";
 
     type Props = {
+        children: Snippet,
         title: string,
-        content: string,
     }
 
     const {
+        children,
         title,
-        content
     }: Props = $props()
 
     let isActive = $state(false)
@@ -25,7 +26,9 @@
         <Button isActive={isActive}/>
     </button>
     {#if isActive}
-        <p class="body-text-2" transition:slide>{content}</p>
+        <p class="body-text-2" transition:slide>
+            {@render children?.()}
+        </p>
     {/if}
 </div>
 
