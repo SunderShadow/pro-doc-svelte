@@ -85,34 +85,95 @@
 
   section {
     padding: 96px 0;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      padding: 64px 0;
+    }
   }
 
   .cards {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 2rem;
+    gap: 32px;
     margin-top: 4rem;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 550px) {
+      grid-template-columns: 1fr;
+    }
   }
 
-
   .card {
-    padding: 1.5rem;
+    --number-size: 2rem;
+
+    padding: 1.5rem 1.5rem 3.5rem;
+
     position: relative;
-    height: 250px;
+    min-height: 250px;
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
 
     grid-column: span 2;
 
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      grid-column: span 1;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      min-height: 200px;
+    }
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      min-height: 220px;
+    }
+
+    .title-1 {
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        font-size: 18px;
+      }
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      .body-text-2 {
+        font-size: 14px;
+        line-height: 14px;
+      }
+    }
+
+    &:last-child {
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        grid-column: span 2;
+      }
+
+      @media (max-width: 550px) {
+        grid-column: span 1;
+      }
+
+    }
+
     &.triple {
       grid-column: span 3;
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        grid-column: span 1;
+      }
     }
 
     &-content {
       display: flex;
       gap: 16px;
     }
-
 
     &-text > * + * {
       margin-top: 16px;
@@ -127,6 +188,12 @@
       font-weight: 700;
 
       color: rgba(map.get(env.$color, primary), .08);
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        font-size: 2rem;
+        right: 16px;
+        bottom: 16px;
+      }
     }
   }
 </style>
