@@ -1,6 +1,5 @@
 <script lang="ts">
     import type {Snippet} from "svelte";
-    import { slide } from 'svelte/transition';
     import Button from "$ui-kit/Accordion/parts/Button.svelte";
 
     type Props = {
@@ -26,9 +25,7 @@
         <Button isActive={isActive}/>
     </button>
     {#if isActive}
-        <p class="body-text-2" transition:slide>
-            {@render children?.()}
-        </p>
+        {@render children?.()}
     {/if}
 </div>
 
@@ -60,14 +57,6 @@
         background-color: map.get(env.$bg-color, primary);
 
         cursor: pointer;
-      }
-
-      > p {
-        padding: 1rem 1.5rem;
-
-        font-weight: 400;
-        line-height: 25.6px;
-        opacity: 0.5;
       }
     }
 

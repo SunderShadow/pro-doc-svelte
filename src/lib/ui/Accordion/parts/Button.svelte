@@ -28,7 +28,8 @@
 
       border-radius: 99px;
 
-      transition: all 0.35s ease-in-out;
+      transition-property: background, transform;
+      transition-duration: 300ms;
 
       .svg-icon-container {
         --color: #{map.get(env.$color, primary)};
