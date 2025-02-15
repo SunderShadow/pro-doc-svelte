@@ -1,16 +1,16 @@
 <script lang="ts">
-    import AccordionButton from "$ui-kit/icons/AccordionButton.svelte"
+    import AccordionButton from "$ui-kit/icons/Plus.svelte"
 
     type Props = {
-        is_Active: boolean,
+        isActive: boolean,
     }
 
     const {
-        is_Active
+        isActive
     }: Props = $props()
 </script>
 
-<div class="accordion__button" class:active={is_Active}>
+<div class="accordion__button" class:active={isActive}>
     <AccordionButton size="sm" variant="primary"/>
 </div>
 

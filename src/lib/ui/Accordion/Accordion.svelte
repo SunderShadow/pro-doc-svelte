@@ -3,29 +3,29 @@
     import { slide } from 'svelte/transition';
 
     type Props = {
-        question: string,
-        answer: string,
+        title: string,
+        content: string,
     }
 
     const {
-        question,
-        answer
+        title,
+        content
     }: Props = $props()
 
-    let is_Active = $state(false)
+    let isActive = $state(false)
     const handleActiveAccordion = () => {
-        is_Active = !is_Active
+        isActive = !isActive
     }
 
 </script>
 
 <div class="accordion">
     <button class="title-1" onclick={handleActiveAccordion}>
-        {question}
-        <Button is_Active={is_Active}/>
+        {title}
+        <Button isActive={isActive}/>
     </button>
-    {#if is_Active}
-        <p class="body-text-2" transition:slide>{answer}</p>
+    {#if isActive}
+        <p class="body-text-2" transition:slide>{content}</p>
     {/if}
 </div>
 
