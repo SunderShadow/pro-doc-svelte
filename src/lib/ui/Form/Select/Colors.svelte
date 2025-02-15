@@ -38,7 +38,6 @@
   function select(item: Item) {
       selected = item
       value = item.value
-      close()
   }
 
   function isSelected(item: Item) {
@@ -64,7 +63,6 @@
 <Template
     {...props}
     {dropdown}
-    preventClose
     bind:close
     bind:open
 

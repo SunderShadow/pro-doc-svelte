@@ -1,5 +1,6 @@
 <script lang="ts">
   import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte";
+  import {onMount} from "svelte";
 
   type Props = {
       beforeToday?: boolean
@@ -51,8 +52,6 @@
       tmp.setUTCDate(1)
       daysOffset = tmp.getUTCDay()
   })
-
-  $inspect(daysOffset)
 
   function goPrevMonth() {
       if (!canGoPrevMonth()) {
@@ -117,11 +116,14 @@
   function canBeSelected(day: number): boolean {
       return !earlierThanToday(day)
   }
+  onMount(() => {
+      console.log(true)
+  })
 </script>
 
 <div class="date_picker">
   <div class="months_controller">
-    <span class="title-2">{month} {year}</span>
+    <span class="title-3">{month} {year}</span>
     <div class="buttons">
       <button class:disabled={!canGoPrevMonth()} onclick={goPrevMonth}>
         <SvgContainer type="primary">

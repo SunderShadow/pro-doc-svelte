@@ -110,7 +110,6 @@
 <Template
     {...props}
     {dropdown}
-    preventClose
     bind:close
     bind:open
 
@@ -126,6 +125,7 @@
     display: flex;
     align-items: center;
 
+    text-align: left;
     gap: 1rem;
     width: 100%;
 

@@ -1,8 +1,11 @@
-<script>
-  let props = $props()
+<script lang="ts">
+  let {
+      active = false,
+      ...props
+  } = $props()
 </script>
 
-<input class="form-control" type="text" {...props}>
+<input class="form-control" class:active={active} type="text" {...props} >
 
 <style lang="scss">
   @use "sass:map";
@@ -30,6 +33,7 @@
     --border-opacity: 1;
   }
 
+  input.active,
   input:focus {
     --border-opacity: 1;
 

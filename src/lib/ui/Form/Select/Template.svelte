@@ -1,6 +1,8 @@
 <script lang="ts">
   import type {Snippet} from "svelte"
 
+  import {slide} from "svelte/transition"
+
   import ArrowDown from "$ui-kit/icons/ArrowDown.svelte"
   import Input from "$ui-kit/Form/Input.svelte"
 
@@ -10,7 +12,7 @@
       close: Function,
       open: Function,
       preventClose: boolean,
-      preventOpen: boolean
+      preventOpen: boolean,
   }
 
   let {
@@ -34,16 +36,20 @@
   }
 </script>
 
-<div class="select-input">
-  <Input {...props} {placeholder} onfocus={preventOpen ? () => {} : open} onfocusout={preventClose ? () => {} : close}/>
+<svelte:window onclick={preventClose ? () => {} : close}></svelte:window>
+
+<div class="select-input" onclick={(e) => {e.stopPropagation()}}>
+  <Input active={!closed} {...props} {placeholder} onfocus={preventOpen ? () => {} : open} />
 
   <div class="select-input__chevron">
     <ArrowDown size="sm" />
   </div>
 
-  <div class="select-input__dropdown" class:closed>
-    {@render dropdown?.()}
-  </div>
+  {#if !closed}
+    <div class="select-input__dropdown" transition:slide>
+      {@render dropdown?.()}
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -58,22 +64,22 @@
 
       &__dropdown {
         position: absolute;
-        left: 0;
+
+        left: 50%;
+        transform: translateX(-50%);
+
         top: 100%;
-        width: 100%;
-        height: 300px;
-        max-height: 50vh;
+        min-width: 100%;
+        max-height: min(75vh, 500px);
         background-color: #fff;
 
         overflow-y: auto;
         border: 1px solid rgba(map.get(env.$color, primary), .1);
         border-radius: 12px;
-        z-index: 2;
+        z-index: 5;
 
         transition: height 300ms;
-        &.closed {
-          height: 0;
-        }
+
       }
 
       input {

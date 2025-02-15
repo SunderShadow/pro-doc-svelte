@@ -7,15 +7,16 @@
   import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte"
   import InputGroup from "$ui-kit/Form/Group/Group.svelte"
   import Tag from "$ui-kit/Tag/Tag.svelte"
-  import Select from "$ui-kit/Form/Select/Template.svelte"
   import Button from "$ui-kit/Button/Button.svelte"
   import Magnifier from "$ui-kit/icons/Magnifier.svelte"
-  import Account from "$ui-kit/icons/Account.svelte";
-  import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
-  import Telegram from "$ui-kit/icons/Telegram.svelte";
-  import Vk from "$ui-kit/icons/Vk.svelte";
-  import ColorsSelect from "$ui-kit/Form/Select/Colors.svelte";
-  import Titled from "$ui-kit/Form/Select/Sections.svelte";
+  import Account from "$ui-kit/icons/Account.svelte"
+  import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
+  import Telegram from "$ui-kit/icons/Telegram.svelte"
+  import Vk from "$ui-kit/icons/Vk.svelte"
+
+  import ColorsSelect from "$ui-kit/Form/Select/Colors.svelte"
+  import DatePickerSelect from "$ui-kit/Form/Select/DatePicker.svelte"
+  import Titled from "$ui-kit/Form/Select/Sections.svelte"
 
   let headerHeight = $state(0)
   let mobileMenuVisible = $state(false)
@@ -185,9 +186,7 @@
     <InputGroup>
       <Titled data={titleInputData} placeholder="Врач, клиника, болезнь, услуга" />
       <ColorsSelect data={colorsInputData} placeholder="Метро, район, округ, город МО" />
-      <div class="date-select">
-        <Select  placeholder="Дата приёма" />
-      </div>
+      <DatePickerSelect placeholder="Дата приёма" />
       <Button>Найти</Button>
     </InputGroup>
 
@@ -383,18 +382,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-    }
-  }
-
-  :global {
-    .date-select .select-input {
-      height: 100%;
-    }
-  }
-
-  @media (max-width: map.get(env.$screen-size, netbook)) {
-    .date-select {
-      width: 15%;
     }
   }
 
