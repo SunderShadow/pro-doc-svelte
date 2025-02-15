@@ -46,7 +46,7 @@
   }
 
   onMount(() => {
-      open()
+      // open()
   })
 </script>
 

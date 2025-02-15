@@ -90,7 +90,7 @@
   }
 
   onMount(() => {
-      open()
+      // open()
   })
 </script>
 
