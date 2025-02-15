@@ -44,9 +44,10 @@
       return selected?.value === item.value
   }
 
-  onMount(() => {
-      // open()
-  })
+  function reset() {
+      value = null
+      selected = null
+  }
 </script>
 
 {#snippet dropdown()}
@@ -65,6 +66,8 @@
     {dropdown}
     bind:close
     bind:open
+
+    onErase={reset}
 
     value={selected?.title}
     oninput={(e) => {search = e.target.value}}

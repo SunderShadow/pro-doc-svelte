@@ -43,10 +43,11 @@
 <svelte:window onclick={preventClose ? () => {} : close}></svelte:window>
 
 <div class="select-input" onclick={(e) => {e.stopPropagation()}}>
-  <Input active={!closed} {...props} {placeholder} onfocus={preventOpen ? () => {} : open} />
-
-  <div class="select-input__chevron">
-    <ArrowDown size="sm" />
+  <div class="select-input__wrapper">
+    <Input active={!closed} {...props} {placeholder} onfocus={preventOpen ? () => {} : open} />
+    <div class="select-input__chevron" class:active={!closed}>
+      <ArrowDown size="sm" />
+    </div>
   </div>
 
   {#if !closed}
@@ -65,6 +66,15 @@
       position: relative;
 
       cursor: text;
+
+      &__wrapper {
+        width: 100%;
+        height: 100%;
+
+        .form-control-wrapper {
+          --wrapper-icon-padding: 20px;
+        }
+      }
 
       &__dropdown {
         --z-index: 1;
@@ -87,8 +97,8 @@
         border-radius: 12px;
         z-index: calc(5 + var(--z-index));
 
-        transition: height 300ms;
-
+        transition-property: height;
+        transition-duration: 300ms;
       }
 
       @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
@@ -105,6 +115,18 @@
         transform: translateY(-50%);
 
         opacity: .5;
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transform-origin: center center;
+
+        &.active {
+          opacity: 1;
+          transform: rotateX(180deg) translateY(60%);
+
+          .svg-icon-container {
+            --color: #{map.get(env.$color, primary)};
+          }
+        }
       }
     }
   }

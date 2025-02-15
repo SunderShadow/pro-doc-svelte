@@ -1,6 +1,5 @@
 <script lang="ts">
   import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte";
-  import {onMount} from "svelte";
 
   type Props = {
       beforeToday?: boolean
@@ -30,7 +29,6 @@
 
   let viewDate = $state.raw(new Date())
 
-  value = viewDate
 
   let year        = $state(0),
       month       = $state(''),
@@ -93,8 +91,8 @@
   }
 
   function isDaySelected(day: number): boolean {
-      return viewDate.getMonth() === value.getMonth()
-          && value.getDate() === day
+      return viewDate.getMonth() === value?.getMonth()
+          && value?.getDate() === day
   }
 
   function earlierThanToday(day: number): boolean {
@@ -116,7 +114,6 @@
   function canBeSelected(day: number): boolean {
       return !earlierThanToday(day)
   }
-
 </script>
 
 <div class="date_picker">

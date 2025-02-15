@@ -1,11 +1,34 @@
 <script lang="ts">
+  import Plus from "$ui-kit/icons/Plus.svelte"
+  import {scale} from "svelte/transition"
+
+  type Props = any & {
+      value?: any,
+      active: boolean,
+      onErase: Function,
+  }
   let {
       active = false,
+      value = $bindable(''),
+      onErase = () => {},
       ...props
-  } = $props()
+  }: Props = $props()
+
+  function erase() {
+      value = ''
+      onErase()
+  }
 </script>
 
-<input class="form-control" class:active={active} type="text" {...props} >
+<div class="form-control-wrapper">
+  <input class="form-control" class:active={active} type="text" {...props} bind:value>
+
+  {#if value.length}
+    <div class="erase" transition:scale onclick={erase}>
+      <Plus size="sm" type="primary"/>
+    </div>
+  {/if}
+</div>
 
 <style lang="scss">
   @use "sass:map";
@@ -28,6 +51,21 @@
 
     transition-property: border, box-shadow;
     transition-duration: 300ms;
+  }
+
+  .erase {
+    position: absolute;
+    right: calc(20px + var(--wrapper-icon-padding));
+    top: 50%;
+    transform: translateY(-60%) rotate(45deg);
+    cursor: pointer;
+  }
+
+  .form-control-wrapper {
+    --wrapper-icon-padding: 0px;
+
+    display: flex;
+    height: 100%;
   }
 
   input:hover {

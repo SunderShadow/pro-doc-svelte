@@ -36,8 +36,6 @@
 
   let selected: Array<SectionSelected> = $state([])
 
-  let search: string = $state('')
-
   let inputVisiblePart = $state('');
 
   function calcInputVisiblePart() {
@@ -89,9 +87,10 @@
       return false
   }
 
-  onMount(() => {
-      // open()
-  })
+  function reset() {
+      value = []
+      selected = []
+  }
 </script>
 
 {#snippet dropdown()}
@@ -113,7 +112,9 @@
     bind:close
     bind:open
 
-    value={inputVisiblePart}
+    onErase={reset}
+
+    bind:value={inputVisiblePart}
     oninput={(e) => {search = e.target.value}}
 />
 

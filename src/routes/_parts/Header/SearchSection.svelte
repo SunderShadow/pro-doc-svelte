@@ -101,11 +101,15 @@
   let allowScrolling
 
   onMount(() => {
-      PreventScrolling(allowScrolling)
+      if (window.innerWidth <= 768) {
+          PreventScrolling(allowScrolling)
+      }
   })
 
   onDestroy(() => {
-      ReEnableScrolling()
+      if (window.innerWidth <= 768) {
+          ReEnableScrolling()
+      }
   })
 
   let {

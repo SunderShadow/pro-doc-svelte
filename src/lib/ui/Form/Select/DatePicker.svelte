@@ -31,9 +31,17 @@
       day   = day < 10 ? '0' + day.toString() : day
 
       selected = day + '.' + month + '.' + value.getFullYear()
+
+      if (!selected?.length) {
+          value = null
+      }
   })
 
   let dropdownWidth = $state(-1)
+
+  function reset() {
+      value = null
+  }
 
   onMount(() => {
       open()
@@ -57,8 +65,9 @@
       bind:close
       bind:open
       useScaleTransition
+      onErase={reset}
 
-      value={selected}
+      bind:value={selected}
   />
 </div>
 
