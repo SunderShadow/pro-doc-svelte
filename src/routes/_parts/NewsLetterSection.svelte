@@ -25,6 +25,11 @@ import Button from "$ui-kit/Button/Button.svelte"
 </section>
 
 <style lang="scss">
+  @use "sass:map";
+  @use "$ui-kit/env";
+
+    $mobile-size: 500px;
+
   section {
     padding: 155px 0 0 10px;
   }
@@ -39,6 +44,14 @@ import Button from "$ui-kit/Button/Button.svelte"
 
   form {
     margin-top: 32px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      max-width: 50%;
+    }
+
+    @media (max-width: $mobile-size) {
+      max-width: 100%;
+    }
 
     .button {
       margin-top: 32px;
@@ -56,14 +69,42 @@ import Button from "$ui-kit/Button/Button.svelte"
 
     border-radius: 12px;
 
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 16px;
+
+      h3 {
+        font-size: 18px;
+      }
+
+      .body-text-1 {
+        font-size: 1rem;
+      }
+    }
+
     &__content {
       max-width: max(42%, 300px);
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        max-width: 50%;
+      }
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        max-width: 100%;
+      }
     }
   }
 
   .doctor {
     position: absolute;
-    right: 0;
+    right: 10%;
     bottom: -10px;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      right: 0;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      display: none;
+    }
   }
 </style>

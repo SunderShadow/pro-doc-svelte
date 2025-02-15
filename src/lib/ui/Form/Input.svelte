@@ -18,7 +18,8 @@
 
     border: 1px solid rgba(map.get(env.$color, primary), var(--border-opacity));
 
-    outline: none ;
+    line-height: 25.6px;
+    outline: none;
     padding: .65em 1em;
     border-radius: .75em;
 
