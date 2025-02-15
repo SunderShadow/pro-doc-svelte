@@ -1,7 +1,7 @@
 <script lang="ts">
-    import ClientImage1 from "$lib/assets/images/clients/1.png"
-    import ClientImage2 from "$lib/assets/images/clients/2.png"
-    import ClientImage3 from "$lib/assets/images/clients/3.png"
+    import ClientImage1 from "$lib/assets/images/clients/1.png?enhanced&format=webp"
+    import ClientImage2 from "$lib/assets/images/clients/2.png?enhanced&format=webp"
+    import ClientImage3 from "$lib/assets/images/clients/3.png?enhanced&format=webp"
     import ClientReview from "./ClientReview.svelte";
     import LinkBlock from "$ui-kit/LinkBlock/LinkBlock.svelte";
 </script>
