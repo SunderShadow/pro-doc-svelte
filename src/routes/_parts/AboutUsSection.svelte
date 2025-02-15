@@ -35,6 +35,11 @@
 </section>
 
 <style lang="scss">
+  @use "sass:map";
+  @use "$ui-kit/env";
+
+  $mobile-adaptive: 600px;
+
   section {
     padding: 96px 0;
   }
@@ -44,10 +49,9 @@
   }
 
   .thumbnail {
-    flex-shrink: 0;
 
-    width: 768px;
-    height: 768px;
+    max-width: 768px;
+    max-height: 768px;
 
     img {
       width: 100%;
@@ -64,6 +68,19 @@
 
     --y-offset: 0px;
 
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      gap: 118px;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      gap: 90px;
+    }
+
+    @media (max-width: $mobile-adaptive) {
+      flex-direction: column;
+      gap: 32px;
+    }
+
     &-bg-pulse {
       position: absolute;
       width: 70%;
@@ -71,12 +88,26 @@
       transform: translateY(-50%);
       right: 0;
       z-index: -1;
+
+      @media (max-width: $mobile-adaptive) {
+        display: none;
+      }
     }
   }
 
   .description {
     position: relative;
     top: var(--y-offset);
+
+    width: 50%;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      width: 80%;
+    }
+
+    @media (max-width: $mobile-adaptive) {
+      width: 100%;
+    }
 
     > * + * {
       margin-top: 32px;
