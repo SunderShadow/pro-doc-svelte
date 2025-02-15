@@ -51,7 +51,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      @media (max-width: map.get(env.$screen-size, mobile)) {
+      @media (max-width: 480px) {
         grid-template-columns: 1fr;
       }
     }
