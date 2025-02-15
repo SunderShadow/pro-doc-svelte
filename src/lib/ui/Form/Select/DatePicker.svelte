@@ -49,7 +49,7 @@
   </div>
 {/snippet}
 
-<div class="select_input-date_picker" style:max-width={dropdownWidth + 'px'}>
+<div class="select_input-date_picker" style:--max-input-width={dropdownWidth + 'px'}>
   <Template
       {...props}
       {dropdown}
@@ -65,7 +65,6 @@
   @use "$ui-kit/env";
 
   .dropdown {
-    width: fit-content;
     padding: 1rem 1rem;
     box-sizing: border-box;
 
@@ -74,14 +73,20 @@
     }
   }
 
+  .select_input-date_picker {
+    max-width: var(--max-input-width);
+  }
+
   :global {
     .select_input-date_picker .select-input {
-      display: flex;
+      @media (min-width: (map.get(env.$screen-size, tablet) + 1)) {
+        display: flex;
+      }
+
       height: 100%;
     }
 
     .select_input-date_picker .select-input__dropdown {
-      width: fit-content;
       min-width: 0;
       left: 0;
       transform: translateX(0);

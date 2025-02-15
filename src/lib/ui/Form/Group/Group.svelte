@@ -1,4 +1,4 @@
-<div class="search-group">
+<div class="input-group">
   <slot />
 </div>
 
@@ -6,59 +6,75 @@
   @use "sass:map";
   @use "$ui-kit/env";
 
+  @media (max-width: map.get(env.$screen-size, tablet)) {
+    .input-group {
+      flex-direction: column;
+    }
+  }
   :global {
-    .search-group {
+    .input-group {
       --border-color: #{rgba(map.get(env.$color, primary), .1)};
 
       display: flex;
       width: 100%;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        gap: 15px;
+      }
     }
 
-    .search-group > * {
-      flex-grow: 1;
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      .input-group .select_input-date_picker {
+        max-width: 100% !important;
+      }
     }
 
-    .search-group > *:not(:first-child) input {
-      border-radius: 0;
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      .input-group > * {
+        flex-grow: 1;
+      }
 
-      border-left-color: transparent;
-      border-right-color: transparent;
+      .input-group > *:not(:first-child) input {
+        border-radius: 0;
+
+        border-left-color: transparent;
+        border-right-color: transparent;
+      }
+
+      .input-group > *:first-child input {
+        border-radius: .75em 0 0 .75em;
+
+        border-right-color: transparent;
+      }
+
+      .input-group > *:last-child input {
+        border-left-color: transparent;
+      }
+
+      .input-group > button:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
     }
 
-    .search-group > *:first-child input {
-      border-radius: .75em 0 0 .75em;
-
-      border-right-color: transparent;
-    }
-
-    .search-group > *:last-child input {
-      border-left-color: transparent;
-    }
-
-    .search-group > button:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-
-    .search-group > button {
+    .input-group > button {
       width: auto !important;
       flex-shrink: 1;
       flex-grow: 0;
     }
 
-    .search-group > *:last-child {
+    .input-group > *:last-child {
       border-top-right-radius: .75em;
       border-bottom-right-radius: .75em;
 
       border-right-color: var(--border-color);
     }
 
-    .search-group > *:not(:last-child) {
+    .input-group > *:not(:last-child) {
       position: relative;
     }
 
-    .search-group > *:not(:last-child)::after {
+    .input-group > *:not(:last-child)::after {
       position: absolute;
 
       content: "|";
@@ -73,12 +89,12 @@
       transform: translateY(-50%);
     }
 
-    .search-group > button:last-child {
+    .input-group > button:last-child {
       border-top-right-radius: .75em;
       border-bottom-right-radius: .75em;
     }
 
-    .search-group > button:first-child {
+    .input-group > button:first-child {
       border-top-left-radius: .75em;
       border-bottom-left-radius: .75em;
     }

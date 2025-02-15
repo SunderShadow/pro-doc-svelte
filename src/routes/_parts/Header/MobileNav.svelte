@@ -1,9 +1,9 @@
 <script>
-import Vk from "$ui-kit/icons/Vk.svelte";
-import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
-import Account from "$ui-kit/icons/Account.svelte";
-import Telegram from "$ui-kit/icons/Telegram.svelte";
-import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling";
+import Vk from "$ui-kit/icons/Vk.svelte"
+import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
+import Account from "$ui-kit/icons/Account.svelte"
+import Telegram from "$ui-kit/icons/Telegram.svelte"
+import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
 
 let {
     visible = $bindable(false),

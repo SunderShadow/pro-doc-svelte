@@ -63,28 +63,35 @@
       cursor: text;
 
       &__dropdown {
-        position: absolute;
+        --z-index: 1;
+
+        @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
+          position: absolute;
+
+          max-height: min(75vh, 500px);
+          transform: translateX(-50%);
+        }
 
         left: 50%;
-        transform: translateX(-50%);
 
         top: 100%;
         min-width: 100%;
-        max-height: min(75vh, 500px);
         background-color: #fff;
 
         overflow-y: auto;
         border: 1px solid rgba(map.get(env.$color, primary), .1);
         border-radius: 12px;
-        z-index: 5;
+        z-index: calc(5 + var(--z-index));
 
         transition: height 300ms;
 
       }
 
-      input {
-        height: 100%;
-        padding-right: calc(1em + 24px);
+      @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
+        input {
+          height: 100%;
+          padding-right: calc(1em + 24px);
+        }
       }
 
       &__chevron {
