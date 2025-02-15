@@ -52,6 +52,7 @@
         width: 100%;
 
         padding: 1.5rem;
+        font-family: inherit;
 
         border: none;
         border-radius: 20px;

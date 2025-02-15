@@ -45,19 +45,23 @@
 </section>
 
 <style lang="scss">
-    .accordion-container {
-      margin-top: 64px;
+  section {
+    padding: 96px 0;
+  }
 
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
+  .accordion-container {
+    margin-top: 64px;
 
-      .accordion-content {
-        padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-        font-weight: 400;
-        line-height: 25.6px;
-        opacity: 0.5;
-      }
+    .accordion-content {
+      padding: 1rem 1.5rem;
+
+      font-weight: 400;
+      line-height: 25.6px;
+      opacity: 0.5;
     }
+  }
 </style>
