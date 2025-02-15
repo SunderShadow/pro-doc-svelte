@@ -7,15 +7,17 @@
 <footer>
     <div class="page-container">
         <div class="contacts">
-            <img src={Logo} alt="Logo" />
+            <a class="logo" href="/">
+              <img src={Logo} alt="Logo" />
+            </a>
             <h5 class="title-3">Связаться с нами</h5>
             <div>
                 <p class="body-text-4">Телефоны: </p>
-                <a class="body-text-3 active">8 (800) 455-55-15</a>
+                <a href="tel:88004555515" class="body-text-3 active">8 (800) 455-55-15</a>
             </div>
             <div>
                 <p class="body-text-4">Адрес эл. почты</p>
-                <a class="body-text-3 active">infodocpro@.gmail.ru</a>
+                <a href="mailto:infodocpro@.gmail.ru" class="body-text-3 active">infodocpro@.gmail.ru</a>
             </div>
             <h5 class="title-3">Мы в соц. сетях</h5>
             <div class="social">
@@ -26,35 +28,35 @@
         <nav>
             <div class="about">
                 <h5 class="title-3">О нас</h5>
-                <a href="/" class="body-text-4">О компании</a>
-                <a href="/" class="body-text-4">Карьера</a>
-                <a href="/" class="body-text-4">Партнёры</a>
-                <a href="/" class="body-text-4">Отзывы о нас</a>
-                <a href="/" class="body-text-4">Пресса</a>
-                <a href="/" class="body-text-4">Контакты</a>
+                <a href="/" class="body-text-3">О компании</a>
+                <a href="/" class="body-text-3">Карьера</a>
+                <a href="/" class="body-text-3">Партнёры</a>
+                <a href="/" class="body-text-3">Отзывы о нас</a>
+                <a href="/" class="body-text-3">Пресса</a>
+                <a href="/" class="body-text-3">Контакты</a>
             </div>
             <div class="patient">
                 <h5 class="title-3">Пациенту</h5>
-                <a href="/" class="body-text-4">Врачи</a>
-                <a href="/" class="body-text-4">Клиники</a>
-                <a href="/" class="body-text-4">Диагностика</a>
-                <a href="/" class="body-text-4">Услуги</a>
-                <a href="/" class="body-text-4">Медицинская библиотека</a>
-                <a href="/" class="body-text-4">Как записаться</a>
-                <a href="/" class="body-text-4">Защита данных пользователя</a>
-                <a href="/" class="body-text-4">Как мы проверяем отзывы</a>
-                <a href="/" class="body-text-4">Подписку «DocHeal»</a>
+                <a href="/" class="body-text-3">Врачи</a>
+                <a href="/" class="body-text-3">Клиники</a>
+                <a href="/" class="body-text-3">Диагностика</a>
+                <a href="/" class="body-text-3">Услуги</a>
+                <a href="/" class="body-text-3">Медицинская библиотека</a>
+                <a href="/" class="body-text-3">Как записаться</a>
+                <a href="/" class="body-text-3">Защита данных пользователя</a>
+                <a href="/" class="body-text-3">Как мы проверяем отзывы</a>
+                <a href="/" class="body-text-3">Подписку «DocHeal»</a>
 
             </div>
             <div class="doctor">
                 <h5 class="title-3">Клиникам и врачам</h5>
-                <a href="/" class="body-text-4">Сотрудничество с врачами</a>
-                <a href="/" class="body-text-4">Сотрудничество с клиниками</a>
-                <a href="/" class="body-text-4">Правила сотрудничества</a>
-                <a href="/" class="body-text-4">Персональные данные</a>
+                <a href="/" class="body-text-3">Сотрудничество с врачами</a>
+                <a href="/" class="body-text-3">Сотрудничество с клиниками</a>
+                <a href="/" class="body-text-3">Правила сотрудничества</a>
+                <a href="/" class="body-text-3">Персональные данные</a>
                 <h5 class="title-3">Врачу и клинике</h5>
-                <a href="/" class="body-text-4">Личный кабинет</a>
-                <a href="/" class="body-text-4">Регистрация</a>
+                <a href="/" class="body-text-3">Личный кабинет</a>
+                <a href="/" class="body-text-3">Регистрация</a>
             </div>
         </nav>
     </div>
@@ -71,6 +73,10 @@
 
       height: 458px;
 
+      .body-text-3 {
+        font-family: "Gilroy", sans-serif;
+      }
+
       .page-container {
         display: flex;
         justify-content: space-between;
@@ -81,9 +87,9 @@
           flex-direction: column;
           gap: .5rem;
 
-          > img {
-            max-width: 136px;
-            max-height: 54px;
+          .logo img{
+            width: 136px;
+            height: 54px;
           }
 
           > h5 {
