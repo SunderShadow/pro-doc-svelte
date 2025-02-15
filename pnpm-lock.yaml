@@ -20,6 +20,9 @@ importers:
       '@sveltejs/enhanced-img':
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.34.6)(svelte@5.20.0)(vite@6.1.0(sass@1.84.0))
+      prevent-scrolling:
+        specifier: ^1.3.10
+        version: 1.3.10
       sass:
         specifier: ^1.84.0
         version: 1.84.0
@@ -413,6 +416,9 @@ packages:
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
 
+  '@qntm-code/utils@2.21.0':
+    resolution: {integrity: sha512-sJvcS3uJZPdTTbBTiX/6P/S8ilydOMFHlWQmd98hyeg4PhGcZbtQDBGuoQO56a3bNzENZAOvceB4tDrlxzZczQ==}
+
   '@rollup/pluginutils@5.1.4':
     resolution: {integrity: sha512-USm05zrsFxYLPdWWq+K3STlWiT/3ELn3RcV5hJMghpeAIhxfsUIg6mt12CBJBInWMV4VneoV7SfGv8xIwo2qNQ==}
     engines: {node: '>=14.0.0'}
@@ -642,6 +648,9 @@ packages:
   devalue@5.1.1:
     resolution: {integrity: sha512-maua5KUiapvEwiEAe+XnlZ3Rh0GD+qI1J/nb9vrJc3muPXvcF/8gXYTWF76+5DAqHyDUtOIImEuo0YKE9mshVw==}
 
+  enum-keys-values-entries@1.0.6:
+    resolution: {integrity: sha512-tzVwQWMMWRfwIwWd9KlGw3VWOUXqtz7j3d2/uy1ApB8NmcV/BeG1FP4NtSsuJbKSm8U8OQyEVOU6mqQP7hNNrA==}
+
   esbuild@0.24.2:
     resolution: {integrity: sha512-+9egpBW8I3CD5XPe0n6BfT5fxLzxrlDzqydF3aviG+9ni1lDC/OvMHcxqEFV0+LANZG5R1bFMWfUrjVsdwxJvA==}
     engines: {node: '>=18'}
@@ -749,6 +758,12 @@ packages:
     resolution: {integrity: sha512-MjOadfU3Ys9KYoX0AdkBlFEF1Vx37uCCeN4ZHnmwm9FfpbsGWMZeBLMmmpY+6Ocqod7mkdZ0DT31OlbsFrLlkA==}
     engines: {node: ^10 || ^12 || >=14}
 
+  prevent-overscrolling@1.1.5:
+    resolution: {integrity: sha512-XFlMZGkftkd/HyVto9Ic0v+sCwqSTIYqg86s+4+HyBWE43HWlJhm7GXoxsrZhznsXsMkJc9NLOe4WglQu67hfQ==}
+
+  prevent-scrolling@1.3.10:
+    resolution: {integrity: sha512-9m+LPtIKZHL4gI6PF4b/qmWn8sVOAr+XtTD9BXwnLqNHaXytPXK+tUdndRgbtPnQmz8UqmzRYb0wJbd+xajJwg==}
+
   readdirp@4.1.1:
     resolution: {integrity: sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==}
     engines: {node: '>= 14.18.0'}
@@ -822,6 +837,13 @@ packages:
     resolution: {integrity: sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  ua-parser-js@0.7.40:
+    resolution: {integrity: sha512-us1E3K+3jJppDBa3Tl0L3MOJiGhe1C6P0+nIvQAFYbxlMAx0h81eOwLmU57xgqToduDDPx3y5QsdjPfDu+FgOQ==}
+    hasBin: true
+
+  viewport-details@3.0.4:
+    resolution: {integrity: sha512-LCLnhVeIgdJspUo1ZsN9nvGRvLJ+TgVJVr3W4kU5glvhlYjcvIRwxFMzO3D2r8rS0hnnVGxzrxlUUb+DTaelZA==}
 
   vite-imagetools@7.0.5:
     resolution: {integrity: sha512-OOvVnaBTqJJ2J7X1cM1qpH4pj9jsfTxia1VSuWeyXtf+OnP8d0YI1LHpv8y2NT47wg+n7XiTgh3BvcSffuBWrw==}
@@ -1120,6 +1142,10 @@ snapshots:
 
   '@polka/url@1.0.0-next.28': {}
 
+  '@qntm-code/utils@2.21.0':
+    dependencies:
+      viewport-details: 3.0.4
+
   '@rollup/pluginutils@5.1.4(rollup@4.34.6)':
     dependencies:
       '@types/estree': 1.0.6
@@ -1307,6 +1333,8 @@ snapshots:
 
   devalue@5.1.1: {}
 
+  enum-keys-values-entries@1.0.6: {}
+
   esbuild@0.24.2:
     optionalDependencies:
       '@esbuild/aix-ppc64': 0.24.2
@@ -1415,6 +1443,15 @@ snapshots:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  prevent-overscrolling@1.1.5: {}
+
+  prevent-scrolling@1.3.10:
+    dependencies:
+      '@qntm-code/utils': 2.21.0
+      enum-keys-values-entries: 1.0.6
+      prevent-overscrolling: 1.1.5
+      ua-parser-js: 0.7.40
 
   readdirp@4.1.1: {}
 
@@ -1541,6 +1578,10 @@ snapshots:
     optional: true
 
   typescript@5.7.3: {}
+
+  ua-parser-js@0.7.40: {}
+
+  viewport-details@3.0.4: {}
 
   vite-imagetools@7.0.5(rollup@4.34.6):
     dependencies:
