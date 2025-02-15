@@ -165,6 +165,7 @@
 <style lang="scss">
   @use "sass:map";
   @use "env";
+  @use "$ui-kit/env" as global-env;
 
   button {
     background: none;
@@ -202,7 +203,10 @@
   .week_days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 0 20px;
+
+    @media (min-width: (map.get(global-env.$screen-size, tablet) + 1px)) {
+      gap: 0 20px;
+    }
 
     > *:nth-child(8) {
       grid-column: var(--days-offset);

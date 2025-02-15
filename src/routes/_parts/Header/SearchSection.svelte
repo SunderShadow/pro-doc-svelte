@@ -163,6 +163,7 @@
   @media (max-width: map.get(env.$screen-size, tablet)) {
     .search-container {
       position: fixed;
+      z-index: 5;
 
       height: calc(100vh - var(--top));
       overflow-y: auto;
