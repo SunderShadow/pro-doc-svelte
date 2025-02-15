@@ -66,12 +66,14 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  $mobile-adaptive: 600px;
+
     footer {
       background-color: rgba(map.get(env.$color, primary), .1);
 
       margin-top: 98px;
 
-      height: 458px;
+      height: 100%;
 
       .body-text-3 {
         font-family: "Gilroy", sans-serif;
@@ -81,6 +83,21 @@
         display: flex;
         justify-content: space-between;
         padding: 6rem 0;
+
+        @media (max-width: map.get(env.$screen-size, netbook)) {
+          justify-content: normal;
+          gap: 96px;
+        }
+
+        @media (max-width: map.get(env.$screen-size, tablet)) {
+          justify-content: normal;
+          gap: 32px;
+        }
+
+        @media (max-width: $mobile-adaptive) {
+          justify-items: normal;
+          flex-direction: column;
+        }
 
         .contacts {
           display: flex;
@@ -112,6 +129,11 @@
           display: flex;
           gap: 4rem;
 
+          @media (max-width: $mobile-adaptive) {
+            flex-direction: column;
+            gap: 32px;
+          }
+
           > div {
             display: flex;
             flex-direction: column;
@@ -123,6 +145,10 @@
 
             > h5 {
               margin-bottom: 8px;
+            }
+
+            > a {
+              font-weight: 600;
             }
           }
         }
