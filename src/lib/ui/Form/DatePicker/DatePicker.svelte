@@ -104,7 +104,7 @@
               && (
                   viewDate.getMonth() < todayDate.getMonth()
                   || (
-                      viewDate.getMonth() === todayDate.getMonth()
+                      viewDate.getMonth() == todayDate.getMonth()
                       && day < todayDate.getDate()
                   )
               )

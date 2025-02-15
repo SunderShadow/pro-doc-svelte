@@ -11,8 +11,6 @@ let {
     headerHeight,
 } = $props()
 
-console.log(headerHeight)
-
 let mobileNav = $state()
 
 toggleMobileMenuVisible = () => {

@@ -14,8 +14,8 @@
 </script>
 
 <svelte:head>
-  <link as="image" rel="preload" href={SliderImgSrc.img.src} media="min-width: 361px">
-  <link as="image" rel="preload" href={SliderImgMobileSrc.img.src} media="max-width: 360px">
+  <link rel="preload" as="image" href={SliderImgSrc.img.src} media="(min-width: 361px)">
+  <link rel="preload" as="image" href={SliderImgMobileSrc.img.src} media="(max-width: 360px)">
 </svelte:head>
 
 <section class="page-container">

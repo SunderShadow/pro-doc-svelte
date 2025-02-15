@@ -68,8 +68,12 @@
       cursor: text;
 
       &__wrapper {
+        position: relative;
         width: 100%;
-        height: 100%;
+
+        @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
+          height: 100%;
+        }
 
         .form-control-wrapper {
           --wrapper-icon-padding: 20px;
