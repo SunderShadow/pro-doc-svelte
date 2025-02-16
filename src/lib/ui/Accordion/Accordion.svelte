@@ -54,7 +54,7 @@
         text-align: left;
         width: 100%;
 
-        padding: 1.5rem;
+        padding: 1.5rem 1.5rem 0;
         font-family: inherit;
 
         border: none;
