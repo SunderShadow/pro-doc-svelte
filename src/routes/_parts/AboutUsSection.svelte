@@ -5,7 +5,6 @@
 
 <section class="page-container">
   <h2>О нас</h2>
-
   <div class="content">
     <div class="thumbnail">
       <img src={AboutUsImage.img.src} alt="">
@@ -46,6 +45,10 @@
 
   h2 {
     margin-bottom: 50px;
+
+    @media (max-width: $mobile-adaptive) {
+      display: none;
+    }
   }
 
   .thumbnail {
