@@ -217,7 +217,7 @@
 
     .layer_2 {
       position: fixed;
-      width: 100vw;
+      width: 100%;
       top: 0;
       padding: .5em 20px;
       margin: 0;

@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Doctors from "$lib/assets/images/doctors.png?enhanced&format=webp"
-    import Services from "$lib/assets/images/services.jpg?enhanced&format=webp"
-    import Diagnostics from "$lib/assets/images/diagnostics.jpg?enhanced&format=webp"
-    import Consultation from "$lib/assets/images/consultation.jpg?enhanced&format=webp"
-    import Pediatrician from "$lib/assets/images/pediatrician.jpg?enhanced&format=webp"
-    import Directory from "$lib/assets/images/directory.png?enhanced&format=webp"
+    import Doctors from "$lib/assets/images/services/doctors.png?enhanced&format=webp"
+    import Services from "$lib/assets/images/services/services.jpg?enhanced&format=webp"
+    import Diagnostics from "$lib/assets/images/services/diagnostics.jpg?enhanced&format=webp"
+    import Consultation from "$lib/assets/images/services/consultation.jpg?enhanced&format=webp"
+    import Pediatrician from "$lib/assets/images/services/pediatrician.jpg?enhanced&format=webp"
+    import Directory from "$lib/assets/images/services/directory.png?enhanced&format=webp"
     import Card from "./ServiceSection/Card.svelte"
 </script>
 
@@ -20,18 +20,42 @@
 <section class="page-container">
     <h2>Услуги и направления</h2>
     <div class="cards">
-      <Card name="Врачи" image={Doctors.img.src} double/>
+      <div class="double">
+        <Card name="Врачи" image={Doctors.img.src}/>
+      </div>
       <Card name="Услуги" image={Services.img.src}/>
       <Card name="Диагностика" image={Diagnostics.img.src}/>
-      <Card name="Онлайн-консультация" image={Consultation.img.src}/>
+      <div id="online_consulting_card_wrapper">
+        <Card name="Онлайн-консультация" image={Consultation.img.src}/>
+      </div>
       <Card name="Детский врач" image={Pediatrician.img.src}/>
-      <Card name="Медицинский справочник" image={Directory.img.src} double/>
+      <div id="medicine_book_card_wrapper" class="double">
+        <Card name="Медицинский справочник" image={Directory.img.src}/>
+      </div>
     </div>
   </section>
 
 <style lang="scss">
   @use "sass:map";
   @use "$lib/ui/env";
+
+  :global {
+    #medicine_book_card_wrapper .card-image_wrapper {
+      background-size: 100%;
+    }
+
+    #online_consulting_card_wrapper .card-image_wrapper {
+      background-size: 100%;
+    }
+  }
+
+  .cards > .double {
+    grid-column: span 2;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      grid-column: span 1;
+    }
+  }
 
   section {
     padding: 96px 0;
