@@ -11,7 +11,35 @@
       flex-direction: column;
     }
   }
+
   :global {
+
+    @media (min-width: map.get(env.$screen-size, netbook)) {
+      .input-group:hover {
+        > *::after {
+          --opacity: 1 !important;
+        }
+
+        input {
+          --border-opacity: 1;
+
+          box-shadow: 0 4px 6px rgba(map.get(env.$color, primary), .06);
+        }
+      }
+
+      .input-group:focus-within {
+        > *::after {
+          --opacity: 1 !important;
+        }
+
+        input {
+          --border-opacity: 1;
+
+          box-shadow: 0 4px 6px rgba(map.get(env.$color, primary), .06);
+        }
+      }
+    }
+
     .input-group {
       --border-color: #{rgba(map.get(env.$color, primary), .1)};
 
@@ -37,18 +65,18 @@
       .input-group > *:not(:first-child) input {
         border-radius: 0;
 
-        border-left-color: transparent;
-        border-right-color: transparent;
+        border-left: none;
+        border-right: none;
       }
 
       .input-group > *:first-child input {
         border-radius: .75em 0 0 .75em;
 
-        border-right-color: transparent;
+        border-right: none;
       }
 
       .input-group > *:last-child input {
-        border-left-color: transparent;
+        border-left: none;
       }
 
       .input-group > button:last-child {
@@ -74,19 +102,24 @@
       position: relative;
     }
 
-    .input-group > *:not(:last-child)::after {
+    .input-group > .select-input:not(:last-child)::after {
+      --opacity: .1;
+      --offset-y: 9px;
+
       position: absolute;
 
-      content: "|";
-      right: -4px;
+      content: "";
+      right: 0;
       top: 50%;
 
-      color: rgba(map.get(env.$color, primary), .1);
+      width: 1px;
+      background-color: rgba(map.get(env.$color, primary), var(--opacity));
 
-      font-size: 2rem;
-      opacity: .5;
-
+      height: calc(100% - var(--offset-y) * 2);
       transform: translateY(-50%);
+
+      transition: background-color 300ms;
+      z-index: 4;
     }
 
     .input-group > button:last-child {

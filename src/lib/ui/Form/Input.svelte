@@ -59,7 +59,7 @@
 
     top: 50%;
 
-    transform: translateY(-60%) rotate(45deg);
+    transform: translateY(-50%) rotate(45deg);
     cursor: pointer;
   }
 

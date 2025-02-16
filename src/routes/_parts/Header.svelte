@@ -55,33 +55,37 @@
     </div>
   </div>
 
-  <section class="layer_2 page-container" bind:clientHeight={headerHeight}>
-    <a href="/">
-      <img class="logo" src={Logo} alt=""/>
-    </a>
-    <div class="nav-icons">
-      <button onclick={toggleSearch}>
-        <Magnifier type="primary" size="md"/>
-      </button>
-      <button onclick={toggleMobileMenuVisible} >
-        <div class="burger-icon" class:active={mobileNavVisible}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </button>
-    </div>
-    <nav>
-      <a href="/">Врачи</a>
-      <a href="/">Клиники</a>
-      <a href="/">Диагностика</a>
-      <a href="/">Онлайн-консультации</a>
-      <a href="/">Библиотека</a>
-      <a href="/">Акции</a>
-      <a href="/">О нас</a>
-      <a href="/">Контакты</a>
-    </nav>
-  </section>
+  <div class="layer_2-wrapper">
+    <section class="layer_2 page-container" bind:clientHeight={headerHeight}>
+      <a href="/">
+        <img class="logo" src={Logo} alt=""/>
+      </a>
+
+      <div class="nav-icons">
+        <button onclick={toggleSearch}>
+          <Magnifier type="primary" size="md"/>
+        </button>
+        <button onclick={toggleMobileMenuVisible} >
+          <div class="burger-icon" class:active={mobileNavVisible}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </button>
+      </div>
+
+      <nav>
+        <a href="/">Врачи</a>
+        <a href="/">Клиники</a>
+        <a href="/">Диагностика</a>
+        <a href="/">Онлайн-консультации</a>
+        <a href="/">Библиотека</a>
+        <a href="/">Акции</a>
+        <a href="/">О нас</a>
+        <a href="/">Контакты</a>
+      </nav>
+    </section>
+  </div>
   {#if mobileSearchVisible || screenWidth > 768}
     <SearchSection {headerHeight} />
   {/if}

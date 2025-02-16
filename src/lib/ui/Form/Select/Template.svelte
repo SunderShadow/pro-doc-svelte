@@ -45,7 +45,7 @@
 <div class="select-input" onclick={(e) => {e.stopPropagation()}}>
   <div class="select-input__wrapper">
     <Input active={!closed} {...props} {placeholder} onfocus={preventOpen ? () => {} : open} />
-    <div class="select-input__chevron" class:active={!closed}>
+    <div class="select-input__chevron" class:active={!closed} onclick={close}>
       <ArrowDown size="sm" />
     </div>
   </div>
@@ -115,16 +115,20 @@
         position: absolute;
         right: 10px;
         top: 50%;
+
         transform: translateY(-50%);
 
         opacity: .5;
+
         transition-property: transform, opacity;
         transition-duration: 300ms;
         transform-origin: center center;
 
+        cursor: pointer;
+
         &.active {
           opacity: 1;
-          transform: rotateX(180deg) translateY(60%);
+          transform: rotateX(180deg) translateY(50%);
 
           .svg-icon-container {
             --color: #{map.get(env.$color, primary)};
