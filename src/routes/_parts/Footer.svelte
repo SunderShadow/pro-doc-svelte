@@ -99,6 +99,10 @@
           flex-direction: column;
         }
 
+        a {
+          font-weight: 600;
+        }
+
         .contacts {
           display: flex;
           flex-direction: column;
@@ -122,16 +126,21 @@
           .social {
             display: flex;
             gap: 1rem;
+
+            > *:last-child {
+              border-radius: 20px;
+              overflow: hidden;
+            }
           }
         }
 
         > nav {
-          display: flex;
-          gap: 4rem;
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          column-gap: 32px;
 
           @media (max-width: $mobile-adaptive) {
-            flex-direction: column;
-            gap: 32px;
+            grid-template-columns: 1fr;
           }
 
           > div {
@@ -139,16 +148,10 @@
             flex-direction: column;
             gap: .25rem;
 
-            &.about {
-              padding-right: 2rem;
-            }
+            grid-column: span 2;
 
             > h5 {
               margin-bottom: 8px;
-            }
-
-            > a {
-              font-weight: 600;
             }
           }
         }

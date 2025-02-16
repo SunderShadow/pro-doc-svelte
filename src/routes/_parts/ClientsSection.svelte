@@ -73,6 +73,10 @@
         grid-template-columns: 1fr;
       }
 
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        margin-top: 32px;
+      }
+
       > div {
         grid-column: span 4;
         grid-row: span 3;

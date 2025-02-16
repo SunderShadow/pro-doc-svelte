@@ -31,14 +31,14 @@ toggleMobileMenuVisible = () => {
         <path d="M11.2497 0.75L7.45801 11.25C7.43241 11.3058 7.39132 11.3532 7.33962 11.3864C7.28792 11.4195 7.22778 11.4372 7.16634 11.4372C7.10491 11.4372 7.04476 11.4195 6.99306 11.3864C6.94136 11.3532 6.90027 11.3058 6.87467 11.25L4.83301 7.16667L0.749675 5.125C0.693826 5.09941 0.646499 5.05832 0.613318 5.00661C0.580138 4.95491 0.5625 4.89477 0.5625 4.83333C0.5625 4.7719 0.580138 4.71176 0.613318 4.66005C0.646499 4.60835 0.693826 4.56726 0.749675 4.54167L11.2497 0.75Z"/>
       </svg>
       <span class="city-text">Город:</span>
-      <span>Москва</span>
+      <span class="link-font-2">Москва</span>
     </div>
 
     <div class="auth">
       <Account type="primary" size="sm"/>
 
-      <a href="/">Вход</a>
-      <a href="/">Регистрация</a>
+      <a href="/" class="link-font-2">Вход</a>
+      <a href="/" class="link-font-2">Регистрация</a>
     </div>
   </div>
 
@@ -133,6 +133,11 @@ toggleMobileMenuVisible = () => {
       display: flex;
       gap: 16px;
       padding: .5em 1.5em;
+
+      > *:last-child {
+        border-radius: 20px;
+        overflow: hidden;
+      }
     }
 
     nav {
