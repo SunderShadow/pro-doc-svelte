@@ -189,10 +189,6 @@
     &-wrapper {
       border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);
 
-      @media (min-width: 1600px) {
-        width: 1600px;
-        margin: 0 auto;
-      }
     }
   }
 

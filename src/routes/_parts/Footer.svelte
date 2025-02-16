@@ -159,6 +159,10 @@
         flex-direction: column;
         gap: 4px;
 
+        h5 {
+          margin-bottom: 8px;
+        }
+
         a {
           width: fit-content;
           line-height: 22.4px;

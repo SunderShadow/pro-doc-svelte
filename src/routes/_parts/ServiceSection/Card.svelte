@@ -164,7 +164,7 @@
         opacity: 0;
       }
 
-      @media (min-width: map.get(env.$screen-size, tablet)) {
+      @media (min-width: 1600px) {
         &.double:hover &-image_wrapper {
           opacity: 1;
         }
