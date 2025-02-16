@@ -15,7 +15,7 @@ import Button from "$ui-kit/Button/Button.svelte"
         <label for="newsletter_email">Email</label>
         <Input id="newsletter_email" placeholder="Введите ваш Email" />
 
-        <div class="button">
+        <div class="button" id="newsletter_submit">
           <Button _type="submit">Подписаться</Button>
         </div>
       </form>
@@ -39,6 +39,8 @@ import Button from "$ui-kit/Button/Button.svelte"
   }
 
   label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: 600;
   }
 
@@ -55,6 +57,14 @@ import Button from "$ui-kit/Button/Button.svelte"
 
     .button {
       margin-top: 32px;
+    }
+  }
+
+  :global {
+    #newsletter_submit button{
+      @media (max-width: $mobile-size) {
+        width: 100%;
+      }
     }
   }
 
