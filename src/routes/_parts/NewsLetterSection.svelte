@@ -39,6 +39,8 @@ import Button from "$ui-kit/Button/Button.svelte"
   }
 
   label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: 600;
   }
 
