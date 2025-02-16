@@ -99,6 +99,10 @@
           flex-direction: column;
         }
 
+        a {
+          font-weight: 600;
+        }
+
         .contacts {
           display: flex;
           flex-direction: column;
@@ -122,6 +126,11 @@
           .social {
             display: flex;
             gap: 1rem;
+
+            > *:last-child {
+              border-radius: 20px;
+              overflow: hidden;
+            }
           }
         }
 
@@ -143,10 +152,6 @@
 
             > h5 {
               margin-bottom: 8px;
-            }
-
-            > a {
-              font-weight: 600;
             }
           }
         }
