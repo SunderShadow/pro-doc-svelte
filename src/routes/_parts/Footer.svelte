@@ -126,12 +126,12 @@
         }
 
         > nav {
-          display: flex;
-          gap: 4rem;
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          column-gap: 32px;
 
           @media (max-width: $mobile-adaptive) {
-            flex-direction: column;
-            gap: 32px;
+            grid-template-columns: 1fr;
           }
 
           > div {
@@ -139,9 +139,7 @@
             flex-direction: column;
             gap: .25rem;
 
-            &.about {
-              padding-right: 2rem;
-            }
+            grid-column: span 2;
 
             > h5 {
               margin-bottom: 8px;
