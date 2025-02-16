@@ -64,7 +64,7 @@
     }
 
     .accordion-content {
-      padding: 1rem 1.5rem;
+      padding: 0 1.5rem 1rem;
 
       font-weight: 400;
       line-height: 25.6px;
