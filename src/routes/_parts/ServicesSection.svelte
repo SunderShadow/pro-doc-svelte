@@ -21,7 +21,7 @@
     <h2>Услуги и направления</h2>
     <div class="cards">
       <div class="double">
-        <Card name="Врачи" image={Doctors.img.src}/>
+        <Card name="Врачи" image={Doctors.img.src} double/>
       </div>
       <Card name="Услуги" image={Services.img.src}/>
       <Card name="Диагностика" image={Diagnostics.img.src}/>
@@ -30,7 +30,7 @@
       </div>
       <Card name="Детский врач" image={Pediatrician.img.src}/>
       <div id="medicine_book_card_wrapper" class="double">
-        <Card name="Медицинский справочник" image={Directory.img.src}/>
+        <Card name="Медицинский справочник" image={Directory.img.src} double/>
       </div>
     </div>
   </section>
@@ -59,6 +59,10 @@
 
   section {
     padding: 96px 0;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 64px 0;
+    }
 
     .cards {
       display: grid;

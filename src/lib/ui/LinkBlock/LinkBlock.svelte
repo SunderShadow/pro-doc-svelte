@@ -42,6 +42,7 @@
 
       .icon {
         align-self: end;
+        stroke-width: 2 ;
       }
 
       &:hover {

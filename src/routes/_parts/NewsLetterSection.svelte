@@ -31,7 +31,11 @@ import Button from "$ui-kit/Button/Button.svelte"
   $mobile-size: 500px;
 
   section {
-    padding: 155px 0 0 10px;
+    padding: 155px 0 10px 0;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 0;
+    }
   }
 
   h3 + p {
@@ -52,11 +56,16 @@ import Button from "$ui-kit/Button/Button.svelte"
     }
 
     @media (max-width: $mobile-size) {
+      margin-top: 16px;
       max-width: 100%;
     }
 
     .button {
       margin-top: 32px;
+
+      @media (max-width: $mobile-size) {
+        margin-top: 16px;
+      }
     }
   }
 
@@ -81,15 +90,24 @@ import Button from "$ui-kit/Button/Button.svelte"
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       padding: 16px;
+    }
 
-      h3 {
+    h3 {
+      @media (max-width: map.get(env.$screen-size, tablet)) {
         font-size: 18px;
       }
+    }
 
-      .body-text-1 {
+    .body-text-1 {
+      @media (max-width: map.get(env.$screen-size, tablet)) {
         font-size: 1rem;
       }
+
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        margin-top: 8px;
+      }
     }
+
 
     &__content {
       max-width: max(42%, 300px);

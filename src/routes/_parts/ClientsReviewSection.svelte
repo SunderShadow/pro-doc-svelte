@@ -2,8 +2,10 @@
     import ClientImage1 from "$lib/assets/images/clients/1.png?enhanced&format=webp"
     import ClientImage2 from "$lib/assets/images/clients/2.png?enhanced&format=webp"
     import ClientImage3 from "$lib/assets/images/clients/3.png?enhanced&format=webp"
-    import ClientReview from "./ClientReview.svelte";
-    import LinkBlock from "$ui-kit/LinkBlock/LinkBlock.svelte";
+
+    import ClientReview from "./ClientReviewSection/ClientReview.svelte"
+
+    import LinkBlock from "$ui-kit/LinkBlock/LinkBlock.svelte"
 </script>
 
 <svelte:head>
@@ -54,7 +56,11 @@
   @use "$lib/ui/env";
 
   section {
-    padding-top: 192px;
+    padding: 96px 0;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 64px 0;
+    }
 
     .reviews {
       display: grid;

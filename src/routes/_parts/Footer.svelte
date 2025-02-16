@@ -71,10 +71,13 @@
   footer {
     background-color: rgba(map.get(env.$color, primary), .1);
 
-    margin-top: 98px;
+    margin-top: 96px;
 
     height: 100%;
 
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+       margin-top: 64px;
+    }
     .body-text-3 {
       font-family: "Gilroy", sans-serif;
     }
@@ -127,12 +130,6 @@
         .social {
           display: flex;
           gap: 1rem;
-
-          > * {
-            width: fit-content;
-            border-radius: 20px;
-            overflow: hidden;
-          }
         }
       }
 
@@ -160,10 +157,11 @@
       .nav-section {
         display: flex;
         flex-direction: column;
-        gap: .25rem;
+        gap: 4px;
 
         a {
           width: fit-content;
+          line-height: 22.4px;
         }
 
         &__clynic_doctor {

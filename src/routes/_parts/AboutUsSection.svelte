@@ -41,6 +41,10 @@
 
   section {
     padding: 96px 0;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 64px 0;
+    }
   }
 
   h2 {

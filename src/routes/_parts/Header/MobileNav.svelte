@@ -133,11 +133,6 @@ toggleMobileMenuVisible = () => {
       display: flex;
       gap: 16px;
       padding: .5em 1.5em;
-
-      > *:last-child {
-        border-radius: 20px;
-        overflow: hidden;
-      }
     }
 
     nav {

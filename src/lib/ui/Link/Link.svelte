@@ -40,24 +40,26 @@ const {
     transition-property: color;
     transition-duration: 300ms;
 
+    &__icon {
+      transition-property: transform;
+      transition-duration: 300ms;
+    }
+
     &[disabled],
     &.disabled {
       opacity: .3;
       user-select: none;
     }
 
-    &.active,
-    &:active {
-      --color: #{map.get(env.$color, primary-active)};
-    }
+    @media (min-width: (map.get(env.$screen-size, mobile) + 1)) {
+      &.active,
+      &:active {
+        --color: #{map.get(env.$color, primary-active)};
+      }
 
-    &__icon {
-      transition-property: transform;
-      transition-duration: 300ms;
-    }
-
-    &:hover &__icon {
-      transform: rotate(45deg);
+      &:hover &__icon {
+        transform: rotate(45deg);
+      }
     }
   }
 

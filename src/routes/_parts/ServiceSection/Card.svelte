@@ -19,7 +19,7 @@
     <div class="card-content">
       <h2 class="card-title title-1">{name}</h2>
       <p class="card-body body-text-2">
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65% на приём.
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </p>
     </div>
 
@@ -37,8 +37,10 @@
   $content-color-hover: #fff;
 
   :global {
-    .card:hover .card-link_icon .svg-icon-container {
-      --color: #{$content-color-hover};
+    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+      .card:hover .card-link_icon .svg-icon-container {
+        --color: #{$content-color-hover};
+      }
     }
   }
 
@@ -72,7 +74,7 @@
     }
 
     &-title {
-      @media (max-width: map.get(env.$screen-size, tablet)) {
+      @media (max-width: map.get(env.$screen-size, netbook)) {
         font-size: 16px
       }
     }
@@ -82,7 +84,7 @@
       opacity: 0;
       transition-property: color, opacity;
 
-      @media (max-width: map.get(env.$screen-size, tablet)) {
+      @media (max-width: map.get(env.$screen-size, netbook)) {
         margin-top: 8px;
 
         font-size: 14px
@@ -139,26 +141,34 @@
       z-index: 4;
     }
 
-    &:hover &-link_icon {
-      transform: rotate(45deg);
-    }
+    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+      &:hover &-link_icon {
+        transform: rotate(45deg);
+      }
 
-    &:hover &-body,
-    &:hover &-title {
-      opacity: 1;
-      color: $content-color-hover;
-    }
+      &:hover &-body,
+      &:hover &-title {
+        opacity: 1;
+        color: $content-color-hover;
+      }
 
-    &:hover &-content {
-      background-color: map.get(env.$color, primary-hover);
-    }
+      &:hover &-content {
+        background-color: map.get(env.$color, primary-hover);
+      }
 
-    &:active &-content {
-      background-color: map.get(env.$color, primary-active);
-    }
+      &:active &-content {
+        background-color: map.get(env.$color, primary-active);
+      }
 
-    &:hover:not(.double) &-image_wrapper {
-      opacity: 0;
+      &:hover &-image_wrapper {
+        opacity: 0;
+      }
+
+      @media (min-width: map.get(env.$screen-size, tablet)) {
+        &.double:hover &-image_wrapper {
+          opacity: 1;
+        }
+      }
     }
 
     @media (max-width: map.get(env.$screen-size, netbook)) {

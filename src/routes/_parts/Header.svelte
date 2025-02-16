@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div class="layer_2-wrapper">
+  <div class="layer_2-wrapper" class:page-container={screenWidth >= 1600}>
     <section class="layer_2 page-container" bind:clientHeight={headerHeight}>
       <a href="/">
         <img class="logo" src={Logo} alt=""/>
@@ -184,8 +184,16 @@
     align-items: center;
     gap: 135px;
 
-    border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);
     background-color: #fff;
+
+    &-wrapper {
+      border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);
+
+      @media (min-width: 1600px) {
+        width: 1600px;
+        margin: 0 auto;
+      }
+    }
   }
 
   nav {

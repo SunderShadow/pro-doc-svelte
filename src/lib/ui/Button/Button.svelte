@@ -23,6 +23,7 @@
 <style lang="scss">
   @use "sass:map";
   @use "env";
+  @use "$ui-kit/env" as env-global;
 
   button {
     background-color: env.$bg-default;
@@ -43,14 +44,16 @@
     transition-property: box-shadow, background-color;
     transition-duration: 300ms;
 
-    &:focus,
-    &:hover {
-      background-color: env.$bg-hover;
-      box-shadow: 0 12px 24px rgba(#6B5AF926, .15);
-    }
+    @media (min-width: (map.get(env-global.$screen-size, mobile) + 1px)) {
+      &:focus,
+      &:hover {
+        background-color: env.$bg-hover;
+        box-shadow: 0 12px 24px rgba(#6B5AF926, .15);
+      }
 
-    &:active {
-      background-color: env.$bg-pressing;
+      &:active {
+        background-color: env.$bg-pressing;
+      }
     }
 
     &.icon {
