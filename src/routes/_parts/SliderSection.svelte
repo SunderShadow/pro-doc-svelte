@@ -20,60 +20,62 @@
 
 <section class="page-container">
   <Splide hasTrack={false} options={sliderOptions}>
-    <SplideTrack>
-      <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
-          <div class="slider-info">
-            <div>
-              <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
-              <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
-            </div>
-            <div class="slider-button">
-              <Button>Выбрать врача</Button>
-            </div>
-          </div>
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
-          <div class="slider-info">
-            <div>
-              <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
-              <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
-            </div>
-            <div class="slider-button">
-              <Button>Выбрать врача</Button>
+    <div class="track-wrapper">
+      <SplideTrack>
+        <SplideSlide>
+          <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
+            <div class="slider-info">
+              <div>
+                <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
+                <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
+              </div>
+              <div class="slider-button">
+                <Button>Выбрать врача</Button>
+              </div>
             </div>
           </div>
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
-          <div class="slider-info">
-            <div>
-              <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
-              <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
-            </div>
-            <div class="slider-button">
-              <Button>Выбрать врача</Button>
-            </div>
-          </div>
-        </div>
-      </SplideSlide>
-      <SplideSlide>
-        <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
-          <div class="slider-info">
-            <div>
-              <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
-              <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
-            </div>
-            <div class="slider-button">
-              <Button>Выбрать врача</Button>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
+            <div class="slider-info">
+              <div>
+                <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
+                <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
+              </div>
+              <div class="slider-button">
+                <Button>Выбрать врача</Button>
+              </div>
             </div>
           </div>
-        </div>
-      </SplideSlide>
-    </SplideTrack>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
+            <div class="slider-info">
+              <div>
+                <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
+                <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
+              </div>
+              <div class="slider-button">
+                <Button>Выбрать врача</Button>
+              </div>
+            </div>
+          </div>
+        </SplideSlide>
+        <SplideSlide>
+          <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
+            <div class="slider-info">
+              <div>
+                <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
+                <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
+              </div>
+              <div class="slider-button">
+                <Button>Выбрать врача</Button>
+              </div>
+            </div>
+          </div>
+        </SplideSlide>
+      </SplideTrack>
+    </div>
 
     <div class="slider-control">
       <ul class="splide__pagination-main-slider splide__pagination splide__pagination--ltr" role="tablist" aria-label="Select a slide to show">
@@ -119,7 +121,19 @@
   @use "$lib/ui/env";
 
   $mobile-screen: 550px;
-  
+
+  .slider-control {
+    margin-top: 16px;
+  }
+
+  @media (max-width: map.get(env.$screen-size, mobile)) {
+    .track-wrapper {
+      border: 1px solid rgba(map.get(env.$color, primary), .1);
+      padding-bottom: 24px;
+      border-radius: 12px;
+    }
+  }
+
   section {
     padding: 96px 0;
 
