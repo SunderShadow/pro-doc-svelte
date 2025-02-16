@@ -108,7 +108,6 @@
       @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
         input {
           height: 100%;
-          padding-right: calc(1em + 24px);
         }
       }
 

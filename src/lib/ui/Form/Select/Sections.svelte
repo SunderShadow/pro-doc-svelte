@@ -115,7 +115,6 @@
     onErase={reset}
 
     bind:value={inputVisiblePart}
-    oninput={(e) => {search = e.target.value}}
 />
 
 <style lang="scss">

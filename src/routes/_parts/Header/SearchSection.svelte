@@ -117,7 +117,7 @@
   } = $props()
 </script>
 <section class="search-container page-container" style:--top={headerHeight + 'px'} transition:slide bind:this={allowScrolling}>
-  <h2 class="title-1">Поиск</h2>
+  <h2 class="mobile-title title-1">Поиск</h2>
   <h3>Выберете клинику или запишитесь на приём</h3>
 
   <InputGroup>
@@ -173,6 +173,12 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+    }
+  }
+
+  @media (min-width: map.get(env.$screen-size, tablet)) {
+    .mobile-title {
+      display: none;
     }
   }
 

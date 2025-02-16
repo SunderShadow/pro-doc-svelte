@@ -43,7 +43,7 @@
 
     line-height: 25.6px;
     outline: none;
-    padding: .65em 1em;
+    padding: .65em calc(1em + var(--erase-icon-right) + var(--wrapper-icon-padding)) .65em 1em;
     border-radius: .75em;
 
     font-family: "Helvetica", Gilroy, sans-serif;
@@ -55,14 +55,17 @@
 
   .erase {
     position: absolute;
-    right: calc(20px + var(--wrapper-icon-padding));
+    right: var(--erase-icon-right);
+
     top: 50%;
+
     transform: translateY(-60%) rotate(45deg);
     cursor: pointer;
   }
 
   .form-control-wrapper {
     --wrapper-icon-padding: 0px;
+    --erase-icon-right: calc(20px + var(--wrapper-icon-padding));
 
     display: flex;
     height: 100%;
