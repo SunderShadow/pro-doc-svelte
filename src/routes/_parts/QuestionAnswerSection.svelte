@@ -45,6 +45,9 @@
 </section>
 
 <style lang="scss">
+  @use "sass:map";
+  @use "$lib/ui/env";
+
   section {
     padding: 96px 0;
   }
@@ -55,6 +58,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 32px;
+    }
 
     .accordion-content {
       padding: 1rem 1.5rem;
