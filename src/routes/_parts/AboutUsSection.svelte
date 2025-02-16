@@ -22,7 +22,7 @@
         </svg>
       </div>
 
-      <p>Это необычайно удобный медицинский онлайн центр, где вы можете получить медицинские консультации, записаться на приём к специалисту и получить рецепты лекарств, не выходя из дома.</p>
+      <p class="body-text-1">Это необычайно удобный медицинский онлайн центр, где вы можете получить медицинские консультации, записаться на приём к специалисту и получить рецепты лекарств, не выходя из дома.</p>
       <div class="link">
         <Link href="/">Узнать больше</Link>
       </div>
@@ -52,9 +52,13 @@
   }
 
   .thumbnail {
-
     max-width: 768px;
     max-height: 768px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      width: 448px;
+      max-width: 100%;
+    }
 
     img {
       width: 100%;
@@ -76,7 +80,7 @@
     }
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
-      gap: 90px;
+      gap: 60px;
     }
 
     @media (max-width: $mobile-adaptive) {
@@ -108,10 +112,19 @@
       width: 80%;
     }
 
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      width: 368px;
+    }
+
     @media (max-width: $mobile-adaptive) {
       width: 100%;
     }
 
+    .body-text-1 {
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        font-size: 1rem;
+      }
+    }
     > * + * {
       margin-top: 32px;
     }

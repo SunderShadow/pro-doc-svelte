@@ -28,6 +28,8 @@ const {
   .article-link {
     --color: #{map.get(env.$color, primary)};
 
+    width: fit-content;
+
     display: flex;
     font-weight: 600;
     gap: 10px;

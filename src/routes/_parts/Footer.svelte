@@ -25,40 +25,40 @@
                 <a href="/"><Vk type="primary"/></a>
             </div>
         </div>
-        <nav>
-            <div class="about">
-                <h5 class="title-3">О нас</h5>
-                <a href="/" class="body-text-3">О компании</a>
-                <a href="/" class="body-text-3">Карьера</a>
-                <a href="/" class="body-text-3">Партнёры</a>
-                <a href="/" class="body-text-3">Отзывы о нас</a>
-                <a href="/" class="body-text-3">Пресса</a>
-                <a href="/" class="body-text-3">Контакты</a>
-            </div>
-            <div class="patient">
-                <h5 class="title-3">Пациенту</h5>
-                <a href="/" class="body-text-3">Врачи</a>
-                <a href="/" class="body-text-3">Клиники</a>
-                <a href="/" class="body-text-3">Диагностика</a>
-                <a href="/" class="body-text-3">Услуги</a>
-                <a href="/" class="body-text-3">Медицинская библиотека</a>
-                <a href="/" class="body-text-3">Как записаться</a>
-                <a href="/" class="body-text-3">Защита данных пользователя</a>
-                <a href="/" class="body-text-3">Как мы проверяем отзывы</a>
-                <a href="/" class="body-text-3">Подписку «DocHeal»</a>
+      <div class="nav-section about">
+        <h5 class="title-3">О нас</h5>
+        <a href="/" class="body-text-3">О компании</a>
+        <a href="/" class="body-text-3">Карьера</a>
+        <a href="/" class="body-text-3">Партнёры</a>
+        <a href="/" class="body-text-3">Отзывы о нас</a>
+        <a href="/" class="body-text-3">Пресса</a>
+        <a href="/" class="body-text-3">Контакты</a>
+      </div>
+      <div class="nav-section patient">
+        <h5 class="title-3">Пациенту</h5>
+        <a href="/" class="body-text-3">Врачи</a>
+        <a href="/" class="body-text-3">Клиники</a>
+        <a href="/" class="body-text-3">Диагностика</a>
+        <a href="/" class="body-text-3">Услуги</a>
+        <a href="/" class="body-text-3">Медицинская библиотека</a>
+        <a href="/" class="body-text-3">Как записаться</a>
+        <a href="/" class="body-text-3">Защита данных пользователя</a>
+        <a href="/" class="body-text-3">Как мы проверяем отзывы</a>
+        <a href="/" class="body-text-3">Подписку «DocHeal»</a>
 
-            </div>
-            <div class="doctor">
-                <h5 class="title-3">Клиникам и врачам</h5>
-                <a href="/" class="body-text-3">Сотрудничество с врачами</a>
-                <a href="/" class="body-text-3">Сотрудничество с клиниками</a>
-                <a href="/" class="body-text-3">Правила сотрудничества</a>
-                <a href="/" class="body-text-3">Персональные данные</a>
-                <h5 class="title-3">Врачу и клинике</h5>
-                <a href="/" class="body-text-3">Личный кабинет</a>
-                <a href="/" class="body-text-3">Регистрация</a>
-            </div>
-        </nav>
+      </div>
+      <div class="nav-section doctor">
+        <h5 class="title-3">Клиникам и врачам</h5>
+
+        <a href="/" class="body-text-3">Сотрудничество с врачами</a>
+        <a href="/" class="body-text-3">Сотрудничество с клиниками</a>
+        <a href="/" class="body-text-3">Правила сотрудничества</a>
+        <a href="/" class="body-text-3">Персональные данные</a>
+
+        <h5 class="nav-section__clynic_doctor title-3">Врачу и клинике</h5>
+        <a href="/" class="body-text-3">Личный кабинет</a>
+        <a href="/" class="body-text-3">Регистрация</a>
+      </div>
     </div>
 </footer>
 
@@ -68,99 +68,108 @@
 
   $mobile-adaptive: 600px;
 
-    footer {
-      background-color: rgba(map.get(env.$color, primary), .1);
+  footer {
+    background-color: rgba(map.get(env.$color, primary), .1);
 
-      margin-top: 98px;
+    margin-top: 98px;
 
-      height: 100%;
+    height: 100%;
 
-      .body-text-3 {
-        font-family: "Gilroy", sans-serif;
+    .body-text-3 {
+      font-family: "Gilroy", sans-serif;
+    }
+
+    .page-container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 32px;
+
+      padding: 6rem 0;
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        grid-template-columns: repeat(8, 1fr);
       }
 
-      .page-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 6rem 0;
+      @media (max-width: $mobile-adaptive) {
+        grid-template-columns: 1fr;
+      }
 
-        @media (max-width: map.get(env.$screen-size, netbook)) {
-          justify-content: normal;
-          gap: 96px;
+      a {
+        font-weight: 600;
+      }
+
+      .contacts {
+        grid-column: span 2;
+
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+
+        @media (max-width: $mobile-adaptive) {
+          grid-column: span 1;
         }
 
-        @media (max-width: map.get(env.$screen-size, tablet)) {
-          justify-content: normal;
-          gap: 32px;
+        .logo img {
+          width: 136px;
+          height: 54px;
+        }
+
+        > h5 {
+          margin-top: .5rem;
+        }
+
+        > div:not(:last-of-type) {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .social {
+          display: flex;
+          gap: 1rem;
+
+          > * {
+            width: fit-content;
+            border-radius: 20px;
+            overflow: hidden;
+          }
+        }
+      }
+
+      .about {
+        grid-column: 7 / 9;
+
+        @media (max-width: map.get(env.$screen-size, netbook)) {
+          grid-column: span 2;
         }
 
         @media (max-width: $mobile-adaptive) {
-          justify-items: normal;
-          flex-direction: column;
+          grid-column: span 1;
         }
+      }
+
+      .doctor,
+      .patient {
+        grid-column: span 2;
+
+        @media (max-width: $mobile-adaptive) {
+          grid-column: span 1;
+        }
+      }
+
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
 
         a {
-          font-weight: 600;
+          width: fit-content;
         }
 
-        .contacts {
-          display: flex;
-          flex-direction: column;
-          gap: .5rem;
-
-          .logo img{
-            width: 136px;
-            height: 54px;
-          }
-
-          > h5 {
-            margin-top: .5rem;
-          }
-
-          > div:not(:last-of-type) {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-          }
-
-          .social {
-            display: flex;
-            gap: 1rem;
-
-            > *:last-child {
-              border-radius: 20px;
-              overflow: hidden;
-            }
-          }
-        }
-
-        > nav {
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          column-gap: 32px;
-
-          @media (max-width: $mobile-adaptive) {
-            grid-template-columns: 1fr;
-          }
-
-          > div {
-            display: flex;
-            flex-direction: column;
-            gap: .25rem;
-
-            grid-column: span 2;
-
-            > h5 {
-              margin-bottom: 8px;
-            }
-          }
-        }
-
-        .doctor {
-          > h5:last-of-type {
-            margin-top: 16px;
-          }
+        &__clynic_doctor {
+          margin-top: 16px;
         }
       }
     }
+  }
 </style>

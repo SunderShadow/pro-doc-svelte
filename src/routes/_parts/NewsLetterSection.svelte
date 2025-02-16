@@ -28,7 +28,7 @@ import Button from "$ui-kit/Button/Button.svelte"
   @use "sass:map";
   @use "$ui-kit/env";
 
-    $mobile-size: 500px;
+  $mobile-size: 500px;
 
   section {
     padding: 155px 0 0 10px;
