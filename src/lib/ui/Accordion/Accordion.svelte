@@ -68,7 +68,7 @@
     }
 
   :global {
-    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+    @media (min-width: 450px) {
       .accordion {
         &:hover &__button {
           background-color: map.get(env.$color, primary);

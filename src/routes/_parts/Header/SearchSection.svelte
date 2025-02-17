@@ -8,6 +8,7 @@
   import Titled from "$ui-kit/Form/Select/Sections.svelte"
   import {onDestroy, onMount} from "svelte"
   import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
+  import Plus from "$ui-kit/icons/Plus.svelte";
 
   let colorsInputData = [
       {
@@ -113,11 +114,15 @@
   })
 
   let {
-      headerHeight
+      headerHeight,
+      closeHandler
   } = $props()
 </script>
 <section class="search-container page-container" style:--top={headerHeight + 'px'} transition:slide bind:this={allowScrolling}>
-  <h2 class="mobile-title title-1">Поиск</h2>
+  <div class="mobile-title">
+    <h2 class="title-1">Поиск</h2>
+    <button onclick={closeHandler} class="mobile-title_icon"><Plus size="sm" type="primary" /></button>
+  </div>
   <h3>Выберете клинику или запишитесь на приём</h3>
 
   <InputGroup>
@@ -174,6 +179,19 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+  }
+
+  .mobile-title {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mobile-title_icon {
+    transform: rotate(45deg);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
   }
 
   @media (min-width: map.get(env.$screen-size, tablet)) {

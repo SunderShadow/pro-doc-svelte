@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div class="layer_2-wrapper" class:page-container={screenWidth >= 1600}>
+  <div class="layer_2-wrapper">
     <section class="layer_2 page-container" bind:clientHeight={headerHeight}>
       <a href="/">
         <img class="logo" src={Logo} alt=""/>
@@ -87,7 +87,7 @@
     </section>
   </div>
   {#if mobileSearchVisible || screenWidth > 768}
-    <SearchSection {headerHeight} />
+    <SearchSection {headerHeight} closeHandler={toggleSearch}/>
   {/if}
 </header>
 {#if screenWidth <= 768}
@@ -188,7 +188,6 @@
 
     &-wrapper {
       border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);
-
     }
   }
 
