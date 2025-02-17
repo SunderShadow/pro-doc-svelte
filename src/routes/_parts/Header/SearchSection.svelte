@@ -113,12 +113,15 @@
       }
   })
 
+  let screenWidth = $state(0);
+
   let {
       headerHeight,
       closeHandler
   } = $props()
 </script>
-<section class="search-container page-container" style:--top={headerHeight + 'px'} transition:slide bind:this={allowScrolling}>
+<svelte:window bind:innerWidth={screenWidth}></svelte:window>
+<section class="search-container page-container" style:--top={headerHeight + 'px'} transition:slide={{duration: screenWidth > 768 ? 0 : 300}} bind:this={allowScrolling}>
   <div class="mobile-title">
     <h2 class="title-1">Поиск</h2>
     <button onclick={closeHandler} class="mobile-title_icon"><Plus size="sm" type="primary" /></button>

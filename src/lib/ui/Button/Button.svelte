@@ -26,6 +26,8 @@
   @use "$ui-kit/env" as env-global;
 
   button {
+    -webkit-tap-highlight-color: transparent;
+
     background-color: env.$bg-default;
     padding: .875em 2em;
 

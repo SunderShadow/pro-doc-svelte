@@ -1,12 +1,13 @@
 <script lang="ts">
 import DoctorImg from "$lib/assets/images/newsletter_doctor.png?enhanced&format=webp"
+import BgImg from "$lib/assets/images/newsletter_bg.png?enhanced&format=webp&quality=80"
 import Input from "$ui-kit/Form/Input.svelte"
 import Button from "$ui-kit/Button/Button.svelte"
 
 </script>
 
 <section class="page-container">
-  <div class="inner-container">
+  <div class="inner-container" style:--img={`url(${BgImg.img.src})`}>
     <div class="inner-container__content">
       <h3>Подпишитесь на рассылку DocHeal</h3>
       <p class="body-text-1">Одно полезное письмо раз в неделю: статьи о здоровье, акции клиник и скидки до 50%, опросы.</p>
@@ -20,7 +21,7 @@ import Button from "$ui-kit/Button/Button.svelte"
         </div>
       </form>
     </div>
-    <img class="doctor" src={DoctorImg.img.src} alt="">
+    <img class="doctor" src={DoctorImg.img.src} alt="" loading="lazy">
   </div>
 </section>
 
@@ -82,7 +83,7 @@ import Button from "$ui-kit/Button/Button.svelte"
 
     padding: 32px;
 
-    background-image: url("$lib/assets/images/newsletter_bg.png?enhanced&format=webp");
+    background-image: var(--img);
     background-size: cover;
     background-position: center;
 

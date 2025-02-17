@@ -26,6 +26,7 @@ const {
   @use "$lib/ui/env";
 
   .article-link {
+    -webkit-tap-highlight-color: transparent;
     --color: #{map.get(env.$color, primary)};
 
     width: fit-content;

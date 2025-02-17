@@ -60,7 +60,7 @@
   <div class="layer_2-wrapper">
     <section class="layer_2 page-container" bind:clientHeight={headerHeight}>
       <a href="/">
-        <img class="logo" src={Logo} alt=""/>
+        <img class="logo" src={Logo} alt="" style="aspect-ratio: 136 /59"/>
       </a>
 
       <div class="nav-icons">
@@ -249,7 +249,9 @@
         background: none;
         outline: none;
 
-        cursor: pointer;
+        @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+          cursor: pointer;
+        }
       }
     }
 

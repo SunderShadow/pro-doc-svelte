@@ -45,6 +45,8 @@
   }
 
   .card {
+    -webkit-tap-highlight-color: transparent;
+
     --border-offset: 24px;
     position: relative;
 
@@ -60,8 +62,6 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
     overflow: hidden;
-
-    cursor: pointer;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       --border-offset: 16px;

@@ -18,6 +18,7 @@
   @use "$lib/ui/env";
 
   .tag {
+    -webkit-tap-highlight-color: transparent;
     padding: 0.3rem .55rem;
 
     font-weight: 600;
@@ -33,10 +34,12 @@
     transition: background-color 200ms;
     user-select: none;
 
-    &:active,
-    &.active,
-    &:hover {
-      background-color: rgba(map.get(env.$color, primary), .1);
+    @media (min-width: (map.get(env.$color, tablet) + 1)) {
+      &:active,
+      &.active,
+      &:hover {
+        background-color: rgba(map.get(env.$color, primary), .1);
+      }
     }
   }
 </style>

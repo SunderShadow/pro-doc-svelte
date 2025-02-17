@@ -7,7 +7,7 @@
   <h2>О нас</h2>
   <div class="content">
     <div class="thumbnail">
-      <img src={AboutUsImage.img.src} alt="">
+      <img src={AboutUsImage.img.src} alt="" loading="lazy">
     </div>
 
     <div class="description">
