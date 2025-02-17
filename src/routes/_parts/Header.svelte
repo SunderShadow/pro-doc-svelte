@@ -19,9 +19,11 @@
   let mobileSearchVisible = $state(false)
   let screenWidth = $state(0)
 
-  function toggleSearch() {
+  function toggleSearch(e) {
+      e.stopPropagation()
       mobileSearchVisible = !mobileSearchVisible
   }
+
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
@@ -90,6 +92,7 @@
     <SearchSection {headerHeight} closeHandler={toggleSearch}/>
   {/if}
 </header>
+
 {#if screenWidth <= 768}
   <MobileNav bind:toggleMobileMenuVisible bind:visible={mobileNavVisible} {headerHeight}/>
 {/if}
@@ -197,6 +200,8 @@
     gap: 0 1.5rem;
 
     > a {
+      -webkit-tap-highlight-color: transparent;
+
       padding: .5em;
       line-height: 1.75rem;
       font-weight: 600;

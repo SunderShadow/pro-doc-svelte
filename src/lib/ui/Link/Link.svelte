@@ -51,7 +51,7 @@ const {
       user-select: none;
     }
 
-    @media (min-width: (map.get(env.$screen-size, mobile) + 1)) {
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1)) {
       &.active,
       &:active {
         --color: #{map.get(env.$color, primary-active)};

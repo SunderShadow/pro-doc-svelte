@@ -44,7 +44,7 @@
     transition-property: box-shadow, background-color;
     transition-duration: 300ms;
 
-    @media (min-width: (map.get(env-global.$screen-size, mobile) + 1px)) {
+    @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
       &:focus,
       &:hover {
         background-color: env.$bg-hover;

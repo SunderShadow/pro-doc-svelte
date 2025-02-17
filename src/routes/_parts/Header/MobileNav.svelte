@@ -13,7 +13,8 @@ let {
 
 let mobileNav = $state()
 
-toggleMobileMenuVisible = () => {
+toggleMobileMenuVisible = (e) => {
+    e.stopPropagation()
     visible = !visible
 
     if (visible) {
@@ -24,7 +25,8 @@ toggleMobileMenuVisible = () => {
 }
 </script>
 
-<div class="mobile-nav" class:visible style:--top={headerHeight + 'px'} bind:this={mobileNav}>
+<svelte:window onclick="{visible ? toggleMobileMenuVisible : () => {}}"></svelte:window>
+<div onclick={(e) => {e.stopPropagation()}} class="mobile-nav" class:visible style:--top={headerHeight + 'px'} bind:this={mobileNav}>
   <div class="mobile-nav__layer_1">
     <div class="city">
       <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
@@ -140,6 +142,8 @@ toggleMobileMenuVisible = () => {
       flex-direction: column;
 
       a {
+        -webkit-tap-highlight-color: transparent;
+
         font-weight: 600;
         padding: .5em;
         line-height: 1.75rem;

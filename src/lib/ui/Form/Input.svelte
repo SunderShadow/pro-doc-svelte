@@ -71,8 +71,11 @@
     height: 100%;
   }
 
-  input:hover {
-    --border-opacity: 1;
+
+  @media (min-width: map.get(env.$screen-size, tablet)) {
+    input:hover {
+      --border-opacity: 1;
+    }
   }
 
   input.active,

@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "$ui-kit/env";
 
 a {
@@ -6,15 +7,24 @@ a {
 
   transition: color 200ms;
 
-  &:hover {
-    color: #5856D6;
+  @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+    &:hover {
+      color: #5856D6;
 
-    .svg-icon-container {
-      --color: #5856D6;
+      .svg-icon-container {
+        --color: #5856D6;
+      }
+    }
+
+    &:active {
+      color: #4341DFE5;
+
+      .svg-icon-container {
+        --color: #4341DFE5;
+      }
     }
   }
 
-  &:active,
   &.active {
     color: #4341DFE5;
 

@@ -37,7 +37,7 @@
   $content-color-hover: #fff;
 
   :global {
-    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
       .card:hover .card-link_icon .svg-icon-container {
         --color: #{$content-color-hover};
       }
@@ -141,7 +141,7 @@
       z-index: 4;
     }
 
-    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
       &:hover &-link_icon {
         transform: rotate(45deg);
       }

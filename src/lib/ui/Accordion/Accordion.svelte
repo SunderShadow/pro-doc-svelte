@@ -45,6 +45,8 @@
       line-height: 36px;
 
       > button {
+        -webkit-tap-highlight-color: transparent;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -63,12 +65,14 @@
 
         background-color: map.get(env.$bg-color, primary);
 
-        cursor: pointer;
+        @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+          cursor: pointer;
+        }
       }
     }
 
   :global {
-    @media (min-width: 450px) {
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
       .accordion {
         &:hover &__button {
           background-color: map.get(env.$color, primary);
