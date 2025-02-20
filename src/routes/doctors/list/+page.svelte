@@ -2,6 +2,9 @@
     import Preview from "$ui-kit/Preview/Preview.svelte";
     import DoctorListPreview from "../../_parts/assets/doctor-list-preview.png?enhanced&format=webp"
     import FilterOption from "../../_parts/FilterOption.svelte";
+    import Button from "$ui-kit/Button/Button.svelte";
+    import Tag from "$ui-kit/Tag/Tag.svelte";
+    import Magnifier from "$ui-kit/icons/Magnifier.svelte";
 
     type filterOption = "popularity" | "rating" | "reviews" | "price" | "experience";
 
@@ -47,6 +50,21 @@
             <hr>
             <FilterOption title="по стажу" name="experience"
                           isActive={activeFilter === "experience"} setActive={handleActiveFilter}/>
+        </div>
+    </section>
+    <section class="filter-tags">
+        <div class="tags">
+            <Tag>Сегодня 12 дек.</Tag>
+            <Tag>Ближайшие 3 дня</Tag>
+            <Tag>Выходные 17 дек.- 18 дек.</Tag>
+            <Tag active>Очные Консультации</Tag>
+            <Tag>Онлайн Консультации</Tag>
+            <Tag>Есть онлайн-запись</Tag>
+            <Tag>С рейтингом выше 4 звёзд</Tag>
+            <Tag>Приём в клинике</Tag>
+        </div>
+        <div class="button link-font-1">
+            <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
         </div>
     </section>
 </main>
@@ -130,6 +148,39 @@
 
         > hr {
           margin: 0 8px;
+        }
+      }
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      padding-top: 1rem;
+
+      .tags {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+
+        padding: 2rem 1.5rem;
+
+        border: 1px solid rgba(map.get(env.$color, primary), .1);
+        border-radius: 12px;
+      }
+    }
+
+    :global {
+      .button {
+        > button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+
+          width: 100%;
         }
       }
     }
