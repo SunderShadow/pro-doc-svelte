@@ -8,7 +8,7 @@
 </svelte:head>
 
 <main class="page-container">
-    <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} height={1000}>
+    <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} isGradient>
         <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
             центральной и периферической нервной системы — спинного и головного мозга,
             а также нервных волокон.</p>
