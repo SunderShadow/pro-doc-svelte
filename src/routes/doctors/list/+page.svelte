@@ -1,6 +1,15 @@
 <script lang="ts">
     import Preview from "$ui-kit/Preview/Preview.svelte";
     import DoctorListPreview from "../../_parts/assets/doctor-list-preview.png?enhanced&format=webp"
+    import FilterOption from "../../_parts/FilterOption.svelte";
+
+    type filterOption = "popularity" | "rating" | "reviews" | "price" | "experience";
+
+    let activeFilter:filterOption = $state("popularity");
+
+    const handleActiveFilter = (filter:filterOption) => {
+        activeFilter = filter;
+    }
 </script>
 
 <svelte:head>
@@ -20,6 +29,25 @@
             <li class="body-text-1">Найдите хорошего невролога и запишитесь на приём</li>
             <li class="body-text-1">Цена приёма от 100 до 34500 рублей (средняя 2900 рублей)</li>
         </ul>
+    </section>
+    <section class="filter-options">
+        <p class="link-font-2">Сортировать:</p>
+        <div>
+            <FilterOption title="по популярности" name="popularity"
+                          isActive={activeFilter === "popularity"} setActive={handleActiveFilter} />
+            <hr>
+            <FilterOption title="по рейтингу" name="rating"
+                          isActive={activeFilter === "rating"} setActive={handleActiveFilter}/>
+            <hr>
+            <FilterOption title="по отзывам" name="reviews"
+                          isActive={activeFilter === "reviews"} setActive={handleActiveFilter}/>
+            <hr>
+            <FilterOption title="по цене" name="price"
+                          isActive={activeFilter === "price"} setActive={handleActiveFilter}/>
+            <hr>
+            <FilterOption title="по стажу" name="experience"
+                          isActive={activeFilter === "experience"} setActive={handleActiveFilter}/>
+        </div>
     </section>
 </main>
 
@@ -86,6 +114,22 @@
           @media (max-width: map.get(env.$screen-size, tablet)) {
             font-size: 1rem;
           }
+        }
+      }
+    }
+    .filter-options {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 8px;
+
+      padding-top: 4rem;
+
+      > div {
+        display: flex;
+
+        > hr {
+          margin: 0 8px;
         }
       }
     }
