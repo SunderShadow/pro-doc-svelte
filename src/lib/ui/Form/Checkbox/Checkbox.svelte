@@ -91,6 +91,8 @@
     align-items: center;
     justify-content: center;
 
+    flex-shrink: 0;
+
     width: 16px;
     height: 16px;
     border-radius: 4px;

@@ -122,12 +122,23 @@ let specialityItems = [
 </aside>
 
 <style lang="scss">
+  @use "sass:map";
+  @use "$ui-kit/env";
+
   :global {
     .filters input {
       font-size: 14px;
     }
+
+    .filters .form-control-wrapper {
+      flex-grow: 1;
+    }
   }
+
   .filters {
+    padding: 32px 16px;
+    border-radius: 1px solid rgba(map.get(env.$color, primary), .1 );
+
     > div + div {
       margin-top: 16px;
     }

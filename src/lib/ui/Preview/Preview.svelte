@@ -3,21 +3,23 @@
 
     type Props = {
         children: Snippet,
-        title: string;
-        image: string;
-        height: number;
+        title: string,
+        image: string,
+        imageMobile: string,
+        height: number,
     }
 
     let {
         children,
         title,
         image,
+        imageMobile,
         height,
     }: Props = $props()
 
 </script>
 
-<div class="preview" style:--img={`url(${image})`} style:--height={height}>
+<div class="preview" style:--img={`url(${image})`} style:--img-mobile={`url(${imageMobile})`} style:--height={height}>
     <div class="preview-content">
         <h1>{title}</h1>
         {@render children?.()}
@@ -28,33 +30,64 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-  .preview {
-    display: flex;
-    align-items: center;
+  $mobile-breakpoint: 500px;
 
-    background-image: linear-gradient(to right, map.get(env.$bg-color, primary) 45%, transparent 60%), var(--img);
+  .preview {
+    --gradient-cover-size: 50%;
+    position: relative;
+
+    width: 100%;
+
+    background-image:
+        linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)),
+        var(--img);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
 
-    width: 100%;
-    height: 610px;
-
-    padding: 17.5rem 8.5rem;
-
     border: 1px solid rgba(map.get(env.$color, primary), .1);;
     border-radius: 12px;
 
-    .preview-content {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
+    @media (max-width: map.get(env.$screen-size, tablet)) and (min-width: $mobile-breakpoint) {
+      height: 310px;
+    }
 
-      width: 650px;
+    @media (min-width: $mobile-breakpoint) {
+      aspect-ratio: 1600 / 610;
+    }
 
-      > h1 {
-        line-height: 70.4px;
-      }
+    @media (max-width: $mobile-breakpoint) {
+      background-image: var(--img-mobile);
+      background-position: top;
+      background-size: 100% 210px;
+    }
+  }
+
+  .preview-content {
+    --left-offset: 8%;
+
+    position: absolute;
+    top: 50%;
+    left: var(--left-offset);
+    transform: translateY(-50%);
+
+    width: calc(var(--gradient-cover-size) - var(--left-offset));
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      gap: 16px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      margin-top: 210px;
+
+      width: 100%;
+      padding: 24px 16px;
+      position: static;
+      transform: none;
     }
   }
 </style>

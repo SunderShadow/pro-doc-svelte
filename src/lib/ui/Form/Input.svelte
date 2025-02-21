@@ -36,6 +36,7 @@
 
   input {
     --border-opacity: .1;
+    --erase-icon-offset: 24px + var(--erase-icon-right);
 
     width: 100%;
 
@@ -43,7 +44,7 @@
 
     line-height: 25.6px;
     outline: none;
-    padding: .65em calc(1em + var(--erase-icon-right) + var(--wrapper-icon-padding)) .65em 1em;
+    padding: .65em 1em;
     border-radius: .75em;
 
     font-family: "Helvetica", Gilroy, sans-serif;
@@ -51,6 +52,10 @@
 
     transition-property: border, box-shadow;
     transition-duration: 300ms;
+  }
+
+  input:not(:placeholder-shown) {
+    padding-right: calc(var(--erase-icon-offset) + var(--wrapper-icon-padding));
   }
 
   .erase {
@@ -68,6 +73,7 @@
     --erase-icon-right: calc(20px + var(--wrapper-icon-padding));
 
     display: flex;
+    position: relative;
   }
 
 

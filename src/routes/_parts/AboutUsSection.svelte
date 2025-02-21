@@ -24,7 +24,7 @@
 
       <p class="body-text-1">Это необычайно удобный медицинский онлайн центр, где вы можете получить медицинские консультации, записаться на приём к специалисту и получить рецепты лекарств, не выходя из дома.</p>
       <div class="link">
-        <Link href="/">Узнать больше</Link>
+        <Link href="/" primary>Узнать больше</Link>
       </div>
     </div>
     <svg class="content-bg-pulse" viewBox="0 0 1102 361" fill="none" xmlns="http://www.w3.org/2000/svg">
