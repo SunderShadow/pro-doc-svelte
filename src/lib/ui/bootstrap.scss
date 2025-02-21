@@ -2,9 +2,9 @@
 
 @forward "_global/normalize";
 @forward "_global/fonts" ;
-
 @forward "_global/link";
 @forward "_global/page-container";
+@forward "_global/page-section";
 
 :root {
   font-family: "Gilroy", sans-serif;
