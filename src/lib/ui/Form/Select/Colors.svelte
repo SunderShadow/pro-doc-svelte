@@ -10,12 +10,14 @@
 
   type Props = any & {
       data: Array<Item>,
-      value: any
+      value: any,
+      closeOnSelect: boolean
   }
 
   let {
       data,
       value = $bindable(),
+      closeOnSelect = true,
       ...props
   }: Props = $props()
 
@@ -38,6 +40,10 @@
   function select(item: Item) {
       selected = item
       value = item.value
+
+      if (closeOnSelect) {
+          close()
+      }
   }
 
   function isSelected(item: Item) {

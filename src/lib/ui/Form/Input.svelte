@@ -68,7 +68,6 @@
     --erase-icon-right: calc(20px + var(--wrapper-icon-padding));
 
     display: flex;
-    height: 100%;
   }
 
 

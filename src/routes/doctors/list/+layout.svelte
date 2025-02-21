@@ -22,13 +22,13 @@
   }: Props = $props()
 </script>
 
-<main class="page-container">
+<div class="page-container">
   <div class="breadcrumbs">
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
   {@render children?.()}
-</main>
+</div>
 
 
 <style lang="scss">

@@ -14,6 +14,10 @@
 
   :global {
 
+    .input-group .form-control-wrapper {
+      height: 100%;
+    }
+
     @media (min-width: map.get(env.$screen-size, netbook)) {
       .input-group:hover {
         > *::after {
