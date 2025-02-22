@@ -114,6 +114,10 @@
 
   .breadcrumbs {
     margin-bottom: 40px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin: 16px 0;
+    }
   }
 
   .cards {
