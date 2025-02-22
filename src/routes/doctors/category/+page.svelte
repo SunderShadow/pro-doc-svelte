@@ -7,11 +7,17 @@
     import Magnifier from "$ui-kit/icons/Magnifier.svelte";
 
     type filterOption = "popularity" | "rating" | "reviews" | "price" | "experience";
+    type filterTag = "today" | "next" | "weekends" | "face-to-face" | "online" | "registration" | "rating" | "clinic"
 
     let activeFilter:filterOption = $state("popularity");
+    let activeTag:filterTag = $state("face-to-face")
 
     const handleActiveFilter = (filter:filterOption) => {
         activeFilter = filter;
+    }
+
+    const handleActiveTag = (tag:filterTag) => {
+        activeTag = tag;
     }
 </script>
 
@@ -54,14 +60,22 @@
     </section>
     <section class="filter-tags">
         <div class="tags">
-            <Tag>Сегодня 12 дек.</Tag>
-            <Tag>Ближайшие 3 дня</Tag>
-            <Tag>Выходные 17 дек.- 18 дек.</Tag>
-            <Tag active>Очные Консультации</Tag>
-            <Tag>Онлайн Консультации</Tag>
-            <Tag>Есть онлайн-запись</Tag>
-            <Tag>С рейтингом выше 4 звёзд</Tag>
-            <Tag>Приём в клинике</Tag>
+            <Tag isActive={activeTag === "today"} name="today"
+                 setActive={handleActiveTag}>Сегодня 12 дек.</Tag>
+            <Tag isActive={activeTag === "next"} name="next"
+                 setActive={handleActiveTag}>Ближайшие 3 дня</Tag>
+            <Tag isActive={activeTag === "weekends"} name="weekends"
+                 setActive={handleActiveTag}>Выходные 17 дек.- 18 дек.</Tag>
+            <Tag isActive={activeTag === "face-to-face"} name="face-to-face"
+                 setActive={handleActiveTag}>Очные Консультации</Tag>
+            <Tag isActive={activeTag === "online"} name="online"
+                 setActive={handleActiveTag}>Онлайн Консультации</Tag>
+            <Tag isActive={activeTag === "registration"} name="registration"
+                 setActive={handleActiveTag}>Есть онлайн-запись</Tag>
+            <Tag isActive={activeTag === "rating"} name="rating"
+                 setActive={handleActiveTag}>С рейтингом выше 4 звёзд</Tag>
+            <Tag isActive={activeTag === "clinic"} name="clinic"
+                 setActive={handleActiveTag}>Приём в клинике</Tag>
         </div>
         <div class="button link-font-1">
             <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
