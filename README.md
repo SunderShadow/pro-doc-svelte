@@ -7,6 +7,7 @@ https://svelte.dev/
 src/
 ├── lib
 │   ├── assets <-- Мультимедиа (Изображения/Аудио/Видео) 
+│   ├── components <-- Компоненты страниц 
 │   ├── ui <-- Компоненты Ui Kit
 │   │   ├── ComponentName <-- Папка с компонентом
 │   │   │   ├── ComponentName.svelte <-- Файл компонента для подключения

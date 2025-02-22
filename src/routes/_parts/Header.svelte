@@ -26,7 +26,7 @@
 
   let routes = [
       {
-          href: '/doctors/list',
+          href: '/doctors/works_with/adults',
           title: 'Врачи'
       },
       {
