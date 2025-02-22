@@ -6,6 +6,7 @@
         children: Snippet,
         name: string,
         image: string,
+        href: string,
         double?: boolean,
     }
 
@@ -14,23 +15,25 @@
         name,
         image,
         double,
+        href,
     }: Props = $props()
 
 </script>
 
 <div class="card" class:double>
-    <div class="card-content">
-      <h2 class="card-title title-1">{name}</h2>
-      <p class="card-body body-text-2">
-        {@render children?.()}
-      </p>
-    </div>
+  <div class="card-content">
+    <h2 class="card-title title-1">{name}</h2>
+    <p class="card-body body-text-2">
+      {@render children?.()}
+    </p>
+  </div>
 
-    <div class="card-link_icon">
-      <ArrowTopRight type="primal" size="sm" />
-    </div>
+  <div class="card-link_icon">
+    <ArrowTopRight type="primal" size="sm" />
+  </div>
 
-  <div class="card-image_wrapper" style:--img={`url(${image})`}></div>
+  <a {href} class="card-image_wrapper" style:--img={`url(${image})`}></a>
+
 </div>
 
 <style lang="scss">
@@ -71,6 +74,17 @@
       --border-offset: 16px;
     }
 
+    a {
+      display: block;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
     &-body,
     &-title {
       transition-property: color;

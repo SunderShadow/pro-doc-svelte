@@ -6,6 +6,7 @@
         title: string,
         image: string,
         imageMobile: string,
+        withGradient: true,
         height: number,
     }
 
@@ -14,12 +15,12 @@
         title,
         image,
         imageMobile,
-        height,
+        withGradient
     }: Props = $props()
 
 </script>
 
-<div class="preview" style:--img={`url(${image})`} style:--img-mobile={`url(${imageMobile})`} style:--height={height}>
+<div class="preview" class:with_gradient={withGradient} style:--img={`url(${image})`} style:--img-mobile={`url(${imageMobile})`}>
     <div class="preview-content">
         <h1>{title}</h1>
         {@render children?.()}
@@ -38,15 +39,19 @@
 
     width: 100%;
 
-    background-image:
-        linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)),
-        var(--img);
+
+    background-image: var(--img);
+
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);;
     border-radius: 12px;
+
+    &.with_gradient {
+      background-image: linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)), var(--img);
+    }
 
     @media (max-width: map.get(env.$screen-size, tablet)) and (min-width: $mobile-breakpoint) {
       height: 310px;

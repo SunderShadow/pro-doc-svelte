@@ -38,14 +38,14 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Диагностика в клиниках Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} height={1000} />
+  <Preview title="Диагностика в клиниках Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} />
 </section>
 
-<section class="page-container">
+<section class="page-container page-section">
   <h2>Услуги и направления</h2>
   <div class="cards">
     <div class="double">
-      <Card name="Эндоскопия" image={Doctors.img.src} double>
+      <Card href="/service/diagnostic/endoscopy" name="Эндоскопия" image={Doctors.img.src} double>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>

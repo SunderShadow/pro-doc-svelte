@@ -45,7 +45,7 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Медицинские услуги в клиниках Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} height={1000} />
+  <Preview title="Медицинские услуги в клиниках Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} withGradient/>
 </section>
 
 <section class="page-container page-section">
