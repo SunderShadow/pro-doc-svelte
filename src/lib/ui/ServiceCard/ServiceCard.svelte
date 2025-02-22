@@ -1,13 +1,16 @@
 <script lang="ts">
     import ArrowTopRight from "$ui-kit/icons/ArrowTopRight.svelte";
+    import type {Snippet} from "svelte";
 
     type Props = {
+        children: Snippet,
         name: string,
         image: string,
         double?: boolean,
     }
 
     const {
+        children,
         name,
         image,
         double,
@@ -19,7 +22,7 @@
     <div class="card-content">
       <h2 class="card-title title-1">{name}</h2>
       <p class="card-body body-text-2">
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        {@render children?.()}
       </p>
     </div>
 
@@ -62,6 +65,7 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
     overflow: hidden;
+    cursor: pointer;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       --border-offset: 16px;

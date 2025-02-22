@@ -5,7 +5,7 @@
     import Consultation from "$lib/assets/images/services/consultation.jpg?enhanced&format=webp"
     import Pediatrician from "$lib/assets/images/services/pediatrician.jpg?enhanced&format=webp"
     import Directory from "$lib/assets/images/services/directory.png?enhanced&format=webp"
-    import Card from "./ServiceSection/Card.svelte"
+    import Card from "$ui-kit/ServiceCard/ServiceCard.svelte"
 </script>
 
 <svelte:head>
@@ -21,16 +21,28 @@
     <h2>Услуги и направления</h2>
     <div class="cards">
       <div class="double">
-        <Card name="Врачи" image={Doctors.img.src} double/>
+        <Card name="Врачи" image={Doctors.img.src} double>
+          На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        </Card>
       </div>
-      <Card name="Услуги" image={Services.img.src}/>
-      <Card name="Диагностика" image={Diagnostics.img.src}/>
+      <Card name="Услуги" image={Services.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+      <Card name="Диагностика" image={Diagnostics.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
       <div id="online_consulting_card_wrapper">
-        <Card name="Онлайн-консультация" image={Consultation.img.src}/>
+        <Card name="Онлайн-консультация" image={Consultation.img.src}>
+          На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        </Card>
       </div>
-      <Card name="Детский врач" image={Pediatrician.img.src}/>
+      <Card name="Детский врач" image={Pediatrician.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
       <div id="medicine_book_card_wrapper" class="double">
-        <Card name="Медицинский справочник" image={Directory.img.src} double/>
+        <Card name="Медицинский справочник" image={Directory.img.src} double>
+          На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        </Card>
       </div>
     </div>
   </section>
