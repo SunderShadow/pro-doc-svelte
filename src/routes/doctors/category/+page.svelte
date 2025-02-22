@@ -5,6 +5,8 @@
     import Button from "$ui-kit/Button/Button.svelte";
     import Tag from "$ui-kit/Tag/Tag.svelte";
     import Magnifier from "$ui-kit/icons/Magnifier.svelte";
+    import DoctorCard from "../../_parts/DoctorCard.svelte";
+    import DoctorImage from "./_parts/assets/img/doctor.png?enhanced&format=webp"
 
     type filterOption = "popularity" | "rating" | "reviews" | "price" | "experience";
     type filterTag = "today" | "next" | "weekends" | "face-to-face" | "online" | "registration" | "rating" | "clinic"
@@ -23,6 +25,7 @@
 
 <svelte:head>
     <link rel="preload" as="image" href={DoctorListPreview.img.src} />
+    <link rel="preload" as="image" href={DoctorImage.img.src} />
 </svelte:head>
 
 <main class="page-container">
@@ -80,6 +83,9 @@
         <div class="button link-font-1">
             <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
         </div>
+    </section>
+    <section class="doctor-card">
+        <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
     </section>
 </main>
 
