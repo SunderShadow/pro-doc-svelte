@@ -2,7 +2,8 @@
 @use "$ui-kit/env";
 
 a {
-  color: inherit;
+  --color: inherit;
+  color: #000;
   text-decoration: none;
 
   transition: color 200ms;

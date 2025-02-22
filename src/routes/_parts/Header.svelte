@@ -1,4 +1,5 @@
 <script lang="ts">
+  import {page} from "$app/state"
   import Logo from "$lib/assets/Logo.png"
 
   import PolyclinicIcon from "$ui-kit/icons/Polyclinic.svelte"
@@ -7,9 +8,8 @@
 
   import Magnifier from "$ui-kit/icons/Magnifier.svelte"
 
-
   import MobileNav from "./Header/MobileNav.svelte"
-  import SearchSection from "./Header/SearchSection.svelte";
+  import SearchSection from "./Header/SearchSection.svelte"
 
   let headerHeight = $state(0)
 
@@ -24,6 +24,40 @@
       mobileSearchVisible = !mobileSearchVisible
   }
 
+  let routes = [
+      {
+          href: '/doctors/works_with/adults',
+          title: 'Врачи'
+      },
+      {
+          href: '/c',
+          title: 'Клиники'
+      },
+      {
+          href: '/c',
+          title: 'Диагностика'
+      },
+      {
+          href: '/c',
+          title: 'Онлайн-консультации'
+      },
+      {
+          href: '/c',
+          title: 'Библиотека'
+      },
+      {
+          href: '/c',
+          title: 'Акции'
+      },
+      {
+          href: '/c',
+          title: 'О нас'
+      },
+      {
+          href: '/c',
+          title: 'Контакты'
+      },
+  ]
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
@@ -43,7 +77,7 @@
           <PolyclinicIcon type="primary" size="sm"/>
           <span>Клиникам</span>
         </a>
-        <a href="/" class="for-item">
+        <a class="for-item">
           <DoctorIcon type="primary" size="sm"/>
           <span>Врачам</span>
         </a>
@@ -77,14 +111,9 @@
       </div>
 
       <nav>
-        <a href="/">Врачи</a>
-        <a href="/">Клиники</a>
-        <a href="/">Диагностика</a>
-        <a href="/">Онлайн-консультации</a>
-        <a href="/">Библиотека</a>
-        <a href="/">Акции</a>
-        <a href="/">О нас</a>
-        <a href="/">Контакты</a>
+        {#each routes as route}
+          <a class:active={page.url.pathname === route.href } href={route.href}>{route.title}</a>
+        {/each}
       </nav>
     </section>
   </div>
@@ -188,6 +217,10 @@
     gap: 135px;
 
     background-color: #fff;
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      gap: 0;
+    }
 
     &-wrapper {
       border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);

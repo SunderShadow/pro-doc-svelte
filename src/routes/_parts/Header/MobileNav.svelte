@@ -45,7 +45,7 @@ toggleMobileMenuVisible = (e) => {
   </div>
 
   <nav>
-    <a href="/">Врачи <ArrowRight /></a>
+    <a href="/doctors/list">Врачи <ArrowRight /></a>
     <a href="/">Клиники <ArrowRight /></a>
     <a href="/">Диагностика <ArrowRight /></a>
     <a href="/">Онлайн-консультации <ArrowRight /></a>

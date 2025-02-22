@@ -130,7 +130,7 @@
 
   <InputGroup>
     <Titled data={titleInputData} placeholder="Врач, клиника, болезнь, услуга" />
-    <ColorsSelect data={colorsInputData} placeholder="Метро, район, округ, город МО" />
+    <ColorsSelect data={colorsInputData} placeholder="Метро, район, округ, город МО" closeOnSelect={false}/>
     <DatePickerSelect placeholder="Дата приёма" />
     <Button>Найти</Button>
   </InputGroup>
