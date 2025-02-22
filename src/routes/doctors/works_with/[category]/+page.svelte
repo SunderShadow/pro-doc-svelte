@@ -30,7 +30,7 @@
       },
       {
           title: 'Врачи',
-          href: '/doctors/list'
+          href: ''
       }
   ]
 
@@ -54,6 +54,7 @@
 </script>
 
 <svelte:head>
+  <title>Врачи|{title}</title>
   <link rel="preload" as="image" href={DoctorListPreview.img.src} />
 </svelte:head>
 

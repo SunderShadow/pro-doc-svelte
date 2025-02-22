@@ -1,11 +1,11 @@
 <script lang="ts">
-    import Doctors from "$lib/assets/images/services/doctors.png?enhanced&format=webp"
-    import Services from "$lib/assets/images/services/services.jpg?enhanced&format=webp"
-    import Diagnostics from "$lib/assets/images/services/diagnostics.jpg?enhanced&format=webp"
+    import Doctors      from "$lib/assets/images/services/doctors.png?enhanced&format=webp"
+    import Services     from "$lib/assets/images/services/services.jpg?enhanced&format=webp"
+    import Diagnostics  from "$lib/assets/images/services/diagnostics.jpg?enhanced&format=webp"
     import Consultation from "$lib/assets/images/services/consultation.jpg?enhanced&format=webp"
     import Pediatrician from "$lib/assets/images/services/pediatrician.jpg?enhanced&format=webp"
-    import Directory from "$lib/assets/images/services/directory.png?enhanced&format=webp"
-    import Card from "$ui-kit/ServiceCard/ServiceCard.svelte"
+    import Directory    from "$lib/assets/images/services/directory.png?enhanced&format=webp"
+    import Card         from "$ui-kit/ServiceCard/ServiceCard.svelte"
 </script>
 
 <svelte:head>
@@ -18,34 +18,34 @@
 </svelte:head>
 
 <section class="page-container">
-    <h2>Услуги и направления</h2>
-    <div class="cards">
-      <div class="double">
-        <Card name="Врачи" image={Doctors.img.src} double>
-          На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-        </Card>
-      </div>
-      <Card name="Услуги" image={Services.img.src}>
+  <h2>Услуги и направления</h2>
+  <div class="cards">
+    <div class="double">
+      <Card name="Врачи" image={Doctors.img.src} double>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
-      <Card name="Диагностика" image={Diagnostics.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-      </Card>
-      <div id="online_consulting_card_wrapper">
-        <Card name="Онлайн-консультация" image={Consultation.img.src}>
-          На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-        </Card>
-      </div>
-      <Card name="Детский врач" image={Pediatrician.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-      </Card>
-      <div id="medicine_book_card_wrapper" class="double">
-        <Card name="Медицинский справочник" image={Directory.img.src} double>
-          На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-        </Card>
-      </div>
     </div>
-  </section>
+    <Card name="Услуги" image={Services.img.src}>
+      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+    </Card>
+    <Card name="Диагностика" image={Diagnostics.img.src}>
+      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+    </Card>
+    <div id="online_consulting_card_wrapper">
+      <Card name="Онлайн-консультация" image={Consultation.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
+    <Card name="Детский врач" image={Pediatrician.img.src}>
+      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+    </Card>
+    <div id="medicine_book_card_wrapper" class="double">
+      <Card name="Медицинский справочник" image={Directory.img.src} double>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
+  </div>
+</section>
 
 <style lang="scss">
   @use "sass:map";

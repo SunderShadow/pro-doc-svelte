@@ -26,31 +26,16 @@
           href: '/'
       },
       {
-          title: 'Врачи',
-          href: '/doctors/list'
+          title: 'Услуги',
+          href: ''
       }
   ]
 
-  let category = $state(page.params.category)
   let openFilters = $state()
-
-  async function changePageState(e) {
-      e.preventDefault()
-
-      const {href} = e.currentTarget
-      const result = await preloadData(href)
-
-      if (result.type === 'loaded') {
-          title    = result.data.title
-          items    = result.data.items
-          category = result.data.category
-
-          replaceState(href)
-      }
-  }
 </script>
 
 <svelte:head>
+  <title>Услуги</title>
   <link rel="preload" as="image" href={PreviewImg.img.src} />
   <link rel="preload" as="image" href={PreviewImgMobile.img.src} />
 </svelte:head>
@@ -92,7 +77,7 @@
       </button>
 
       <div class="cards">
-        {#each popular as item}
+        {#each clinic as item}
           <Card title={item.title} img={item.img} href={'/' + item.key}/>
         {/each}
       </div>

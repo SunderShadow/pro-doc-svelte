@@ -34,7 +34,11 @@
           title: 'Клиники'
       },
       {
-          href: '/c',
+          href: '/service/list',
+          title: 'Услуги'
+      },
+      {
+          href: '/service/diagnostic',
           title: 'Диагностика'
       },
       {
