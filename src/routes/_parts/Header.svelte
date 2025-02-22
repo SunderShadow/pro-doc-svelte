@@ -218,6 +218,10 @@
 
     background-color: #fff;
 
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      gap: 0;
+    }
+
     &-wrapper {
       border-bottom: 1px solid rgba(map.get(env.$color, primary), .1);
     }
