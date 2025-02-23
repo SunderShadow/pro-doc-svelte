@@ -1,12 +1,13 @@
 <script lang="ts">
     import Preview from "$ui-kit/Preview/Preview.svelte";
-    import DoctorListPreview from "../../_parts/assets/doctor-list-preview.png?enhanced&format=webp"
     import FilterOption from "../../_parts/FilterOption.svelte";
     import Button from "$ui-kit/Button/Button.svelte";
     import Tag from "$ui-kit/Tag/Tag.svelte";
     import Magnifier from "$ui-kit/icons/Magnifier.svelte";
-    import DoctorCard from "../../_parts/DoctorCard.svelte";
-    import DoctorImage from "./_parts/assets/img/doctor.png?enhanced&format=webp"
+    import DoctorCard from "./_parts/DoctorCard.svelte";
+
+    import DoctorListPreview from "../../_parts/assets/doctor-list-preview.png?enhanced&format=webp"
+    import DoctorImage       from "./_parts/assets/img/doctor.png?enhanced&format=webp"
 
     type filterOption = "popularity" | "rating" | "reviews" | "price" | "experience";
     type filterTag = "today" | "next" | "weekends" | "face-to-face" | "online" | "registration" | "rating" | "clinic"
@@ -29,64 +30,75 @@
 </svelte:head>
 
 <main class="page-container">
-    <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} isGradient>
-        <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
-            центральной и периферической нервной системы — спинного и головного мозга,
-            а также нервных волокон.</p>
-    </Preview>
+  <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} isGradient>
+    <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
+      центральной и периферической нервной системы — спинного и головного мозга,
+      а также нервных волокон.</p>
+  </Preview>
 
-    <section class="stats">
-        <h2>Найдено <span>6340</span> врачей и <span>5373</span> отзывов пациентов</h2>
-        <ul>
-            <li class="body-text-1">Найдите хорошего невролога и запишитесь на приём</li>
-            <li class="body-text-1">Цена приёма от 100 до 34500 рублей (средняя 2900 рублей)</li>
-        </ul>
-    </section>
-    <section class="filter-options">
-        <p class="link-font-2">Сортировать:</p>
-        <div>
-            <FilterOption title="по популярности" name="popularity"
-                          isActive={activeFilter === "popularity"} setActive={handleActiveFilter} />
-            <hr>
-            <FilterOption title="по рейтингу" name="rating"
-                          isActive={activeFilter === "rating"} setActive={handleActiveFilter}/>
-            <hr>
-            <FilterOption title="по отзывам" name="reviews"
-                          isActive={activeFilter === "reviews"} setActive={handleActiveFilter}/>
-            <hr>
-            <FilterOption title="по цене" name="price"
-                          isActive={activeFilter === "price"} setActive={handleActiveFilter}/>
-            <hr>
-            <FilterOption title="по стажу" name="experience"
-                          isActive={activeFilter === "experience"} setActive={handleActiveFilter}/>
-        </div>
-    </section>
-    <section class="filter-tags">
-        <div class="tags">
-            <Tag isActive={activeTag === "today"} name="today"
-                 setActive={handleActiveTag}>Сегодня 12 дек.</Tag>
-            <Tag isActive={activeTag === "next"} name="next"
-                 setActive={handleActiveTag}>Ближайшие 3 дня</Tag>
-            <Tag isActive={activeTag === "weekends"} name="weekends"
-                 setActive={handleActiveTag}>Выходные 17 дек.- 18 дек.</Tag>
-            <Tag isActive={activeTag === "face-to-face"} name="face-to-face"
-                 setActive={handleActiveTag}>Очные Консультации</Tag>
-            <Tag isActive={activeTag === "online"} name="online"
-                 setActive={handleActiveTag}>Онлайн Консультации</Tag>
-            <Tag isActive={activeTag === "registration"} name="registration"
-                 setActive={handleActiveTag}>Есть онлайн-запись</Tag>
-            <Tag isActive={activeTag === "rating"} name="rating"
-                 setActive={handleActiveTag}>С рейтингом выше 4 звёзд</Tag>
-            <Tag isActive={activeTag === "clinic"} name="clinic"
-                 setActive={handleActiveTag}>Приём в клинике</Tag>
-        </div>
-        <div class="button link-font-1">
-            <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
-        </div>
-    </section>
-    <section class="doctor-card">
-        <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
-    </section>
+  <section class="stats">
+    <h2>Найдено <span>6340</span> врачей и <span>5373</span> отзывов пациентов</h2>
+    <ul>
+      <li class="body-text-1">Найдите хорошего невролога и запишитесь на приём</li>
+      <li class="body-text-1">Цена приёма от 100 до 34500 рублей (средняя 2900 рублей)</li>
+    </ul>
+  </section>
+  <section class="filter-options">
+    <p class="link-font-2">Сортировать:</p>
+    <div>
+      <FilterOption title="по популярности" name="popularity"
+                    isActive={activeFilter === "popularity"} setActive={handleActiveFilter}/>
+      <hr>
+      <FilterOption title="по рейтингу" name="rating"
+                    isActive={activeFilter === "rating"} setActive={handleActiveFilter}/>
+      <hr>
+      <FilterOption title="по отзывам" name="reviews"
+                    isActive={activeFilter === "reviews"} setActive={handleActiveFilter}/>
+      <hr>
+      <FilterOption title="по цене" name="price"
+                    isActive={activeFilter === "price"} setActive={handleActiveFilter}/>
+      <hr>
+      <FilterOption title="по стажу" name="experience"
+                    isActive={activeFilter === "experience"} setActive={handleActiveFilter}/>
+    </div>
+  </section>
+  <section class="filter-tags">
+    <div class="tags">
+      <Tag isActive={activeTag === "today"} name="today"
+           setActive={handleActiveTag}>Сегодня 12 дек.
+      </Tag>
+      <Tag isActive={activeTag === "next"} name="next"
+           setActive={handleActiveTag}>Ближайшие 3 дня
+      </Tag>
+      <Tag isActive={activeTag === "weekends"} name="weekends"
+           setActive={handleActiveTag}>Выходные 17 дек.- 18 дек.
+      </Tag>
+      <Tag isActive={activeTag === "face-to-face"} name="face-to-face"
+           setActive={handleActiveTag}>Очные Консультации
+      </Tag>
+      <Tag isActive={activeTag === "online"} name="online"
+           setActive={handleActiveTag}>Онлайн Консультации
+      </Tag>
+      <Tag isActive={activeTag === "registration"} name="registration"
+           setActive={handleActiveTag}>Есть онлайн-запись
+      </Tag>
+      <Tag isActive={activeTag === "rating"} name="rating"
+           setActive={handleActiveTag}>С рейтингом выше 4 звёзд
+      </Tag>
+      <Tag isActive={activeTag === "clinic"} name="clinic"
+           setActive={handleActiveTag}>Приём в клинике
+      </Tag>
+    </div>
+    <div class="button link-font-1">
+      <Button>
+        <Magnifier size="sm" type="secondary"/>
+        Показать на карте
+      </Button>
+    </div>
+  </section>
+  <section class="doctor-card">
+    <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+  </section>
 </main>
 
 <style lang="scss">
