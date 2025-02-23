@@ -1,9 +1,9 @@
 <script lang="ts">
     import Preview from "$ui-kit/Preview/Preview.svelte";
-    import DoctorListPreview from "../../_parts/assets/doctor-list-preview.png?enhanced&format=webp"
+    import DoctorListPreview from "./_assets/img/doctor-list-preview.png?enhanced&format=webp"
     import Button from "$ui-kit/Button/Button.svelte";
     import Magnifier from "$ui-kit/icons/Magnifier.svelte";
-    import DoctorImage from "./_parts/assets/img/doctor.png?enhanced&format=webp"
+    import DoctorImage from "./_assets/img/doctor.png?enhanced&format=webp"
     import TagContainer from "./_parts/TagContainer.svelte";
     import FilterContainer from "./_parts/FilterContainer.svelte";
     import DoctorCard from "./_parts/DoctorCard.svelte";
@@ -15,7 +15,7 @@
 </svelte:head>
 
 <main class="page-container">
-    <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} isGradient>
+    <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} withGradient>
         <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
             центральной и периферической нервной системы — спинного и головного мозга,
             а также нервных волокон.</p>
