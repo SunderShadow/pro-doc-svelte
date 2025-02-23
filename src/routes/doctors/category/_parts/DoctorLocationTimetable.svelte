@@ -82,7 +82,7 @@
   <div class="appointment">
     <div class="appointment-stat">Записалось 22 человека</div>
     <Button>Записаться на приём</Button>
-    <p>Клиника перезвонит в течение <span>10 минут</span></p>
+    <p class="body-text-3">Клиника перезвонит в течение <span class="body-text-3">10 минут</span></p>
   </div>
 </div>
 

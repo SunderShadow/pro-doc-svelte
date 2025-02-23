@@ -8,6 +8,7 @@
       type?: "default" | "icon",
       _class?: string,
       _type?: "button" | "submit" | "reset"
+      onclick?: (event: MouseEvent) => void,
   }
 
   const {
@@ -16,11 +17,14 @@
       fullWidth = false,
       type = "default",
       _class = '',
-      _type = 'button'
+      _type = 'button',
+      onclick
   }: Props = $props()
 </script>
 
-<button class:outline class:fullWidth type={_type} class={_class} class:icon={type === 'icon'}>
+<button class:outline class:fullWidth type={_type}
+        class={_class} class:icon={type === 'icon'}
+        {onclick}>
   {@render children?.()}
 </button>
 

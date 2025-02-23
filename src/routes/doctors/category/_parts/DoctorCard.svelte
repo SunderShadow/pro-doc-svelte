@@ -107,8 +107,6 @@
       flex-direction: column;
       gap: 32px;
 
-
-
       .doctor-info {
         display: flex;
         gap: 16px;
