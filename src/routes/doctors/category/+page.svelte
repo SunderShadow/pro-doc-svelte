@@ -6,8 +6,8 @@
     import Magnifier from "$ui-kit/icons/Magnifier.svelte";
     import DoctorCard from "./_parts/DoctorCard.svelte";
 
-    import DoctorListPreview from "../../_parts/assets/doctor-list-preview.png?enhanced&format=webp"
-    import DoctorImage       from "./_parts/assets/img/doctor.png?enhanced&format=webp"
+    import DoctorListPreview from "./_assets/img/doctor-list-preview.png?enhanced&format=webp"
+    import DoctorImage       from "./_assets/img/doctor.png?enhanced&format=webp"
 
     type filterOption = "popularity" | "rating" | "reviews" | "price" | "experience";
     type filterTag = "today" | "next" | "weekends" | "face-to-face" | "online" | "registration" | "rating" | "clinic"
@@ -25,12 +25,12 @@
 </script>
 
 <svelte:head>
-    <link rel="preload" as="image" href={DoctorListPreview.img.src} />
-    <link rel="preload" as="image" href={DoctorImage.img.src} />
+  <link rel="preload" as="image" href={DoctorListPreview.img.src}/>
+  <link rel="preload" as="image" href={DoctorImage.img.src} />
 </svelte:head>
 
 <main class="page-container">
-  <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} isGradient>
+  <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} withGradient>
     <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
       центральной и периферической нервной системы — спинного и головного мозга,
       а также нервных волокон.</p>
