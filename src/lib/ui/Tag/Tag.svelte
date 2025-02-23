@@ -3,21 +3,18 @@
 
     type Props = {
       children: Snippet,
-      name: string,
       isActive?: boolean,
-      setActive: Function
+      onclick: () => void,
     }
 
     const {
       children,
-      name,
       isActive,
-      setActive,
+      onclick,
     }: Props = $props()
 </script>
 
-<div class="tag" class:active={isActive}
-     onclick={() => {setActive(name)}}>
+<div class="tag" class:active={isActive} {onclick}>
   {@render children?.()}
 </div>
 
