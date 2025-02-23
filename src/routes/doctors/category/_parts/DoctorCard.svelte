@@ -69,7 +69,7 @@
           <div class="price-card">
             <Clinic size="md" type="primary"/>
             <span class="title-2">В клинике</span>
-            <span class="price-card_price">1 500 ₽</span>
+            <b class="price-card_price">1 500 ₽</b>
           </div>
           <div class="price-card">
             <Online size="md" type="primary"/>
