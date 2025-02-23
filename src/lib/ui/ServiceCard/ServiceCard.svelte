@@ -26,14 +26,14 @@
     <p class="card-body body-text-2">
       {@render children?.()}
     </p>
+    <a {href}></a>
   </div>
 
   <div class="card-link_icon">
     <ArrowTopRight type="primal" size="sm" />
   </div>
 
-  <a {href} class="card-image_wrapper" style:--img={`url(${image})`}></a>
-
+  <div class="card-image_wrapper" style:--img={`url(${image})`}></div>
 </div>
 
 <style lang="scss">
@@ -77,6 +77,7 @@
     a {
       display: block;
     }
+
     a::before {
       content: "";
       position: absolute;
@@ -85,6 +86,7 @@
       bottom: 0;
       right: 0;
     }
+
     &-body,
     &-title {
       transition-property: color;
@@ -126,9 +128,7 @@
 
       transition-property: background;
       transition-duration: 300ms;
-    }
 
-    &:not(.double) &-content {
       z-index: 3;
     }
 

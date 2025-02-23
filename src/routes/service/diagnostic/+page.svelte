@@ -71,6 +71,7 @@
   </div>
 </section>
 
+
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";

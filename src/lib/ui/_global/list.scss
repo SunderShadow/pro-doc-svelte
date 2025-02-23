@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "$ui-kit/env";
+
+ul {
+  li::marker {
+    color: map.get(env.$color, primary);
+  }
+
+  li {
+    margin-left: 16px;
+    font-size: 1.25em;
+  }
+
+  li + li {
+    margin-top: 8px;
+  }
+}

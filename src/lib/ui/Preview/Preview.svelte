@@ -8,6 +8,7 @@
         imageMobile: string,
         withGradient: true,
         height: number,
+        contentWidth: number
     }
 
     let {
@@ -15,12 +16,18 @@
         title,
         image,
         imageMobile,
-        withGradient
+        withGradient,
+        contentWidth = 50
     }: Props = $props()
 
 </script>
 
-<div class="preview" class:with_gradient={withGradient} style:--img={`url(${image})`} style:--img-mobile={`url(${imageMobile})`}>
+<div class="preview"
+     class:with_gradient={withGradient}
+     style:--img={`url(${image})`}
+     style:--img-mobile={`url(${imageMobile})`}
+     style:--gradient-cover-size={contentWidth + '%'}
+>
     <div class="preview-content">
         <h1>{title}</h1>
         {@render children?.()}
@@ -39,10 +46,9 @@
 
     width: 100%;
 
-
     background-image: var(--img);
 
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: right;
 

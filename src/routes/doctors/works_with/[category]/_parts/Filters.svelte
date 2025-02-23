@@ -133,3 +133,9 @@
     <Button fullWidth outline>Сбросить</Button>
   </div>
 </FilterForm>
+
+<style>
+  .submit {
+      margin-top: 32px;
+  }
+</style>
