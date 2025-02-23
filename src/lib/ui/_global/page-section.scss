@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use '$ui-kit/env';
+
+.page-section {
+  padding: map.get(env.$page-section-padding, desktop) 0;
+
+  @each $screen, $size in env.$screen-size {
+    @media (max-width: $size) {
+      padding: map.get(env.$page-section-padding, $screen) 0;
+    }
+  }
+}

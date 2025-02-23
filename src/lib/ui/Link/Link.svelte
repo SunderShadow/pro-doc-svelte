@@ -4,20 +4,24 @@ import type {Snippet} from "svelte"
 
 type Props = {
     children: Snippet,
+    stretched?: boolean,
+    primary?: boolean,
     href: string
 }
 
 const {
     children,
+    primary = false,
+    stretched = false,
     href
 }: Props = $props()
 
 </script>
 
-<a {href} class="article-link">
+<a {href} class="article-link" class:primary class:stretched>
   {@render children?.()}
   <div class="article-link__icon">
-    <ArrowUpRight />
+    <ArrowUpRight size="sm"/>
   </div>
 </a>
 
@@ -27,7 +31,7 @@ const {
 
   .article-link {
     -webkit-tap-highlight-color: transparent;
-    --color: #{map.get(env.$color, primary)};
+    --color: #000;
 
     width: fit-content;
 
@@ -42,8 +46,22 @@ const {
     transition-duration: 300ms;
 
     &__icon {
+      flex-shrink: 0;
       transition-property: transform;
       transition-duration: 300ms;
+    }
+
+    &.stretched::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    &.primary {
+      --color: #{map.get(env.$color, primary)};
     }
 
     &[disabled],
@@ -58,6 +76,9 @@ const {
         --color: #{map.get(env.$color, primary-active)};
       }
 
+      &:hover {
+        color: map.get(env.$color, primary);
+      }
       &:hover &__icon {
         transform: rotate(45deg);
       }
@@ -65,15 +86,15 @@ const {
   }
 
   :global {
-    .article-link .svg-icon-container {
+    .article-link.primary .svg-icon-container {
       --color: #{map.get(env.$color, primary)};
     }
 
-    .article-link:active .svg-icon-container {
+    .article-link.primary:active .svg-icon-container {
       --color: #{map.get(env.$color, primary-active)};
     }
 
-    .article-link.active .svg-icon-container {
+    .article-link.primary.active .svg-icon-container {
       --color: #{map.get(env.$color, primary-active)};
     }
   }

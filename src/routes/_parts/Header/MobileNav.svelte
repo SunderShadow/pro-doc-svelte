@@ -1,14 +1,18 @@
 <script>
-import Vk from "$ui-kit/icons/Vk.svelte"
-import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
-import Account from "$ui-kit/icons/Account.svelte"
-import Telegram from "$ui-kit/icons/Telegram.svelte"
-import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
+  import {page} from "$app/state"
+
+  import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
+  import Account    from "$ui-kit/icons/Account.svelte"
+  import Telegram   from "$ui-kit/icons/Telegram.svelte"
+  import Vk         from "$ui-kit/icons/Vk.svelte"
+
+  import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
 
 let {
     visible = $bindable(false),
     toggleMobileMenuVisible = $bindable(),
     headerHeight,
+    routes
 } = $props()
 
 let mobileNav = $state()
@@ -26,7 +30,7 @@ toggleMobileMenuVisible = (e) => {
 </script>
 
 <svelte:window onclick="{visible ? toggleMobileMenuVisible : () => {}}"></svelte:window>
-<div onclick={(e) => {e.stopPropagation()}} class="mobile-nav" class:visible style:--top={headerHeight + 'px'} bind:this={mobileNav}>
+<div class="mobile-nav" class:visible style:--top={headerHeight + 'px'} bind:this={mobileNav}>
   <div class="mobile-nav__layer_1">
     <div class="city">
       <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
@@ -45,14 +49,9 @@ toggleMobileMenuVisible = (e) => {
   </div>
 
   <nav>
-    <a href="/">Врачи <ArrowRight /></a>
-    <a href="/">Клиники <ArrowRight /></a>
-    <a href="/">Диагностика <ArrowRight /></a>
-    <a href="/">Онлайн-консультации <ArrowRight /></a>
-    <a href="/">Библиотека <ArrowRight /></a>
-    <a href="/">Акции <ArrowRight /></a>
-    <a href="/">О нас <ArrowRight /></a>
-    <a href="/">Контакты <ArrowRight /></a>
+    {#each routes as {title, href}}
+      <a class:active={href === page.url.pathname} {href}>{title} <ArrowRight /></a>
+    {/each}
 
     <hr>
     <a href="/">Клиникам <ArrowRight /></a>

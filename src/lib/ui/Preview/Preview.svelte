@@ -3,21 +3,23 @@
 
     type Props = {
         children: Snippet,
-        title: string;
-        image: string;
-        isGradient: boolean;
+        title: string,
+        image: string,
+        imageMobile: string,
+        height: number,
     }
 
     let {
         children,
         title,
         image,
-        isGradient,
+        imageMobile,
+        height,
     }: Props = $props()
 
 </script>
 
-<div class="preview" style:--img={`url(${image})`} class:gradient={isGradient}>
+<div class="preview" style:--img={`url(${image})`} style:--img-mobile={`url(${imageMobile})`} style:--height={height}>
     <div class="preview-content">
         <h1>{title}</h1>
         {@render children?.()}
@@ -28,93 +30,64 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-  $mobile-adaptive: 600px;
+  $mobile-breakpoint: 500px;
 
   .preview {
-    display: flex;
-    align-items: center;
-
-    background-image: var(--img);
-    background-size: cover;
-    background-repeat: no-repeat;
-
+    --gradient-cover-size: 50%;
+    position: relative;
 
     width: 100%;
-    height: 610px;
 
-    padding: 13rem 8.5rem;
+    background-image:
+        linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)),
+        var(--img);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);;
     border-radius: 12px;
 
-    &.gradient {
-      background-image: linear-gradient(to right, map.get(env.$bg-color, primary) 45%, transparent 60%), var(--img);
-      background-position: right;
-      background-size: contain;
-
-      @media (max-width: map.get(env.$screen-size, netbook)) {
-        background-image: linear-gradient(to right, map.get(env.$bg-color, primary) 45%, transparent 65%), var(--img);
-      }
+    @media (max-width: map.get(env.$screen-size, tablet)) and (min-width: $mobile-breakpoint) {
+      height: 310px;
     }
 
-    .preview-content {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-
-      width: 650px;
-
-      > h1 {
-        line-height: 70.4px;
-      }
+    @media (min-width: $mobile-breakpoint) {
+      aspect-ratio: 1600 / 610;
     }
-    @media (max-width: map.get(env.$screen-size, netbook)) {
-      height: 410px;
-      padding: 4.875rem;
 
-      .preview-content {
-        width: 450px;
-
-        > h1 {
-          font-size: 3rem;
-
-          line-height: 52.8px;
-        }
-      }
+    @media (max-width: $mobile-breakpoint) {
+      background-image: var(--img-mobile);
+      background-position: top;
+      background-size: 100% 210px;
     }
+  }
+
+  .preview-content {
+    --left-offset: 8%;
+
+    position: absolute;
+    top: 50%;
+    left: var(--left-offset);
+    transform: translateY(-50%);
+
+    width: calc(var(--gradient-cover-size) - var(--left-offset));
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
-      height: 310px;
-      padding: 4rem;
-
-      .preview-content {
-        width: 320px;
-
-        gap: 16px;
-
-        > h1 {
-          font-size: 1.5rem;
-
-          line-height: 26.4px;
-        }
-      }
-
+      gap: 16px;
     }
 
-    @media (max-width: $mobile-adaptive) {
-      height: 450px;
-      padding: 1.5rem 1rem;
+    @media (max-width: $mobile-breakpoint) {
+      margin-top: 210px;
 
-      background-image: linear-gradient(to top, map.get(env.$bg-color, primary) 60%, transparent 80%), var(--img);
-      background-position: top;
-
-      align-items: end;
-
-      .preview-content {
-        width: 100%;
-
-        gap: 16px;
-      }
+      width: 100%;
+      padding: 24px 16px;
+      position: static;
+      transform: none;
     }
   }
 </style>

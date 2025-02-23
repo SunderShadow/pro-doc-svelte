@@ -4,13 +4,23 @@
 h1 {
   font-size: 4rem;
   font-weight: 600;
+
+  line-height: 1.05em;
+
+  @media (max-width: map.get(env.$screen-size, netbook)) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: map.get(env.$screen-size, tablet)) {
+    font-size: 1.5rem;
+  }
 }
 
 h2 {
   font-size: 3rem;
   font-weight: 600;
 
-  @media (max-width: map.get(env.$screen-size, netbooke)) {
+  @media (max-width: map.get(env.$screen-size, netbook)) {
     font-size: 2rem;
   }
 
