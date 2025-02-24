@@ -60,7 +60,7 @@
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
-    <Card name="Рентген" image={Pediatrician.img.src}>
+    <Card href="/service/diagnostic/x-ray" name="Рентген" image={Pediatrician.img.src}>
       На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
     </Card>
     <div id="medicine_book_card_wrapper" class="double">
