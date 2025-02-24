@@ -2,13 +2,13 @@
     import type {Snippet} from "svelte";
 
     type Props = {
-        children: Snippet,
+        children?: Snippet,
         title: string,
         image: string,
         imageMobile: string,
         withGradient: true,
-        height: number,
-        contentWidth: number
+        contentWidth?: number,
+        gradientWidth?: number|null
     }
 
     let {
@@ -17,7 +17,8 @@
         image,
         imageMobile,
         withGradient,
-        contentWidth = 50
+        contentWidth = 50,
+        gradientWidth = null
     }: Props = $props()
 
 </script>
@@ -26,7 +27,8 @@
      class:with_gradient={withGradient}
      style:--img={`url(${image})`}
      style:--img-mobile={`url(${imageMobile})`}
-     style:--gradient-cover-size={contentWidth + '%'}
+     style:--content-width={contentWidth + '%'}
+     style:--gradient-cover-size={(gradientWidth ?? contentWidth) + '%'}
 >
     <div class="preview-content">
         <h1>{title}</h1>
@@ -52,11 +54,14 @@
     background-repeat: no-repeat;
     background-position: right;
 
-    border: 1px solid rgba(map.get(env.$color, primary), .1);;
+    border: 1px solid #ededfa;
     border-radius: 12px;
 
     &.with_gradient {
       background-image: linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)), var(--img);
+      @media (max-width: $mobile-breakpoint) {
+        background-image: var(--img-mobile);
+      }
     }
 
     @media (max-width: map.get(env.$screen-size, tablet)) and (min-width: $mobile-breakpoint) {
@@ -70,7 +75,7 @@
     @media (max-width: $mobile-breakpoint) {
       background-image: var(--img-mobile);
       background-position: top;
-      background-size: 100% 210px;
+      background-size: cover;
     }
   }
 
@@ -82,7 +87,7 @@
     left: var(--left-offset);
     transform: translateY(-50%);
 
-    width: calc(var(--gradient-cover-size) - var(--left-offset));
+    width: calc(var(--content-width) - var(--left-offset));
 
     display: flex;
     flex-direction: column;
@@ -94,6 +99,9 @@
 
     @media (max-width: $mobile-breakpoint) {
       margin-top: 210px;
+
+      background: #fff;
+      box-shadow: 0 -20px 15px 5px #fff;
 
       width: 100%;
       padding: 24px 16px;

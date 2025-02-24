@@ -8,15 +8,27 @@
   const {
       specialities
   } = $props()
+
+  const COLUMNS = 3
+
+  let specialitiesInColumnCount = Math.ceil(specialities.length / COLUMNS)
+
+  let slicedSpecialities = []
+
+  for (let i = 0; i < COLUMNS; i++) {
+      slicedSpecialities.push(specialities.slice(i + (specialitiesInColumnCount * i), (i + 1) * specialitiesInColumnCount))
+  }
 </script>
 
 <section class="page-container page-section">
   <h2 class="speciality_list-title">Все специальности взрослых врачей</h2>
 
-  <div class="speciality_list" style:--rows-count={Math.ceil(specialities.length / 3)}>
-    {#each specialities as {title, key}}
+  <div class="speciality_list">
+    {#each slicedSpecialities as column}
       <div>
-        <a href={'/' + key}>{title}</a>
+        {#each column as {title, key}}
+          <a href={'/' + key}>{title}</a>
+        {/each}
       </div>
     {/each}
   </div>
@@ -30,20 +42,26 @@
     margin-bottom: 64px;
   }
 
+  a {
+    display: block;
+  }
+
+
+  a + a {
+    margin-top: 8px;
+  }
+
   .speciality_list {
     display: grid;
     gap: 8px 32px;
 
     font-weight: 600;
 
-    grid-auto-flow: column;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: repeat(var(--rows-count), 1fr);
 
     @media (max-width: map.get(env.$screen-size, mobile)) {
       grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      grid-auto-flow: row;
+
     }
   }
 </style>

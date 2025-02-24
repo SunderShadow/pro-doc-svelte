@@ -64,7 +64,7 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Запись к врачам Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={60}>
+  <Preview title="Запись к врачам Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={90}>
     <ul>
       <li>157429 врачей в Москве, 108645 отзывов пациентов</li>
       <li>Найдите хорошего врача и запишитесь на приём</li>
@@ -102,7 +102,7 @@
   </div>
 </section>
 
-<SpecialitiesList specialities={specialities}/>
+<SpecialitiesList {specialities}/>
 
 <style lang="scss">
   @use "sass:map";

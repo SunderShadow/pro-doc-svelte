@@ -26,7 +26,6 @@
     <p class="card-body body-text-2">
       {@render children?.()}
     </p>
-    <a {href}></a>
   </div>
 
   <div class="card-link_icon">
@@ -34,6 +33,7 @@
   </div>
 
   <div class="card-image_wrapper" style:--img={`url(${image})`}></div>
+  <a {href}></a>
 </div>
 
 <style lang="scss">
@@ -82,8 +82,9 @@
       position: absolute;
       top: 0;
       left: 0;
-      bottom: 0;
       right: 0;
+      bottom: 0;
+      z-index: 5;
     }
 
     &-body,
@@ -127,9 +128,12 @@
 
       transition-property: background;
       transition-duration: 300ms;
+    }
 
+    &:not(.double) &-content {
       z-index: 3;
     }
+
 
     &-image_wrapper {
       position: absolute;

@@ -51,22 +51,22 @@
     </div>
     <div>
       <Card href="/service/diagnostic/usr" name="УЗИ" image={Services.img.src} >
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
     <div>
       <Card href="/service/diagnostic/mri" name="МРТ" image={Diagnostics.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
     <div id="online_consulting_card_wrapper">
       <Card href="/service/diagnostic/tomography" name="КТ" image={Consultation.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
     <div>
       <Card href="/service/diagnostic/x-ray" name="Рентген" image={Pediatrician.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
     <div id="medicine_book_card_wrapper" class="double">

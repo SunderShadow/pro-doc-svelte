@@ -8,14 +8,6 @@
     import Card         from "$ui-kit/ServiceCard/ServiceCard.svelte"
 </script>
 
-<svelte:head>
-  <link rel="preload" as="image" href={Doctors.img.src}>
-  <link rel="preload" as="image" href={Services.img.src}>
-  <link rel="preload" as="image" href={Diagnostics.img.src}>
-  <link rel="preload" as="image" href={Consultation.img.src}>
-  <link rel="preload" as="image" href={Pediatrician.img.src}>
-  <link rel="preload" as="image" href={Directory.img.src}>
-</svelte:head>
 
 <section class="page-container">
   <h2>Услуги и направления</h2>
@@ -27,22 +19,22 @@
     </div>
     <div>
       <Card name="Услуги" image={Services.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
     <div>
       <Card name="Диагностика" image={Diagnostics.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
     <div id="online_consulting_card_wrapper">
       <Card name="Онлайн-консультация" image={Consultation.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача
       </Card>
     </div>
     <div>
       <Card name="Детский врач" image={Pediatrician.img.src}>
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+        На нашем портале вы можете выбрать врача из лучших клиник
       </Card>
     </div>
     <div id="medicine_book_card_wrapper" class="double">

@@ -43,7 +43,7 @@
   </div>
 
   <div>
-    <div class="title-1">Клиника</div>
+    <div class="title-3">Клиника</div>
     <div><Checkbox label="Частная"/></div>
     <div><Checkbox label="Государственная"/></div>
   </div>

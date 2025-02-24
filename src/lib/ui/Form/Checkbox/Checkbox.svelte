@@ -40,6 +40,7 @@
 
   .checkbox {
     display: flex;
+    align-items: center;
     gap: 8px;
   }
 
@@ -48,6 +49,8 @@
   }
 
   label {
+    position: relative;
+    top: 2px;
     opacity: .5;
     user-select: none;
 

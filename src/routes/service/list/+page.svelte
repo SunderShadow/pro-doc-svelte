@@ -1,14 +1,10 @@
 <script lang="ts">
-  import {preloadData, replaceState} from "$app/navigation"
-
-  import {page} from "$app/state"
-
   import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
   import Preview     from "$ui-kit/Preview/Preview.svelte"
   import FiltersIcon from "$ui-kit/icons/Filters.svelte"
 
-  import PreviewImg         from "./_assets/img/preview.jpeg?enhanced&format=webp"
-  import PreviewImgMobile   from "./_assets/img/preview-mobile.jpg?enhanced&format=webp"
+  import PreviewImg         from "./_assets/img/preview.png?enhanced&format=webp"
+  import PreviewImgMobile   from "./_assets/img/preview-mobile.png?enhanced&format=webp"
   import Filters            from "./_parts/Filters.svelte"
 
   import Card from "$lib/components/ServiceSearchCard.svelte"
@@ -40,12 +36,19 @@
   <link rel="preload" as="image" href={PreviewImgMobile.img.src} />
 </svelte:head>
 
-<section class="page-container">
+<section class="page-container service_list_preview">
   <div class="breadcrumbs">
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Медицинские услуги в клиниках Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} withGradient/>
+  <Preview
+      title="Медицинские услуги в клиниках Москвы"
+      image={PreviewImg.img.src}
+      imageMobile={PreviewImgMobile.img.src}
+      contentWidth={55}
+      gradientWidth={30}
+      withGradient
+  />
 </section>
 
 <section class="page-container page-section">
@@ -97,6 +100,19 @@
     }
   }
 
+  :global {
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      .service_list_preview .preview {
+        background-size: 100% 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .service_list_preview .preview {
+        background-size: cover;
+      }
+    }
+  }
   .breadcrumbs {
     margin-bottom: 40px;
 
@@ -128,6 +144,7 @@
 
   .medical-title {
     margin-top: 64px;
+
     @media (max-width: map.get(env.$screen-size, tablet)) {
       margin-top: 32px;
     }

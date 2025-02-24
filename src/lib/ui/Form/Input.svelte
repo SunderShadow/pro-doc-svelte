@@ -5,11 +5,13 @@
   type Props = any & {
       value?: any,
       active: boolean,
+      withErase: boolean,
       onErase: Function,
   }
   let {
       active = false,
       value = $bindable(''),
+      withErase = true,
       onErase = () => {},
       ...props
   }: Props = $props()
@@ -21,9 +23,9 @@
 </script>
 
 <div class="form-control-wrapper">
-  <input class="form-control" class:active={active} type="text" {...props} bind:value>
+  <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value>
 
-  {#if value.length}
+  {#if withErase && value.length}
     <div class="erase" transition:scale onclick={erase}>
       <Plus size="sm" type="primary"/>
     </div>
@@ -63,7 +65,9 @@
     line-height: 25.6px;
     outline: none;
 
-    margin-right: calc(var(--erase-icon-right) + 16px);
+    &.withErase {
+      margin-right: calc(var(--erase-icon-right) + 16px);
+    }
 
     font-family: "Helvetica", Gilroy, sans-serif;
     font-size: 1rem;
