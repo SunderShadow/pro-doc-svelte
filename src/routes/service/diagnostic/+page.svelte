@@ -49,20 +49,26 @@
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
-    <Card href="/service/diagnostic/usr" name="УЗИ" image={Services.img.src} >
-      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-    </Card>
-    <Card href="/service/diagnostic/mri" name="МРТ" image={Diagnostics.img.src}>
-      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-    </Card>
+    <div>
+      <Card href="/service/diagnostic/usr" name="УЗИ" image={Services.img.src} >
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
+    <div>
+      <Card href="/service/diagnostic/mri" name="МРТ" image={Diagnostics.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
     <div id="online_consulting_card_wrapper">
       <Card href="/service/diagnostic/tomography" name="КТ" image={Consultation.img.src}>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
-    <Card href="/service/diagnostic/x-ray" name="Рентген" image={Pediatrician.img.src}>
-      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-    </Card>
+    <div>
+      <Card href="/service/diagnostic/x-ray" name="Рентген" image={Pediatrician.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
     <div id="medicine_book_card_wrapper" class="double">
       <Card href="/service/diagnostic/functional" name="Функциональная диагностика" image={Directory.img.src} double>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
@@ -98,6 +104,12 @@
     gap: 32px;
 
     margin-top: 64px;
+
+    @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
+      > div:not(.double) {
+        aspect-ratio: 1 / 1;
+      }
+    }
 
     > .double {
       grid-column: span 2;

@@ -25,20 +25,26 @@
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
-    <Card name="Услуги" image={Services.img.src}>
-      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-    </Card>
-    <Card name="Диагностика" image={Diagnostics.img.src}>
-      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-    </Card>
+    <div>
+      <Card name="Услуги" image={Services.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
+    <div>
+      <Card name="Диагностика" image={Diagnostics.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
     <div id="online_consulting_card_wrapper">
       <Card name="Онлайн-консультация" image={Consultation.img.src}>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
-    <Card name="Детский врач" image={Pediatrician.img.src}>
-      На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-    </Card>
+    <div>
+      <Card name="Детский врач" image={Pediatrician.img.src}>
+        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
+      </Card>
+    </div>
     <div id="medicine_book_card_wrapper" class="double">
       <Card name="Медицинский справочник" image={Directory.img.src} double>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
@@ -61,11 +67,19 @@
     }
   }
 
-  .cards > .double {
-    grid-column: span 2;
+  .cards {
+    @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
+      > div:not(.double) {
+        aspect-ratio: 1 / 1;
+      }
+    }
 
-    @media (max-width: map.get(env.$screen-size, tablet)) {
-      grid-column: span 1;
+    > .double {
+      grid-column: span 2;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        grid-column: span 1;
+      }
     }
   }
 

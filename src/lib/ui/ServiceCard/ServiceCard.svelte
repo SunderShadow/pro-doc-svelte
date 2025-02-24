@@ -61,8 +61,7 @@
     justify-content: space-between;
 
     max-width: 784px;
-    height: 400px;
-
+    height: 100%;
     padding: var(--border-offset);
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);
