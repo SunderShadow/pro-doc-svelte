@@ -52,7 +52,7 @@
     <Card href="/service/diagnostic/usr" name="УЗИ" image={Services.img.src} >
       На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
     </Card>
-    <Card name="МРТ" image={Diagnostics.img.src}>
+    <Card href="/service/diagnostic/mri" name="МРТ" image={Diagnostics.img.src}>
       На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
     </Card>
     <div id="online_consulting_card_wrapper">

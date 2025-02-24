@@ -4,11 +4,11 @@
 ul {
   li::marker {
     color: map.get(env.$color, primary);
+    font-size: 1.25em;
   }
 
   li {
     margin-left: 16px;
-    font-size: 1.25em;
   }
 
   li + li {
