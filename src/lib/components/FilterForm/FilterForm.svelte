@@ -1,12 +1,18 @@
 <script lang="ts">
-  import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
+  // import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
 
   import {fly} from "svelte/transition"
   import {tick} from "svelte"
 
   import PlusIcon from "$ui-kit/icons/Plus.svelte"
 
-  let isOpen = $state(window.innerWidth > 768)
+  let isOpen = $state(true)
+
+
+  if (typeof window !== 'undefined') {
+      isOpen = window.innerWidth > 768
+  }
+
   let container = $state()
 
   let {
@@ -20,12 +26,12 @@
       isOpen = true
 
       tick().then(() => {
-          PreventScrolling(container)
+          // PreventScrolling(container)
       })
   }
 
   close = () => {
-      ReEnableScrolling()
+      // ReEnableScrolling()
       isOpen = false
   }
 
@@ -47,6 +53,14 @@
   @use "$ui-kit/env";
 
   :global {
+    .filters_container {
+      font-size: 14px;
+    }
+
+    .filters_container label {
+      line-height: 1em;
+    }
+
     .filters_container input {
       font-size: 14px;
     }

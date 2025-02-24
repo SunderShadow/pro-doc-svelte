@@ -2,14 +2,19 @@
     import type {Snippet} from "svelte"
 
     type Props = {
-        children: Snippet,
-        active?: boolean
+      children: Snippet,
+      isActive?: boolean,
+      onclick: () => void,
     }
 
-    const {children, active}: Props = $props()
+    const {
+      children,
+      isActive,
+      onclick,
+    }: Props = $props()
 </script>
 
-<div class="tag" class:active>
+<div class="tag" class:active={isActive} {onclick}>
   {@render children?.()}
 </div>
 
@@ -34,12 +39,15 @@
     transition: background-color 200ms;
     user-select: none;
 
-    @media (min-width: (map.get(env.$color, tablet) + 1)) {
-      &:active,
-      &.active,
-      &:hover {
-        background-color: rgba(map.get(env.$color, primary), .1);
-      }
+    &:hover {
+      background-color: rgba(map.get(env.$color, primary), .1);
     }
+
+    &.active {
+      background-color: map.get(env.$color, primary);
+
+      color: map.get(env.$bg-color, primary);
+    }
+
   }
 </style>

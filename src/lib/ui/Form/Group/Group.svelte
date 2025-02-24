@@ -18,13 +18,13 @@
       height: 100%;
     }
 
-    @media (min-width: map.get(env.$screen-size, netbook)) {
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
       .input-group:hover {
         > *::after {
           --opacity: 1 !important;
         }
 
-        input {
+        .form-control-wrapper {
           --border-opacity: 1;
 
           box-shadow: 0 4px 6px rgba(map.get(env.$color, primary), .06);
@@ -36,7 +36,7 @@
           --opacity: 1 !important;
         }
 
-        input {
+        .form-control-wrapper {
           --border-opacity: 1;
 
           box-shadow: 0 4px 6px rgba(map.get(env.$color, primary), .06);
@@ -66,20 +66,20 @@
         flex-grow: 1;
       }
 
-      .input-group > *:not(:first-child) input {
+      .input-group > *:not(:first-child) .form-control-wrapper {
         border-radius: 0;
 
         border-left: none;
         border-right: none;
       }
 
-      .input-group > *:first-child input {
+      .input-group > *:first-child .form-control-wrapper {
         border-radius: .75em 0 0 .75em;
 
         border-right: none;
       }
 
-      .input-group > *:last-child input {
+      .input-group > *:last-child .form-control-wrapper {
         border-left: none;
       }
 

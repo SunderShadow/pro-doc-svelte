@@ -1,33 +1,39 @@
 <script lang="ts">
     import ArrowTopRight from "$ui-kit/icons/ArrowTopRight.svelte";
+    import type {Snippet} from "svelte";
 
     type Props = {
+        children: Snippet,
         name: string,
         image: string,
+        href: string,
         double?: boolean,
     }
 
     const {
+        children,
         name,
         image,
         double,
+        href,
     }: Props = $props()
 
 </script>
 
 <div class="card" class:double>
-    <div class="card-content">
-      <h2 class="card-title title-1">{name}</h2>
-      <p class="card-body body-text-2">
-        На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
-      </p>
-    </div>
+  <div class="card-content">
+    <h2 class="card-title title-1">{name}</h2>
+    <p class="card-body body-text-2">
+      {@render children?.()}
+    </p>
+  </div>
 
-    <div class="card-link_icon">
-      <ArrowTopRight type="primal" size="sm" />
-    </div>
+  <div class="card-link_icon">
+    <ArrowTopRight type="primal" size="sm" />
+  </div>
 
   <div class="card-image_wrapper" style:--img={`url(${image})`}></div>
+  <a {href}></a>
 </div>
 
 <style lang="scss">
@@ -55,16 +61,30 @@
     justify-content: space-between;
 
     max-width: 784px;
-    height: 400px;
-
+    height: 100%;
     padding: var(--border-offset);
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
     overflow: hidden;
+    cursor: pointer;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       --border-offset: 16px;
+    }
+
+    a {
+      display: block;
+    }
+
+    a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
     }
 
     &-body,
@@ -113,6 +133,7 @@
     &:not(.double) &-content {
       z-index: 3;
     }
+
 
     &-image_wrapper {
       position: absolute;

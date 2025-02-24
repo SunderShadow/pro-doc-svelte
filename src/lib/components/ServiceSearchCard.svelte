@@ -20,12 +20,30 @@ const {
 </div>
 
 <style lang="scss">
+  @use "sass:map";
+  @use "$ui-kit/env";
+
   .speciality_card {
     position: relative;
   }
 
+  :global {
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      .speciality_card a {
+        font-size: 14px
+      }
+    }
+  }
+
+  @media (max-width: map.get(env.$screen-size, netbook)) {
+    img {
+      object-fit: cover;
+      aspect-ratio: 208 / 180;
+    }
+  }
+
   img {
-    max-width: 100%;
+    width: 100%;
 
     border-radius: 12px;
     margin-bottom: 14px;

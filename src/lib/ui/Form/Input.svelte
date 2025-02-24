@@ -5,11 +5,13 @@
   type Props = any & {
       value?: any,
       active: boolean,
+      withErase: boolean,
       onErase: Function,
   }
   let {
       active = false,
       value = $bindable(''),
+      withErase = true,
       onErase = () => {},
       ...props
   }: Props = $props()
@@ -21,9 +23,9 @@
 </script>
 
 <div class="form-control-wrapper">
-  <input class="form-control" class:active={active} type="text" {...props} bind:value>
+  <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value>
 
-  {#if value.length}
+  {#if withErase && value.length}
     <div class="erase" transition:scale onclick={erase}>
       <Plus size="sm" type="primary"/>
     </div>
@@ -34,28 +36,40 @@
   @use "sass:map";
   @use "$ui-kit/env";
 
-  input {
+  .form-control-wrapper {
     --border-opacity: .1;
-    --erase-icon-offset: 24px + var(--erase-icon-right);
-
-    width: 100%;
+    --wrapper-icon-padding: 0px;
+    --erase-icon-right: calc(20px + var(--wrapper-icon-padding));
 
     border: 1px solid rgba(map.get(env.$color, primary), var(--border-opacity));
-
-    line-height: 25.6px;
-    outline: none;
-    padding: .65em 1em;
     border-radius: .75em;
 
-    font-family: "Helvetica", Gilroy, sans-serif;
-    font-size: 1rem;
+    display: flex;
+    position: relative;
+    padding: .65em 1em;
 
     transition-property: border, box-shadow;
     transition-duration: 300ms;
   }
 
-  input:not(:placeholder-shown) {
-    padding-right: calc(var(--erase-icon-offset) + var(--wrapper-icon-padding));
+  input {
+    --erase-icon-offset: calc(24px + var(--erase-icon-right));
+
+    width: 100%;
+
+    border: none;
+
+    background: none;
+
+    line-height: 25.6px;
+    outline: none;
+
+    &.withErase {
+      padding-right: calc(var(--erase-icon-right) + 16px);
+    }
+
+    font-family: "Helvetica", Gilroy, sans-serif;
+    font-size: 1rem;
   }
 
   .erase {
@@ -68,23 +82,15 @@
     cursor: pointer;
   }
 
-  .form-control-wrapper {
-    --wrapper-icon-padding: 0px;
-    --erase-icon-right: calc(20px + var(--wrapper-icon-padding));
-
-    display: flex;
-    position: relative;
-  }
-
 
   @media (min-width: map.get(env.$screen-size, tablet)) {
-    input:hover {
+    .form-control-wrapper:hover {
       --border-opacity: 1;
     }
   }
 
-  input.active,
-  input:focus {
+  .form-control-wrapper.active,
+  .form-control-wrapper:focus-within {
     --border-opacity: 1;
 
     box-shadow: 0 4px 6px rgba(map.get(env.$color, primary), .06);

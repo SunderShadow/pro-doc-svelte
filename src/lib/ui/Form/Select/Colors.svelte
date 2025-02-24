@@ -53,6 +53,7 @@
   function reset() {
       value = null
       selected = null
+      search = ''
   }
 </script>
 

@@ -34,7 +34,11 @@
           title: 'Клиники'
       },
       {
-          href: '/c',
+          href: '/service/list',
+          title: 'Услуги'
+      },
+      {
+          href: '/service/diagnostic',
           title: 'Диагностика'
       },
       {
@@ -123,7 +127,7 @@
 </header>
 
 {#if screenWidth <= 768}
-  <MobileNav bind:toggleMobileMenuVisible bind:visible={mobileNavVisible} {headerHeight}/>
+  <MobileNav bind:toggleMobileMenuVisible bind:visible={mobileNavVisible} {headerHeight} {routes}/>
 {/if}
 
 <style lang="scss">

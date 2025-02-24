@@ -16,7 +16,7 @@
 
 <div class="breadcrumbs">
   {#each list as {href, title}, i}
-    <a class:current={href === page.url.pathname} {href}>{title}</a>
+    <a class:current={href.length === 0 || href === page.url.pathname} {href}>{title}</a>
     {#if list.length > i + 1}
       <ArrowRight />
     {/if}
@@ -33,6 +33,7 @@
 
   .breadcrumbs {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 4px;
 

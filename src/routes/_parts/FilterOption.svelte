@@ -1,22 +1,19 @@
 <script lang="ts">
     type Props = {
         title: string;
-        name: string;
         isActive: boolean;
-        setActive: Function;
+        onclick: () => void;
     }
 
     const {
         title,
-        name,
         isActive,
-        setActive,
+        onclick,
     }: Props = $props()
 
 </script>
 
-<div class="filter-option body-text-3" class:active={isActive}
-onclick={() => {setActive(name)}}>
+<div class="filter-option body-text-3" class:active={isActive} {onclick}>
     {title}
 </div>
 
@@ -29,6 +26,7 @@ onclick={() => {setActive(name)}}>
 
     font-weight: 600;
     font-family: "Gilroy", sans-serif;
+    line-height: 22.4px;
 
     list-style-type: none;
     cursor: pointer;

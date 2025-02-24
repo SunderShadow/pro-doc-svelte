@@ -9,10 +9,11 @@
   import Preview     from "$ui-kit/Preview/Preview.svelte"
   import FiltersIcon from "$ui-kit/icons/Filters.svelte"
 
-  import DoctorListPreview       from "./_assets/img/doctor-list-preview.png?enhanced&format=webp"
-  import DoctorListPreviewMobile from "./_assets/img/doctor-list-preview_mobile.jpg?enhanced&format=webp"
-  import Filters                 from "./_parts/Filters.svelte"
-  import SpecialitiesList        from "./_parts/SpecialitiesList.svelte"
+  import Filters          from "./_parts/Filters.svelte"
+  import SpecialitiesList from "./_parts/SpecialitiesList.svelte"
+
+  import PreviewImg       from "./_assets/img/preview.png?enhanced&format=webp"
+  import PreviewImgMobile from "./_assets/img/preview-mobile.png?enhanced&format=webp"
 
   import Card from "$lib/components/ServiceSearchCard.svelte"
 
@@ -30,7 +31,7 @@
       },
       {
           title: 'Врачи',
-          href: '/doctors/list'
+          href: ''
       }
   ]
 
@@ -54,7 +55,8 @@
 </script>
 
 <svelte:head>
-  <link rel="preload" as="image" href={DoctorListPreview.img.src} />
+  <title>Врачи|{title}</title>
+  <link rel="preload" as="image" href={PreviewImg.img.src} />
 </svelte:head>
 
 <section class="page-container">
@@ -62,10 +64,12 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} imageMobile={DoctorListPreviewMobile.img.src} height={1000}>
-    <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
-      центральной и периферической нервной системы — спинного и головного мозга,
-      а также нервных волокон.</p>
+  <Preview title="Запись к врачам Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={90}>
+    <ul>
+      <li>157429 врачей в Москве, 108645 отзывов пациентов</li>
+      <li>Найдите хорошего врача и запишитесь на приём</li>
+      <li>Цена приёма от 1 до 34500 рублей (средняя 2700 рублей)</li>
+    </ul>
   </Preview>
 </section>
 
@@ -98,7 +102,7 @@
   </div>
 </section>
 
-<SpecialitiesList specialities={specialities}/>
+<SpecialitiesList {specialities}/>
 
 <style lang="scss">
   @use "sass:map";
@@ -114,6 +118,10 @@
 
   .breadcrumbs {
     margin-bottom: 40px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin: 16px 0;
+    }
   }
 
   .cards {
@@ -155,6 +163,11 @@
       padding-bottom: 4px;
 
       border-bottom: 1px solid transparent;
+
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        text-align: center;
+        width: 100%;
+      }
     }
 
     a:hover {
