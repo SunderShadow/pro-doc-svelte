@@ -48,7 +48,6 @@
     position: relative;
     padding: .65em 1em;
 
-
     transition-property: border, box-shadow;
     transition-duration: 300ms;
   }
@@ -66,7 +65,7 @@
     outline: none;
 
     &.withErase {
-      margin-right: calc(var(--erase-icon-right) + 16px);
+      padding-right: calc(var(--erase-icon-right) + 16px);
     }
 
     font-family: "Helvetica", Gilroy, sans-serif;
