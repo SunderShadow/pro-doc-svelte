@@ -56,7 +56,7 @@
       На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
     </Card>
     <div id="online_consulting_card_wrapper">
-      <Card name="КТ" image={Consultation.img.src}>
+      <Card href="/service/diagnostic/tomography" name="КТ" image={Consultation.img.src}>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
