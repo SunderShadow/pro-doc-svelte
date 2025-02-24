@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {Snippet} from "svelte";
 
-  type Props = {
+  type Props = any & {
       children: Snippet,
       fullWidth?: boolean,
       outline?: boolean,
@@ -16,11 +16,19 @@
       fullWidth = false,
       type = "default",
       _class = '',
-      _type = 'button'
+      _type = 'button',
+      ...props
   }: Props = $props()
 </script>
 
-<button class:outline class:fullWidth type={_type} class={_class} class:icon={type === 'icon'}>
+<button
+    class:outline
+    class:fullWidth
+    class:icon={type === 'icon'}
+    type={_type}
+    class={_class}
+    {...props}
+>
   {@render children?.()}
 </button>
 

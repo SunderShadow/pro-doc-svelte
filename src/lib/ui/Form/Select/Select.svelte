@@ -3,7 +3,6 @@
   import {onMount} from "svelte";
 
   type Item = {
-      color: string,
       title: string,
       value: any
   }
@@ -61,7 +60,6 @@
   <div class="dropdown">
     {#each filter(data) as item}
       <button class:selected={isSelected(item)} onclick={(e) => {e.preventDefault(); select(item)}}>
-        <span class="color" style={`background-color: ${item.color}`}></span>
         <span class="title">{item.title}</span>
       </button>
     {/each}
@@ -113,13 +111,4 @@
     font-weight: 600;
   }
 
-  .color {
-    --size: 8px;
-
-    display: block;
-    border-radius: 100%;
-
-    width: var(--size);
-    height: var(--size);
-  }
 </style>
