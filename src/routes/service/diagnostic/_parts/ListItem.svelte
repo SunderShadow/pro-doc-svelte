@@ -3,16 +3,23 @@
 
   type Props = {
       children: Snippet,
-      number: number
+      number?: number,
+      title?: string
   }
 
   let {
       children,
-      number
+      number,
+      title
   } = $props()
 </script>
 <div>
-  <div class="number">{number}</div>
+  {#if number}
+    <div class="number">{number}</div>
+  {/if}
+  {#if title}
+    <div class="title-1">{title}</div>
+  {/if}
   <div class="body-text-2">{@render children?.()}</div>
 </div>
 
@@ -21,10 +28,14 @@
   @use "$ui-kit/env";
 
   .number {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 
     color: map.get(env.$color, primary);
     font-weight: 600;
     font-size: 2em;
+  }
+
+  .body-text-2 {
+    margin-top: 16px;
   }
 </style>

@@ -64,7 +64,7 @@
       На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
     </Card>
     <div id="medicine_book_card_wrapper" class="double">
-      <Card name="Функциональная диагностика" image={Directory.img.src} double>
+      <Card href="/service/diagnostic/functional" name="Функциональная диагностика" image={Directory.img.src} double>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
