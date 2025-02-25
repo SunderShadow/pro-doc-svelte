@@ -1,4 +1,5 @@
 <script lang="ts">
+    import {setContext} from "svelte"
     import {page} from "$app/state"
 
     import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
@@ -12,7 +13,8 @@
     import FavoriteDoctorIcon from "$ui-kit/icons/FavoriteDoctor.svelte"
     import ArrowRightIcon from "$ui-kit/icons/ArrowRight.svelte"
 
-    let breadcrumbs = [
+    let pageTitle = $state('Аккаунт')
+    let breadcrumbs = $derived([
         {
             title: 'Главная',
             href: '/',
@@ -22,18 +24,20 @@
             href: '/account',
         },
         {
-            title: 'Акакунт',
+            title: pageTitle,
             href: '',
         }
-    ]
+    ])
 
     let {
         children
     } = $props()
+
+    setContext('setPageTitle', (title) => {pageTitle = title})
 </script>
 
 <svelte:head>
-  <title>Аккаунт</title>
+  <title>{pageTitle}</title>
   <link rel="preload" as="image" href={PreviewImg.img.src} />
 </svelte:head>
 

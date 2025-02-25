@@ -1,10 +1,11 @@
 <script>
+  import {getContext} from "svelte"
 
-import PhotoUpload from "./_parts/PhotoUpload.svelte";
-import Input from "$ui-kit/Form/Input.svelte";
-import Select from "$ui-kit/Form/Select/Select.svelte";
-import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte";
-import Button from "$ui-kit/Button/Button.svelte";
+import PhotoUpload from "./_parts/PhotoUpload.svelte"
+import Input from "$ui-kit/Form/Input.svelte"
+import Select from "$ui-kit/Form/Select/Select.svelte"
+import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
+import Button from "$ui-kit/Button/Button.svelte"
 
 let gender = [
     {
@@ -16,6 +17,10 @@ let gender = [
         value: 'woman'
     }
 ]
+
+let setPageTitle = getContext('setPageTitle')
+setPageTitle('Аккаунт')
+
 </script>
 
 <h3>Мои данные</h3>
