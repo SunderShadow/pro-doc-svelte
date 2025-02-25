@@ -10,12 +10,16 @@
     import Filters from "../works_with/[category]/_parts/Filters.svelte";
     import Accordion from "$ui-kit/Accordion/Accordion.svelte";
     import Pagination from "./_parts/Pagination.svelte";
+
+    let screenWidth = $state()
 </script>
 
 <svelte:head>
     <link rel="preload" as="image" href={DoctorListPreview.img.src} />
     <link rel="preload" as="image" href={DoctorImage.img.src} />
 </svelte:head>
+
+<svelte:window bind:innerWidth={screenWidth}/>
 
 <main class="page-container">
     <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} withGradient>
@@ -41,7 +45,9 @@
                 </div>
             </section>
             <section class="doctors-list">
-                <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+                {#if screenWidth > 360}
+                    <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+                {/if}
                 <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
                 <Button outline>Показать ещё</Button>
                 <Pagination />
@@ -50,9 +56,11 @@
     </div>
     <section class="accordion-container">
         <h2>Вопросы и ответы</h2>
-        <Accordion title="Как записаться к неврологу в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
-        <Accordion title="Невролог (невропатолог) в Москве: цена приёма?">ываофылаофывираифыорвафывфыв</Accordion>
-        <Accordion title="Посоветуйте невролога в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
+        <div>
+            <Accordion title="Как записаться к неврологу в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
+            <Accordion title="Невролог (невропатолог) в Москве: цена приёма?">ываофылаофывираифыорвафывфыв</Accordion>
+            <Accordion title="Посоветуйте невролога в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
+        </div>
     </section>
 </main>
 
@@ -139,6 +147,14 @@
                   height: fit-content;
               }
           }
+
+          @media (max-width: map.get(env.$screen-size, mobile)) {
+              width: 330px;
+
+              > div {
+                  width: inherit;
+              }
+          }
       }
 
       .filter-tags {
@@ -169,12 +185,25 @@
       .accordion-container {
           display: flex;
           flex-direction: column;
-          gap: 16px;
 
           padding-top: 12rem;
 
           > h2 {
               padding-bottom: 3rem;
+
+              @media (max-width: map.get(env.$screen-size, tablet)) {
+                  padding-bottom: 2rem;
+              }
+          }
+
+          > div {
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+          }
+
+          @media (max-width: map.get(env.$screen-size, mobile)) {
+              padding-top: 6rem;
           }
       }
   }

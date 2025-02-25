@@ -3,6 +3,7 @@
     import Button from "$ui-kit/Button/Button.svelte";
 
     let currentPage: number = $state(0);
+    let screenWidth = $state();
 
     const setCurrentPage = (page: number) => {
         currentPage = page;
@@ -19,6 +20,8 @@
     }
 </script>
 
+<svelte:window bind:innerWidth={screenWidth}/>
+
 <nav>
   <button onclick={goToPrevPage}>
     <SvgContainer type="primary" size="sm">
@@ -28,12 +31,21 @@
       </svg>
     </SvgContainer>
   </button>
-  {#each {length: 5}, page}
-    <Button type="icon" outline={currentPage !== page}
-            onclick={() => setCurrentPage(page)}>
-      {page + 1}
-    </Button>
-  {/each}
+  {#if screenWidth > 360}
+    {#each {length: 5}, page}
+      <Button type="icon" outline={currentPage !== page}
+              onclick={() => setCurrentPage(page)}>
+        {page + 1}
+      </Button>
+    {/each}
+    {:else}
+    {#each {length: 3}, page}
+      <Button type="icon" outline={currentPage !== page}
+              onclick={() => setCurrentPage(page)}>
+        {page + 1}
+      </Button>
+    {/each}
+  {/if}
   <Button type="icon" outline>...</Button>
   <Button type="icon" outline>145</Button>
   <button onclick={goToNextPage}>

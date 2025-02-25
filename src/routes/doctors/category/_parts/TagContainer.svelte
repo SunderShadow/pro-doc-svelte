@@ -43,5 +43,23 @@
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      justify-content: start;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      flex-wrap: nowrap;
+      overflow-x: scroll;
+
+      padding: 1.5rem 1rem;
+
+      :global {
+        .tag {
+          flex-shrink: 0;
+        }
+      }
+    }
   }
 </style>

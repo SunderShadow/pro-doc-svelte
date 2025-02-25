@@ -68,6 +68,10 @@
         @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
           cursor: pointer;
         }
+
+        @media (max-width: map.get(env.$screen-size, mobile)) {
+            font-size: 1.2rem;
+        }
       }
     }
 

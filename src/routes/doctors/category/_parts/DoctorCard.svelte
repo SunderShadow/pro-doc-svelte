@@ -18,7 +18,7 @@
     }: Props = $props();
 </script>
 
-<div class="doctor-card">
+<section class="doctor-card">
   <div class="card-container">
     <div class="doctor-info">
       <div class="doctor-image">
@@ -46,6 +46,34 @@
         <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
       </div>
     </div>
+    <div class="mobile-doctor-info">
+      <div>
+        <div class="doctor-image">
+          <img src={image} alt="" loading="lazy">
+          <div class="favorite_icon">
+            <Like size="sm"/>
+          </div>
+        </div>
+        <div class="doctor-stats">
+          <h3>{name}</h3>
+          <div>
+            <div class="rating title-3">
+              <Star/>
+              <span>4.9</span>
+            </div>
+            <a href="" class="link-font-1">4 отзыва</a>
+          </div>
+        </div>
+      </div>
+      <ul>
+        <li><a href="" class="active body-text-3">невролог</a></li>
+        <li><a href="" class="active body-text-3">рефлексотерапевт</a></li>
+      </ul>
+      <ul>
+        <li><a href="" class="active body-text-3">взрослый</a></li>
+      </ul>
+      <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
+    </div>
     <div class="card-content">
       <div class="about">
         <h4 class="title-1">О враче</h4>
@@ -54,14 +82,14 @@
           атеросклеротических поражений, невритов, невралгий, нарушений памяти и сна.
           При лечении неврологических заболеваний активно применяет гирудотерапию.
           Автор 10 публикаций.</p>
-        <Link href="">Узнать подробнее о враче</Link>
+        <Link href="" primary>Узнать подробнее о враче</Link>
       </div>
       <div class="reviews">
         <h4 class="title-1">Отзывы</h4>
         <p class="body-text-2">«Спасибо Алексею Викторовичу за то, что помог разобраться в моей проблеме.
           До него я был у многих врачей и от них информации не добыл!
           Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения».</p>
-        <Link href="">Узнать подробнее</Link>
+        <Link href="" primary>Узнать подробнее</Link>
       </div>
       <div class="price">
         <h4 class="title-1">Приём невролога</h4>
@@ -86,7 +114,7 @@
     </div>
   </div>
   <DoctorLocationTimetable/>
-</div>
+</section>
 
 <style lang="scss">
   @use "sass:map";
@@ -101,6 +129,11 @@
 
     border: 1px solid rgba(map.get(env.$color, primary), 0.1);
     border-radius: 12px;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      flex-direction: column;
+      gap: 32px;
+    }
 
     .card-container {
       display: flex;
@@ -195,8 +228,135 @@
           > p {
             line-height: 22.4px;
           }
+
+          @media (max-width: map.get(env.$screen-size, netbook)) {
+            > h3 {
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+        @media (max-width: map.get(env.$screen-size, mobile)) {
+          display: none;
         }
       }
+
+      .mobile-doctor-info {
+        display: none;
+        gap: 16px;
+
+        > div {
+          display: flex;
+          gap: 16px
+        }
+
+        .doctor-image {
+          position: relative;
+          width: 180px;
+          height: 180px;
+
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+
+          border: 1px solid rgba(map.get(env.$color, primary), 0.1);
+          border-radius: 12px;
+
+          .favorite_icon {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+
+            :global {
+              > * {
+                display: none;
+              }
+            }
+          }
+
+          > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          @media (max-width: map.get(env.$screen-size, mobile)) {
+            min-width: 130px;
+            max-height: 130px;
+          }
+        }
+
+        .doctor-stats {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          > h3 {
+            font-size: 1.2rem;
+          }
+
+          > div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .rating {
+              display: flex;
+              align-items: center;
+              gap: 4px;
+            }
+
+            > a {
+              color: rgba(map.get(env.$color, primary), 0.5);
+              text-decoration: underline;
+              text-underline-offset: 4px;
+            }
+
+            :global {
+              .svg-icon-container {
+                --size: 14px;
+                --color: #FFCC00;
+              }
+            }
+          }
+        }
+
+        > ul {
+          display: flex;
+
+          li {
+            display: flex;
+
+            color: map.get(env.$color, primary);
+            line-height: 22.4px;
+
+            list-style-type: none;
+
+            > hr {
+              margin: 0 8px;
+            }
+          }
+
+          li + li::before {
+            content: "";
+            height: 24px;
+            width: 1px;
+            margin: 0 8px;
+
+            background: rgba(map.get(env.$color, primary), .1);
+          }
+        }
+
+        > p {
+          line-height: 22.4px;
+        }
+
+        @media (max-width: map.get(env.$screen-size, mobile)) {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
       .card-content {
         display: flex;
         flex-direction: column;
@@ -254,6 +414,12 @@
             &-price {
               font-weight: 600;
             }
+          }
+
+          @media (max-width: map.get(env.$screen-size, mobile)) {
+            flex-direction: column;
+
+            padding-top: .5rem;
           }
         }
       }
