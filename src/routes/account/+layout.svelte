@@ -9,7 +9,7 @@
     import PreviewImgMobile from "./_assets/img/preview-mobile.jpg?enhanced&format=webp"
     import AccountIcon      from "$ui-kit/icons/Account.svelte"
 
-    import AppoinmentsIcon    from "$ui-kit/icons/Appoinments.svelte"
+    import AppointmentsIcon    from "$ui-kit/icons/Appointments.svelte"
     import FavoriteDoctorIcon from "$ui-kit/icons/FavoriteDoctor.svelte"
     import ArrowRightIcon from "$ui-kit/icons/ArrowRight.svelte"
 
@@ -60,7 +60,7 @@
       Избранное
     </a>
     <a class:active={page.url.pathname === '/account/appointments'} href="/account/appointments">
-      <AppoinmentsIcon />
+      <AppointmentsIcon />
       Мои записи
     </a>
     <a class:active={page.url.pathname === '/account/reviews'} href="/account/reviews">
