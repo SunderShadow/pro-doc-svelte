@@ -23,45 +23,47 @@ setPageTitle('Аккаунт')
 
 </script>
 
-<h3>Мои данные</h3>
 
 <div class="wrapper">
-  <div>
-    <PhotoUpload />
+  <h3>Мои данные</h3>
+  <div class="content-wrapper">
+    <div>
+      <PhotoUpload />
+    </div>
+    <form>
+      <div>
+        <label>ФИО</label>
+        <Input placeholder="Иван" withErase={false} />
+      </div>
+      <div>
+        <label>Пол</label>
+        <Select placeholder="Мужской" withErase={false} data={gender}/>
+      </div>
+      <div>
+        <label>Email</label>
+        <Input placeholder="Docpro@gmail.com" withErase={false} />
+      </div>
+      <div>
+        <label>Возраст</label>
+        <Input placeholder="31" withErase={false} />
+      </div>
+      <div>
+        <label>Телефон</label>
+        <Input placeholder="+7 (___) ___-__-__" withErase={false} />
+      </div>
+      <div class="notifications">
+        <h3>Настройки уведомлений</h3>
+        <div class="checkboxes">
+          <Checkbox label="Получать уведомления по sms"/>
+          <Checkbox label="Получать уведомления на email"/>
+        </div>
+        <div class="actions">
+          <Button>Сохранить изменения</Button>
+          <Button outline>Выйти</Button>
+        </div>
+      </div>
+    </form>
   </div>
-  <form>
-    <div>
-      <label>ФИО</label>
-      <Input placeholder="Иван" withErase={false} />
-    </div>
-    <div>
-      <label>Пол</label>
-      <Select placeholder="Мужской" withErase={false} data={gender}/>
-    </div>
-    <div>
-      <label>Email</label>
-      <Input placeholder="Docpro@gmail.com" withErase={false} />
-    </div>
-    <div>
-      <label>Возраст</label>
-      <Input placeholder="31" withErase={false} />
-    </div>
-    <div>
-      <label>Телефон</label>
-      <Input placeholder="+7 (___) ___-__-__" withErase={false} />
-    </div>
-    <div class="notifications">
-      <h3>Настройки уведомлений</h3>
-      <div class="checkboxes">
-        <Checkbox label="Получать уведомления по sms"/>
-        <Checkbox label="Получать уведомления на email"/>
-      </div>
-      <div class="actions">
-        <Button>Сохранить изменения</Button>
-        <Button outline>Выйти</Button>
-      </div>
-    </div>
-  </form>
 </div>
 
 <style lang="scss">
@@ -77,6 +79,12 @@ setPageTitle('Аккаунт')
   }
 
   .wrapper {
+    border: 1px solid rgba(map.get(env.$color, primary), .1);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .content-wrapper {
     display: flex;
     gap: 196px;
     margin-top: 32px;

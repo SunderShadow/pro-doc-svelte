@@ -51,19 +51,19 @@
 
 <div class="main-wrapper page-container page-section">
   <aside class="navigation">
-    <a class:active={page.url.pathname === '/account/profile'} href="/account/profile">
+    <a class:active={page.url.pathname === '/account/profile'} href="/account/profile" data-sveltekit-noscroll>
       <AccountIcon />
       Профиль
     </a>
-    <a class:active={page.url.pathname === '/account/favorite'} href="/account/favorite">
+    <a class:active={page.url.pathname === '/account/favorite/doctors'} href="/account/favorite/doctors" data-sveltekit-noscroll>
       <FavoriteDoctorIcon />
       Избранное
     </a>
-    <a class:active={page.url.pathname === '/account/appointments'} href="/account/appointments">
+    <a class:active={page.url.pathname === '/account/appointments'} href="/account/appointments" data-sveltekit-noscroll>
       <AppointmentsIcon />
       Мои записи
     </a>
-    <a class:active={page.url.pathname === '/account/reviews'} href="/account/reviews">
+    <a class:active={page.url.pathname === '/account/reviews'} href="/account/reviews" data-sveltekit-noscroll>
       <AccountIcon />
       Мои отзывы
     </a>
@@ -139,9 +139,7 @@
   }
 
   main {
-    border: 1px solid rgba(map.get(env.$color, primary), .1);
-    border-radius: 12px;
-    padding: 32px;
     margin-top: 32px;
   }
+
 </style>
