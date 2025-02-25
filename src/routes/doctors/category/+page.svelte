@@ -7,12 +7,19 @@
     import TagContainer from "./_parts/TagContainer.svelte";
     import FilterContainer from "./_parts/FilterContainer.svelte";
     import DoctorCard from "./_parts/DoctorCard.svelte";
+    import Filters from "../works_with/[category]/_parts/Filters.svelte";
+    import Accordion from "$ui-kit/Accordion/Accordion.svelte";
+    import Pagination from "./_parts/Pagination.svelte";
+
+    let screenWidth = $state()
 </script>
 
 <svelte:head>
     <link rel="preload" as="image" href={DoctorListPreview.img.src} />
     <link rel="preload" as="image" href={DoctorImage.img.src} />
 </svelte:head>
+
+<svelte:window bind:innerWidth={screenWidth}/>
 
 <main class="page-container">
     <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src} withGradient>
@@ -28,14 +35,32 @@
         </ul>
     </section>
     <FilterContainer />
-    <section class="filter-tags">
-        <TagContainer />
-        <div class="button link-font-1">
-            <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
+    <div class="main-container">
+        <Filters/>
+        <div>
+            <section class="filter-tags">
+                <TagContainer />
+                <div class="button link-font-1">
+                    <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
+                </div>
+            </section>
+            <section class="doctors-list">
+                {#if screenWidth > 360}
+                    <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+                {/if}
+                <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+                <Button outline>Показать ещё</Button>
+                <Pagination />
+            </section>
         </div>
-    </section>
-    <section class="doctor-card">
-        <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+    </div>
+    <section class="accordion-container">
+        <h2>Вопросы и ответы</h2>
+        <div>
+            <Accordion title="Как записаться к неврологу в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
+            <Accordion title="Невролог (невропатолог) в Москве: цена приёма?">ываофылаофывираифыорвафывфыв</Accordion>
+            <Accordion title="Посоветуйте невролога в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
+        </div>
     </section>
 </main>
 
@@ -47,84 +72,139 @@
   $mobile-adaptive: 600px;
 
   .page-container {
-    .body-text-1 {
-      line-height: 28.8px;
-    }
-
-    .stats {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-
-      padding-top: 96px;
-
-      width: 100%;
-
-      @media (max-width: $mobile-adaptive) {
-        gap: 16px;
+      .body-text-1 {
+          line-height: 28.8px;
       }
 
-      > h2 {
-        line-height: 52.8px;
-
-        @media (max-width: map.get(env.$screen-size, netbook)) {
-          font-size: 2rem;
-          line-height: 32.2px;
-        }
-
-        @media (max-width: map.get(env.$screen-size, tablet)) {
-          font-size: 1.5rem;
-          line-height: 26.4px;
-        }
-
-        > span {
-          color: map.get(env.$color, primary);
-        }
-      }
-
-      > ul {
-        > li {
+      .stats {
           display: flex;
+          flex-direction: column;
+          gap: 32px;
 
-          color: $default-text;
-
-          list-style-type: none;
-
-          &::before {
-            content: "•";
-            color: map.get(env.$color, primary);
-
-            font-size: 1.75rem;
-
-            margin-right: 8px;
-          }
-
-          @media (max-width: map.get(env.$screen-size, tablet)) {
-            font-size: 1rem;
-          }
-        }
-      }
-    }
-
-    .filter-tags {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-
-      padding-top: 1rem;
-    }
-
-    :global {
-      .button {
-        > button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 16px;
+          padding-top: 96px;
 
           width: 100%;
-        }
+
+          @media (max-width: $mobile-adaptive) {
+              gap: 16px;
+          }
+
+          > h2 {
+              line-height: 52.8px;
+
+              @media (max-width: map.get(env.$screen-size, netbook)) {
+                  font-size: 2rem;
+                  line-height: 32.2px;
+              }
+
+              @media (max-width: map.get(env.$screen-size, tablet)) {
+                  font-size: 1.5rem;
+                  line-height: 26.4px;
+              }
+
+              > span {
+                  color: map.get(env.$color, primary);
+              }
+          }
+
+          > ul {
+              > li {
+                  display: flex;
+
+                  color: $default-text;
+
+                  list-style-type: none;
+
+                  &::before {
+                      content: "•";
+                      color: map.get(env.$color, primary);
+
+                      font-size: 1.75rem;
+
+                      margin-right: 8px;
+                  }
+
+                  @media (max-width: map.get(env.$screen-size, tablet)) {
+                      font-size: 1rem;
+                  }
+              }
+          }
       }
-    }
+
+      .main-container {
+          display: flex;
+          gap: 32px;
+
+          padding-top: 1rem;
+
+          > div {
+              display: flex;
+              flex-direction: column;
+          }
+
+          :global {
+              .filters_container {
+                  height: fit-content;
+              }
+          }
+
+          @media (max-width: map.get(env.$screen-size, mobile)) {
+              width: 330px;
+
+              > div {
+                  width: inherit;
+              }
+          }
+      }
+
+      .filter-tags {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+      }
+
+      .doctors-list {
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+      }
+
+      :global {
+          .button {
+              > button {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 16px;
+
+                  width: 100%;
+              }
+          }
+      }
+
+      .accordion-container {
+          display: flex;
+          flex-direction: column;
+
+          padding-top: 12rem;
+
+          > h2 {
+              padding-bottom: 3rem;
+
+              @media (max-width: map.get(env.$screen-size, tablet)) {
+                  padding-bottom: 2rem;
+              }
+          }
+
+          > div {
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+          }
+
+          @media (max-width: map.get(env.$screen-size, mobile)) {
+              padding-top: 6rem;
+          }
+      }
   }
 </style>
