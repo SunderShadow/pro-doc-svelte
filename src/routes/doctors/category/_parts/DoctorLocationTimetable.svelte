@@ -13,30 +13,30 @@
   <h5 class="title-2">Места работы</h5>
   <div class="address">
     <h6 class="title-3">МедЦентрСервис на Миклухо-Маклая</h6>
-    <p class="body-text-2">
+    <div class="body-text-2">
     <Address type="primary"/>
-    г Москва, ул Миклухо-Маклая, д 43</p>
-    <p class="body-text-2">
+    г Москва, ул Миклухо-Маклая, д 43</div>
+    <div class="body-text-2">
       <Metro type="primary"/>
-      <span>Беляево (400 м)</span></p>
-    <p class="body-text-2">
+      <span>Беляево (400 м)</span></div>
+    <div class="body-text-2">
       <Phone type="primary"/>
       +7 930 999-17-56
-    </p>
+    </div>
     <span><Link href="">Узнать подробнее о клинике</Link></span>
   </div>
   <div class="address">
     <h6 class="title-3">МедЦентрСервис на Миклухо-Маклая</h6>
-    <p class="body-text-2">
+    <div class="body-text-2">
     <Address type="primary"/>
-    г Москва, ул Миклухо-Маклая, д 43</p>
-    <p class="body-text-2">
+    г Москва, ул Миклухо-Маклая, д 43</div>
+    <div class="body-text-2">
       <Metro type="primary"/>
-      <span>Беляево (400 м)</span></p>
-    <p class="body-text-2">
+      <span>Беляево (400 м)</span></div>
+    <div class="body-text-2">
       <Phone type="primary"/>
       +7 930 999-17-56
-    </p>
+    </div>
     <span><Link href="">Узнать подробнее о клинике</Link></span>
   </div>
   <div class="sign-up">
@@ -113,7 +113,7 @@
         line-height: 24px;
       }
 
-      > p {
+      > div {
         display: flex;
         align-items: center;
         gap: 8px;
