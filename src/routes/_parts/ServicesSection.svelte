@@ -60,8 +60,12 @@
   }
 
   .cards {
-    @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
-      > div:not(.double) {
+    > div:not(.double) {
+      aspect-ratio: 1 / 1;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      > div {
         aspect-ratio: 1 / 1;
       }
     }
