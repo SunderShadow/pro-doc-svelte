@@ -1,5 +1,5 @@
 <script>
-  import ThumbnailImg from "./assets/doctor.png?enhanced&format=webp"
+  import ThumbnailImg from "./assets/doctor.jpg?enhanced&format=webp"
 
   import Button from "$ui-kit/Button/Button.svelte"
   import Like   from "$ui-kit/icons/Like.svelte"
@@ -182,12 +182,25 @@
       }
     }
 
-    a + a::before {
-      content: "|";
-      height: 100%;
-      width: 1px;
-      margin: 0 8px;
-      color: rgba(0, 0, 0, .1)
+    a + a {
+      display: inline-block;
+      position: relative;
+      margin-left: 16px;
+
+      &::before {
+        content: "";
+
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -9px;
+
+        width: 1px;
+        height: 1.5rem;
+
+        background-color: rgba(0, 0, 0, .1)
+      }
     }
   }
 

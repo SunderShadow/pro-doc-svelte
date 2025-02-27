@@ -70,7 +70,7 @@ setPageTitle('Профиль')
   @use "sass:map";
   @use "$ui-kit/env";
 
-  $mobile-breakpoint: 600px;
+  $mobile-breakpoint: 722px;
 
   @media (max-width: $mobile-breakpoint) {
     h3 {
@@ -89,9 +89,13 @@ setPageTitle('Профиль')
     gap: 196px;
     margin-top: 32px;
 
-    @media (max-width: 1316px) {
+    @media (max-width: 1360px) {
       justify-content: space-between;
       gap: 32px;
+    }
+
+    @media (max-width: 900px) and (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      flex-direction: column;
     }
 
     @media (max-width: $mobile-breakpoint) {

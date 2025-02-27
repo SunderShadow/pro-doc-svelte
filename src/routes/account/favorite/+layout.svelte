@@ -57,7 +57,7 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
+    @media (max-width: 1200px) {
       grid-template-columns: 1fr;
     }
 
