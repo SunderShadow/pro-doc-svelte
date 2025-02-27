@@ -36,18 +36,18 @@
           </div>
           <a href="" class="link-font-1">4 отзыва</a>
         </div>
-        <ul>
-          <li><a href="" class="active body-text-3">невролог</a></li>
-          <li><a href="" class="active body-text-3">рефлексотерапевт</a></li>
-        </ul>
-        <ul>
-          <li><a href="" class="active body-text-3">взрослый</a></li>
-        </ul>
+        <div>
+          <a href="" class="active body-text-3">невролог</a>
+          <a href="" class="active body-text-3">рефлексотерапевт</a>
+        </div>
+        <div>
+          <a href="" class="active body-text-3">взрослый</a>
+        </div>
         <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
       </div>
     </div>
     <div class="mobile-doctor-info">
-      <div>
+      <div class="doctor-info-container">
         <div class="doctor-image">
           <img src={image} alt="" loading="lazy">
           <div class="favorite_icon">
@@ -65,13 +65,13 @@
           </div>
         </div>
       </div>
-      <ul>
-        <li><a href="" class="active body-text-3">невролог</a></li>
-        <li><a href="" class="active body-text-3">рефлексотерапевт</a></li>
-      </ul>
-      <ul>
-        <li><a href="" class="active body-text-3">взрослый</a></li>
-      </ul>
+      <div class="doctor-links">
+        <a href="" class="active body-text-3">невролог</a>
+        <a href="" class="active body-text-3">рефлексотерапевт</a>
+      </div>
+      <div class="doctor-links">
+        <a href="" class="active body-text-3">взрослый</a>
+      </div>
       <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
     </div>
     <div class="card-content">
@@ -245,7 +245,7 @@
         display: none;
         gap: 16px;
 
-        > div {
+        .doctor-info-container {
           display: flex;
           gap: 16px
         }
@@ -321,10 +321,10 @@
           }
         }
 
-        > ul {
+        .doctor-links {
           display: flex;
 
-          li {
+          a {
             display: flex;
 
             color: map.get(env.$color, primary);
@@ -337,7 +337,7 @@
             }
           }
 
-          li + li::before {
+          a + a::before {
             content: "";
             height: 24px;
             width: 1px;
