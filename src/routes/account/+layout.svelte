@@ -71,7 +71,7 @@
   <div>
     <div class="header">
       <div class="back"><ArrowRightIcon size="sm"/></div>
-      <h2>Профиль</h2>
+      <h2>{pageTitle}</h2>
     </div>
     <main>
       {@render children?.()}

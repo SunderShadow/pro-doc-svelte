@@ -19,7 +19,7 @@ let gender = [
 ]
 
 let setPageTitle = getContext('setPageTitle')
-setPageTitle('Аккаунт')
+setPageTitle('Профиль')
 
 </script>
 
