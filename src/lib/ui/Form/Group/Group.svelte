@@ -14,6 +14,9 @@
 
   :global {
 
+    .input-group > * {
+      width: 100%;
+    }
     .input-group .form-control-wrapper {
       height: 100%;
     }
