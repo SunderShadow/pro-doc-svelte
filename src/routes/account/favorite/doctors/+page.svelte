@@ -28,6 +28,14 @@
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      grid-template-columns: 1fr;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 16px;
+    }
   }
 
   .switcher {
@@ -45,10 +53,6 @@
 
       border-bottom: 1px solid transparent;
 
-      @media (max-width: map.get(env.$screen-size, mobile)) {
-        text-align: center;
-        width: 100%;
-      }
     }
 
     a:hover {

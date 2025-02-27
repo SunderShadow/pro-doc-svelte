@@ -105,12 +105,14 @@
   }
 
   .navigation {
+    height: fit-content;
     @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
       position: sticky;
       top: 20%;
     }
 
     width: 240px;
+    flex-shrink: 0;
     padding: 16px 0;
 
     border: 1px solid rgba(map.get(env.$color, primary), .1);

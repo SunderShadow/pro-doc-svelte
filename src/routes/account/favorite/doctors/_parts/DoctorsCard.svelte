@@ -56,15 +56,24 @@
     padding: 32px;
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 16px;
+    }
   }
 
   .title {
     font-size: 24px;
     line-height: 36px;
+
+    @media (max-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      font-size: 18px;
+    }
   }
 
   .thumbnail {
     position: relative;
+    flex-shrink: 0;
     width: 110px;
     height: 110px;
 
@@ -92,9 +101,14 @@
       }
     }
   }
+
   .top_info_container {
     display: flex;
     gap: 16px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      flex-direction: column;
+    }
   }
 
   .rating-container {
@@ -112,12 +126,17 @@
   }
 
   .reviews {
-    opacity: .5;
-    transition: opacity 300ms;
     text-decoration: underline;
+    font-weight: 600;
 
-    &:hover {
-      opacity: 1;
+    opacity: .5;
+
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      transition: opacity 300ms;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -127,6 +146,10 @@
     a {
       display: inline-block;
       font-family: "Helvetica", sans-serif;
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        font-size: 14px;
+      }
     }
 
     a + a::before {
