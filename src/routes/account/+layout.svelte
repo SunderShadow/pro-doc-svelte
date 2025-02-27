@@ -55,7 +55,7 @@
       <AccountIcon />
       Профиль
     </a>
-    <a class:active={page.url.pathname === '/account/favorite/doctors'} href="/account/favorite/doctors" data-sveltekit-noscroll>
+    <a class:active={['/account/favorite/doctors', '/account/favorite/clinics'].includes(page.url.pathname)} href="/account/favorite/doctors" data-sveltekit-noscroll>
       <FavoriteDoctorIcon />
       Избранное
     </a>
@@ -108,7 +108,7 @@
     height: fit-content;
     @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
       position: sticky;
-      top: 20%;
+      top: 32px;
     }
 
     width: 240px;

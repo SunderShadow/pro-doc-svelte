@@ -68,6 +68,7 @@
 
     @media (max-width: (map.get(env.$screen-size, tablet) + 1px)) {
       font-size: 18px;
+      line-height: 27px;
     }
   }
 
