@@ -13,17 +13,17 @@
   <h2>Услуги и направления</h2>
   <div class="cards">
     <div class="double">
-      <Card name="Врачи" image={Doctors.img.src} double>
+      <Card href="/doctors/works_with/adults" name="Врачи" image={Doctors.img.src} double>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
     <div>
-      <Card name="Услуги" image={Services.img.src}>
+      <Card href="/service/list" name="Услуги" image={Services.img.src}>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
     <div>
-      <Card name="Диагностика" image={Diagnostics.img.src}>
+      <Card href="/service/diagnostic" name="Диагностика" image={Diagnostics.img.src}>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
     </div>
@@ -33,7 +33,7 @@
       </Card>
     </div>
     <div>
-      <Card name="Детский врач" image={Pediatrician.img.src}>
+      <Card href="/doctors/works_with/children" name="Детский врач" image={Pediatrician.img.src}>
         На нашем портале вы можете выбрать врача из лучших клиник
       </Card>
     </div>
@@ -60,8 +60,12 @@
   }
 
   .cards {
-    @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
-      > div:not(.double) {
+    > div:not(.double) {
+      aspect-ratio: 1 / 1;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      > div {
         aspect-ratio: 1 / 1;
       }
     }

@@ -1,14 +1,13 @@
 <script lang="ts">
   import type {Snippet} from "svelte";
 
-  type Props = {
+  type Props = any & {
       children: Snippet,
       fullWidth?: boolean,
       outline?: boolean,
       type?: "default" | "icon",
       _class?: string,
       _type?: "button" | "submit" | "reset"
-      onclick?: (event: MouseEvent) => void,
   }
 
   const {
@@ -18,13 +17,18 @@
       type = "default",
       _class = '',
       _type = 'button',
-      onclick
+      ...props
   }: Props = $props()
 </script>
 
-<button class:outline class:fullWidth type={_type}
-        class={_class} class:icon={type === 'icon'}
-        {onclick}>
+<button
+    class:outline
+    class:fullWidth
+    class:icon={type === 'icon'}
+    type={_type}
+    class={_class}
+    {...props}
+>
   {@render children?.()}
 </button>
 

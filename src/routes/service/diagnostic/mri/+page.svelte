@@ -320,12 +320,14 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Магнитно-резонансная томография (МРТ) в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={screenWidth > 1024 ? 75 : 70}>
-    <ul>
-      <li>Где сделать МРТ — цены от 400 рублей, 80083 отзыва</li>
-      <li>556 адресов и телефонов клиник Москвы</li>
-    </ul>
-  </Preview>
+  <div id="diagnostic_mri_page_preview">
+    <Preview title="Магнитно-резонансная томография (МРТ) в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={screenWidth > 1024 ? 75 : 70}>
+      <ul>
+        <li>Где сделать МРТ — цены от 400 рублей, 80083 отзыва</li>
+        <li>556 адресов и телефонов клиник Москвы</li>
+      </ul>
+    </Preview>
+  </div>
 </section>
 
 <section class="page-container page-section">
@@ -355,6 +357,20 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  :global {
+    @media (max-width: 500px) {
+      #diagnostic_mri_page_preview .preview {
+        background-size: contain;
+      }
+    }
+
+    @media (max-width: 360px) {
+      #diagnostic_mri_page_preview .preview {
+        background-size: auto 210px;
+      }
+    }
+  }
 
   .types_list  {
     display: grid;

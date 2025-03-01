@@ -58,7 +58,9 @@
     border-radius: 12px;
 
     &.with_gradient {
-      background-image: linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)), var(--img);
+      background-image:
+          linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)),
+          var(--img);
       @media (max-width: $mobile-breakpoint) {
         background-image: var(--img-mobile);
       }
@@ -73,7 +75,10 @@
     }
 
     @media (max-width: $mobile-breakpoint) {
-      background-image: var(--img-mobile);
+      background-image:
+          linear-gradient(to bottom, transparent 105px, map.get(env.$bg-color, primary) 210px),
+          var(--img-mobile);
+
       background-position: top;
       background-size: cover;
     }
@@ -101,7 +106,6 @@
       margin-top: 210px;
 
       background: #fff;
-      box-shadow: 0 -20px 15px 5px #fff;
 
       width: 100%;
       padding: 24px 16px;

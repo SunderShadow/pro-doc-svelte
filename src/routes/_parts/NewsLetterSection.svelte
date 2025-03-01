@@ -1,8 +1,8 @@
 <script lang="ts">
 import DoctorImg from "$lib/assets/images/newsletter_doctor.png?enhanced&format=webp"
-import BgImg from "$lib/assets/images/newsletter_bg.png?enhanced&format=webp&quality=80"
-import Input from "$ui-kit/Form/Input.svelte"
-import Button from "$ui-kit/Button/Button.svelte"
+import BgImg     from "$lib/assets/images/newsletter_bg.png?enhanced&format=webp&quality=80"
+import Input     from "$ui-kit/Form/Input.svelte"
+import Button    from "$ui-kit/Button/Button.svelte"
 
 </script>
 
@@ -30,6 +30,12 @@ import Button from "$ui-kit/Button/Button.svelte"
   @use "$ui-kit/env";
 
   $mobile-size: 500px;
+
+  :global {
+    .form-control-wrapper:has(#newsletter_email) {
+      background-color: map.get(env.$bg-color, primary);
+    }
+  }
 
   section {
     padding: 155px 0 10px 0;

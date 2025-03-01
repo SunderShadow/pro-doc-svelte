@@ -18,7 +18,8 @@
   let {
       children,
       open  = $bindable(),
-      close = $bindable()
+      close = $bindable(),
+      ...props
   } = $props()
 
 
@@ -39,7 +40,7 @@
 
 <svelte:window onresize={() => {isOpen = window.innerWidth > 768}}></svelte:window>
 {#if isOpen}
-  <aside class="filters_container" bind:this={container} transition:fly>
+  <aside {...props} class="filters_container" bind:this={container} transition:fly>
     <header class="mobile_header">
       <span class="title-1">Фильтры</span>
       <button class="close_btn" onclick={close}><PlusIcon type="primary"/></button>
@@ -55,6 +56,11 @@
   :global {
     .filters_container {
       font-size: 14px;
+    }
+
+    .filters_container .select-input__dropdown button {
+      padding-left: 1em;
+      padding-right: 1em;
     }
 
     .filters_container label {
@@ -74,7 +80,7 @@
         margin-top: 16px;
       }
 
-      > div > div + div {
+      > div > * + * {
         margin-top: 8px;
       }
 
