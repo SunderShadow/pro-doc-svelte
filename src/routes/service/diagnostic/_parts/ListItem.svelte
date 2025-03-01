@@ -37,4 +37,15 @@
 
     line-height: 1em;
   }
+
+  .title-1 {
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: map.get(env.$screen-size, tablet)) {
+    .title-1 {
+      font-size: 18px;
+    }
+  }
 </style>

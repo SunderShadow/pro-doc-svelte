@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Select from "$ui-kit/Form/Select/Colors.svelte"
+  import Select from "$ui-kit/Form/Select/Select.svelte"
   import Button from "$ui-kit/Button/Button.svelte"
   import Input from "$ui-kit/Form/Input.svelte"
   import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
@@ -31,23 +31,23 @@
   let {
       open = $bindable(),
       close = $bindable()
-  } = $props()
+  }: Props = $props()
 
 </script>
 
-<FilterForm bind:open bind:close>
+<FilterForm id="doctor_filters" bind:open bind:close>
   <div>
-    <div><Select placeholder="Специализация" data={specialityItems}/></div>
-    <div><Input placeholder="Город, округ, район, метро" withErase={false}/></div>
-    <div><Input placeholder="ФИО врача" withErase={false} /></div>
+    <Select placeholder="Специализация" data={specialityItems}/>
+    <Input placeholder="Город, округ, район, метро" withErase={false}/>
+    <Input placeholder="ФИО врача" withErase={false} />
   </div>
 
   <div>
-    <div><Checkbox label="Есть онлайн-запись"/></div>
-    <div><Checkbox label="Приём в клинике"/></div>
-    <div><Checkbox label="Вызов врача на дом"/></div>
-    <div><Checkbox label="Онлайн-консультация"/></div>
-    <div><Checkbox label="Врачи с рейтингом от 4 звёзд"/></div>
+    <Checkbox label="Есть онлайн-запись"/>
+    <Checkbox label="Приём в клинике"/>
+    <Checkbox label="Вызов врача на дом"/>
+    <Checkbox label="Онлайн-консультация"/>
+    <Checkbox label="Врачи с рейтингом от 4 звёзд"/>
   </div>
 
   <div>
@@ -58,44 +58,44 @@
 
   <div>
     <div class="title-3">Дата записи</div>
-    <div><Checkbox label="Сегодня 21 фев, Пт"/></div>
-    <div><Checkbox label="Завтра 22 фев, Сб"/></div>
-    <div><Checkbox label="Послезавтра 23 дек, Вс"/></div>
+    <Checkbox label="Сегодня 21 фев, Пт"/>
+    <Checkbox label="Завтра 22 фев, Сб"/>
+    <Checkbox label="Послезавтра 23 дек, Вс"/>
   </div>
 
   <div>
     <div class="title-3">Категория</div>
-    <div><Checkbox label="Высшая категория"/></div>
-    <div><Checkbox label="Первая категория"/></div>
-    <div><Checkbox label="Вторая категория"/></div>
+    <Checkbox label="Высшая категория"/>
+    <Checkbox label="Первая категория"/>
+    <Checkbox label="Вторая категория"/>
   </div>
 
   <div>
     <div class="title-3">Степень</div>
-    <div><Checkbox label="Кандидат наук"/></div>
-    <div><Checkbox label="Профессор, доктор наук"/></div>
-    <div><Checkbox label="Доктор наук"/></div>
+    <Checkbox label="Кандидат наук"/>
+    <Checkbox label="Профессор, доктор наук"/>
+    <Checkbox label="Доктор наук"/>
   </div>
 
   <div>
     <div class="title-3">Звание</div>
-    <div><Checkbox label="Профессор"/></div>
-    <div><Checkbox label="Доцент"/></div>
+    <Checkbox label="Профессор"/>
+    <Checkbox label="Доцент"/>
   </div>
 
   <div>
     <div class="title-3">Время записи</div>
-    <div><Checkbox label="Утро с 6:00 до 11:00"/></div>
-    <div><Checkbox label="День с 11:00 до 18:00"/></div>
-    <div><Checkbox label="Вечер с 17:00 до 24:00"/></div>
+    <Checkbox label="Утро с 6:00 до 11:00"/>
+    <Checkbox label="День с 11:00 до 18:00"/>
+    <Checkbox label="Вечер с 17:00 до 24:00"/>
   </div>
 
   <div>
     <div class="title-3">Стаж</div>
-    <div><Checkbox label="Любой"/></div>
-    <div><Checkbox label="от 5 лет"/></div>
-    <div><Checkbox label="от 10 лет"/></div>
-    <div><Checkbox label="от 15 лет"/></div>
+    <Checkbox label="Любой"/>
+    <Checkbox label="от 5 лет"/>
+    <Checkbox label="от 10 лет"/>
+    <Checkbox label="от 15 лет"/>
   </div>
 
   <div>
@@ -108,33 +108,33 @@
 
   <div>
     <div class="title-3">Скидки</div>
-    <div><Checkbox label="Любой"/></div>
-    <div><Checkbox label="от 5 лет"/></div>
-    <div><Checkbox label="от 10 лет"/></div>
-    <div><Checkbox label="от 15 лет"/></div>
+    <Checkbox label="Любой"/>
+    <Checkbox label="от 5 лет"/>
+    <Checkbox label="от 10 лет"/>
+    <Checkbox label="от 15 лет"/>
   </div>
 
   <div>
     <div class="title-3">Место</div>
-    <div><Checkbox label="Любой"/></div>
-    <div><Checkbox label="Ленинский округ"/></div>
-    <div><Checkbox label="Октябрьский округ"/></div>
-    <div><Checkbox label="Советский округ"/></div>
+    <Checkbox label="Любой"/>
+    <Checkbox label="Ленинский округ"/>
+    <Checkbox label="Октябрьский округ"/>
+    <Checkbox label="Советский округ"/>
   </div>
 
   <div>
     <div class="title-3">Клиника</div>
-    <div><Checkbox label="Частная"/></div>
-    <div><Checkbox label="Государственная"/></div>
+    <Checkbox label="Частная"/>
+    <Checkbox label="Государственная"/>
   </div>
 
   <div class="submit">
-    <Button fullWidth>Применить</Button>
+    <Button type="submit" fullWidth>Применить</Button>
     <Button fullWidth outline>Сбросить</Button>
   </div>
 </FilterForm>
 
-<style>
+<style lang="scss">
   .submit {
       margin-top: 32px;
   }
