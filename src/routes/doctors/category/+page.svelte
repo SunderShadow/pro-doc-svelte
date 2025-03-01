@@ -10,8 +10,24 @@
     import Filters from "../works_with/[category]/_parts/Filters.svelte";
     import Accordion from "$ui-kit/Accordion/Accordion.svelte";
     import Pagination from "./_parts/Pagination.svelte";
+    import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte";
 
     let screenWidth = $state()
+
+    let breadcrumbs = [
+        {
+            title: 'Главная',
+            href: '/'
+        },
+        {
+            title: 'Врачи',
+            href: '/'
+        },
+        {
+            title: 'Взрослый врач Невролог',
+            href: ''
+        }
+    ]
 </script>
 
 <svelte:head>
@@ -22,6 +38,9 @@
 <svelte:window bind:innerWidth={screenWidth}/>
 
 <main class="page-container">
+    <div class="breadcrumbs">
+        <Breadcrumbs list={breadcrumbs}/>
+    </div>
     <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src}
              withGradient imageMobile={DoctorListPreview.img.src}>
         <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
@@ -78,6 +97,14 @@
   .page-container {
       .body-text-1 {
           line-height: 28.8px;
+      }
+
+      .breadcrumbs {
+          padding-bottom: 2rem;
+
+          @media (max-width: map.get(env.$screen-size, tablet)) {
+              padding: 1rem 0;
+          }
       }
 
       .stats {
