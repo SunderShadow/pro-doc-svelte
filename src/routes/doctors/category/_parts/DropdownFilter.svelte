@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { slide } from 'svelte/transition';
     import ArrowDown from "$ui-kit/icons/ArrowDown.svelte";
 
     type Props = {
@@ -30,10 +31,12 @@
 <div class="dropdown link-font-2" onclick={toggleDropdown}>
   <div class="dropdown-header">
     {getActiveFilter()}
-    <ArrowDown size="sm"/>
+    <div class="dropdown-icon" class:active={isActiveDropdown}>
+      <ArrowDown size="sm"/>
+    </div>
   </div>
   {#if isActiveDropdown}
-    <div class="dropdown-content">
+    <div class="dropdown-content" transition:slide>
       {#each data as filter}
         <span onclick={() => handleActiveFilter(filter.id)}>{filter.title}</span>
       {/each}
@@ -79,5 +82,15 @@
     background-color: map.get(env.$bg-color, primary);
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 8px;
+  }
+
+  .dropdown-icon {
+    transition-property: transform, opacity;
+    transition-duration: 300ms;
+    transform-origin: center center;
+
+    &.active {
+      transform: rotateX(180deg);
+    }
   }
 </style>

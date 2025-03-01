@@ -349,12 +349,14 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Ультразвуковое исследование (УЗИ) в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={70}>
-    <ul>
-      <li>Где сделать УЗИ — цены от 100 рублей, 175086 отзывов</li>
-      <li>2707 адресов и телефонов клиник Москвы</li>
-    </ul>
-  </Preview>
+  <div id="diagnostic_usr_page_preview">
+    <Preview title="Ультразвуковое исследование (УЗИ) в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={70}>
+      <ul>
+        <li>Где сделать УЗИ — цены от 100 рублей, 175086 отзывов</li>
+        <li>2707 адресов и телефонов клиник Москвы</li>
+      </ul>
+    </Preview>
+  </div>
 </section>
 
 <section class="page-container page-section">
@@ -396,6 +398,20 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  :global {
+    @media (max-width: 500px) {
+      #diagnostic_usr_page_preview .preview {
+        background-size: contain;
+      }
+    }
+
+    @media (max-width: 360px) {
+      #diagnostic_usr_page_preview .preview {
+        background-size: auto 210px;
+      }
+    }
+  }
 
   .speciality_list {
     display: grid;

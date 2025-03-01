@@ -89,7 +89,7 @@
       <div class="auth">
         <DoorArrowRight type="primary" size="sm"/>
 
-        <a href="/">Вход</a>
+        <a href="/account/profile">Вход</a>
         <a href="/">Регистрация</a>
       </div>
     </div>

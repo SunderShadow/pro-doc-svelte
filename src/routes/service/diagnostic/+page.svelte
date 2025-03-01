@@ -42,7 +42,6 @@
 </section>
 
 <section class="page-container page-section">
-  <h2>Услуги и направления</h2>
   <div class="cards">
     <div class="double">
       <Card href="/service/diagnostic/endoscopy" name="Эндоскопия" image={Doctors.img.src} double>
@@ -103,10 +102,12 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
 
-    margin-top: 64px;
+    > div:not(.double) {
+      aspect-ratio: 1 / 1;
+    }
 
-    @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
-      > div:not(.double) {
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      > div {
         aspect-ratio: 1 / 1;
       }
     }
@@ -114,21 +115,17 @@
     > .double {
       grid-column: span 2;
 
-      @media (max-width: map.get(env.$screen-size, tablet)) {
+      @media (max-width: 1000px) {
         grid-column: span 1;
       }
     }
 
-    @media (max-width: map.get(env.$screen-size, tablet)) {
+    @media (max-width: 1000px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
     @media (max-width: (map.get(env.$screen-size, tablet) - 100px)) {
       grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (max-width: map.get(env.$screen-size, tablet)) {
-      margin-top: 32px;
     }
 
     @media (max-width: 480px) {

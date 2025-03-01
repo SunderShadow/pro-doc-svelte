@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Select from "$ui-kit/Form/Select/Colors.svelte"
+  import Select from "$ui-kit/Form/Select/Select.svelte"
   import Button from "$ui-kit/Button/Button.svelte"
   import Input from "$ui-kit/Form/Input.svelte"
   import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
@@ -37,19 +37,23 @@
 
 <FilterForm bind:open bind:close>
   <div>
-    <div><Select placeholder="Специализация" data={specialityItems}/></div>
-    <div><Input placeholder="Город, округ, район, метро" /></div>
-    <div><Input placeholder="ФИО врача" /></div>
+    <Select placeholder="Специализация" data={specialityItems}/>
+    <Input placeholder="Город, округ, район, метро" />
+    <Input placeholder="ФИО врача" />
   </div>
-
   <div>
     <div class="title-3">Клиника</div>
-    <div><Checkbox label="Частная"/></div>
-    <div><Checkbox label="Государственная"/></div>
+    <Checkbox label="Частная"/>
+    <Checkbox label="Государственная"/>
   </div>
-
   <div class="submit">
     <Button fullWidth>Применить</Button>
     <Button fullWidth outline>Сбросить</Button>
   </div>
 </FilterForm>
+
+<style lang="scss">
+  .submit {
+    margin-top: 32px;
+  }
+</style>
