@@ -41,13 +41,11 @@
     <div><Input placeholder="Город, округ, район, метро" /></div>
     <div><Input placeholder="ФИО врача" /></div>
   </div>
-
   <div>
     <div class="title-3">Клиника</div>
     <div><Checkbox label="Частная"/></div>
     <div><Checkbox label="Государственная"/></div>
   </div>
-
   <div class="submit">
     <Button fullWidth>Применить</Button>
     <Button fullWidth outline>Сбросить</Button>

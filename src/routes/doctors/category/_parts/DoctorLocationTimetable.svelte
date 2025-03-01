@@ -1,5 +1,4 @@
 <script lang="ts">
-
     import Link from "$ui-kit/Link/Link.svelte";
     import Address from "$ui-kit/icons/Address.svelte";
     import Metro from "$ui-kit/icons/Metro.svelte";
@@ -7,6 +6,35 @@
     import DatePicker from "$ui-kit/Form/DatePicker/DatePicker.svelte";
     import Button from "$ui-kit/Button/Button.svelte";
     import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte";
+
+    const registerTimeList = [
+        ["9:00", "9:30", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00"],
+        ["15:00", "15:30", "16:00", "16:30", "17:00", "18:00", "18:30", "19:00", "19:30", "20:00"]
+    ]
+
+    const dateValue = $state(new Date())
+
+    let registerTimeCurrentPage = $state(0)
+
+    const canGoToPrevPage = () => {
+        return (registerTimeCurrentPage - 1) >= 0;
+    }
+
+    const canGoToNextPage = () => {
+        return (registerTimeCurrentPage + 1) <= 1;
+    }
+
+    const goToPrevPage = () => {
+        if (canGoToPrevPage()) {
+            registerTimeCurrentPage--
+        }
+    }
+
+    const goToNextPage = () => {
+        if (canGoToNextPage()) {
+            registerTimeCurrentPage++
+        }
+    }
 </script>
 
 <div class="timetable-container">
@@ -23,7 +51,7 @@
       <Phone type="primary"/>
       +7 930 999-17-56
     </div>
-    <span><Link href="">Узнать подробнее о клинике</Link></span>
+    <span><Link href="" primary>Узнать подробнее о клинике</Link></span>
   </div>
   <div class="address">
     <h6 class="title-3">МедЦентрСервис на Миклухо-Маклая</h6>
@@ -37,18 +65,18 @@
       <Phone type="primary"/>
       +7 930 999-17-56
     </div>
-    <span><Link href="">Узнать подробнее о клинике</Link></span>
+    <span><Link href="" primary>Узнать подробнее о клинике</Link></span>
   </div>
   <div class="sign-up">
     <div class="datepicker">
       <h5 class="title-2">Запись на приём</h5>
-      <DatePicker/>
+      <DatePicker value={dateValue}/>
     </div>
     <div class="timepicker">
       <div>
         <h5 class="title-2">Выберете время на 15 декабря</h5>
         <div class="timepicker-buttons">
-          <button>
+          <button onclick={() => goToPrevPage()} class:disabled={!canGoToPrevPage()}>
             <SvgContainer type="primary" size="sm">
               <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -56,7 +84,7 @@
               </svg>
             </SvgContainer>
           </button>
-          <button>
+          <button onclick={() => goToNextPage()} class:disabled={!canGoToNextPage()}>
             <SvgContainer type="primary" size="sm">
               <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -67,16 +95,9 @@
         </div>
       </div>
       <div class="time-button">
-        <Button>9:00</Button>
-        <Button>9:30</Button>
-        <Button>10:30</Button>
-        <Button>11:00</Button>
-        <Button>11:30</Button>
-        <Button>12:00</Button>
-        <Button>12:30</Button>
-        <Button>13:00</Button>
-        <Button>13:30</Button>
-        <Button>14:00</Button>
+        {#each registerTimeList[registerTimeCurrentPage] as registerTime}
+          <Button>{registerTime}</Button>
+        {/each}
       </div>
     </div>
   </div>
@@ -195,6 +216,15 @@
             margin: 0;
             border: none;
             cursor: pointer;
+
+            &.disabled {
+              opacity: .5;
+              user-select: none;
+              cursor: default;
+
+              background: none;
+              color: inherit;
+            }
           }
         }
       }
@@ -206,7 +236,7 @@
 
         margin-top: 16px;
 
-        overflow-x: scroll;
+        overflow-x: auto;
 
         :global {
           > button {

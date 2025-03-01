@@ -1,7 +1,8 @@
 <script lang="ts">
     import FilterOption from "../../../_parts/FilterOption.svelte";
-    import Filters from "$ui-kit/icons/Filters.svelte";
+    import FiltersIcon from "$ui-kit/icons/Filters.svelte";
     import DropdownFilter from "./DropdownFilter.svelte";
+    import Filters from "../../../service/list/_parts/Filters.svelte";
 
     const filterSelectData = [
         {
@@ -28,6 +29,7 @@
     ]
 
     let activeFilter = $state(0);
+    let openFilters = $state()
 
     const handleActiveFilter = (id:number) => {
         activeFilter = id;
@@ -36,7 +38,7 @@
 </script>
 
 <section class="filter-options">
-  <p class="link-font-2">Сортировать:</p>
+  <span class="link-font-2">Сортировать:</span>
   <div>
     {#each filterSelectData as filter}
       <FilterOption title={filter.title} isActive={activeFilter === filter.id}
@@ -45,9 +47,10 @@
   </div>
 </section>
 <section class="filter-mobile">
-  <div class="filter-icon">
-    <Filters size="sm"/>
-    <p class="link-font-2">Фильтр</p>
+  <Filters bind:open={openFilters}/>
+  <div class="filter-icon" onclick={openFilters}>
+    <FiltersIcon size="sm"/>
+    <span class="link-font-2">Фильтр</span>
   </div>
   <DropdownFilter bind:value={activeFilter} data={filterSelectData}/>
 </section>

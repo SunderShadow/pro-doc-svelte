@@ -29,18 +29,18 @@
       </div>
       <div class="doctor-stats">
         <h3>{name}</h3>
-        <div>
+        <div class="doctor-capital">
           <div class="rating title-3">
             <Star/>
             <span>4.9</span>
           </div>
           <a href="" class="link-font-1">4 отзыва</a>
         </div>
-        <div>
+        <div class="doctor-links">
           <a href="" class="active body-text-3">невролог</a>
           <a href="" class="active body-text-3">рефлексотерапевт</a>
         </div>
-        <div>
+        <div class="doctor-links">
           <a href="" class="active body-text-3">взрослый</a>
         </div>
         <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
@@ -120,6 +120,8 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  $mobile-adaptive: 330px;
+
   .doctor-card {
     display: flex;
     gap: 160px;
@@ -135,6 +137,10 @@
       gap: 32px;
     }
 
+    @media (max-width: $mobile-adaptive) {
+      padding: .75rem;
+    }
+
     .card-container {
       display: flex;
       flex-direction: column;
@@ -145,7 +151,10 @@
         gap: 16px;
 
         .doctor-image {
+          display: flex;
+
           position: relative;
+
           width: 180px;
           height: 180px;
 
@@ -166,6 +175,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+
+            flex-shrink: 0;
           }
         }
 
@@ -174,7 +185,7 @@
           flex-direction: column;
           gap: 8px;
 
-          > div {
+          .doctor-capital {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -199,36 +210,6 @@
             }
           }
 
-          > ul {
-            display: flex;
-
-            li {
-              display: flex;
-
-              color: map.get(env.$color, primary);
-              line-height: 22.4px;
-
-              list-style-type: none;
-
-              > hr {
-                margin: 0 8px;
-              }
-            }
-
-            li + li::before {
-              content: "";
-              height: 24px;
-              width: 1px;
-              margin: 0 8px;
-
-              background: rgba(map.get(env.$color, primary), .1);
-            }
-          }
-
-          > p {
-            line-height: 22.4px;
-          }
-
           @media (max-width: map.get(env.$screen-size, netbook)) {
             > h3 {
               font-size: 1.5rem;
@@ -239,11 +220,25 @@
         @media (max-width: map.get(env.$screen-size, mobile)) {
           display: none;
         }
+
+        .doctor-links {
+          a {
+            color: map.get(env.$color, primary);
+            line-height: 22.4px;
+          }
+
+          a + a::before {
+            content: "|";
+            margin: 0 8px;
+
+            color: rgba(map.get(env.$color, primary), 0.1);
+          }
+        }
       }
 
       .mobile-doctor-info {
         display: none;
-        gap: 16px;
+        gap: 8px;
 
         .doctor-info-container {
           display: flex;
@@ -251,9 +246,11 @@
         }
 
         .doctor-image {
+          display: flex;
+
           position: relative;
-          width: 180px;
-          height: 180px;
+          width: 130px;
+          height: 130px;
 
           background-size: cover;
           background-position: center;
@@ -278,6 +275,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+
+            flex-shrink: 0;
           }
 
           @media (max-width: map.get(env.$screen-size, mobile)) {
@@ -329,12 +328,6 @@
 
             color: map.get(env.$color, primary);
             line-height: 22.4px;
-
-            list-style-type: none;
-
-            > hr {
-              margin: 0 8px;
-            }
           }
 
           a + a::before {
@@ -365,7 +358,7 @@
         > div {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 16px;
 
           > p {
             margin-bottom: 8px;
