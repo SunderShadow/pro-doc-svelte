@@ -40,7 +40,7 @@
 
 <FilterForm id="doctor_filters" bind:open bind:close>
   <div>
-    <Select placeholder="Специализация" data={specialityItems}/>
+    <Select placeholder="Специализация" data={specialityItems} withErase={false}/>
     <Input placeholder="Город, округ, район, метро" withErase={false}/>
     <Input placeholder="ФИО врача" withErase={false} />
   </div>

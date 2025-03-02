@@ -68,7 +68,7 @@
     outline: none;
 
     &.withErase:not(:placeholder-shown) {
-        padding-right: calc(1em + var(--erase-icon-right) + 16px);
+        padding-right: calc(8px + var(--erase-icon-right));
     }
 
     font-family: "Helvetica", Gilroy, sans-serif;
