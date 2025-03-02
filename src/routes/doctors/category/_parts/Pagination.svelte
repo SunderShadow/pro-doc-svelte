@@ -2,28 +2,50 @@
     import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte";
     import Button from "$ui-kit/Button/Button.svelte";
 
+    type Props = {
+        pageCount: number;
+        mobilePageCount: number;
+        isMorePage?: boolean; // временно, потом переделать
+    }
+
+    let {
+        pageCount,
+        mobilePageCount,
+        isMorePage
+    } : Props = $props()
+
     let currentPage: number = $state(0);
     let screenWidth = $state();
+
+    const canGoToPrevPage = () => {
+        return currentPage > 0;
+    }
+
+    const canGoToNextPage = () => {
+        return (currentPage + 1) < pageCount;
+    }
 
     const setCurrentPage = (page: number) => {
         currentPage = page;
     }
 
     const goToPrevPage = () => {
-        if (currentPage > 0) {
+        if (canGoToPrevPage()) {
             currentPage--;
         }
     }
 
     const goToNextPage = () => {
-        currentPage++;
+        if (canGoToNextPage()) {
+            currentPage++;
+        }
     }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}/>
 
 <nav>
-  <button onclick={goToPrevPage}>
+  <button onclick={goToPrevPage} class:disabled={!canGoToPrevPage()}>
     <SvgContainer type="primary" size="sm">
       <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -32,23 +54,25 @@
     </SvgContainer>
   </button>
   {#if screenWidth > 360}
-    {#each {length: 5}, page}
+    {#each {length: pageCount}, page}
       <Button type="icon" outline={currentPage !== page}
               onclick={() => setCurrentPage(page)}>
         {page + 1}
       </Button>
     {/each}
     {:else}
-    {#each {length: 3}, page}
+    {#each {length: mobilePageCount}, page}
       <Button type="icon" outline={currentPage !== page}
               onclick={() => setCurrentPage(page)}>
         {page + 1}
       </Button>
     {/each}
   {/if}
-  <Button type="icon" outline>...</Button>
-  <Button type="icon" outline>145</Button>
-  <button onclick={goToNextPage}>
+  {#if isMorePage}
+    <Button type="icon" outline>...</Button>
+    <Button type="icon" outline>145</Button>
+  {/if}
+  <button onclick={goToNextPage} class:disabled={!canGoToNextPage()}>
     <SvgContainer type="primary" size="sm">
       <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -74,6 +98,15 @@
       margin: 0;
       border: none;
       cursor: pointer;
+
+      &.disabled {
+        opacity: .5;
+        user-select: none;
+        cursor: default;
+
+        background: none;
+        color: inherit;
+      }
     }
 
     :global {

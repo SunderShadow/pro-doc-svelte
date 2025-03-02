@@ -71,7 +71,7 @@
                 <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
                 <Button outline>Показать ещё</Button>
                 <div class="pagination">
-                    <Pagination />
+                    <Pagination pageCount={5} mobilePageCount={3} isMorePage/>
                 </div>
             </section>
         </div>
