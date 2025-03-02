@@ -2,12 +2,16 @@
   import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte";
   import DoctorCard from "../category/_parts/DoctorCard.svelte";
   import DoctorImage from "../category/_assets/img/doctor.png?enhanced&format=webp"
+  import PatientImage1 from "./_assets/img/patient-1.png?enhanced&format=webp"
+  import PatientImage2 from "./_assets/img/patient-2.png?enhanced&format=webp"
   import Star from "$ui-kit/icons/Star.svelte";
   import Like from "$ui-kit/icons/Like.svelte";
   import DoctorLocationTimetable from "../category/_parts/DoctorLocationTimetable.svelte";
   import PriceCards from "../category/_parts/PriceCards.svelte";
   import Button from "$ui-kit/Button/Button.svelte";
   import Magnifier from "$ui-kit/icons/Magnifier.svelte";
+  import ClientReview from "../../_parts/ClientReviewSection/ClientReview.svelte";
+  import Pagination from "../category/_parts/Pagination.svelte";
 
   let breadcrumbs = [
       {
@@ -30,7 +34,9 @@
 </script>
 
 <svelte:head>
-  <li class="body-text-2"nk rel="preload" as="image" href={DoctorImage.img.src} />
+  <link rel="preload" as="image" href={DoctorImage.img.src} />
+  <link rel="preload" as="image" href={PatientImage1.img.src} />
+  <link rel="preload" as="image" href={PatientImage2.img.src} />
 </svelte:head>
 
 <main class="page-container">
@@ -150,12 +156,35 @@
       </div>
       <DoctorLocationTimetable/>
     </div>
+    <div class="reviews">
+      <h4>Отзывы о враче</h4>
+      <div class="reviews-container">
+<!--        TODO переписать на slot-->
+        <ClientReview author="Пациент" authorImage={PatientImage1.img.src}
+                      title="«Спасибо Алексею Викторовичу за то, что помог разобраться‥»."
+                      description="Спасибо Алексею Викторовичу за то,
+                          что помог разобраться в моей проблеме. До него я был у многих врачей и от них информации не добыл!
+                          Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения."/>
+        <ClientReview author="Пациент" authorImage={PatientImage2.img.src}
+                      title="«Спасибо Алексею Викторовичу за то, что помог разобраться‥»."
+                      description="Спасибо Алексею Викторовичу за то,
+                          что помог разобраться в моей проблеме. До него я был у многих врачей и от них информации не добыл!
+                          Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения."/>
+      </div>
+      <Pagination pageCount={2} mobilePageCount={2}/>
+    </div>
   </div>
 </main>
 
 <style lang="scss">
   @use "sass:map";
   @use "$lib/ui/env";
+
+  h4 {
+    font-size: 1.5rem;
+    line-height: 36px;
+    font-weight: 600;
+  }
 
   .card {
     display: flex;
@@ -290,12 +319,6 @@
     align-items: start;
     gap: 32px;
 
-    h4 {
-      font-size: 1.5rem;
-      line-height: 36px;
-      font-weight: 600;
-    }
-
     p {
       line-height: 25.6px;
     }
@@ -379,6 +402,30 @@
   .associations {
     > h4 {
       margin-bottom: 8px;
+    }
+  }
+
+  .reviews {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 2rem;
+
+    > h4 {
+      margin-bottom: 16px;
+    }
+  }
+
+  .reviews-container {
+    display: flex;
+    gap: 30px;
+
+    margin-bottom: 32px;
+
+    :global {
+      h1 {
+        font-size: 1.2rem; // временно
+      }
     }
   }
 </style>
