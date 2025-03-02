@@ -27,7 +27,7 @@ setPageTitle('Профиль')
 <div class="wrapper">
   <h3>Мои данные</h3>
   <div class="content-wrapper">
-    <div>
+    <div class="photo_upload">
       <PhotoUpload />
     </div>
     <form>
@@ -79,9 +79,20 @@ setPageTitle('Профиль')
   }
 
   .wrapper {
-    border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
     padding: 32px;
+
+    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+      border: 1px solid rgba(map.get(env.$color, primary), .1);
+    }
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      padding: 16px;
+    }
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      padding: 0;
+    }
   }
 
   .content-wrapper {
@@ -103,6 +114,10 @@ setPageTitle('Профиль')
     }
   }
 
+  .photo_upload {
+    flex-shrink: 0;
+  }
+
   label {
     display: block;
     width: fit-content;
@@ -115,7 +130,7 @@ setPageTitle('Профиль')
     gap: 32px;
     grid-template-columns: 1fr 1fr;
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
+    @media (max-width: 1200px) {
       grid-template-columns: 1fr;
     }
   }
@@ -123,7 +138,7 @@ setPageTitle('Профиль')
   .notifications {
     grid-column: span 2;
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
+    @media (max-width: 1200px) {
       grid-column: span 1;
     }
 
@@ -133,7 +148,7 @@ setPageTitle('Профиль')
 
       margin-top: 16px;
 
-      @media (max-width: map.get(env.$screen-size, netbook)) {
+      @media (max-width: 1200px) {
         flex-direction: column;
         gap: 16px;
       }
@@ -144,6 +159,11 @@ setPageTitle('Профиль')
       gap: 32px;
 
       margin-top: 32px;
+
+      @media (max-width: map.get(env.$screen-size,  netbook)) and (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+        flex-direction: column;
+        gap: 16px;
+      }
 
       @media (max-width: $mobile-breakpoint) {
         flex-direction: column;

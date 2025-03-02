@@ -83,9 +83,9 @@
       }
     }
   }
-  .wrapper {
-    padding: 32px;
 
+  .wrapper {
+    flex-grow: 1;
     @media (max-width: map.get(env.$screen-size, tablet)) {
       padding: 16px;
     }

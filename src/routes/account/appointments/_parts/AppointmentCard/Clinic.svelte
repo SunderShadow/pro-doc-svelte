@@ -25,18 +25,6 @@
       <img class="clinic_icon" src={ClinicIconImg.img.src} alt="">
       <h1 class="title title-1">Университетская клиника неврологии</h1>
 
-      <div class="rating-container">
-        <div class="rating">
-          <svg class="star" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.88398 12.6681L3.96732 7.9848L0.333984 4.8348L5.13398 4.41813L7.00065 0.00146484L8.86732 4.41813L13.6673 4.8348L10.034 7.9848L11.1173 12.6681L7.00065 10.1848L2.88398 12.6681Z" fill="#FFB700"/>
-          </svg>
-          <span>4.9</span>
-        </div>
-        <a href="/" class="reviews active">
-          4 отзыва
-        </a>
-      </div>
-
       <div class="address">
         <h6 class="title-3">Адрес:</h6>
         <div class="body-text-2">
@@ -68,8 +56,7 @@
   }
 
   .wrapper {
-    padding: 32px;
-
+    flex-grow: 1;
     @media (max-width: map.get(env.$screen-size, tablet)) {
       padding: 16px;
     }
@@ -128,13 +115,6 @@
       line-height: 24px;
     }
 
-    > * + h6 {
-      margin-top: 16px;
-
-      @media (max-width: map.get(env.$screen-size, tablet)) {
-        margin-top: 8px;
-      }
-    }
 
     > div {
       display: flex;
