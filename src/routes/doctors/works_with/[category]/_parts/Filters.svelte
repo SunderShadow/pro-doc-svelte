@@ -4,6 +4,7 @@
   import Input from "$ui-kit/Form/Input.svelte"
   import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
   import FilterForm from "$lib/components/FilterForm/FilterForm.svelte"
+  import Radio from "$ui-kit/Form/Radio/Radio.svelte";
 
   let specialityItems = [
       {
@@ -33,6 +34,8 @@
       close = $bindable()
   }: Props = $props()
 
+
+  let discount = $state()
 </script>
 
 <FilterForm id="doctor_filters" bind:open bind:close>
@@ -108,10 +111,10 @@
 
   <div>
     <div class="title-3">Скидки</div>
-    <Checkbox label="Любой"/>
-    <Checkbox label="от 5 лет"/>
-    <Checkbox label="от 10 лет"/>
-    <Checkbox label="от 15 лет"/>
+    <Radio bind:group={discount} name="discount" value="10" label="от 10% и выше"/>
+    <Radio bind:group={discount} name="discount" value="30" label="от 30% и выше"/>
+    <Radio bind:group={discount} name="discount" value="50" label="от 50% и выше"/>
+    <Radio bind:group={discount} name="discount" value="70" label="от 70% и выше"/>
   </div>
 
   <div>
