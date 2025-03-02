@@ -62,7 +62,9 @@
           linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)),
           var(--img);
       @media (max-width: $mobile-breakpoint) {
-        background-image: var(--img-mobile);
+        background-image:
+            linear-gradient(to bottom, transparent 105px, map.get(env.$bg-color, primary) 210px),
+            var(--img-mobile);
       }
     }
 
@@ -80,7 +82,11 @@
           var(--img-mobile);
 
       background-position: top;
-      background-size: cover;
+      background-size: contain;
+    }
+
+    @media (max-width: 360px) {
+      background-size: auto 210px;
     }
   }
 

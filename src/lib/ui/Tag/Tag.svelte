@@ -4,7 +4,7 @@
     type Props = {
       children: Snippet,
       isActive?: boolean,
-      onclick: () => void,
+      onclick?: Function,
     }
 
     const {
@@ -14,9 +14,9 @@
     }: Props = $props()
 </script>
 
-<div class="tag" class:active={isActive} {onclick}>
+<button class="tag" class:active={isActive} {onclick}>
   {@render children?.()}
-</div>
+</button>
 
 <style lang="scss">
   @use "sass:map";
@@ -34,6 +34,7 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: .5rem;
 
+    background: none;
     cursor: pointer;
 
     transition: background-color 200ms;

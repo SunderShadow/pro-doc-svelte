@@ -4,3 +4,8 @@ export namespace Doctor {
         key: string
     }
 }
+
+export type Tag = {
+    title: string,
+    key: string
+}

@@ -52,12 +52,16 @@
     line-height: 27.2px;
 
     outline: none;
-    cursor: pointer;
+
     border: none;
     border-radius: .75em;
 
     transition-property: box-shadow, background-color;
     transition-duration: 300ms;
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
 
     &.fullWidth {
       width: 100%;
@@ -68,28 +72,32 @@
       border: 1px solid env.$bg-default;
       color: env.$bg-default;
 
-      @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
-        &:focus,
-        &:hover {
-          background-color: rgba(env.$bg-hover, .1);
-          box-shadow: none;
-        }
+      &:not([disabled]) {
+        @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
+          &:focus,
+          &:hover {
+            background-color: rgba(env.$bg-hover, .1);
+            box-shadow: none;
+          }
 
-        &:active {
-          background-color: env.$bg-pressing;
-          color: #fff;
+          &:active {
+            background-color: env.$bg-pressing;
+            color: #fff;
+          }
         }
       }
     }
 
     @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
-      &:hover {
-        background-color: env.$bg-hover;
-        box-shadow: 0 12px 24px rgba(env.$bg-pressing, .15);
-      }
+      &:not([disabled]) {
+        &:hover {
+          background-color: env.$bg-hover;
+          box-shadow: 0 12px 24px rgba(env.$bg-pressing, .15);
+        }
 
-      &:active {
-        background-color: env.$bg-pressing;
+        &:active {
+          background-color: env.$bg-pressing;
+        }
       }
     }
 
