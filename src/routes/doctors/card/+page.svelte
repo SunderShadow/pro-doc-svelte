@@ -4,6 +4,7 @@
   import DoctorImage from "../category/_assets/img/doctor.png?enhanced&format=webp"
   import PatientImage1 from "./_assets/img/patient-1.png?enhanced&format=webp"
   import PatientImage2 from "./_assets/img/patient-2.png?enhanced&format=webp"
+  import CertificateImage from "./_assets/img/certificate.png?enhanced&format=webp"
   import Star from "$ui-kit/icons/Star.svelte";
   import Like from "$ui-kit/icons/Like.svelte";
   import DoctorLocationTimetable from "../category/_parts/DoctorLocationTimetable.svelte";
@@ -12,6 +13,7 @@
   import Magnifier from "$ui-kit/icons/Magnifier.svelte";
   import ClientReview from "../../_parts/ClientReviewSection/ClientReview.svelte";
   import Pagination from "../category/_parts/Pagination.svelte";
+  import Accordion from "$ui-kit/Accordion/Accordion.svelte";
 
   let breadcrumbs = [
       {
@@ -36,7 +38,7 @@
 <svelte:head>
   <link rel="preload" as="image" href={DoctorImage.img.src} />
   <link rel="preload" as="image" href={PatientImage1.img.src} />
-  <link rel="preload" as="image" href={PatientImage2.img.src} />
+  <link rel="preload" as="image" href={CertificateImage.img.src} />
 </svelte:head>
 
 <main class="page-container">
@@ -44,7 +46,7 @@
   <div class="card">
     <div class="card-container">
       <div class="card-content">
-        <div class="doctor-header">
+        <section class="doctor-header">
           <div class="doctor-image">
             <img src={DoctorImage.img.src} alt="" loading="lazy">
             <div class="favorite_icon">
@@ -69,15 +71,15 @@
             </div>
             <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
           </div>
-        </div>
+        </section>
         <div class="price">
           <PriceCards/>
         </div>
         <div class="button link-font-1">
           <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
         </div>
-        <div class="doctor-info">
-          <div class="about">
+        <article class="doctor-info">
+          <section class="about">
             <h4>О враче</h4>
             <p class="body-text-2">
               Невролог, гирудотерапевт. Проводит диагностику и лечение болей в спине,
@@ -86,8 +88,8 @@
               При лечении неврологических заболеваний активно применяет гирудотерапию.
               Автор 10 публикаций.
             </p>
-          </div>
-          <div class="medication">
+          </section>
+          <section class="medication">
             <h4>Лечение и консультация по вопросам:</h4>
             <ul>
               <li class="body-text-2">артрозы</li>
@@ -99,8 +101,8 @@
               <li class="body-text-2">пяточная шпора</li>
               <li class="body-text-2">реабилитация после переломов</li>
             </ul>
-          </div>
-          <div class="education">
+          </section>
+          <section class="education">
             <h4>Образование</h4>
             <div>
               <p class="body-text-2">ГОУ «Московская медицинская академия им. И.М. Сеченова», 1997</p>
@@ -114,8 +116,8 @@
               <p class="body-text-2">ГОУ ДПО «Российская медицинская академия последипломного образования», 2004</p>
               <span class="body-text-2">Острые эрозивно-язвенные поражения желудка и двенадцатиперстной кишки при патологии жёлчных путей, докторантура</span>
             </div>
-          </div>
-          <div class="courses">
+          </section>
+          <section class="courses">
             <h4>Курсы и сертификаты</h4>
             <div class="courses-container">
               <p class="body-text-2">Хирургия, <span>2004,</span> <span>2010,</span> <span>2016</span></p>
@@ -124,8 +126,8 @@
               <p class="body-text-2">Актуальные вопросы организации здравоохранения и общественного здоровья:
                 экспертиза временной нетрудоспособности и качества медицинской помощи, 2017</p>
             </div>
-          </div>
-          <div class="experience">
+          </section>
+          <section class="experience">
             <h4>Опыт работы</h4>
             <div>
               <p class="body-text-2">Клиника здорового позвоночника «Здравствуй!»</p>
@@ -147,16 +149,16 @@
               <b>2015–2019</b>
               <span class="body-text-2">Хирург</span>
             </div>
-          </div>
+          </section>
           <div class="associations">
             <h4>Ассоциации</h4>
             <p class="body-text-2">Ассоциация травматологов России</p>
           </div>
-        </div>
+        </article>
       </div>
       <DoctorLocationTimetable/>
     </div>
-    <div class="reviews">
+    <section class="reviews">
       <h4>Отзывы о враче</h4>
       <div class="reviews-container">
 <!--        TODO переписать на slot-->
@@ -172,8 +174,34 @@
                           Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения."/>
       </div>
       <Pagination pageCount={2} mobilePageCount={2}/>
-    </div>
+    </section>
+    <section class="documents">
+      <h4>Документы и фотографии</h4>
+      <div class="documents-content">
+        {#each {length: 5}}
+          <img src={CertificateImage.img.src} alt=""/>
+        {/each}
+      </div>
+      <Pagination pageCount={3} mobilePageCount={3}/>
+    </section>
   </div>
+  <section class="accordion-container">
+    <h2>Вопросы и ответы</h2>
+    <div class="accordion-content">
+      <Accordion title="Какой рейтинг и отзывы?">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!
+      </Accordion>
+      <Accordion title="Где работает Горбунов Алексей Викторович?">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, corporis?
+      </Accordion>
+      <Accordion title="Какая стоимость приёма?">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, non!
+      </Accordion>
+      <Accordion title="Какие преимущества врача?">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, vel?
+      </Accordion>
+    </div>
+  </section>
 </main>
 
 <style lang="scss">
@@ -427,5 +455,44 @@
         font-size: 1.2rem; // временно
       }
     }
+  }
+
+  .documents {
+    padding-top: 2rem;
+
+    > h4 {
+      margin-bottom: 16px;
+    }
+  }
+
+  .documents-content {
+    display: flex;
+    gap: 28px;
+
+    margin-bottom: 32px;
+
+    overflow-x: hidden;
+
+    > img {
+      width: 292px;
+      height: 366px;
+
+      border: 2px solid map.get(env.$bg-color, primary);
+      border-radius: 12px;
+    }
+  }
+
+  .accordion-container {
+    padding-top: 12rem;
+
+    > h2 {
+      margin-bottom: 64px;
+    }
+  }
+
+  .accordion-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 </style>
