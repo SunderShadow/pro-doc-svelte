@@ -38,6 +38,7 @@
   @use "$ui-kit/env" as env-global;
 
   button {
+    width: fit-content;
     display: block;
     -webkit-tap-highlight-color: transparent;
 

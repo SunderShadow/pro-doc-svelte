@@ -77,11 +77,11 @@
       </div>
 
       <div class="for">
-        <a href="/" class="for-item">
+        <a href="/register/clinics" class="for-item">
           <PolyclinicIcon type="primary" size="sm"/>
           <span>Клиникам</span>
         </a>
-        <a class="for-item">
+        <a href="/register/doctors" class="for-item">
           <DoctorIcon type="primary" size="sm"/>
           <span>Врачам</span>
         </a>

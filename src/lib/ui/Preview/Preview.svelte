@@ -6,7 +6,8 @@
         title: string,
         image: string,
         imageMobile: string,
-        withGradient: true,
+        withGradient?: boolean,
+        mobileGradient?: boolean,
         contentWidth?: number,
         gradientWidth?: number|null
     }
@@ -17,14 +18,16 @@
         image,
         imageMobile,
         withGradient,
+        mobileGradient = true,
         contentWidth = 50,
-        gradientWidth = null
+        gradientWidth = null,
     }: Props = $props()
 
 </script>
 
 <div class="preview"
      class:with_gradient={withGradient}
+     class:with_mobile_gradient={mobileGradient}
      style:--img={`url(${image})`}
      style:--img-mobile={`url(${imageMobile})`}
      style:--content-width={contentWidth + '%'}
@@ -61,6 +64,13 @@
       background-image:
           linear-gradient(to right, map.get(env.$bg-color, primary) var(--gradient-cover-size), transparent calc(var(--gradient-cover-size) + 10%)),
           var(--img);
+
+      @media (max-width: $mobile-breakpoint) {
+        background-image: var(--img-mobile);
+      }
+    }
+
+    &.with_mobile_gradient {
       @media (max-width: $mobile-breakpoint) {
         background-image:
             linear-gradient(to bottom, transparent 105px, map.get(env.$bg-color, primary) 210px),
@@ -77,9 +87,7 @@
     }
 
     @media (max-width: $mobile-breakpoint) {
-      background-image:
-          linear-gradient(to bottom, transparent 105px, map.get(env.$bg-color, primary) 210px),
-          var(--img-mobile);
+      background-image: var(--img-mobile);
 
       background-position: top;
       background-size: contain;
