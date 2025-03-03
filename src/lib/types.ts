@@ -5,6 +5,11 @@ export namespace Doctor {
     }
 }
 
+export type Breadcrumbs = Array<{
+    title: string,
+    href: string
+}>
+
 export type Tag = {
     title: string,
     key: string

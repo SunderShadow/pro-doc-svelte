@@ -136,16 +136,24 @@
 
 @font-face {
   font-family: "Helvetica";
-  font-weight: 900;
+  font-weight: 700;
 
-  src: url("$ui-kit/_fonts/Helvetica/helveticaneuecyr_black.otf") format('opentype');
+  src: url("$ui-kit/_fonts/Helvetica/helvetica_bold.otf") format('opentype');
 }
 
 @font-face {
   font-family: "Helvetica";
   font-weight: 400;
 
-  src: url("$ui-kit/_fonts/Helvetica/helveticaneuecyr_roman.otf") format('opentype');
+  src: url("$ui-kit/_fonts/Helvetica/helvetica_regular.otf") format('opentype');
+}
+
+@font-face {
+  font-family: "Helvetica";
+  font-weight: 400;
+  font-style: italic;
+
+  src: url("$ui-kit/_fonts/Helvetica/helvetica_oblique.otf") format('opentype');
 }
 
 @font-face {
@@ -153,19 +161,13 @@
   font-style: italic;
   font-weight: 200;
 
-  src: url("$ui-kit/_fonts/Helvetica/helveticaneuecyr_ultralightitalic.otf") format('opentype');
+  src: url("$ui-kit/_fonts/Helvetica/helvetica_light.otf") format('opentype');
 }
 
 @font-face {
   font-family: "Helvetica";
+  font-style: italic;
   font-weight: 200;
 
-  src: url("$ui-kit/_fonts/Helvetica/helveticaneuecyr_ultralight.otf") format('opentype');
-}
-
-@font-face {
-  font-family: "Helvetica";
-  font-weight: 100;
-
-  src: url("$ui-kit/_fonts/Helvetica/helveticaneuecyr_thin.otf") format('opentype');
+  src: url("$ui-kit/_fonts/Helvetica/helvetica_lightoblique.otf") format('opentype');
 }
