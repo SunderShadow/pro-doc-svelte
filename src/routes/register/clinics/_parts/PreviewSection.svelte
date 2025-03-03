@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PreviewImgSrc       from "../_assets/preview.jpeg?enhanced&format=webp"
+  import PreviewImgSrc       from "../_assets/preview.png?enhanced&format=webp"
   import PreviewImgMobileSrc from "../_assets/preview-mobile.png?enhanced&format=webp"
 
   import Preview from "$ui-kit/Preview/Preview.svelte"
@@ -16,15 +16,16 @@
 
 <section class="page-container">
 
-  <div id="doctors_register_preview">
+  <div id="clinic_register_preview">
     <Preview
-        title="Регистрация для врачей"
+        title="Регистрация клиники"
         image={screenSize > 700 ? PreviewImgSrc.img.src : ''}
         imageMobile={PreviewImgMobileSrc.img.src}
-        contentWidth={screenSize > 700 ? 55 : 90}
-        mobileGradient={false}
+        withGradient={true}
+        gradientWidth={45}
+        contentWidth={screenSize > 700 ? 50 : 90}
     >
-      <p class="body-text-2">Если вы врач, пройдите, пожалуйста, регистрацию и получите доступ к своей персональной странице</p>
+      <p class="body-text-2">Если вы представитель клиники,пройдите бесплатную регистрации управляйте страницей мед. центра</p>
       <Button fullWidth={screenSize <= 500}>Зарегистрироваться как врач</Button>
     </Preview>
   </div>
@@ -52,15 +53,6 @@
 <style lang="scss">
   @use "sass:map";
   @use "$lib/ui/env";
-
-  :global {
-    #doctors_register_preview .preview {
-      @media (min-width: 500px) {
-        background-position: right;
-        background-size: 50% 100%;
-      }
-    }
-  }
 
   .statistics {
     display: grid;
