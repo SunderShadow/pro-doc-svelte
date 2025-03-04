@@ -2,9 +2,6 @@
     import Like from "$ui-kit/icons/Like.svelte";
     import Star from "$ui-kit/icons/Star.svelte";
     import Link from "$ui-kit/Link/Link.svelte";
-    import Clinic from "$ui-kit/icons/Clinic.svelte";
-    import Online from "$ui-kit/icons/Online.svelte";
-    import Ambulance from "$ui-kit/icons/Ambulance.svelte";
     import DoctorLocationTimetable from "./DoctorLocationTimetable.svelte";
     import PriceCards from "./PriceCards.svelte";
 
