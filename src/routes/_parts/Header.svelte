@@ -46,7 +46,7 @@
           title: 'Онлайн-консультации'
       },
       {
-          href: '/library/advices',
+          href: '/library/advices/all/1',
           title: 'Библиотека'
       },
       {

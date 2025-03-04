@@ -37,6 +37,7 @@
 <svelte:head>
   <title>{title}</title>
 </svelte:head>
+
 <div class="breadcrumbs page-container">
   <Breadcrumbs {list}/>
 </div>

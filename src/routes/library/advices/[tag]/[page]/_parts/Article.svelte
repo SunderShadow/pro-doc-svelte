@@ -12,7 +12,7 @@
   const href = '/library/advices/article/' + slug
 </script>
 <article>
-  <img src={thumbnail} alt="">
+  <img src={thumbnail} alt="" loading="lazy">
 
   <div class="body">
     <h1 class="title-1">{title}</h1>
