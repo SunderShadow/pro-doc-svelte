@@ -67,10 +67,14 @@
       <Filters bind:open={openFilters}/>
     </div>
     <div>
-      {#if page.url.pathname.includes('/doctors') }
+      {#if page.url.pathname.includes(data.slug + '/doctors') }
         <h2>Врачи Университетской клиник неврологии (24)</h2>
-      {:else if (page.url.pathname.includes('/services'))}
+      {:else if (page.url.pathname.includes(data.slug + '/services'))}
         <h2>Услуги и цены Университетской клиники неврологии</h2>
+      {:else if (page.url.pathname.includes(data.slug + '/promotions'))}
+        <h2>Акции и специальные предложения Университетской клиники неврологии</h2>
+      {:else if (page.url.pathname.includes(data.slug + '/reviews'))}
+        <h2>Отзывы Университетской клиники неврологии</h2>
       {/if}
       <div class="switcher-wrapper">
         {#if screenSize < 1200}
@@ -122,6 +126,8 @@
 
     > div:last-child {
       flex-grow: 1;
+      min-width: 0;
+
     }
 
     @media (max-width: map.get(env.$screen-size, tablet)) {

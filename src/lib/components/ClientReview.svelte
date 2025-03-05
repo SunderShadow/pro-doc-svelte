@@ -1,12 +1,12 @@
 <script lang="ts">
-    import Star from "$ui-kit/icons/Star.svelte";
-    import EmptyStar from "$ui-kit/icons/EmpyStar.svelte";
+    import Star from "$ui-kit/icons/Star.svelte"
 
     type Props = {
         title: string,
         description: string,
         author: string,
         authorImage: string,
+        rating?: number,
     }
 
     const {
@@ -14,14 +14,15 @@
         description,
         author,
         authorImage,
+        rating = 4
     }: Props = $props()
 
 </script>
 
 <div class="review-comment">
   <div class="content">
-      <h1 class="title-1">{title}</h1>
-      <p class="body-text-2">{description}</p>
+    <h1 class="title-2">{title}</h1>
+    <p class="body-text-2">{description}</p>
   </div>
   <div class="author">
     <img src={authorImage} alt="">
@@ -29,11 +30,12 @@
     <div class="name">
       <h5 class="title-3">{author}</h5>
       <div class="rating">
-        <div><Star size="sm"/></div>
-        <div><Star size="sm"/></div>
-        <div><Star size="sm"/></div>
-        <div><Star size="sm"/></div>
-        <div class="empty"><Star size="sm"/></div>
+        {#each Array(rating) as _}
+          <div><Star size="sm"/></div>
+        {/each}
+        {#each Array(5 - rating) as _}
+          <div class="empty"><Star size="sm"/></div>
+        {/each}
       </div>
     </div>
   </div>

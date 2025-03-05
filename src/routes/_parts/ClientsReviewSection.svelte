@@ -3,7 +3,7 @@
     import ClientImage2 from "$lib/assets/images/clients/2.png?enhanced&format=webp"
     import ClientImage3 from "$lib/assets/images/clients/3.png?enhanced&format=webp"
 
-    import ClientReview from "./ClientReviewSection/ClientReview.svelte"
+    import ClientReview from "$lib/components/ClientReview.svelte"
 
     import LinkBlock from "$ui-kit/LinkBlock/LinkBlock.svelte"
 </script>

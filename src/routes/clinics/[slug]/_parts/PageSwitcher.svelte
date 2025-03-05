@@ -4,14 +4,15 @@ import {page} from "$app/state"
 let {
     slug
 } = $props()
+
 </script>
 
 <div class="switcher">
-  <a class:active={page.url.pathname.includes('/about')}      href={"/clinics/" + slug + '/about'} data-sveltekit-noscroll>О клинике</a>
-  <a class:active={page.url.pathname.includes('/doctors')}    href={"/clinics/" + slug + '/doctors'} data-sveltekit-noscroll>Врачи</a>
-  <a class:active={page.url.pathname.includes('/services')}   href={"/clinics/" + slug + '/services/consulting'} data-sveltekit-noscroll>Услуги и цены</a>
-  <a class:active={page.url.pathname.includes('/promotions')} href={"/clinics/" + slug + '/promotions'} data-sveltekit-noscroll>Акции (10)</a>
-  <a class:active={page.url.pathname.includes('/reviews')}    href={"/clinics/" + slug + '/reviews'} data-sveltekit-noscroll>Отзывы</a>
+  <a class:active={page.url.pathname.includes(slug + '/about')}      href={"/clinics/" + slug + '/about'} data-sveltekit-noscroll>О клинике</a>
+  <a class:active={page.url.pathname.includes(slug + '/doctors')}    href={"/clinics/" + slug + '/doctors'} data-sveltekit-noscroll>Врачи</a>
+  <a class:active={page.url.pathname.includes(slug + '/services')}   href={"/clinics/" + slug + '/services/consulting'} data-sveltekit-noscroll>Услуги и цены</a>
+  <a class:active={page.url.pathname.includes(slug + '/promotions')} href={"/clinics/" + slug + '/promotions'} data-sveltekit-noscroll>Акции (10)</a>
+  <a class:active={page.url.pathname.includes(slug + '/reviews')}    href={"/clinics/" + slug + '/reviews/clinic'} data-sveltekit-noscroll>Отзывы</a>
 </div>
 
 <style lang="scss">

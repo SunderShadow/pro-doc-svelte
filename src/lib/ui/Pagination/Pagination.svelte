@@ -43,7 +43,7 @@
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
 <div class="pagination">
-  <button class="control_arrow" onclick={goPrev} disabled={!canGoPrev}>
+  <button class="control_arrow prev" onclick={goPrev} disabled={!canGoPrev}>
     <SvgContainer type="primary" size="sm">
       <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -83,7 +83,7 @@
       <Button onclick={() => {setPage(total)}} type="icon" outline>{total}</Button>
     {/if}
   {/if}
-  <button class="control_arrow" onclick={goNext} disabled={!canGoNext}>
+  <button class="control_arrow next" onclick={goNext} disabled={!canGoNext}>
     <SvgContainer type="primary" size="sm">
       <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -113,6 +113,15 @@
     }
   }
 
+  @media (max-width: map.get(env.$screen-size, mobile)) {
+    .next {
+      margin-left: auto;
+    }
+
+    .prev {
+      margin-right: auto;
+    }
+  }
   .pagination {
     display: flex;
     gap: 16px;
