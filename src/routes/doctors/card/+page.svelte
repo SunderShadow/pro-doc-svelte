@@ -22,7 +22,12 @@
           href: ''
       }
   ]
+
+  let screenWidth = $state(0);
+
 </script>
+
+<svelte:window bind:innerWidth={screenWidth}></svelte:window>
 
 <main class="page-container">
   <Breadcrumbs list={breadcrumbs} />
@@ -32,23 +37,25 @@
   <div class="mobile-card">
     <MobileCard/>
   </div>
-  <section class="accordion-container">
-    <h2>Вопросы и ответы</h2>
-    <div class="accordion-content">
-      <Accordion title="Какой рейтинг и отзывы?">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!
-      </Accordion>
-      <Accordion title="Где работает Горбунов Алексей Викторович?">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, corporis?
-      </Accordion>
-      <Accordion title="Какая стоимость приёма?">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, non!
-      </Accordion>
-      <Accordion title="Какие преимущества врача?">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, vel?
-      </Accordion>
-    </div>
-  </section>
+  {#if screenWidth > 400}
+    <section class="accordion-container">
+      <h2>Вопросы и ответы</h2>
+      <div class="accordion-content">
+        <Accordion title="Какой рейтинг и отзывы?">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!
+        </Accordion>
+        <Accordion title="Где работает Горбунов Алексей Викторович?">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, corporis?
+        </Accordion>
+        <Accordion title="Какая стоимость приёма?">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, non!
+        </Accordion>
+        <Accordion title="Какие преимущества врача?">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, vel?
+        </Accordion>
+      </div>
+    </section>
+  {/if}
 </main>
 
 <style lang="scss">

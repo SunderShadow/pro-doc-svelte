@@ -11,6 +11,7 @@
     import Like from "$ui-kit/icons/Like.svelte";
     import Magnifier from "$ui-kit/icons/Magnifier.svelte";
     import Pagination from "../../category/_parts/Pagination.svelte";
+    import CardSlider from "./CardSlider.svelte";
 </script>
 
 <svelte:head>
@@ -135,32 +136,7 @@
     </div>
     <DoctorLocationTimetable/>
   </div>
-  <section class="reviews">
-    <h4>Отзывы о враче</h4>
-    <div class="reviews-container">
-      <!--        TODO переписать на slot-->
-      <ClientReview author="Пациент" authorImage={PatientImage1.img.src}
-                    title="«Спасибо Алексею Викторовичу за то, что помог разобраться‥»."
-                    description="Спасибо Алексею Викторовичу за то,
-                          что помог разобраться в моей проблеме. До него я был у многих врачей и от них информации не добыл!
-                          Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения."/>
-      <ClientReview author="Пациент" authorImage={PatientImage2.img.src}
-                    title="«Спасибо Алексею Викторовичу за то, что помог разобраться‥»."
-                    description="Спасибо Алексею Викторовичу за то,
-                          что помог разобраться в моей проблеме. До него я был у многих врачей и от них информации не добыл!
-                          Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения."/>
-    </div>
-    <Pagination pageCount={2} mobilePageCount={2}/>
-  </section>
-  <section class="documents">
-    <h4>Документы и фотографии</h4>
-    <div class="documents-content">
-      {#each {length: 5}}
-        <img src={CertificateImage.img.src} alt=""/>
-      {/each}
-    </div>
-    <Pagination pageCount={3} mobilePageCount={3}/>
-  </section>
+  <CardSlider/>
 </div>
 
 <style lang="scss">
