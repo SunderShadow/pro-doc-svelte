@@ -6,7 +6,10 @@
   import Button from "$ui-kit/Button/Button.svelte"
   import MagnifierIcon from "$ui-kit/icons/Magnifier.svelte"
   import Vk from "$ui-kit/icons/Vk.svelte"
-  import SliderImgSrc from "../_assets/slider.png?enhanced&format=webp"
+
+  import SliderImg from "../_assets/slider.png?enhanced&format=webp"
+  import LicenseImg from "../_assets/license.png?enhanced&format=webp"
+
   import {Splide, SplideSlide, SplideTrack} from "@splidejs/svelte-splide"
   import RightPart from "./RightPart.svelte";
 
@@ -14,7 +17,12 @@
       perPage: 1,
   }
 
-  let screenSize = $state()
+  let screenSize = $state(0)
+
+  let licenseSliderOptions = $derived({
+      perPage: 1 + Number(screenSize > 425),
+      gap: 28
+  })
 </script>
 
 <svelte:window bind:innerWidth={screenSize}></svelte:window>
@@ -23,7 +31,7 @@
   <SplideTrack>
     {#each Array(5) as _}
       <SplideSlide>
-        <img class="slider_img" src={SliderImgSrc.img.src} alt="">
+        <img class="slider_img" src={SliderImg.img.src} alt="">
       </SplideSlide>
     {/each}
   </SplideTrack>
@@ -126,12 +134,42 @@
 
 <h2 class="title-1">Лицензия</h2>
 
+<div class="license_slider">
+  <Splide on:mounted={(data) => {console.log(data)}} hasTrack={false} options={licenseSliderOptions} >
+    <SplideTrack>
+      {#each Array(3) as _}
+        <SplideSlide>
+          <img class="license_img" src={LicenseImg.img.src} alt="">
+        </SplideSlide>
+      {/each}
+    </SplideTrack>
+
+    <div class="slider-control">
+      <div class="splide__arrows">
+        <button class="splide__arrow splide__arrow--prev">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.0333 16.0036C12.0333 15.8259 12.0667 15.6539 12.1333 15.4876C12.2 15.3205 12.2889 15.1814 12.4 15.0703L18.5333 8.93698C18.7778 8.69253 19.0889 8.57031 19.4667 8.57031C19.8444 8.57031 20.1556 8.69253 20.4 8.93698C20.6444 9.18142 20.7667 9.49253 20.7667 9.87031C20.7667 10.2481 20.6444 10.5592 20.4 10.8036L15.2 16.0036L20.4 21.2036C20.6444 21.4481 20.7667 21.7592 20.7667 22.137C20.7667 22.5148 20.6444 22.8259 20.4 23.0703C20.1556 23.3148 19.8444 23.437 19.4667 23.437C19.0889 23.437 18.7778 23.3148 18.5333 23.0703L12.4 16.937C12.2667 16.8036 12.1724 16.6592 12.1173 16.5036C12.0613 16.3481 12.0333 16.1814 12.0333 16.0036Z" />
+          </svg>
+        </button>
+
+        <ul id="clinics_about_splide_pagination" class="splide__pagination-main-slider splide__pagination splide__pagination--ltr" role="tablist" aria-label="Select a slide to show">
+
+        </ul>
+
+        <button class="splide__arrow splide__arrow--next" >
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19.9667 16.0042C19.9667 16.1819 19.9333 16.3539 19.8667 16.5202C19.8 16.6873 19.7111 16.8264 19.6 16.9375L13.4667 23.0708C13.2222 23.3153 12.9111 23.4375 12.5333 23.4375C12.1556 23.4375 11.8444 23.3153 11.6 23.0708C11.3556 22.8264 11.2333 22.5153 11.2333 22.1375C11.2333 21.7597 11.3556 21.4486 11.6 21.2042L16.8 16.0042L11.6 10.8042C11.3556 10.5597 11.2333 10.2486 11.2333 9.87083C11.2333 9.49306 11.3556 9.18194 11.6 8.9375C11.8444 8.69306 12.1556 8.57083 12.5333 8.57083C12.9111 8.57083 13.2222 8.69306 13.4667 8.9375L19.6 15.0708C19.7333 15.2042 19.8276 15.3486 19.8827 15.5042C19.9387 15.6597 19.9667 15.8264 19.9667 16.0042Z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </Splide>
+</div>
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
 
   :global {
-
     #clinics_about_splide_pagination {
       gap: 8px;
     }
@@ -147,6 +185,10 @@
         background: map.get(env.$color, primary);
       }
     }
+  }
+
+  .license_slider {
+    margin-top: 16px;
   }
 
   .show_on_map_btn {
@@ -264,5 +306,11 @@
         line-height: 1.5em;
       }
     }
+  }
+
+  .license_img {
+    width: 100%;
+    border-radius: 12px;
+    aspect-ratio: 292 / 366;
   }
 </style>
