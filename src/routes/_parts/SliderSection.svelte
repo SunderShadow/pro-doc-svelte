@@ -6,7 +6,6 @@
   import {Splide, SplideSlide, SplideTrack} from '@splidejs/svelte-splide'
   import Button from "$ui-kit/Button/Button.svelte"
 
-
   const sliderOptions = {
       type: 'loop',
       perPage: 1,
@@ -77,7 +76,7 @@
       </SplideTrack>
     </div>
 
-    <div class="slider-control">
+    <div id="home_page_slider_control" class="slider-control">
       <ul class="splide__pagination-main-slider splide__pagination splide__pagination--ltr" role="tablist" aria-label="Select a slide to show">
       </ul>
 
@@ -223,7 +222,7 @@
     }
 
     @media (max-width: $mobile-screen) {
-      .slider-control {
+      #home_page_slider_control {
         position: static !important;
         width: fit-content;
         margin-left: auto;

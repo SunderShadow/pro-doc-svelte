@@ -9,6 +9,7 @@
       children
   } = $props()
 </script>
+
 <div class="switcher">
   <a class:active={page.url.pathname === '/account/favorite/doctors'} href="/account/favorite/doctors" data-sveltekit-noscroll>Врачи</a>
   <a class:active={page.url.pathname === '/account/favorite/clinics'} href="/account/favorite/clinics" data-sveltekit-noscroll>Клиники</a>

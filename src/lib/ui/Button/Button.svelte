@@ -26,7 +26,7 @@
     class:fullWidth
     class:icon={type === 'icon'}
     type={_type}
-    class={_class}
+    class={'ui_button ' + _class}
     {...props}
 >
   {@render children?.()}
@@ -37,9 +37,19 @@
   @use "env";
   @use "$ui-kit/env" as env-global;
 
+  :global {
+    .ui_button .svg-icon-container {
+      --color: #fff;
+    }
+  }
+
   button {
     width: fit-content;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
     -webkit-tap-highlight-color: transparent;
 
     background-color: env.$bg-default;

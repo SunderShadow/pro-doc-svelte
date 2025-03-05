@@ -1,8 +1,8 @@
 <script lang="ts">
-    import FilterOption from "../../../_parts/FilterOption.svelte";
-    import FiltersIcon from "$ui-kit/icons/Filters.svelte";
-    import DropdownFilter from "./DropdownFilter.svelte";
-    import Filters from "../../../service/list/_parts/Filters.svelte";
+    import FilterOption from "../../../_parts/FilterOption.svelte"
+    import FiltersIcon from "$ui-kit/icons/Filters.svelte"
+    import DropdownFilter from "$lib/components/FilterDropdown.svelte"
+    import Filters from "../../../service/list/_parts/Filters.svelte"
 
     const filterSelectData = [
         {
