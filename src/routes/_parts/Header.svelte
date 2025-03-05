@@ -50,7 +50,7 @@
           title: 'Библиотека'
       },
       {
-          href: '/c',
+          href: '/promotions',
           title: 'Акции'
       },
       {
