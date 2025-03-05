@@ -1,4 +1,5 @@
 <script lang="ts">
+    import {page} from "$app/state"
     import type { Breadcrumbs as BreadcrumbsType } from "$lib/types"
 
     import ClinicIcon from "./_assets/clinic_icon.png?enhanced&format=webp"
@@ -66,6 +67,9 @@
       <Filters bind:open={openFilters}/>
     </div>
     <div>
+      {#if page.url.pathname.includes('/doctors') }
+        <h2>Врачи Университетской клиник неврологии (24)</h2>
+      {/if}
       <div class="switcher-wrapper">
         {#if screenSize < 1200}
           <div class="filters_actions">
@@ -94,6 +98,19 @@
     margin-bottom: 32px;
     @media (max-width: map.get(env.$screen-size, tablet)) {
       margin-bottom: 16px;
+    }
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 16px;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      font-size: 24px;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      font-size: 18px;
     }
   }
 

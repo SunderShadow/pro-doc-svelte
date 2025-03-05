@@ -3,6 +3,7 @@
   import {scale} from "svelte/transition"
 
   type Props = any & {
+      preIcon?: Snippet,
       label?: string,
       value?: any,
       active: boolean,
@@ -10,6 +11,7 @@
       onErase: Function,
   }
   let {
+      preIcon,
       label,
       active = false,
       value = $bindable(''),
@@ -25,6 +27,12 @@
 </script>
 
 <div class="form-control-wrapper">
+  {#if preIcon}
+    <div class="">
+      {@render preIcon()}
+    </div>
+  {/if}
+
   <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value>
 
   {#if withErase && value.length}
@@ -47,9 +55,11 @@
     border-radius: .75em;
 
     display: flex;
+    align-items: center;
+    gap: 16px;
     position: relative;
+    padding: .65em 1em;
 
-    padding-right: var(--wrapper-icon-padding);
     transition-property: border, box-shadow;
     transition-duration: 300ms;
   }
@@ -62,7 +72,6 @@
     border: none;
 
     background: none;
-    padding: .65em 1em;
 
     line-height: 25.6px;
     outline: none;
