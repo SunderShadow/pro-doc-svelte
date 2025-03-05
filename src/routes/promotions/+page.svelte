@@ -6,9 +6,20 @@
   import Promotion from "./_parts/Promotion.svelte"
   import PromotionThumb from "./_assets/promition_thumb.jpeg?enhanced&format=webp"
   import Pagination from "$ui-kit/Pagination/Pagination.svelte";
+  import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte";
 
   let screenWidth = $state(0)
 
+  const breadcrumbs = [
+      {
+          title: 'Главная',
+          href: '/',
+      },
+      {
+          title: 'Акции',
+          href: '',
+      }
+  ]
   let pageNum = $state(1)
 </script>
 
@@ -17,7 +28,9 @@
 </svelte:head>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
+
 <section class="page-container">
+  <div class="breadcrumbs"><Breadcrumbs list={breadcrumbs} /></div>
   <Preview
       title="Акции и специальные предложения клиник Москвы"
       image={PreviewImg.img.src}
@@ -39,6 +52,11 @@
 </main>
 
 <style lang="scss">
+
+  .breadcrumbs {
+    margin-bottom: 32px;
+  }
+
   .items {
     display: flex;
     flex-direction: column;

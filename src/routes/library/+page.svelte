@@ -1,0 +1,63 @@
+<script>
+  import Preview from "$ui-kit/Preview/Preview.svelte"
+  import PreviewImg from "./_assets/preview.png?enhanced&format=webp"
+  import PreviewImgMobile from "./_assets/preview-mobile.png?enhanced&format=webp"
+  import IllnessImg from "./_assets/cards/illness.png?enhanced&format=webp"
+  import AdvicesImg from "./_assets/cards/advices.png?enhanced&format=webp"
+  import SymptomsImg from "./_assets/cards/symptoms.png?enhanced&format=webp"
+  import Card from "$ui-kit/ServiceCard/ServiceCard.svelte"
+
+  let screeWidth = $state(0)
+</script>
+
+<svelte:window bind:innerWidth={screeWidth}/>
+<svelte:head>
+  <title>Библиотека</title>
+</svelte:head>
+
+<section class="page-container">
+  <Preview
+      title="Справочник болезней и симптомов"
+      contentWidth={screeWidth > 1024 ? 60 : 70}
+      image={PreviewImg.img.src}
+      imageMobile={PreviewImgMobile.img.src}
+  />
+</section>
+
+<section class="page-container page-section">
+  <div class="cards">
+    <div>
+      <Card href="/doctors/works_with/adults" name="Заболевания" image={IllnessImg.img.src}>
+        Справочник заболеваний
+      </Card>
+    </div>
+    <div>
+      <Card href="/library/advices/all/1" name="Советы" image={AdvicesImg.img.src}>
+        Статьи с советами на все случаи жизни
+      </Card>
+    </div>
+    <div>
+      <Card href="/doctors/works_with/adults" name="Симптомы" image={SymptomsImg.img.src} >
+        Справочник симптомов
+      </Card>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use "sass:map";
+  @use "$ui-kit/env";
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+
+    > * {
+      aspect-ratio: 512 / 410;
+    }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

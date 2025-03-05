@@ -28,7 +28,7 @@
       </Card>
     </div>
     <div id="online_consulting_card_wrapper">
-      <Card name="Онлайн-консультация" image={Consultation.img.src}>
+      <Card href="/" name="Онлайн-консультация" image={Consultation.img.src}>
         На нашем портале вы можете выбрать врача
       </Card>
     </div>
@@ -38,7 +38,7 @@
       </Card>
     </div>
     <div id="medicine_book_card_wrapper" class="double">
-      <Card name="Медицинский справочник" image={Directory.img.src} double>
+      <Card href="/library" name="Медицинский справочник" image={Directory.img.src} double>
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
