@@ -69,6 +69,8 @@
     <div>
       {#if page.url.pathname.includes('/doctors') }
         <h2>Врачи Университетской клиник неврологии (24)</h2>
+      {:else if (page.url.pathname.includes('/services'))}
+        <h2>Услуги и цены Университетской клиники неврологии</h2>
       {/if}
       <div class="switcher-wrapper">
         {#if screenSize < 1200}
@@ -145,6 +147,8 @@
     .switcher {
       flex-shrink: 0;
       overflow: auto;
+      margin-bottom: 16px;
+
 
       @media (max-width: map.get(env.$screen-size, mobile)) {
         margin-top: 16px;

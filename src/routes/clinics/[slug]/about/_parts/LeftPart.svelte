@@ -182,7 +182,9 @@
 
   .slider_img {
     width: 100%;
-    height: 300px;
+    aspect-ratio: 752 / 300;
+    object-fit: cover;
+    border-radius: 12px;
 
     @media (max-width: map.get(env.$screen-size, mobile)) {
       height: 200px;
