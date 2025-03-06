@@ -1,11 +1,11 @@
 <script lang="ts">
-    import PatientImage1 from "../_assets/img/patient-1.png?enhanced&format=webp";
-    import PatientImage2 from "../_assets/img/patient-2.png?enhanced&format=webp";
-    import CertificateImage from "../_assets/img/certificate.png?enhanced&format=webp";
-    import {Splide, SplideSlide, SplideTrack} from "@splidejs/svelte-splide";
-    import ClientReview from "../../../_parts/ClientReviewSection/ClientReview.svelte";
-    import Button from "$ui-kit/Button/Button.svelte";
-    import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte";
+    import PatientImage1 from "../_assets/img/patient-1.png?enhanced&format=webp"
+    import PatientImage2 from "../_assets/img/patient-2.png?enhanced&format=webp"
+    import CertificateImage from "../_assets/img/certificate.png?enhanced&format=webp"
+    import {Splide, SplideSlide, SplideTrack} from "@splidejs/svelte-splide"
+    import ClientReview from "$lib/components/ClientReview.svelte"
+    import Button from "$ui-kit/Button/Button.svelte"
+    import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte"
 
     let reviewsSplide, documentsSplide;
 

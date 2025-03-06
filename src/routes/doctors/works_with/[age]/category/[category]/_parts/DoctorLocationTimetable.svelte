@@ -74,7 +74,7 @@
     </div>
     <div class="timepicker">
       <div>
-        <h5 class="title-2">Выберете время на 15 декабря</h5>
+        <h5 class="title-2">Выберите время на 15 декабря</h5>
         <div class="timepicker-buttons">
           <button onclick={() => goToPrevPage()} class:disabled={!canGoToPrevPage()}>
             <SvgContainer type="primary" size="sm">

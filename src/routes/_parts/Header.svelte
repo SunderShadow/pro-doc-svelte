@@ -30,7 +30,7 @@
           title: 'Врачи'
       },
       {
-          href: '/c',
+          href: '/clinics',
           title: 'Клиники'
       },
       {

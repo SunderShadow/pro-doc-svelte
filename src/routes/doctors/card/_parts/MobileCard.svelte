@@ -1,9 +1,9 @@
 <script lang="ts">
-    import DoctorImage from "../../category/_assets/img/doctor.png?enhanced&format=webp";
+    import DoctorImage from "../_assets/img/doctor.png?enhanced&format=webp";
     import Star from "$ui-kit/icons/Star.svelte";
     import Button from "$ui-kit/Button/Button.svelte";
-    import DoctorLocationTimetable from "../../category/_parts/DoctorLocationTimetable.svelte";
-    import PriceCards from "../../category/_parts/PriceCards.svelte";
+    import DoctorLocationTimetable from "../../works_with/[age]/category/[category]/_parts/DoctorLocationTimetable.svelte";
+    import PriceCards from "../../works_with/[age]/category/[category]/_parts/PriceCards.svelte";
     import Like from "$ui-kit/icons/Like.svelte";
     import Magnifier from "$ui-kit/icons/Magnifier.svelte";
     import '@splidejs/svelte-splide/css/core'

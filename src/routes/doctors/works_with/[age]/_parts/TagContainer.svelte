@@ -10,7 +10,7 @@
     }
 </script>
 
-<div class="tags">
+<div class="tag_container">
   <Tag isActive={activeTag === "today"}
        onclick={() => handleActiveTag("today")}>Сегодня 12 дек.</Tag>
   <Tag isActive={activeTag === "next"}
@@ -33,7 +33,14 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-  .tags {
+  :global {
+    .tag_container .tag {
+      flex-shrink: 0;
+      width: max-content;
+    }
+  }
+
+  .tag_container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,12 +61,6 @@
       overflow-x: scroll;
 
       padding: 1.5rem 1rem;
-
-      :global {
-        .tag {
-          flex-shrink: 0;
-        }
-      }
     }
   }
 </style>

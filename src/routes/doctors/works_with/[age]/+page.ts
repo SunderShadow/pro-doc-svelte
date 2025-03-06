@@ -297,17 +297,17 @@ const specialities = [
 export const load = async ({params}) => {
     let items = [], title = 'Не найдено'
 
-    if (params.category === 'adults') {
+    if (params.age === 'adults') {
         title = 'Популярные взрослые врачи'
         items = adult
-    } else if (params.category === 'children') {
+    } else if (params.age === 'children') {
         title = 'Популярные детские врачи'
         items = child
     }
 
     return {
         title,
-        category: params.category,
+        category: params.age,
         items,
         specialities
     }

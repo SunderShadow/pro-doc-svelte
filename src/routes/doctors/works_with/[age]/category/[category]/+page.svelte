@@ -1,16 +1,16 @@
 <script lang="ts">
-    import Preview from "$ui-kit/Preview/Preview.svelte";
+    import Preview from "$ui-kit/Preview/Preview.svelte"
     import DoctorListPreview from "./_assets/img/doctor-list-preview.png?enhanced&format=webp"
-    import Button from "$ui-kit/Button/Button.svelte";
-    import Magnifier from "$ui-kit/icons/Magnifier.svelte";
+    import Button from "$ui-kit/Button/Button.svelte"
+    import Magnifier from "$ui-kit/icons/Magnifier.svelte"
     import DoctorImage from "./_assets/img/doctor.png?enhanced&format=webp"
-    import TagContainer from "./_parts/TagContainer.svelte";
-    import FilterContainer from "./_parts/FilterContainer.svelte";
-    import DoctorCard from "./_parts/DoctorCard.svelte";
-    import Filters from "../works_with/[category]/_parts/Filters.svelte";
-    import Accordion from "$ui-kit/Accordion/Accordion.svelte";
-    import Pagination from "./_parts/Pagination.svelte";
-    import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte";
+    import TagContainer from "./_parts/TagContainer.svelte"
+    import FilterContainer from "./_parts/FilterContainer.svelte"
+    import DoctorCard from "./_parts/DoctorCard.svelte"
+    import Filters from "../../_parts/Filters.svelte"
+    import Accordion from "$ui-kit/Accordion/Accordion.svelte"
+    import Pagination from "./_parts/Pagination.svelte"
+    import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
 
     let screenWidth = $state()
 

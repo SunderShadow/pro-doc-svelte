@@ -1,17 +1,18 @@
 <script>
-    import DoctorImage from "../../category/_assets/img/doctor.png?enhanced&format=webp";
-    import PatientImage1 from "../_assets/img/patient-1.png?enhanced&format=webp";
-    import PatientImage2 from "../_assets/img/patient-2.png?enhanced&format=webp";
-    import CertificateImage from "../_assets/img/certificate.png?enhanced&format=webp";
-    import Star from "$ui-kit/icons/Star.svelte";
-    import Button from "$ui-kit/Button/Button.svelte";
-    import DoctorLocationTimetable from "../../category/_parts/DoctorLocationTimetable.svelte";
-    import ClientReview from "../../../_parts/ClientReviewSection/ClientReview.svelte";
-    import PriceCards from "../../category/_parts/PriceCards.svelte";
-    import Like from "$ui-kit/icons/Like.svelte";
-    import Magnifier from "$ui-kit/icons/Magnifier.svelte";
-    import Pagination from "../../category/_parts/Pagination.svelte";
-    import CardSlider from "./CardSlider.svelte";
+    import DoctorImage from "../../works_with/[age]/category/[category]/_assets/img/doctor.png?enhanced&format=webp"
+    import PatientImage1 from "../_assets/img/patient-1.png?enhanced&format=webp"
+    import PatientImage2 from "../_assets/img/patient-2.png?enhanced&format=webp"
+    import CertificateImage from "../_assets/img/certificate.png?enhanced&format=webp"
+    import Star from "$ui-kit/icons/Star.svelte"
+    import Button from "$ui-kit/Button/Button.svelte"
+    import DoctorLocationTimetable from "../../works_with/[age]/category/[category]/_parts/DoctorLocationTimetable.svelte"
+    import ClientReview from "$lib/components/ClientReview.svelte"
+    import PriceCards from "../../works_with/[age]/category/[category]/_parts/PriceCards.svelte"
+    import Like from "$ui-kit/icons/Like.svelte"
+    import Magnifier from "$ui-kit/icons/Magnifier.svelte"
+
+    import Pagination from "$ui-kit/Pagination/Pagination.svelte"
+    import CardSlider from "./CardSlider.svelte"
 </script>
 
 <svelte:head>

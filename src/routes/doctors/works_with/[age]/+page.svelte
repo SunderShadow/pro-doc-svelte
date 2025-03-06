@@ -16,6 +16,7 @@
   import PreviewImgMobile from "./_assets/img/preview-mobile.png?enhanced&format=webp"
 
   import Card from "$lib/components/ServiceSearchCard.svelte"
+  import TagContainer from "./_parts/TagContainer.svelte";
 
   let {data} = $props()
 
@@ -95,7 +96,7 @@
 
       <div class="cards">
         {#each items as item}
-          <Card title={item.title} img={item.img} href={'/' + item.speciality}/>
+          <Card title={item.title} img={item.img} href={'/doctors/works_with/' + data.category + '/category/' + item.speciality}/>
         {/each}
       </div>
     </main>
