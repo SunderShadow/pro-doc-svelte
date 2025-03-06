@@ -266,16 +266,33 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  $mobile-adaptive: 426px;
+
   h4 {
     font-size: 1.5rem;
     font-weight: 600;
     line-height: 150%;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      font-size: 1rem;
+    }
   }
 
   h5 {
     font-size: 2rem;
     font-weight: 600;
     line-height: 150%;
+
+    @media (max-width: map.get(env.$screen-size, netbook)) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      font-size: 1.1rem;
+    }
   }
 
   .body-text-3 {
@@ -306,6 +323,14 @@
       flex-direction: column;
       gap: 42px;
     }
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      flex-direction: column;
+
+      > aside {
+        gap: 29px;
+      }
+    }
   }
 
   .aside-content {
@@ -329,6 +354,10 @@
     border-radius: 12px;
 
     max-width: 1190px;
+
+    @media (max-width: $mobile-adaptive) {
+      flex-direction: column;
+    }
   }
 
   .symptoms {
