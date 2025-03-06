@@ -4,7 +4,7 @@
 
     type Props = {
         title: string,
-        description: string,
+        description: string, //TODO переписать на slot
         author: string,
         authorImage: string,
     }

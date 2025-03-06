@@ -2,10 +2,8 @@
     import Like from "$ui-kit/icons/Like.svelte";
     import Star from "$ui-kit/icons/Star.svelte";
     import Link from "$ui-kit/Link/Link.svelte";
-    import Clinic from "$ui-kit/icons/Clinic.svelte";
-    import Online from "$ui-kit/icons/Online.svelte";
-    import Ambulance from "$ui-kit/icons/Ambulance.svelte";
     import DoctorLocationTimetable from "./DoctorLocationTimetable.svelte";
+    import PriceCards from "./PriceCards.svelte";
 
     type Props = {
         name: string,
@@ -91,26 +89,8 @@
           Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения».</p>
         <Link href="" primary>Узнать подробнее</Link>
       </div>
-      <div class="price">
-        <h4 class="title-1">Приём невролога</h4>
-        <div class="price-container">
-          <div class="price-card">
-            <Clinic size="md" type="primary"/>
-            <span class="title-2">В клинике</span>
-            <b class="price-card_price">1 500 ₽</b>
-          </div>
-          <div class="price-card">
-            <Online size="md" type="primary"/>
-            <span class="title-2">Онлайн</span>
-            <b class="price-card_price">2 000 ₽</b>
-          </div>
-          <div class="price-card">
-            <Ambulance size="md" type="primary"/>
-            <span class="title-2">Вызов на дом</span>
-            <b class="price-card_price">от 3 500 ₽</b>
-          </div>
-        </div>
-      </div>
+      <h4 class="title-1">Приём невролога</h4>
+      <PriceCards/>
     </div>
   </div>
   <DoctorLocationTimetable/>
@@ -374,45 +354,6 @@
                 --size: 16px;
               }
             }
-          }
-        }
-      }
-
-      .price {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        .price-container {
-          display: flex;
-          gap: 16px;
-
-          .price-card {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-
-            width: 100%;
-
-            padding: 1rem;
-
-            border: 1px solid rgba(map.get(env.$color, primary), 0.1);
-            border-radius: 12px;
-
-            .title-2 {
-              font-weight: 400;
-              line-height: 27px;
-            }
-
-            &-price {
-              font-weight: 600;
-            }
-          }
-
-          @media (max-width: map.get(env.$screen-size, mobile)) {
-            flex-direction: column;
-
-            padding-top: .5rem;
           }
         }
       }
