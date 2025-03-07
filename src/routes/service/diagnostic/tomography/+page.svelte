@@ -313,12 +313,14 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Компьютерная томография (КТ) в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={70}>
-    <ul>
-      <li>Где сделать КТ — цены от 450 рублей, 88288 отзывов</li>
-      <li>664 адреса и телефона клиник Москвы</li>
-    </ul>
-  </Preview>
+  <div id="diagnostic_tomography_page_preview">
+    <Preview title="Компьютерная томография (КТ) в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={70}>
+      <ul>
+        <li>Где сделать КТ — цены от 450 рублей, 88288 отзывов</li>
+        <li>664 адреса и телефона клиник Москвы</li>
+      </ul>
+    </Preview>
+  </div>
 </section>
 
 <section class="page-container page-section">
@@ -360,6 +362,20 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  :global {
+    @media (max-width: 500px) {
+      #diagnostic_tomography_page_preview .preview {
+        background-size: contain;
+      }
+    }
+
+    @media (max-width: 360px) {
+      #diagnostic_tomography_page_preview .preview {
+        background-size: auto 210px;
+      }
+    }
+  }
 
   .speciality_list {
     display: grid;

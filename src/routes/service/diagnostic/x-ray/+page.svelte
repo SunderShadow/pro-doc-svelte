@@ -189,12 +189,14 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Рентгенография в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={70}>
-    <ul>
-      <li>Где сделать рентген — цены от 1 рубля, 132181 отзыв</li>
-      <li>1391 адрес и телефон клиник Москвы</li>
-    </ul>
-  </Preview>
+  <div id="diagnostic_x_ray_page_preview">
+    <Preview title="Рентгенография в Москве" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={70}>
+      <ul>
+        <li>Где сделать рентген — цены от 1 рубля, 132181 отзыв</li>
+        <li>1391 адрес и телефон клиник Москвы</li>
+      </ul>
+    </Preview>
+  </div>
 </section>
 
 <section class="page-container page-section">
@@ -239,6 +241,20 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  :global {
+    @media (max-width: 500px) {
+      #diagnostic_x_ray_page_preview .preview {
+        background-size: contain;
+      }
+    }
+
+    @media (max-width: 360px) {
+      #diagnostic_x_ray_page_preview .preview {
+        background-size: auto 210px;
+      }
+    }
+  }
 
   .speciality_list {
     display: grid;

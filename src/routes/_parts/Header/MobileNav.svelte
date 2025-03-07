@@ -54,8 +54,8 @@ toggleMobileMenuVisible = (e) => {
     {/each}
 
     <hr>
-    <a href="/">Клиникам <ArrowRight /></a>
-    <a href="/">Врачам <ArrowRight /></a>
+    <a href="/register/clinics">Клиникам <ArrowRight /></a>
+    <a href="/register/doctors">Врачам   <ArrowRight /></a>
     <hr>
   </nav>
 

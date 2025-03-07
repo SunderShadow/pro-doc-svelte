@@ -13,6 +13,7 @@
       title
   } = $props()
 </script>
+
 <div>
   {#if number}
     <div class="number">{number}</div>
@@ -28,14 +29,23 @@
   @use "$ui-kit/env";
 
   .number {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 
     color: map.get(env.$color, primary);
     font-weight: 600;
     font-size: 2em;
+
+    line-height: 1em;
   }
 
-  .body-text-2 {
-    margin-top: 16px;
+  .title-1 {
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: map.get(env.$screen-size, tablet)) {
+    .title-1 {
+      font-size: 18px;
+    }
   }
 </style>

@@ -26,7 +26,7 @@
         <Button isActive={isActive}/>
     </button>
     {#if isActive}
-        <div transition:slide>
+        <div class="accordion-dropdown" transition:slide>
             {@render children?.()}
         </div>
     {/if}
@@ -44,6 +44,10 @@
       font-weight: 600;
       line-height: 36px;
 
+      &-dropdown {
+        padding: 32px;
+      }
+
       > button {
         -webkit-tap-highlight-color: transparent;
 
@@ -56,7 +60,7 @@
         text-align: left;
         width: 100%;
 
-        padding: 1.5rem 1.5rem;
+        padding: 32px;
         font-family: inherit;
 
         border: none;
@@ -67,6 +71,10 @@
 
         @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
           cursor: pointer;
+        }
+
+        @media (max-width: map.get(env.$screen-size, mobile)) {
+            font-size: 1.2rem;
         }
       }
     }

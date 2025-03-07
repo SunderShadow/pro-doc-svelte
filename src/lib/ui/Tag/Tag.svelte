@@ -4,19 +4,21 @@
     type Props = {
       children: Snippet,
       isActive?: boolean,
-      onclick: () => void,
+      isDisabled?: boolean,
+      onclick?: Function,
     }
 
     const {
       children,
       isActive,
+      isDisabled,
       onclick,
     }: Props = $props()
 </script>
 
-<div class="tag" class:active={isActive} {onclick}>
-  {@render children?.()}
-</div>
+<button class="tag" class:active={isActive} class:disabled={isDisabled}
+        {onclick}>{@render children?.()}
+</button>
 
 <style lang="scss">
   @use "sass:map";
@@ -34,6 +36,7 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: .5rem;
 
+    background: none;
     cursor: pointer;
 
     transition: background-color 200ms;
@@ -49,5 +52,10 @@
       color: map.get(env.$bg-color, primary);
     }
 
+    &.disabled {
+      color: rgba(map.get(env.$color, primary), 0.3);
+      cursor: default;
+      background-color: unset;
+    }
   }
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {Snippet} from "svelte";
 
-  type Props = {
+  type Props = any & {
       children: Snippet,
       fullWidth?: boolean,
       outline?: boolean,
@@ -16,11 +16,19 @@
       fullWidth = false,
       type = "default",
       _class = '',
-      _type = 'button'
+      _type = 'button',
+      ...props
   }: Props = $props()
 </script>
 
-<button class:outline class:fullWidth type={_type} class={_class} class:icon={type === 'icon'}>
+<button
+    class:outline
+    class:fullWidth
+    class:icon={type === 'icon'}
+    type={_type}
+    class={'ui_button ' + _class}
+    {...props}
+>
   {@render children?.()}
 </button>
 
@@ -29,8 +37,19 @@
   @use "env";
   @use "$ui-kit/env" as env-global;
 
+  :global {
+    .ui_button .svg-icon-container {
+      --color: #fff;
+    }
+  }
+
   button {
-    display: block;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
     -webkit-tap-highlight-color: transparent;
 
     background-color: env.$bg-default;
@@ -44,12 +63,16 @@
     line-height: 27.2px;
 
     outline: none;
-    cursor: pointer;
+
     border: none;
     border-radius: .75em;
 
     transition-property: box-shadow, background-color;
     transition-duration: 300ms;
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
 
     &.fullWidth {
       width: 100%;
@@ -60,28 +83,32 @@
       border: 1px solid env.$bg-default;
       color: env.$bg-default;
 
-      @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
-        &:focus,
-        &:hover {
-          background-color: rgba(env.$bg-hover, .1);
-          box-shadow: none;
-        }
+      &:not([disabled]) {
+        @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
+          &:focus,
+          &:hover {
+            background-color: rgba(env.$bg-hover, .1);
+            box-shadow: none;
+          }
 
-        &:active {
-          background-color: env.$bg-pressing;
-          color: #fff;
+          &:active {
+            background-color: env.$bg-pressing;
+            color: #fff;
+          }
         }
       }
     }
 
     @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
-      &:hover {
-        background-color: env.$bg-hover;
-        box-shadow: 0 12px 24px rgba(env.$bg-pressing, .15);
-      }
+      &:not([disabled]) {
+        &:hover {
+          background-color: env.$bg-hover;
+          box-shadow: 0 12px 24px rgba(env.$bg-pressing, .15);
+        }
 
-      &:active {
-        background-color: env.$bg-pressing;
+        &:active {
+          background-color: env.$bg-pressing;
+        }
       }
     }
 

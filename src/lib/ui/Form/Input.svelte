@@ -3,12 +3,16 @@
   import {scale} from "svelte/transition"
 
   type Props = any & {
+      preIcon?: Snippet,
+      label?: string,
       value?: any,
       active: boolean,
       withErase: boolean,
       onErase: Function,
   }
   let {
+      preIcon,
+      label,
       active = false,
       value = $bindable(''),
       withErase = true,
@@ -23,6 +27,12 @@
 </script>
 
 <div class="form-control-wrapper">
+  {#if preIcon}
+    <div class="">
+      {@render preIcon()}
+    </div>
+  {/if}
+
   <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value>
 
   {#if withErase && value.length}
@@ -45,6 +55,8 @@
     border-radius: .75em;
 
     display: flex;
+    align-items: center;
+    gap: 16px;
     position: relative;
     padding: .65em 1em;
 
@@ -64,8 +76,8 @@
     line-height: 25.6px;
     outline: none;
 
-    &.withErase {
-      padding-right: calc(var(--erase-icon-right) + 16px);
+    &.withErase:not(:placeholder-shown) {
+        padding-right: calc(8px + var(--erase-icon-right));
     }
 
     font-family: "Helvetica", Gilroy, sans-serif;
@@ -73,6 +85,8 @@
   }
 
   .erase {
+    -webkit-tap-highlight-color: transparent;
+
     position: absolute;
     right: var(--erase-icon-right);
 

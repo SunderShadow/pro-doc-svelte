@@ -134,6 +134,12 @@
       z-index: 3;
     }
 
+    @media(max-width: map.get(env.$screen-size, netbook)) {
+      &-content {
+        z-index: 3;
+      }
+    }
+
 
     &-image_wrapper {
       position: absolute;
@@ -192,8 +198,5 @@
       }
     }
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
-      height: 200px;
-    }
   }
 </style>

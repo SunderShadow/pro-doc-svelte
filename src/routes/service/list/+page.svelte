@@ -167,6 +167,12 @@
     display: none;
   }
 
+  @media (max-width: 900px) {
+    .cards {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+
   @media (max-width: map.get(env.$screen-size, tablet)) {
     .filters-open_btn {
       display: flex;
@@ -194,10 +200,6 @@
 
     .popular-title {
       font-size: 1.5rem
-    }
-
-    .cards {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
   }
 

@@ -6,7 +6,8 @@ a {
   color: #000;
   text-decoration: none;
 
-  transition: color 200ms;
+  transition-property: color, opacity;
+  transition-duration: 200ms;
 
   @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
     &:hover {

@@ -30,7 +30,7 @@
           title: 'Врачи'
       },
       {
-          href: '/c',
+          href: '/clinics',
           title: 'Клиники'
       },
       {
@@ -46,11 +46,11 @@
           title: 'Онлайн-консультации'
       },
       {
-          href: '/c',
+          href: '/library',
           title: 'Библиотека'
       },
       {
-          href: '/c',
+          href: '/promotions',
           title: 'Акции'
       },
       {
@@ -77,11 +77,11 @@
       </div>
 
       <div class="for">
-        <a href="/" class="for-item">
+        <a href="/register/clinics" class="for-item">
           <PolyclinicIcon type="primary" size="sm"/>
           <span>Клиникам</span>
         </a>
-        <a class="for-item">
+        <a href="/register/doctors" class="for-item">
           <DoctorIcon type="primary" size="sm"/>
           <span>Врачам</span>
         </a>
@@ -89,7 +89,7 @@
       <div class="auth">
         <DoorArrowRight type="primary" size="sm"/>
 
-        <a href="/">Вход</a>
+        <a href="/account/profile">Вход</a>
         <a href="/">Регистрация</a>
       </div>
     </div>

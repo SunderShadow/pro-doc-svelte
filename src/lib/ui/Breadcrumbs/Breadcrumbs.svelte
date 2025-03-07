@@ -2,13 +2,12 @@
   import {page} from "$app/state"
 
   import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
+  import type {Breadcrumbs} from "$lib/types"
 
   type Props = {
-      list: Array<{
-          title: string,
-          href: string
-      }>
+      list: Breadcrumbs
   }
+
   const {
       list
   }: Props = $props()

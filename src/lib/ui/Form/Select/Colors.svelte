@@ -60,7 +60,7 @@
 {#snippet dropdown()}
   <div class="dropdown">
     {#each filter(data) as item}
-      <button class:selected={isSelected(item)} onclick={() => {select(item)}}>
+      <button class:selected={isSelected(item)} onclick={(e) => {e.preventDefault(); select(item)}}>
         <span class="color" style={`background-color: ${item.color}`}></span>
         <span class="title">{item.title}</span>
       </button>

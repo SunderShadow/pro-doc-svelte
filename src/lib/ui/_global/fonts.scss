@@ -1,6 +1,10 @@
 @use "$ui-kit/env";
 @use "sass:map";
 
+* {
+  line-height: 150%;
+}
+
 h1 {
   font-size: 4rem;
   font-weight: 600;
@@ -42,6 +46,10 @@ h5 {
 .title-1 {
   font-size: 1.5rem;
   font-weight: 600;
+
+  @media (max-width: map.get(env.$screen-size, tablet)) {
+    font-size: 1.125rem;
+  }
 }
 
 .title-2 {

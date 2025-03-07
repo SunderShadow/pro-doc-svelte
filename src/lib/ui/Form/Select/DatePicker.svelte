@@ -37,7 +37,7 @@
       }
   })
 
-  let dropdownWidth = $state(-1)
+  let dropdownWidth = $state(0)
 
   function reset() {
       value = null
@@ -45,9 +45,7 @@
 
   onMount(() => {
       open()
-      tick().then(() => {
-          close()
-      })
+      setTimeout(close, 20)
   })
 </script>
 

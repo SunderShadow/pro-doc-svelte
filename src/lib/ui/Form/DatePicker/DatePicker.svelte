@@ -100,7 +100,7 @@
 
       return viewDate.getFullYear() < todayDate.getFullYear()
           || (
-              viewDate.getFullYear() == todayDate.getMonth()
+              viewDate.getFullYear() == todayDate.getFullYear()
               && (
                   viewDate.getMonth() < todayDate.getMonth()
                   || (
