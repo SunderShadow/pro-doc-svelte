@@ -4,18 +4,20 @@
     type Props = {
       children: Snippet,
       isActive?: boolean,
+      isDisabled?: boolean,
       onclick?: Function,
     }
 
     const {
       children,
       isActive,
+      isDisabled,
       onclick,
     }: Props = $props()
 </script>
 
-<button class="tag" class:active={isActive} {onclick}>
-  {@render children?.()}
+<button class="tag" class:active={isActive} class:disabled={isDisabled}
+        {onclick}>{@render children?.()}
 </button>
 
 <style lang="scss">
@@ -50,5 +52,10 @@
       color: map.get(env.$bg-color, primary);
     }
 
+    &.disabled {
+      color: rgba(map.get(env.$color, primary), 0.3);
+      cursor: default;
+      background-color: unset;
+    }
   }
 </style>
