@@ -43,7 +43,7 @@
   .tag_container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 8px;
 
     padding: 2rem 1.5rem;
@@ -53,7 +53,6 @@
 
     @media (max-width: map.get(env.$screen-size, netbook)) {
       justify-content: start;
-      flex-wrap: wrap;
     }
 
     @media (max-width: map.get(env.$screen-size, mobile)) {

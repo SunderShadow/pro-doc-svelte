@@ -9,17 +9,17 @@
     <div class="price-card">
       <Clinic size="md" type="primary"/>
       <span class="title-2">В клинике</span>
-      <b>1 500 ₽</b>
+      <bspan class="price">1 500 ₽</bspan>
     </div>
     <div class="price-card">
       <Online size="md" type="primary"/>
       <span class="title-2">Онлайн</span>
-      <b>2 000 ₽</b>
+      <span class="price">2 000 ₽</span>
     </div>
     <div class="price-card">
       <Ambulance size="md" type="primary"/>
       <span class="title-2">Вызов на дом</span>
-      <b>от 3 500 ₽</b>
+      <span class="price">от 3 500 ₽</span>
     </div>
   </div>
 </div>
@@ -62,8 +62,9 @@
       line-height: 27px;
     }
 
-    &-price {
-      font-weight: 600;
+    .price {
+      font-size: 1.125rem;
+      font-weight: 700;
     }
   }
 </style>

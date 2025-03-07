@@ -104,7 +104,7 @@
 
   .doctor-card {
     display: flex;
-    gap: 160px;
+    gap: min(160px, 10vw);
 
     padding: 2rem;
     margin-top: 32px;
@@ -112,7 +112,7 @@
     border: 1px solid rgba(map.get(env.$color, primary), 0.1);
     border-radius: 12px;
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
+    @media (max-width: 1200px) {
       flex-direction: column;
       gap: 32px;
     }
@@ -133,6 +133,7 @@
         .doctor-image {
           display: flex;
 
+          flex-shrink: 0;
           position: relative;
 
           width: 180px;

@@ -9,7 +9,7 @@
     import DoctorCard from "./_parts/DoctorCard.svelte"
     import Filters from "../../_parts/Filters.svelte"
     import Accordion from "$ui-kit/Accordion/Accordion.svelte"
-    import Pagination from "./_parts/Pagination.svelte"
+    import Pagination from "$ui-kit/Pagination/Pagination.svelte"
     import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
 
     let screenWidth = $state()
@@ -21,69 +21,87 @@
         },
         {
             title: 'Врачи',
-            href: '/'
+            href: '/doctors/works_with/adults'
         },
         {
             title: 'Взрослый врач Невролог',
             href: ''
         }
     ]
-</script>
 
+    let page = $state(1)
+</script>
 <svelte:head>
-    <link rel="preload" as="image" href={DoctorListPreview.img.src} />
-    <link rel="preload" as="image" href={DoctorImage.img.src} />
+  <link rel="preload" as="image" href={DoctorListPreview.img.src} media="(min-width: 426px)"/>
+  <link rel="preload" as="image" href={DoctorImage.img.src} media="(max-width: 425px)" />
+  <title>Врачи</title>
 </svelte:head>
 
 <svelte:window bind:innerWidth={screenWidth}/>
 
 <main class="page-container">
-    <div class="breadcrumbs">
-        <Breadcrumbs list={breadcrumbs}/>
-    </div>
-    <Preview title="Неврологи в Москве" image={DoctorListPreview.img.src}
-             withGradient imageMobile={DoctorListPreview.img.src}>
-        <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
-            центральной и периферической нервной системы — спинного и головного мозга,
-            а также нервных волокон.</p>
+  <div class="breadcrumbs">
+    <Breadcrumbs list={breadcrumbs}/>
+  </div>
+    <div id="doctors_preview">
+    <Preview
+        title="Неврологи в Москве"
+        image={DoctorListPreview.img.src}
+        withGradient
+        contentWidth={screenWidth > 900 ? 50 : 80}
+        gradientWidth={50}
+        imageMobile={DoctorListPreview.img.src}
+
+    >
+      <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
+        центральной и периферической нервной системы — спинного и головного мозга,
+        а также нервных волокон.</p>
     </Preview>
-    <section class="stats">
-        <h2>Найдено <span>6340</span> врачей и <span>5373</span> отзывов пациентов</h2>
-        <ul>
-            <li class="body-text-1">Найдите хорошего невролога и запишитесь на приём</li>
-            <li class="body-text-1">Цена приёма от 100 до 34500 рублей (средняя 2900 рублей)</li>
-        </ul>
-    </section>
-    <FilterContainer />
-    <div class="main-container">
-        <Filters/>
-        <div>
-            <section class="filter-tags">
-                <TagContainer />
-                <div class="button link-font-1">
-                    <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
-                </div>
-            </section>
-            <section class="doctors-list">
-                {#if screenWidth > 360}
-                    <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
-                {/if}
-                <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
-                <Button outline>Показать ещё</Button>
-                <div class="pagination">
-                    <Pagination />
-                </div>
-            </section>
+  </div>
+  <section class="stats">
+    <h2>Найдено <span>6340</span> врачей и <span>5373</span> отзывов пациентов</h2>
+    <ul>
+      <li class="body-text-1">Найдите хорошего невролога и запишитесь на приём</li>
+      <li class="body-text-1">Цена приёма от 100 до 34500 рублей (средняя 2900 рублей)</li>
+    </ul>
+  </section>
+  <FilterContainer/>
+  <div class="main-container">
+    <Filters/>
+    <div>
+      <section class="filter-tags">
+        <TagContainer/>
+        <div class="button link-font-1">
+          <Button>
+            <Magnifier size="sm" type="secondary"/>
+            Показать на карте
+          </Button>
         </div>
+      </section>
+      <section class="doctors-list">
+        {#if screenWidth > 360}
+          <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+        {/if}
+        <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImage.img.src}/>
+
+        <div class="show_more_btn">
+          <Button outline fullWidth>Показать ещё</Button>
+        </div>
+
+        <div class="pagination">
+          <Pagination total={145} bind:value={page}/>
+        </div>
+      </section>
     </div>
-    <section class="accordion-container">
-        <h2>Вопросы и ответы</h2>
-        <div>
-            <Accordion title="Как записаться к неврологу в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
-            <Accordion title="Невролог (невропатолог) в Москве: цена приёма?">ываофылаофывираифыорвафывфыв</Accordion>
-            <Accordion title="Посоветуйте невролога в Москве?">ываофылаофывираифыорвафывфыв</Accordion>
-        </div>
-    </section>
+  </div>
+  <section class="accordion-container">
+    <h2>Вопросы и ответы</h2>
+    <div>
+      <Accordion title="Как записаться к неврологу в Москве?">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</Accordion>
+      <Accordion title="Невролог (невропатолог) в Москве: цена приёма?">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</Accordion>
+      <Accordion title="Посоветуйте невролога в Москве?">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</Accordion>
+    </div>
+  </section>
 </main>
 
 <style lang="scss">
@@ -93,6 +111,19 @@
   $default-text: #000000;
   $mobile-adaptive: 600px;
   $mobile-small-adaptive: 330px;
+
+  :global {
+    @media (min-width: 500px) {
+      #doctors_preview .preview {
+        background-size: auto 100%;
+        background-position: right;
+      }
+    }
+  }
+
+  .show_more_btn {
+    margin-top: 32px;
+  }
 
   .page-container {
       .body-text-1 {
@@ -171,6 +202,7 @@
           > div {
               display: flex;
               flex-direction: column;
+            min-width: 0;
           }
 
           :global {
@@ -180,11 +212,6 @@
           }
 
           @media (max-width: map.get(env.$screen-size, mobile)) {
-              width: 330px;
-
-              > div {
-                  width: inherit;
-              }
           }
 
           @media (max-width: $mobile-small-adaptive) {

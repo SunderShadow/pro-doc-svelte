@@ -1,6 +1,10 @@
 @use "$ui-kit/env";
 @use "sass:map";
 
+* {
+  line-height: 150%;
+}
+
 h1 {
   font-size: 4rem;
   font-weight: 600;

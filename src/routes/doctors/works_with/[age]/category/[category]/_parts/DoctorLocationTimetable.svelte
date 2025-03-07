@@ -38,7 +38,7 @@
 </script>
 
 <div class="timetable-container">
-  <h5 class="title-2">Места работы</h5>
+  <h5 class="title-1">Места работы</h5>
   <div class="address">
     <h6 class="title-3">МедЦентрСервис на Миклухо-Маклая</h6>
     <div class="body-text-2">
@@ -96,14 +96,14 @@
       </div>
       <div class="time-button">
         {#each registerTimeList[registerTimeCurrentPage] as registerTime}
-          <Button>{registerTime}</Button>
+          <Button fullWidth>{registerTime}</Button>
         {/each}
       </div>
     </div>
   </div>
   <div class="appointment">
     <div class="appointment-stat">Записалось 22 человека</div>
-    <Button>Записаться на приём</Button>
+    <Button fullWidth>Записаться на приём</Button>
     <p class="body-text-3">Клиника перезвонит в течение <span class="body-text-3">10 минут</span></p>
   </div>
 </div>
@@ -170,13 +170,7 @@
     }
 
     .sign-up {
-      @media (max-width: map.get(env.$screen-size, tablet)) {
-        width: 385px;
-      }
-
-      @media (max-width: map.get(env.$screen-size, mobile)) {
-        width: 295px;
-      }
+      max-width: 385px;
     }
 
     .datepicker {

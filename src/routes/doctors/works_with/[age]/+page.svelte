@@ -16,7 +16,6 @@
   import PreviewImgMobile from "./_assets/img/preview-mobile.png?enhanced&format=webp"
 
   import Card from "$lib/components/ServiceSearchCard.svelte"
-  import TagContainer from "./_parts/TagContainer.svelte";
 
   let {data} = $props()
 
@@ -35,6 +34,7 @@
           href: ''
       }
   ]
+
 
   let category = $state(page.params.age)
   let openFilters = $state()
@@ -96,7 +96,7 @@
 
       <div class="cards">
         {#each items as item}
-          <Card title={item.title} img={item.img} href={'/doctors/works_with/' + data.category + '/category/' + item.speciality}/>
+          <Card title={item.title} img={item.img} href={'/doctors/works_with/' + data.age + '/category/' + item.speciality}/>
         {/each}
       </div>
     </main>
