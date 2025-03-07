@@ -36,7 +36,7 @@
       }
   ]
 
-  let category = $state(page.params.category)
+  let category = $state(page.params.age)
   let openFilters = $state()
 
   async function changePageState(e) {

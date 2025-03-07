@@ -307,7 +307,7 @@ export const load = async ({params}) => {
 
     return {
         title,
-        category: params.age,
+        age: params.age,
         items,
         specialities
     }
