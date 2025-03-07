@@ -9,7 +9,7 @@
         },
         {
             title: 'Библиотека',
-            href: '/'
+            href: '/library'
         },
         {
             title: 'Симптомы',
@@ -34,228 +34,224 @@
     <aside>
       <div class="aside-content">
         <h4>Симптомы по частям тела</h4>
-        <span class="body-text-3">Глаза и зрение</span>
-        <span class="body-text-3">Живот</span>
-        <span class="body-text-3">Спина и шея</span>
-        <span class="body-text-3">Голова</span>
-        <span class="body-text-3">Женские симптомы</span>
-        <span class="body-text-3">Руки и ноги</span>
-        <span class="body-text-3">Грудь, сердце</span>
-        <span class="body-text-3">Кожа, ногти, волосы</span>
-        <span class="body-text-3">Рот и язык</span>
-        <span class="body-text-3">Уши и слух</span>
-        <span class="body-text-3">Горло и глотка</span>
-        <span class="body-text-3">Мужские симптомы</span>
+        <a href="#vision" class="body-text-3">Глаза и зрение</a>
+        <a href="" class="body-text-3">Живот</a>
+        <a href="#neck" class="body-text-3">Спина и шея</a>
+        <a href="#head" class="body-text-3">Голова</a>
+        <a href="#women" class="body-text-3">Женские симптомы</a>
+        <a href="#legs" class="body-text-3">Руки и ноги</a>
+        <a href="#breast" class="body-text-3">Грудь, сердце</a>
+        <a href="#leather" class="body-text-3">Кожа, ногти, волосы</a>
+        <a href="#mouth" class="body-text-3">Рот и язык</a>
+        <a href="#hearing" class="body-text-3">Уши и слух</a>
+        <a href="#throat" class="body-text-3">Горло и глотка</a>
+        <a href="#men" class="body-text-3">Мужские симптомы</a>
       </div>
       <div class="aside-content">
         <h4>Общие симптомы</h4>
-        <span class="body-text-3">Дрожание тела (тремор)</span>
-        <span class="body-text-3">Кашель</span>
-        <span class="body-text-3">Обезвоживание</span>
-        <span class="body-text-3">Потеря памяти</span>
-        <span class="body-text-3">Стул и задний проход</span>
-        <span class="body-text-3">Храп</span>
-        <span class="body-text-3">Головокружение</span>
-        <span class="body-text-3">Изжога</span>
-        <span class="body-text-3">Обморок</span>
-        <span class="body-text-3">Пролежни</span>
-        <span class="body-text-3">Запах и пот</span>
-        <span class="body-text-3">Масса тела</span>
-        <span class="body-text-3">Одышка</span>
-        <span class="body-text-3">Рвота и тошнота</span>
-        <span class="body-text-3">Желтуха</span>
-        <span class="body-text-3">Моча и мочеиспускание</span>
-        <span class="body-text-3">Отеки</span>
-        <span class="body-text-3">Увеличенные лимфоузлы</span>
+        <a href="#tremor" class="body-text-3">Дрожание тела (тремор)</a>
+        <a href="#cough" class="body-text-3">Кашель</a>
+        <a href="#dehydration" class="body-text-3">Обезвоживание</a>
+        <a href="#amnesia" class="body-text-3">Потеря памяти</a>
+        <a href="#anus" class="body-text-3">Стул и задний проход</a>
+        <a href="#snore" class="body-text-3">Храп</a>
+        <a href="#dizziness" class="body-text-3">Головокружение</a>
+        <a href="#heartburn" class="body-text-3">Изжога</a>
+        <a href="#fainting" class="body-text-3">Обморок</a>
+        <a href="#bedsores" class="body-text-3">Пролежни</a>
+        <a href="#smell" class="body-text-3">Запах и пот</a>
+        <a href="#weight" class="body-text-3">Масса тела</a>
+        <a href="#dyspnea" class="body-text-3">Одышка</a>
+        <a href="#vomit" class="body-text-3">Рвота и тошнота</a>
+        <a href="#icterus" class="body-text-3">Желтуха</a>
+        <a href="#urine" class="body-text-3">Моча и мочеиспускание</a>
+        <a href="#swelling" class="body-text-3">Отеки</a>
+        <a href="#lymph nodes" class="body-text-3">Увеличенные лимфоузлы</a>
       </div>
     </aside>
     <div class="content">
       <div class="symptoms">
-        <div>
+        <div id="vision">
           <h5>Глаза и зрение</h5>
-          <span class="body-text-3">8 проблем на веках глаз</span>
+          <a href="" class="body-text-3">8 проблем на веках глаз</a>
         </div>
-        <div>
+        <div id="head">
           <h5>Голова</h5>
-          <span class="body-text-3">Головные боли</span>
+          <a href="" class="body-text-3">Головные боли</a>
         </div>
-        <div>
+        <div id="dizziness">
           <h4>Головокружение</h4>
-          <span class="body-text-3">Головокружение</span>
+          <a href="" class="body-text-3">Головокружение</a>
         </div>
-        <div>
+        <div id="throat">
           <h5>Горло и глотка</h5>
-          <span class="body-text-3">Болит горло</span>
-          <span class="body-text-3">Комок в горле (трудно глотать, дисфагия)</span>
+          <a href="" class="body-text-3">Болит горло</a>
+          <a href="" class="body-text-3">Комок в горле (трудно глотать, дисфагия)</a>
         </div>
-        <div>
+        <div id="breast">
           <h5>Грудь, сердце</h5>
-          <span class="body-text-3">Болит грудь (молочная железа)</span>
-          <span class="body-text-3">Боль в грудной клетке (в сердце, в груди)</span>
-          <span class="body-text-3">Перебои в сердце, сердцебиение</span>
-          <span class="body-text-3">Уплотнение в груди (молочной железе)</span>
+          <a href="" class="body-text-3">Болит грудь (молочная железа)</a>
+          <a href="" class="body-text-3">Боль в грудной клетке (в сердце, в груди)</a>
+          <a href="" class="body-text-3">Перебои в сердце, сердцебиение</a>
+          <a href="" class="body-text-3">Уплотнение в груди (молочной железе)</a>
         </div>
-        <div>
+        <div id="tremor">
           <h5>Дрожание тела (тремор)</h5>
-          <span class="body-text-3">Тремор (трясутся руки, голова, тело)</span>
+          <a href="" class="body-text-3">Тремор (трясутся руки, голова, тело)</a>
         </div>
-        <div>
+        <div id="icterus">
           <h5>Желтуха</h5>
-          <span class="body-text-3">Желтуха</span>
+          <a href="" class="body-text-3">Желтуха</a>
         </div>
-        <div>
+        <div id="women">
           <h5>Женские симптомы</h5>
-          <span class="body-text-3">Боль при месячных (дисменорея)</span>
-          <span class="body-text-3">Выделения из влагалища</span>
-          <span class="body-text-3">Задержка и отсутствие месячных (аменорея)</span>
-          <span class="body-text-3">Кровь после секса</span>
-          <span class="body-text-3">Маточное кровотечение</span>
-          <span class="body-text-3">Нарушения менструального цикла</span>
-          <span class="body-text-3">Нерегулярный цикл</span>
-          <span class="body-text-3">Обильные месячные (меноррагия)</span>
+          <a href="" class="body-text-3">Боль при месячных (дисменорея)</a>
+          <a href="" class="body-text-3">Выделения из влагалища</a>
+          <a href="" class="body-text-3">Задержка и отсутствие месячных (аменорея)</a>
+          <a href="" class="body-text-3">Кровь после секса</a>
+          <a href="" class="body-text-3">Маточное кровотечение</a>
+          <a href="" class="body-text-3">Нарушения менструального цикла</a>
+          <a href="" class="body-text-3">Нерегулярный цикл</a>
+          <a href="" class="body-text-3">Обильные месячные (меноррагия)</a>
         </div>
-        <div>
+        <div id="smell">
           <h5>Запах и пот</h5>
-          <span class="body-text-3">Болит живот</span>
-          <span class="body-text-3">Неприятный запах пота</span>
-          <span class="body-text-3">Потеют и неприятно пахнут ноги</span>
-          <span class="body-text-3">Потливость (гипергидроз)</span>
+          <a href="" class="body-text-3">Болит живот</a>
+          <a href="" class="body-text-3">Неприятный запах пота</a>
+          <a href="" class="body-text-3">Потеют и неприятно пахнут ноги</a>
+          <a href="" class="body-text-3">Потливость (гипергидроз)</a>
         </div>
-        <div>
+        <div id="heartburn">
           <h5>Изжога</h5>
-          <span class="body-text-3">Изжога</span>
+          <a href="" class="body-text-3">Изжога</a>
         </div>
-        <div>
+        <div id="cough">
           <h5>Кашель</h5>
-          <span class="body-text-3">Кашель</span>
-          <span class="body-text-3">Кашель с кровью (кровохарканье)</span>
+          <a href="" class="body-text-3">Кашель</a>
+          <a href="" class="body-text-3">Кашель с кровью (кровохарканье)</a>
         </div>
       </div>
       <div class="symptoms">
         <div>
-          <h5>Кожа, ногти, волосы</h5>
-          <span class="body-text-3">Болезни ногтей</span>
-          <span class="body-text-3">Выпадение волос (алопеция)</span>
-          <span class="body-text-3">Жировик (липома)</span>
-          <span class="body-text-3">Зуд (чешется кожа)</span>
-          <span class="body-text-3">Нарыв, гнойник, чирей</span>
-          <span class="body-text-3">Перхоть</span>
-          <span class="body-text-3">Сыпь у новорожденных и грудных детей (+фото)</span>
-          <span class="body-text-3">Сыпь у ребенка (+фото)</span>
-          <span class="body-text-3">Цианоз (синие губы и кожа)</span>
-          <span class="body-text-3">Шишки и уплотнения под кожей</span>
+          <h5 id="leather">Кожа, ногти, волосы</h5>
+          <a href="" class="body-text-3">Болезни ногтей</a>
+          <a href="" class="body-text-3">Выпадение волос (алопеция)</a>
+          <a href="" class="body-text-3">Жировик (липома)</a>
+          <a href="" class="body-text-3">Зуд (чешется кожа)</a>
+          <a href="" class="body-text-3">Нарыв, гнойник, чирей</a>
+          <a href="" class="body-text-3">Перхоть</a>
+          <a href="" class="body-text-3">Сыпь у новорожденных и грудных детей (+фото)</a>
+          <a href="" class="body-text-3">Сыпь у ребенка (+фото)</a>
+          <a href="" class="body-text-3">Цианоз (синие губы и кожа)</a>
+          <a href="" class="body-text-3">Шишки и уплотнения под кожей</a>
         </div>
-        <div>
+        <div id="weight">
           <h5>Масса тела</h5>
-          <span class="body-text-3">Лишний вес</span>
-          <span class="body-text-3">Потеря веса</span>
+          <a href="" class="body-text-3">Лишний вес</a>
+          <a href="" class="body-text-3">Потеря веса</a>
         </div>
-        <div>
+        <div id="urine">
           <h5>Моча и мочеиспускание</h5>
-          <span class="body-text-3">Кровь в моче</span>
-          <span class="body-text-3">Недержание мочи</span>
-          <span class="body-text-3">Энурез у детей (ребенок писается)</span>
+          <a href="" class="body-text-3">Кровь в моче</a>
+          <a href="" class="body-text-3">Недержание мочи</a>
+          <a href="" class="body-text-3">Энурез у детей (ребенок писается)</a>
         </div>
-        <div>
+        <div id="men">
           <h5>Мужские симптомы</h5>
-          <span class="body-text-3">Кровь в сперме</span>
+          <a href="" class="body-text-3">Кровь в сперме</a>
         </div>
-        <div>
+        <div id="noise">
           <h5>Нос</h5>
-          <span class="body-text-3">Кровь из носа</span>
+          <a href="" class="body-text-3">Кровь из носа</a>
         </div>
-        <div>
+        <div id="dehydration">
           <h5>Обезвоживание</h5>
-          <span class="body-text-3">Обезвоживание</span>
+          <a href="" class="body-text-3">Обезвоживание</a>
         </div>
-        <div>
+        <div id="fainting">
           <h5>Обморок</h5>
-          <span class="body-text-3">Обморок (потеря сознания)</span>
+          <a href="" class="body-text-3">Обморок (потеря сознания)</a>
         </div>
-        <div>
+        <div id="dyspnea">
           <h5>Одышка</h5>
-          <span class="body-text-3">Одышка и удушье</span>
+          <a href="" class="body-text-3">Одышка и удушье</a>
         </div>
-        <div>
+        <div id="swelling">
           <h5>Отеки</h5>
-          <span class="body-text-3">Отеки</span>
+          <a href="" class="body-text-3">Отеки</a>
         </div>
-        <div>
+        <div id="amnesia">
           <h5>Потеря памяти</h5>
-          <span class="body-text-3">Потеря памяти (амнезия)</span>
+          <a href="" class="body-text-3">Потеря памяти (амнезия)</a>
         </div>
       </div>
       <div class="symptoms">
-        <div>
+        <div id="bedsores">
           <h5>Пролежни</h5>
-          <span class="body-text-3">Пролежни</span>
+          <a href="" class="body-text-3">Пролежни</a>
         </div>
-        <div>
+        <div id="vomit">
           <h5>Рвота и тошнота</h5>
-          <span class="body-text-3">Рвота и понос у детей</span>
-          <span class="body-text-3">Рвота и тошнота у взрослых</span>
-          <span class="body-text-3">Рвота кровью</span>
-          <span class="body-text-3">Рвота у детей</span>
-          <span class="body-text-3">Срыгивание</span>
-          <span class="body-text-3">Тошнота и рвота при беременности</span>
+          <a href="" class="body-text-3">Рвота и понос у детей</a>
+          <a href="" class="body-text-3">Рвота и тошнота у взрослых</a>
+          <a href="" class="body-text-3">Рвота кровью</a>
+          <a href="" class="body-text-3">Рвота у детей</a>
+          <a href="" class="body-text-3">Срыгивание</a>
+          <a href="" class="body-text-3">Тошнота и рвота при беременности</a>
         </div>
-        <div>
-          <h5>Рвота и тошнота</h5>
-          <span class="body-text-3">Головокружение</span>
-        </div>
-        <div>
+        <div id="mouth">
           <h5>Рот и язык</h5>
-          <span class="body-text-3">Белый налет на языке</span>
-          <span class="body-text-3">Болит зуб</span>
-          <span class="body-text-3">Болит язык: пятна, прыщики, язвочки на языке и др.</span>
-          <span class="body-text-3">Сухость во рту и жажда</span>
-          <span class="body-text-3">Язвочки во рту</span>
+          <a href="" class="body-text-3">Белый налет на языке</a>
+          <a href="" class="body-text-3">Болит зуб</a>
+          <a href="" class="body-text-3">Болит язык: пятна, прыщики, язвочки на языке и др.</a>
+          <a href="" class="body-text-3">Сухость во рту и жажда</a>
+          <a href="" class="body-text-3">Язвочки во рту</a>
         </div>
-        <div>
+        <div id="legs">
           <h5>Руки и ноги</h5>
-          <span class="body-text-3">Болит кисть руки и запястье</span>
-          <span class="body-text-3">Болит колено</span>
-          <span class="body-text-3">Болит пятка</span>
-          <span class="body-text-3">Болит стопа</span>
-          <span class="body-text-3">Боль в бедре и тазобедренном суставе</span>
-          <span class="body-text-3">Боль в руке и локте</span>
-          <span class="body-text-3">Боль в суставах (артралгия)</span>
-          <span class="body-text-3">Болят ноги у ребенка (болезнь роста)</span>
-          <span class="body-text-3">Косолапость</span>
-          <span class="body-text-3">Косточка на ноге (вальгусная деформация)</span>
-          <span class="body-text-3">Судороги ног</span>
-          <span class="body-text-3">Шишка на запястье (гигрома)</span>
+          <a href="" class="body-text-3">Болит кисть руки и запястье</a>
+          <a href="" class="body-text-3">Болит колено</a>
+          <a href="" class="body-text-3">Болит пятка</a>
+          <a href="" class="body-text-3">Болит стопа</a>
+          <a href="" class="body-text-3">Боль в бедре и тазобедренном суставе</a>
+          <a href="" class="body-text-3">Боль в руке и локте</a>
+          <a href="" class="body-text-3">Боль в суставах (артралгия)</a>
+          <a href="" class="body-text-3">Болят ноги у ребенка (болезнь роста)</a>
+          <a href="" class="body-text-3">Косолапость</a>
+          <a href="" class="body-text-3">Косточка на ноге (вальгусная деформация)</a>
+          <a href="" class="body-text-3">Судороги ног</a>
+          <a href="" class="body-text-3">Шишка на запястье (гигрома)</a>
         </div>
-        <div>
+        <div id="neck">
           <h5>Спина и шея</h5>
-          <span class="body-text-3">Болит шея</span>
-          <span class="body-text-3">Боль в спине и пояснице</span>
+          <a href="" class="body-text-3">Болит шея</a>
+          <a href="" class="body-text-3">Боль в спине и пояснице</a>
         </div>
-        <div>
+        <div id="anus">
           <h5>Стул и задний проход</h5>
-          <span class="body-text-3">Боль в заднем проходе (прямой кишке)</span>
-          <span class="body-text-3">Запор</span>
-          <span class="body-text-3">Кал с кровью (кровь из заднего прохода)</span>
-          <span class="body-text-3">Понос (диарея)</span>
+          <a href="" class="body-text-3">Боль в заднем проходе (прямой кишке)</a>
+          <a href="" class="body-text-3">Запор</a>
+          <a href="" class="body-text-3">Кал с кровью (кровь из заднего прохода)</a>
+          <a href="" class="body-text-3">Понос (диарея)</a>
         </div>
-        <div>
+        <div id="lymph nodes">
           <h5>Увеличенные лимфоузлы</h5>
-          <span class="body-text-3">Увеличенные лимфоузлы (лимфаденопатия)</span>
+          <a href="" class="body-text-3">Увеличенные лимфоузлы (лимфаденопатия)</a>
         </div>
-        <div>
+        <div id="weakness">
           <h5>Усталость и слабость</h5>
-          <span class="body-text-3">Усталость: 10 медицинских причин</span>
-          <span class="body-text-3">Хроническая усталость (упадок сил, СХУ)</span>
+          <a href="" class="body-text-3">Усталость: 10 медицинских причин</a>
+          <a href="" class="body-text-3">Хроническая усталость (упадок сил, СХУ)</a>
         </div>
-        <div>
+        <div id="hearing">
           <h5>Уши и слух</h5>
-          <span class="body-text-3">Болит ухо</span>
-          <span class="body-text-3">Нарушение слуха (тугоухость, глухота)</span>
-          <span class="body-text-3">Шум в ушах (шум в голове)</span>
+          <a href="" class="body-text-3">Болит ухо</a>
+          <a href="" class="body-text-3">Нарушение слуха (тугоухость, глухота)</a>
+          <a href="" class="body-text-3">Шум в ушах (шум в голове)</a>
         </div>
-        <div>
+        <div id="snore">
           <h5>Храп</h5>
-          <span class="body-text-3">Храп</span>
+          <a href="" class="body-text-3">Храп</a>
         </div>
       </div>
     </div>
@@ -298,6 +294,8 @@
   .body-text-3 {
     font-weight: 500;
     line-height: 160%;
+
+    cursor: pointer;
   }
 
   .breadcrumbs {
