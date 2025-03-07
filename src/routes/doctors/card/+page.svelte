@@ -2,7 +2,6 @@
   import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte";
   import Accordion from "$ui-kit/Accordion/Accordion.svelte";
   import Card from "./_parts/Card.svelte";
-  import MobileCard from "./_parts/MobileCard.svelte";
 
   let breadcrumbs = [
       {
@@ -27,16 +26,14 @@
 
 </script>
 
+<svelte:head>
+  <title>Карточка врача</title>
+</svelte:head>
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
 
 <main class="page-container">
   <Breadcrumbs list={breadcrumbs} />
-  <div class="desktop-card">
-    <Card/>
-  </div>
-  <div class="mobile-card">
-    <MobileCard/>
-  </div>
+  <Card/>
   {#if screenWidth > 400}
     <section class="accordion-container">
       <h2>Вопросы и ответы</h2>

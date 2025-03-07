@@ -4,7 +4,7 @@
     import Clinic from "$ui-kit/icons/Clinic.svelte";
 </script>
 
-<div class="price">
+<div class="price-wrapper">
   <div class="price-container">
     <div class="price-card">
       <Clinic size="md" type="primary"/>
@@ -28,7 +28,7 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-  .price {
+  .price-wrapper {
     display: flex;
     flex-direction: column;
     gap: 16px;

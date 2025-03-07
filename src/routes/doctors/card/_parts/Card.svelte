@@ -1,26 +1,22 @@
 <script>
-    import DoctorImage from "../../works_with/[age]/category/[category]/_assets/img/doctor.png?enhanced&format=webp"
-    import PatientImage1 from "../_assets/img/patient-1.png?enhanced&format=webp"
-    import PatientImage2 from "../_assets/img/patient-2.png?enhanced&format=webp"
-    import CertificateImage from "../_assets/img/certificate.png?enhanced&format=webp"
+    import DoctorImage from "../_assets/img/doctor.png?enhanced&format=webp"
     import Star from "$ui-kit/icons/Star.svelte"
     import Button from "$ui-kit/Button/Button.svelte"
     import DoctorLocationTimetable from "../../works_with/[age]/category/[category]/_parts/DoctorLocationTimetable.svelte"
-    import ClientReview from "$lib/components/ClientReview.svelte"
     import PriceCards from "../../works_with/[age]/category/[category]/_parts/PriceCards.svelte"
     import Like from "$ui-kit/icons/Like.svelte"
     import Magnifier from "$ui-kit/icons/Magnifier.svelte"
 
-    import Pagination from "$ui-kit/Pagination/Pagination.svelte"
     import CardSlider from "./CardSlider.svelte"
+
+    let screenWidth = $state(0)
 </script>
 
 <svelte:head>
   <link rel="preload" as="image" href={DoctorImage.img.src} />
-  <link rel="preload" as="image" href={PatientImage1.img.src} />
-  <link rel="preload" as="image" href={PatientImage2.img.src} />
-  <link rel="preload" as="image" href={CertificateImage.img.src} />
 </svelte:head>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 <div class="card">
   <div class="card-container">
@@ -57,6 +53,11 @@
       <div class="button link-font-1">
         <Button><Magnifier size="sm" type="secondary"/> Показать на карте</Button>
       </div>
+      {#if screenWidth <= 1200}
+        <div class="timetable">
+          <DoctorLocationTimetable/>
+        </div>
+      {/if}
       <article class="doctor-info">
         <section class="about">
           <h4>О враче</h4>
@@ -135,7 +136,9 @@
         </div>
       </article>
     </div>
-    <DoctorLocationTimetable/>
+    {#if screenWidth > 1200}
+      <DoctorLocationTimetable/>
+    {/if}
   </div>
   <CardSlider/>
 </div>
@@ -165,10 +168,14 @@
       align-items: start;
       gap: 160px;
 
-      @media (max-width: map.get(env.$screen-size, netbook)) {
-        flex-direction: column;
+      @media (max-width: 1200px) {
+        display: block;
       }
     }
+  }
+
+  .timetable {
+    margin-top: 32px;
   }
 
   .doctor-header {
@@ -183,6 +190,7 @@
 
   .doctor-image {
     display: flex;
+    flex-shrink: 0;
 
     position: relative;
 
@@ -308,9 +316,10 @@
     > ul {
       display: flex;
       flex-direction: column;
+      margin-left: .5em;
 
       > li {
-        line-height: 25.6px;
+        line-height: 1.2em;
 
         &::marker {
           color: rgba(map.get(env.$font-color, primary), 0.5);
