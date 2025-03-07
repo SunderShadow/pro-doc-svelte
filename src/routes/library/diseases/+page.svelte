@@ -538,6 +538,12 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  :global {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+
   .breadcrumbs {
     @media (max-width: map.get(env.$screen-size, tablet)) {
       padding-top: 1rem;
@@ -579,7 +585,7 @@
         color: map.get(env.$color, primary);
         line-height: 140%;
 
-        min-width: 0;
+        min-width: 30px;
         min-height: 0;
 
         word-wrap: break-word;

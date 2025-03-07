@@ -262,7 +262,13 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-  $mobile-adaptive: 426px;
+  $mobile-breakpoint: 580px;
+
+  :global {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
 
   h4 {
     font-size: 1.5rem;
@@ -322,7 +328,7 @@
       gap: 42px;
     }
 
-    @media (max-width: map.get(env.$screen-size, tablet)) {
+    @media (max-width: 900px) {
       flex-direction: column;
 
       > aside {
@@ -353,7 +359,7 @@
 
     max-width: 1190px;
 
-    @media (max-width: $mobile-adaptive) {
+    @media (max-width: $mobile-breakpoint) {
       flex-direction: column;
     }
   }

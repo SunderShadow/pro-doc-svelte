@@ -27,7 +27,7 @@
 <section class="page-container page-section">
   <div class="cards">
     <div>
-      <Card href="/doctors/works_with/adults" name="Заболевания" image={IllnessImg.img.src}>
+      <Card href="/library/diseases" name="Заболевания" image={IllnessImg.img.src}>
         Справочник заболеваний
       </Card>
     </div>
@@ -37,7 +37,7 @@
       </Card>
     </div>
     <div>
-      <Card href="/doctors/works_with/adults" name="Симптомы" image={SymptomsImg.img.src} >
+      <Card href="/library/symptoms" name="Симптомы" image={SymptomsImg.img.src} >
         Справочник симптомов
       </Card>
     </div>
