@@ -40,7 +40,8 @@
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       flex-direction: column;
-      gap: 32px
+      gap: 32px;
+      margin-top: 32px;
     }
   }
 
