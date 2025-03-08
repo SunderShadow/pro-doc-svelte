@@ -101,8 +101,8 @@
       border-radius: 12px;
 
       @media (max-width: map.get(env.$screen-size, netbook)) and (min-width: map.get(env.$screen-size, tablet)) {
-        width: 278px;
-        height: 278px;
+        width: min(278px, 50%);
+        height: min(278px, 50%);
       }
 
       @media (max-width: map.get(env.$screen-size, mobile)) {

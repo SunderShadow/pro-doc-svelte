@@ -59,6 +59,8 @@
   @use "sass:map";
   @use "$ui-kit/env";
 
+  $netbook-breakpoint: 1100px;
+  
   article {
     display: flex;
     gap: 16px;
@@ -67,8 +69,14 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
+    @media (max-width: $netbook-breakpoint) {
       flex-direction: column;
+      padding: 24px;
+    }
+
+    @media (max-width: 360px) {
+      flex-direction: column;
+      padding: 16px;
     }
   }
 
@@ -80,7 +88,7 @@
     max-height: 250px;
     flex-shrink: 0;
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
+    @media (max-width: $netbook-breakpoint) {
       aspect-ratio: 640 / 250;
       width: 100%;
     }
@@ -120,7 +128,7 @@
     margin: 16px 0;
     font-size: 32px;
 
-    @media (max-width: map.get(env.$screen-size, netbook)) {
+    @media (max-width: $netbook-breakpoint) {
       font-size: 24px;
     }
 

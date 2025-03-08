@@ -6,14 +6,22 @@ import Pagination from "$ui-kit/Pagination/Pagination.svelte"
 let page = $state(1)
 </script>
 
-<Promotion thumbnail={Thumbnail.img.src}/>
-<Promotion thumbnail={Thumbnail.img.src}/>
+<div class="items">
+  <Promotion thumbnail={Thumbnail.img.src}/>
+  <Promotion thumbnail={Thumbnail.img.src}/>
+</div>
 
 <div class="pagination">
   <Pagination total={3} bind:value={page}/>
 </div>
 
 <style lang="scss">
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
   .pagination {
     margin-top: 32px;
   }

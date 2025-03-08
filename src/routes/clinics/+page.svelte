@@ -36,7 +36,7 @@
   <title>Клиники</title>
 </svelte:head>
 
-<section class="page-container breadcrumbs">
+<section class="breadcrumbs page-container">
   <Breadcrumbs list={breadcrumbs} />
 </section>
 <section class="page-container">
@@ -66,7 +66,7 @@
       <Filters bind:open={openFilters}/>
     </div>
     <div>
-      {#if screenSize < 1200}
+      {#if screenSize <= 768}
         <div class="filters_actions">
           <button class="filters-open_btn" onclick={openFilters}>
             <FiltersIcon size="sm"/>
@@ -108,6 +108,7 @@
     margin-bottom: 32px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 16px;
       margin-bottom: 16px;
     }
   }

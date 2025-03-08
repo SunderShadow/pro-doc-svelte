@@ -139,26 +139,23 @@
   .switcher-wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 8px  16px;
+
+    margin-bottom: 16px;
 
     @media (max-width: 500px) {
       display: block;
     }
 
     .filters_actions {
-      margin-bottom: 16px;
+      padding-bottom: 7px;
     }
 
     .switcher {
       flex-shrink: 0;
       overflow: auto;
-      margin-bottom: 16px;
-
-
-      @media (max-width: map.get(env.$screen-size, mobile)) {
-        margin-top: 16px;
-      }
     }
   }
 
@@ -178,7 +175,9 @@
     gap: 16px;
     margin-bottom: 64px;
 
-    flex-wrap: wrap;
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      flex-wrap: wrap;
+    }
   }
 
   h1 {

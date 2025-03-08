@@ -12,8 +12,15 @@
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
-<Search placeholder={searchPlaceholder}></Search>
+<div class="search">
+  <Search placeholder={searchPlaceholder}></Search>
+</div>
 
 <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImg.img.src}/>
 <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImg.img.src}/>
 
+<style lang="scss">
+  .search {
+    margin-top: 16px;
+  }
+</style>
