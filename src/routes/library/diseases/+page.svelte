@@ -663,6 +663,7 @@
 
 <svelte:head>
   <link rel="preload" as="image" href={PreviewImage.img.src} />
+  <title>Заболевания</title>
 </svelte:head>
 
 <main class="page-container">

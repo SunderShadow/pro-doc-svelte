@@ -20,6 +20,7 @@
 
 <svelte:head>
   <link rel="preload" as="image" href={PreviewIcon.img.src} />
+  <title>Симптомы</title>
 </svelte:head>
 
 <main class="page-container">
