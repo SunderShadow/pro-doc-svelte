@@ -20,6 +20,80 @@
           href: ''
       }
   ]
+
+  type Link = {
+      title: string,
+      key: string
+  }
+
+  let alphabet = [
+      {
+          letter: 'А',
+          items: [
+              {
+                  title: 'Аденоиды и аденоидэктомия',
+                  key: ''
+              },
+              {
+                  title: 'Аденокарцинома желудка',
+                  key: ''
+              },
+              {
+                  title: 'Аденома простаты (увеличение предстательной железы)',
+                  key: ''
+              },
+              {
+                  title: 'Акне (прыщи на лице, угревая сыпь)',
+                  key: ''
+              },
+              {
+                  title: 'Аллергия',
+                  key: ''
+              },
+              {
+                  title: 'Алопеция',
+                  key: ''
+              },
+              {
+                  title: 'Анальная трещина (трещина заднего прохода)',
+                  key: ''
+              },
+              {
+                  title: 'Ангина и хронический тонзиллит',
+                  key: ''
+              },
+              {
+                  title: 'Артериальная гипертензия',
+                  key: ''
+              }
+          ]
+      }
+  ]
+
+  const existLetters = alphabet.map(i => i.letter)
+  const COLUMNS_COUNT = 5
+
+  function sliceTitles(items: Link[]) {
+      let remainder = items.length % 5
+      const perColumn = Math.floor(items.length / 5)
+
+      let columns = Array(COLUMNS_COUNT)
+
+      let itemsIndex = 0
+
+      for (let i = 0; i < COLUMNS_COUNT; i++) {
+          columns[i] = []
+          for (let z = 0; z < perColumn; z++) {
+              columns[i].push(items[itemsIndex++])
+          }
+
+          if (remainder-- > 0) {
+              columns[i].push(items[itemsIndex])
+          }
+      }
+
+      return columns
+  }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}/>
@@ -36,10 +110,10 @@
     <Preview title="Заболевания" image={PreviewImage.img.src} imageMobile={PreviewImage.img.src}
     withGradient gradientWidth={screenWidth >= 768? 50 : 40}/>
   </div>
-  <Alphabet/>
+  <Alphabet {existLetters}/>
   <article>
     <section id="Популярные">
-      <h3>Популярные</h3>
+      <h3 style="text-transform: none">Популярные</h3>
       <div>
         <a href="" class="link-font-1">Гастрит</a>
         <a href="" class="link-font-1">Геморрой</a>
@@ -59,34 +133,18 @@
         <a href="" class="link-font-1">Паническая атака</a>
       </div>
     </section>
-    <section id="А">
-      <h3>А</h3>
-      <div>
-        <a href="" class="link-font-1">Аденоиды и аденоидэктомия</a>
-        <a href="" class="link-font-1">Аденокарцинома желудка</a>
-        <a href="" class="link-font-1">Аденома простаты (увеличение предстательной железы)</a>
-        <a href="" class="link-font-1">Акне (прыщи на лице, угревая сыпь)</a>
-        <a href="" class="link-font-1">Аллергия</a>
-      </div>
-      <div>
-        <a href="" class="link-font-1">Алопеция</a>
-        <a href="" class="link-font-1">Анальная трещина (трещина заднего прохода)</a>
-        <a href="" class="link-font-1">Ангина и хронический тонзиллит</a>
-      </div>
-      <div>
-        <a href="" class="link-font-1">Артериальная гипертензия</a>
-        <a href="" class="link-font-1">Артрит</a>
-        <a href="" class="link-font-1">Артрит ревматоидный</a>
-      </div>
-      <div>
-        <a href="" class="link-font-1">Астма бронхиальная</a>
-        <a href="" class="link-font-1">Астма у детей</a>
-        <a href="" class="link-font-1">Атеросклероз</a>
-      </div>
-      <div>
-        <a href="" class="link-font-1">Паническая атака</a>
-      </div>
-    </section>
+    {#each alphabet as row}
+      <section id={row.letter}>
+        <h3>{row.letter}</h3>
+        {#each sliceTitles(row.items) as column}
+          <div>
+            {#each column as item}
+              <a href={item.key} class="link-font-1">{item.title}</a>
+            {/each}
+          </div>
+        {/each}
+      </section>
+    {/each}
     <section id="Б">
       <h3>Б</h3>
       <div>
@@ -591,6 +649,7 @@
         word-wrap: break-word;
         word-break: break-all;
         max-width: 100%;
+        text-transform: uppercase;
 
         @media (max-width: map.get(env.$screen-size, netbook)) {
           font-size: 1.5rem;
