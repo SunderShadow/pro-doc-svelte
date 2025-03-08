@@ -97,9 +97,15 @@
   <section class="accordion-container">
     <h2>Вопросы и ответы</h2>
     <div>
-      <Accordion title="Как записаться к неврологу в Москве?">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</Accordion>
-      <Accordion title="Невролог (невропатолог) в Москве: цена приёма?">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</Accordion>
-      <Accordion title="Посоветуйте невролога в Москве?">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</Accordion>
+      <Accordion title="Как записаться к неврологу в Москве?">
+        <p class="body-text-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</p>
+      </Accordion>
+      <Accordion title="Невролог (невропатолог) в Москве: цена приёма?">
+        <p class="body-text-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</p>
+      </Accordion>
+      <Accordion title="Посоветуйте невролога в Москве?">
+        <p class="body-text-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi asperiores beatae deleniti laudantium magnam neque quam quod ratione veritatis. Blanditiis commodi, debitis enim itaque laborum laudantium natus nostrum obcaecati placeat praesentium quis ratione similique sunt ullam unde veniam voluptatibus.</p>
+      </Accordion>
     </div>
   </section>
 </main>
@@ -126,150 +132,150 @@
   }
 
   .page-container {
-      .body-text-1 {
-          line-height: 28.8px;
+    .body-text-1 {
+      line-height: 28.8px;
+    }
+
+    .breadcrumbs {
+      padding-bottom: 2rem;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        padding: 1rem 0;
+      }
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      padding-top: 96px;
+
+      width: 100%;
+
+      @media (max-width: $mobile-adaptive) {
+        gap: 16px;
       }
 
-      .breadcrumbs {
-          padding-bottom: 2rem;
+      > h2 {
+        line-height: 52.8px;
+
+        @media (max-width: map.get(env.$screen-size, netbook)) {
+          font-size: 2rem;
+          line-height: 32.2px;
+        }
+
+        @media (max-width: map.get(env.$screen-size, tablet)) {
+          font-size: 1.5rem;
+          line-height: 26.4px;
+        }
+
+        > span {
+          color: map.get(env.$color, primary);
+        }
+      }
+
+      > ul {
+        > li {
+          display: flex;
+
+          color: $default-text;
+
+          list-style-type: none;
+
+          &::before {
+            content: "•";
+            color: map.get(env.$color, primary);
+
+            font-size: 1.75rem;
+
+            margin-right: 8px;
+          }
 
           @media (max-width: map.get(env.$screen-size, tablet)) {
-              padding: 1rem 0;
+            font-size: 1rem;
           }
+        }
       }
+    }
 
-      .stats {
-          display: flex;
-          flex-direction: column;
-          gap: 32px;
+    .main-container {
+      display: flex;
+      gap: 32px;
 
-          padding-top: 96px;
+      padding-top: 1rem;
 
-          width: 100%;
-
-          @media (max-width: $mobile-adaptive) {
-              gap: 16px;
-          }
-
-          > h2 {
-              line-height: 52.8px;
-
-              @media (max-width: map.get(env.$screen-size, netbook)) {
-                  font-size: 2rem;
-                  line-height: 32.2px;
-              }
-
-              @media (max-width: map.get(env.$screen-size, tablet)) {
-                  font-size: 1.5rem;
-                  line-height: 26.4px;
-              }
-
-              > span {
-                  color: map.get(env.$color, primary);
-              }
-          }
-
-          > ul {
-              > li {
-                  display: flex;
-
-                  color: $default-text;
-
-                  list-style-type: none;
-
-                  &::before {
-                      content: "•";
-                      color: map.get(env.$color, primary);
-
-                      font-size: 1.75rem;
-
-                      margin-right: 8px;
-                  }
-
-                  @media (max-width: map.get(env.$screen-size, tablet)) {
-                      font-size: 1rem;
-                  }
-              }
-          }
-      }
-
-      .main-container {
-          display: flex;
-          gap: 32px;
-
-          padding-top: 1rem;
-
-          > div {
-              display: flex;
-              flex-direction: column;
-            min-width: 0;
-          }
-
-          :global {
-              .filters_container {
-                  height: fit-content;
-              }
-          }
-
-          @media (max-width: map.get(env.$screen-size, mobile)) {
-          }
-
-          @media (max-width: $mobile-small-adaptive) {
-              width: 100%;
-          }
-      }
-
-      .filter-tags {
-          display: flex;
-          flex-direction: column;
-          gap: 32px;
-      }
-
-      .doctors-list {
-          display: flex;
-          flex-direction: column;
+      > div {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
       }
 
       :global {
-          .button {
-              > button {
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 16px;
-
-                  width: 100%;
-              }
-          }
+        .filters_container {
+          height: fit-content;
+        }
       }
 
-      .pagination {
-          padding-top: 2rem;
+      @media (max-width: map.get(env.$screen-size, mobile)) {
       }
 
-      .accordion-container {
+      @media (max-width: $mobile-small-adaptive) {
+        width: 100%;
+      }
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .doctors-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    :global {
+      .button {
+        > button {
           display: flex;
-          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
 
-          padding-top: 12rem;
-
-          > h2 {
-              padding-bottom: 3rem;
-
-              @media (max-width: map.get(env.$screen-size, tablet)) {
-                  padding-bottom: 2rem;
-              }
-          }
-
-          > div {
-              display: flex;
-              flex-direction: column;
-              gap: 16px;
-          }
-
-          @media (max-width: map.get(env.$screen-size, mobile)) {
-              padding-top: 6rem;
-          }
+          width: 100%;
+        }
       }
+    }
+
+    .pagination {
+      padding-top: 2rem;
+    }
+
+    .accordion-container {
+      display: flex;
+      flex-direction: column;
+
+      padding-top: 12rem;
+
+      > h2 {
+        padding-bottom: 3rem;
+
+        @media (max-width: map.get(env.$screen-size, tablet)) {
+          padding-bottom: 2rem;
+        }
+      }
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        padding-top: 6rem;
+      }
+    }
   }
 </style>

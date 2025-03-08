@@ -64,7 +64,7 @@
 
     outline: none;
 
-    border: none;
+    border: 1px solid env.$bg-default;
     border-radius: .75em;
 
     transition-property: box-shadow, background-color;

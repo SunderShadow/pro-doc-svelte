@@ -39,7 +39,7 @@
 
   function getCurrentPerPage() {
       for (let breakpointWidth in options.breakpoints) {
-          if (breakpointWidth > screenWidth) {
+          if (breakpointWidth >= screenWidth) {
               return options.breakpoints[breakpointWidth].perPage
           }
       }

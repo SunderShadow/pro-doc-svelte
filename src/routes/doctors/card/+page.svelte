@@ -32,23 +32,25 @@
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
 
 <main class="page-container">
-  <Breadcrumbs list={breadcrumbs} />
+  <div class="breadcrumbs">
+    <Breadcrumbs list={breadcrumbs} />
+  </div>
   <Card/>
   {#if screenWidth > 400}
     <section class="accordion-container">
       <h2>Вопросы и ответы</h2>
       <div class="accordion-content">
         <Accordion title="Какой рейтинг и отзывы?">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!
+          <p class="body-text-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!</p>
         </Accordion>
         <Accordion title="Где работает Горбунов Алексей Викторович?">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, corporis?
+          <p class="body-text-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!</p>
         </Accordion>
         <Accordion title="Какая стоимость приёма?">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, non!
+          <p class="body-text-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!</p>
         </Accordion>
         <Accordion title="Какие преимущества врача?">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, vel?
+          <p class="body-text-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, ut!</p>
         </Accordion>
       </div>
     </section>
@@ -59,15 +61,15 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-  .desktop-card {
+  .breadcrumbs {
     @media (max-width: map.get(env.$screen-size, netbook)) {
-      display: none;
+      margin-top: 16px;
     }
   }
 
-  .mobile-card {
+  .desktop-card {
     @media (max-width: map.get(env.$screen-size, netbook)) {
-      display: block;
+      display: none;
     }
   }
 

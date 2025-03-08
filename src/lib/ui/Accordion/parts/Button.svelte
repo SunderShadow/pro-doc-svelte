@@ -24,12 +24,16 @@
     .accordion__button{
       background-color: map.get(env.$color, secondary);
 
-      padding: 1rem;
+      padding: 16px;
 
       border-radius: 99px;
 
       transition-property: background, transform;
       transition-duration: 300ms;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        padding: 8px;
+      }
 
       .svg-icon-container {
         --color: #{map.get(env.$color, primary)};

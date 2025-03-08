@@ -58,7 +58,7 @@
 
   label {
     position: relative;
-    top: 2px;
+    top: .5px;
     opacity: .5;
     user-select: none;
 

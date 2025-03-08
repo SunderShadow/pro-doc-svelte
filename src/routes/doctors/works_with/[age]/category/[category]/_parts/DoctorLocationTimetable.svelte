@@ -12,9 +12,15 @@
         ["15:00", "15:30", "16:00", "16:30", "17:00", "18:00", "18:30", "19:00", "19:30", "20:00"]
     ]
 
-    const dateValue = $state(new Date())
+    let activeTime = $state()
+    let dateValue = $state(new Date())
 
     let registerTimeCurrentPage = $state(0)
+
+    function setActiveTime(time) {
+        activeTime = time
+        console.log(time)
+    }
 
     const canGoToPrevPage = () => {
         return (registerTimeCurrentPage - 1) >= 0;
@@ -96,7 +102,7 @@
       </div>
       <div class="time-button">
         {#each registerTimeList[registerTimeCurrentPage] as registerTime}
-          <Button fullWidth>{registerTime}</Button>
+          <Button outline={activeTime === registerTime} onclick={() => {setActiveTime(registerTime)}} fullWidth>{registerTime}</Button>
         {/each}
       </div>
     </div>
@@ -115,6 +121,11 @@
   $ellipseColor: #F28B24;
 
   .timetable-container {
+    flex-shrink: 0;
+    @media (min-width: (map.get(env.$screen-size, netbook) + 1px)) {
+      width: 352px;
+    }
+
     > h5 {
       line-height: 27px;
     }
