@@ -585,7 +585,7 @@
         color: map.get(env.$color, primary);
         line-height: 140%;
 
-        min-width: 30px;
+        width: 125px;
         min-height: 0;
 
         word-wrap: break-word;

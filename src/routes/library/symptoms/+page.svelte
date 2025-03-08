@@ -273,7 +273,7 @@
   h4 {
     font-size: 1.5rem;
     font-weight: 600;
-    line-height: 150%;
+    line-height: 100%;
 
     @media (max-width: map.get(env.$screen-size, netbook)) {
       font-size: 1.1rem;
@@ -284,10 +284,14 @@
     }
   }
 
+  a {
+    line-height: 100%;
+  }
+
   h5 {
     font-size: 2rem;
     font-weight: 600;
-    line-height: 150%;
+    line-height: 100%;
 
     @media (max-width: map.get(env.$screen-size, netbook)) {
       font-size: 1.5rem;
@@ -306,6 +310,10 @@
 
   .breadcrumbs {
     margin-bottom: 32px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 16px;
+    }
   }
 
   .symptoms-preview {
@@ -342,17 +350,21 @@
     flex-direction: column;
     gap: 8px;
 
-    padding: 2rem;
+    padding: 32px;
 
     border: 1px solid rgba(map.get(env.$color, primary), 0.1);
     border-radius: 12px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding: 24px 16px;
+    }
   }
 
   .content {
     display: flex;
     gap: 32px;
 
-    padding: 2rem;
+    padding: 32px;
 
     border: 1px solid rgba(map.get(env.$color, primary), 0.1);
     border-radius: 12px;

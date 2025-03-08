@@ -56,8 +56,13 @@
     > * {
       aspect-ratio: 512 / 410;
     }
+
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
+
+      > * {
+        aspect-ratio: 328 / 200;
+      }
     }
   }
 </style>
