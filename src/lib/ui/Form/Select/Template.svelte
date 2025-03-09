@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {Snippet} from "svelte"
 
-  import {scale,  slide} from "svelte/transition"
+  import {scale, slide} from "svelte/transition"
 
   import ArrowDown from "$ui-kit/icons/ArrowDown.svelte"
   import Input from "$ui-kit/Form/Input.svelte"
@@ -38,13 +38,14 @@
   }
 
   let active = $derived(!closed)
+  let inputEl = $state()
   let trs = useScaleTransition ? scale : slide
 </script>
 
 <svelte:window onclick={preventClose ? () => {} : close}></svelte:window>
 
 {#snippet chevronIcon()}
-  <div class:active class="select-input__chevron">
+  <div class:active class="select-input__chevron" onclick={() => {inputEl.focus()}}>
     <ArrowDown size="sm" />
   </div>
 {/snippet}
@@ -56,6 +57,7 @@
       {active}
       {placeholder}
       onfocus={preventOpen ? () => {} : open}
+      bind:el={inputEl}
   />
 
   {#if active}

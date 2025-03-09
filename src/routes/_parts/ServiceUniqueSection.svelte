@@ -135,6 +135,7 @@
     }
 
     .title-1 {
+      color: #34343F;
       @media (max-width: map.get(env.$screen-size, netbook)) {
         font-size: 18px;
       }
@@ -144,10 +145,11 @@
       }
     }
 
-    @media (max-width: map.get(env.$screen-size, tablet)) {
-      .body-text-2 {
-        font-size: 14px;
-        line-height: 14px;
+    .body-text-2 {
+      line-height: 110%;
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+          font-size: 14px;
       }
     }
 

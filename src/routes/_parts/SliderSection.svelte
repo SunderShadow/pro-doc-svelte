@@ -119,7 +119,7 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-  $mobile-screen: 550px;
+  $mobile-breakpoint: 550px;
 
   .slider-control {
     margin-top: 16px;
@@ -134,14 +134,12 @@
   }
 
   section {
-    padding: 96px 0;
-
     @media (max-width: map.get(env.$screen-size, netbook)) {
-      padding: 64px 0;
+      padding-bottom: 64px;
     }
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
-      padding: 32px 0;
+      padding-bottom: 32px;
     }
   }
 
@@ -159,6 +157,12 @@
     @media (max-width: map.get(env.$screen-size, tablet)) {
       grid-template-columns: 1fr;
       gap: 64px;
+
+      margin-top: 81px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      margin-top: 16px;
     }
   }
 
@@ -196,7 +200,7 @@
       display: flex;
       gap: 16px;
 
-      @media (max-width: $mobile-screen) {
+      @media (max-width: map.get(env.$screen-size, tablet)) {
         gap: 8px;
       }
 
@@ -213,7 +217,7 @@
           background-color: map.get(env.$color, primary);
         }
 
-        @media (max-width: $mobile-screen) {
+        @media (max-width: $mobile-breakpoint) {
           &:not(.is-active) {
             background-color: rgba(map.get(env.$color, primary), .1);
           }
@@ -221,7 +225,7 @@
       }
     }
 
-    @media (max-width: $mobile-screen) {
+    @media (max-width: $mobile-breakpoint) {
       #home_page_slider_control {
         position: static !important;
         width: fit-content;
@@ -250,14 +254,14 @@
       border-radius: 12px;
 
       @media (max-width: map.get(env.$screen-size, netbook)) {
-        background-size: 120% 100%;
-      }
-
-      @media (max-width: map.get(env.$screen-size, netbook)) {
         background-size: 130% 100%;
       }
 
-      @media (max-width: $mobile-screen) {
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        max-height: 310px;
+      }
+
+      @media (max-width: $mobile-breakpoint) {
         background: var(--img-mobile) no-repeat;
         background-size: 100% 210px;
         background-position: top;
@@ -275,14 +279,26 @@
         padding: 60px 30% 60px 60px;
       }
 
-      @media (max-width: $mobile-screen) {
+      @media (max-width: $mobile-breakpoint) {
         padding: 234px 16px 0;
       }
     }
 
     &-title {
       font-weight: 600;
-      @media (max-width: $mobile-screen) {
+      line-height: 110%;
+
+      font-size: 4rem;
+
+      @media (max-width: map.get(env.$screen-size, netbook)) {
+        font-size: 3rem;
+      }
+
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        font-size: 1.5rem;
+      }
+
+      @media (max-width: $mobile-breakpoint) {
         font-size: 1.5rem;
       }
     }
@@ -321,7 +337,7 @@
   }
 
   :global {
-    @media (max-width: $mobile-screen) {
+    @media (max-width: $mobile-breakpoint) {
       .slider-button button{
         width: 100%;
       }

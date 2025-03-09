@@ -1,7 +1,7 @@
 <script lang="ts">
   import Plus from "$ui-kit/icons/Plus.svelte"
   import {scale} from "svelte/transition"
-  import type {Snippet} from "svelte";
+  import {onMount, type Snippet} from "svelte";
 
   type Props = any & {
       preIcon?: Snippet,
@@ -20,6 +20,7 @@
       value = $bindable(''),
       withErase = true,
       onErase = () => {},
+      el = $bindable(),
       ...props
   }: Props = $props()
 
@@ -27,6 +28,7 @@
       value = ''
       onErase()
   }
+
 </script>
 
 <div class="form-control-wrapper">
@@ -36,7 +38,7 @@
     </div>
   {/if}
 
-  <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value>
+  <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value bind:this={el}>
 
   {#if withErase && value.length}
     <div class="erase" transition:scale onclick={erase}>

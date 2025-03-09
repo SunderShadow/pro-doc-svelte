@@ -55,6 +55,8 @@
     background-color: env.$bg-default;
     padding: .875em 2em;
 
+    line-height: 170%;
+
     font: inherit;
     font-weight: 600;
 
