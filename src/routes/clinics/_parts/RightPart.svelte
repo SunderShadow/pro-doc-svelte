@@ -31,7 +31,7 @@
     </div>
   </div>
 
-  <h2 class="title-3">Время работы</h2>
+  <h2 class="title-1">Время работы</h2>
   <div class="work_time">
     <div class="work_time-icon">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

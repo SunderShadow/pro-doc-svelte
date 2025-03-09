@@ -2,7 +2,8 @@
   import DoctorCard from "$lib/components/DoctorCard.svelte"
 
   import DoctorImg from "./_assets/img/doctor.png?enhanced&format=webp"
-  import Search from "$ui-kit/Form/Search/Search.svelte";
+  import Search from "$ui-kit/Form/Search/Search.svelte"
+  import FilterContainer from "./_parts/Filters.svelte"
 
 
   let screenWidth = $state(0)
@@ -12,8 +13,13 @@
 </script>
 
 <svelte:window bind:innerWidth={screenWidth} />
+
+<div class="sort_filter">
+  <FilterContainer/>
+</div>
+
 <div class="search">
-  <Search placeholder={searchPlaceholder}></Search>
+  <Search placeholder={searchPlaceholder} />
 </div>
 
 <div class="cards">

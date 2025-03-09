@@ -77,16 +77,12 @@
         <h2>Отзывы Университетской клиники неврологии</h2>
       {/if}
       <div class="switcher-wrapper">
-        {#if screenSize < 1200}
+        {#if screenSize < 1200 && !page.url.pathname.includes(data.slug + '/doctors')}
           <div class="filters_actions">
             <button class="filters-open_btn" onclick={openFilters}>
               <FiltersIcon size="sm"/>
               Фильтры
             </button>
-
-            {#if screenSize < 425}
-              <FilterDropdown data={filters}/>
-            {/if}
           </div>
         {/if}
         <div class="switcher"><PageSwitcher slug={data.slug}/></div>

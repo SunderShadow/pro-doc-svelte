@@ -13,6 +13,9 @@
 
     import PreviewImg from "./_assets/preview.png?enhanced&format=webp"
     import PreviewImgMobile from "./_assets/preview-mobile.png?enhanced&format=webp"
+    import TagContainer from "../doctors/works_with/[age]/category/[category]/_parts/TagContainer.svelte";
+    import Magnifier from "$ui-kit/icons/Magnifier.svelte";
+    import FilterContainer from "../doctors/works_with/[age]/category/[category]/_parts/FilterContainer.svelte";
 
     const breadcrumbs: BreadcrumbsType = [
         {
@@ -44,8 +47,8 @@
       title="Лечебные учреждения Москвы"
       image={PreviewImg.img.src}
       imageMobile={PreviewImgMobile.img.src}
-      gradientWidth={45}
-      contentWidth={screenSize < 980   ? 80 : 60}
+      gradientWidth={screenSize <= 1024 ? 50 : 45}
+      contentWidth={screenSize < 980 ? 80 : 60}
       withGradient
   >
     <ul class="body-text-2">
@@ -61,19 +64,23 @@
     <h1>Адреса <span>20767</span> лечебных учереждений</h1>
   </section>
 
+  <div class="sort_filter">
+    <FilterContainer/>
+  </div>
   <div class="main-content">
     <div class="filters">
       <Filters bind:open={openFilters}/>
     </div>
     <div>
-      {#if screenSize <= 768}
-        <div class="filters_actions">
-          <button class="filters-open_btn" onclick={openFilters}>
-            <FiltersIcon size="sm"/>
-            Фильтры
-          </button>
+      <section class="filter-tags">
+        <TagContainer/>
+        <div class="button link-font-1">
+          <Button fullWidth>
+            <Magnifier size="sm" type="secondary"/>
+            Показать на карте
+          </Button>
         </div>
-      {/if}
+      </section>
 
       <div class="cards">
         <ClinicCard />
@@ -89,6 +96,23 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  .sort_filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      justify-content: right;
+    }
+  }
+
+  .filter-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
 
   .stats {
     margin-bottom: 32px;

@@ -53,9 +53,11 @@
         imageMobile={DoctorListPreview.img.src}
 
     >
-      <p class="body-text-1">Невролог — врач, который диагностирует и проводит лечение заболеваний
+      <p class="body-text-1">
+        Невролог — врач, который диагностирует и проводит лечение заболеваний
         центральной и периферической нервной системы — спинного и головного мозга,
-        а также нервных волокон.</p>
+        а также нервных волокон.
+      </p>
     </Preview>
   </div>
   <section class="stats">
@@ -65,7 +67,9 @@
       <li class="body-text-1">Цена приёма от 100 до 34500 рублей (средняя 2900 рублей)</li>
     </ul>
   </section>
-  <FilterContainer/>
+
+  <div class="filters_container"><FilterContainer/></div>
+
   <div class="main-container">
     <Filters/>
     <div>
@@ -150,9 +154,15 @@
       gap: 32px;
 
       padding-top: 96px;
+      padding-bottom: 64px;
 
       width: 100%;
 
+      @media (max-width: map.get(env.$screen-size, tablet)) {
+        padding-top: 64px;
+        padding-bottom: 32px;
+      }
+      
       @media (max-width: $mobile-adaptive) {
         gap: 16px;
       }

@@ -1,8 +1,8 @@
 <script lang="ts">
     import FilterOption from "$lib/../routes/_parts/FilterOption.svelte"
-    import FiltersIcon from "$ui-kit/icons/Filters.svelte"
     import DropdownFilter from "./DropdownFilter.svelte"
-    import Filters from "../../../_parts/Filters.svelte"
+    import Filters from "../../../../doctors/works_with/[age]/_parts/Filters.svelte";
+    import FiltersIcon from "$ui-kit/icons/Filters.svelte";
 
     const filterSelectData = [
         {
@@ -46,6 +46,7 @@
     {/each}
   </div>
 </section>
+
 <section class="filter-mobile">
   <Filters bind:open={openFilters}/>
   <div class="filter-icon" onclick={openFilters}>
@@ -54,6 +55,7 @@
   </div>
   <DropdownFilter bind:value={activeFilter} data={filterSelectData}/>
 </section>
+
 <style lang="scss">
   @use "sass:map";
   @use "$lib/ui/env";
@@ -62,7 +64,7 @@
 
   .filter-options {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     gap: 8px;
 
@@ -92,8 +94,6 @@
   .filter-mobile {
     display: none;
     width: 100%;
-
-    padding-top: 2rem;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       display: flex;
