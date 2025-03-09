@@ -19,11 +19,6 @@
   }
 
   let screenSize = $state(0)
-
-  let licenseSliderOptions = $derived({
-      perPage: 1 + Number(screenSize > 425),
-      gap: 28
-  })
 </script>
 
 <svelte:window bind:innerWidth={screenSize}></svelte:window>
