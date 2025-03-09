@@ -16,7 +16,7 @@
         isDisabled: false
     }
 
-    for (let i = 0; i < lettersCount; i++) {
+    for (let i = 0; i <= lettersCount; i++) {
         const chr = String.fromCharCode(start + i)
         letters[i + 1] = {
             chr,
