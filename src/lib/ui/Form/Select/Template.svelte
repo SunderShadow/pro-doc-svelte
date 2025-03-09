@@ -42,7 +42,7 @@
   let trs = useScaleTransition ? scale : slide
 </script>
 
-<svelte:window onclick={preventClose ? () => {} : close}></svelte:window>
+<svelte:window onclick={preventClose ? (e) => {console.log(e)} : close}></svelte:window>
 
 {#snippet chevronIcon()}
   <div class:active class="select-input__chevron" onclick={() => {inputEl.focus()}}>

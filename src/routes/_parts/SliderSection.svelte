@@ -139,6 +139,7 @@
     }
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
+      padding-top: 16px;
       padding-bottom: 32px;
     }
   }

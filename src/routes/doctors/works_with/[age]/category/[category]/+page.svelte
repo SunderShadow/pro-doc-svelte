@@ -183,6 +183,8 @@
 
           list-style-type: none;
 
+          margin: 0;
+
           &::before {
             content: "•";
             color: map.get(env.$color, primary);

@@ -16,11 +16,20 @@
   <Search placeholder={searchPlaceholder}></Search>
 </div>
 
-<DoctorCard name="Горбунов Алексей Викторович" image={DoctorImg.img.src}/>
-<DoctorCard name="Горбунов Алексей Викторович" image={DoctorImg.img.src}/>
+<div class="cards">
+  <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImg.img.src}/>
+  <DoctorCard name="Горбунов Алексей Викторович" image={DoctorImg.img.src}/>
+</div>
 
 <style lang="scss">
   .search {
     margin-top: 16px;
+  }
+
+  .cards {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
   }
 </style>

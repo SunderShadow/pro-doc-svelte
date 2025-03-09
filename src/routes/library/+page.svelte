@@ -6,8 +6,20 @@
   import AdvicesImg from "./_assets/cards/advices.png?enhanced&format=webp"
   import SymptomsImg from "./_assets/cards/symptoms.png?enhanced&format=webp"
   import Card from "$ui-kit/ServiceCard/ServiceCard.svelte"
+  import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte";
 
   let screeWidth = $state(0)
+
+  const breadcrumbs = [
+      {
+          title: 'Главная',
+          href: '/',
+      },
+      {
+          title: 'Библиотека',
+          href: '',
+      }
+  ]
 </script>
 
 <svelte:window bind:innerWidth={screeWidth}/>
@@ -16,6 +28,8 @@
 </svelte:head>
 
 <section class="page-container">
+  <div class="breadcrumbs"><Breadcrumbs list={breadcrumbs} /></div>
+
   <Preview
       title="Справочник болезней и симптомов"
       contentWidth={screeWidth > 1024 ? 60 : 70}
@@ -47,6 +61,15 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  .breadcrumbs {
+    margin-bottom: 32px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 16px;
+      margin-bottom: 16px ;
+    }
+  }
 
   .cards {
     display: grid;

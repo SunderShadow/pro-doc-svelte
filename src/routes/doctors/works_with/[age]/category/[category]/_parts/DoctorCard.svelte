@@ -62,17 +62,23 @@
         головных болей, инсультов и его остаточных явлений,
         атеросклеротических поражений, невритов, невралгий, нарушений памяти и сна.
         При лечении неврологических заболеваний активно применяет гирудотерапию.
-        Автор 10 публикаций.</p>
-      <Link href="/doctors/card" primary>Узнать подробнее о враче</Link>
+        Автор 10 публикаций.
+      </p>
+      <div>
+        <Link href="/doctors/card" primary>Узнать подробнее о враче</Link>
+      </div>
 
       <h4 class="title-1">Отзывы</h4>
       <p class="body-text-2">«Спасибо Алексею Викторовичу за то, что помог разобраться в моей проблеме.
         До него я был у многих врачей и от них информации не добыл!
-        Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения».</p>
-      <Link href="/doctors/card" primary>Узнать подробнее</Link>
+        Алексей Викторович помог мне в лечении, которое я ему накручивал до его посещения».
+      </p>
+      <div><Link href="/doctors/card" primary>Узнать подробнее</Link></div>
 
       <h4 class="title-1">Приём невролога</h4>
-      <PriceCards/>
+      <div>
+        <PriceCards/>
+      </div>
     </div>
   </div>
   <DoctorLocationTimetable/>
@@ -95,8 +101,13 @@
     }
   }
 
-  .doctor-links + .doctor-links {
-    margin-top: 8px;
+  @media (max-width: map.get(env.$screen-size, mobile)) {
+    .doctor-links + .doctor-links {
+      margin-top: 8px;
+    }
+    .doctor-links + * {
+      margin-top: 8px;
+    }
   }
 
   .doctor-links {
@@ -167,7 +178,7 @@
           border: 1px solid rgba(map.get(env.$color, primary), 0.1);
           border-radius: 12px;
 
-          @media (max-width: map.get(env.$screen-size, mobile)) {
+          @media (max-width: 500px) {
             width: 130px;
             height: 130px;
           }
@@ -229,7 +240,18 @@
         margin-top: 32px;
         display: flex;
         flex-direction: column;
-        gap: 32px;
+
+        h4 + p {
+          margin-top: 8px;
+        }
+
+        h4 + div {
+          margin-top: 16px;
+        }
+
+        p  + * {
+          margin-top: 16px;
+        }
 
         > div {
           display: flex;

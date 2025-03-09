@@ -707,6 +707,10 @@
     }
   }
 
+  a {
+    line-height: 110%;
+  }
+
   .diseases-preview {
     padding-top: 2rem;
     padding-bottom: 6rem;

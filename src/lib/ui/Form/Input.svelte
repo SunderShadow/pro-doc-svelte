@@ -31,7 +31,7 @@
 
 </script>
 
-<div class="form-control-wrapper">
+<div class="form-control-wrapper" onclick={() => {el.focus()}}>
   {#if preIcon}
     <div class="pre_icon">
       {@render preIcon()}

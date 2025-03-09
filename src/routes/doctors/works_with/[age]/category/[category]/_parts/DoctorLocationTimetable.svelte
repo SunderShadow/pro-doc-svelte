@@ -75,7 +75,7 @@
   </div>
   <div class="sign-up">
     <div class="datepicker">
-      <h5 class="title-2">Запись на приём</h5>
+      <h5 class="title-1">Запись на приём</h5>
       <DatePicker value={dateValue}/>
     </div>
     <div class="timepicker">
