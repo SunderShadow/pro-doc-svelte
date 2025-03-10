@@ -9,6 +9,7 @@
     import PageSwitcher from "./_parts/PageSwitcher.svelte"
     import FiltersIcon from "$ui-kit/icons/Filters.svelte";
     import FilterDropdown from "$lib/components/FilterDropdown.svelte";
+    import FilterContainer from "./_parts/FilterContainer.svelte";
 
     let {
         children,
@@ -83,6 +84,7 @@
               <FiltersIcon size="sm"/>
               Фильтры
             </button>
+            <FilterContainer/>
           </div>
         {/if}
         <div class="switcher"><PageSwitcher slug={data.slug}/></div>
@@ -96,9 +98,12 @@
   @use "sass:map";
   @use "$ui-kit/env";
 
+  $mobile-adaptive: 500px;
+
   .breadcrumbs {
     margin-bottom: 32px;
     @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 16px;
       margin-bottom: 16px;
     }
   }
@@ -158,6 +163,10 @@
   .filters_actions {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: $mobile-adaptive) {
+      margin-bottom: 16px;
+    }
   }
 
   .clinic_icon {
@@ -173,6 +182,8 @@
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       flex-wrap: wrap;
+
+      margin-bottom: 32px;
     }
   }
 
