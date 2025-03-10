@@ -53,10 +53,12 @@ setPageTitle('Профиль')
       </div>
       <div class="notifications">
         <h3>Настройки уведомлений</h3>
+
         <div class="checkboxes">
           <Checkbox label="Получать уведомления по sms"/>
           <Checkbox label="Получать уведомления на email"/>
         </div>
+
         <div class="actions">
           <Button>Сохранить изменения</Button>
           <Button outline>Выйти</Button>

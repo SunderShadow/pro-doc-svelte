@@ -40,12 +40,22 @@
   let active = $derived(!closed)
   let inputEl = $state()
   let trs = useScaleTransition ? scale : slide
+
+  function toggle(e) {
+      e.stopPropagation()
+
+      if (closed) {
+          open()
+      } else {
+          close()
+      }
+  }
 </script>
 
 <svelte:window onclick={preventClose ? (e) => {console.log(e)} : close}></svelte:window>
 
 {#snippet chevronIcon()}
-  <div class:active class="select-input__chevron" onclick={() => {inputEl.focus()}}>
+  <div class:active class="select-input__chevron" onclick={toggle}>
     <ArrowDown size="sm" />
   </div>
 {/snippet}

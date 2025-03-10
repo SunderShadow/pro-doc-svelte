@@ -1057,7 +1057,10 @@
   ]
 
   const existLetters = alphabet.map(i => i.letter)
-  let columnsCount = $derived(screenWidth > 900 ? 5 : 4)
+  let columnsCount = $derived(screenWidth > 1060
+      ? 5
+      : screenWidth > 900 ? 4 : 3
+  )
 
   function sliceTitles(items: Link[]) {
       let remainder = items.length % columnsCount;
@@ -1098,9 +1101,9 @@
     withGradient gradientWidth={screenWidth >= 768? 50 : 40}/>
   </div>
   <Alphabet {existLetters}/>
-  <article>
+  <section style:--columns={columnsCount + 1}>
     {#each alphabet as row}
-      <section id={row.letter}>
+      <article id={row.letter}>
         <h3>{row.letter}</h3>
         {#each sliceTitles(row.items) as column}
           <div>
@@ -1109,9 +1112,9 @@
             {/each}
           </div>
         {/each}
-      </section>
+      </article>
     {/each}
-  </article>
+  </section>
 </main>
 
 <style lang="scss">
@@ -1150,24 +1153,22 @@
     }
   }
 
-  article {
+  section {
     display: flex;
     flex-direction: column;
 
     margin-top: 64px;
 
-    > section {
+    > article {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
       gap: 32px;
 
       padding: 2rem 0;
 
       border-bottom: 1px solid rgba(map.get(env.$color, primary), 0.1);
 
-      @media (max-width: 900px) {
-        grid-template-columns: repeat(5, 1fr);
-      }
+      grid-template-columns: repeat(var(--columns), 1fr);
+
 
       > h3 {
         color: map.get(env.$color, primary);
@@ -1178,13 +1179,10 @@
         word-wrap: break-word;
         word-break: break-all;
         max-width: 100%;
+        min-width: 125px;
 
         @media (max-width: map.get(env.$screen-size, netbook)) {
           font-size: 1.5rem;
-        }
-
-        @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
-          width: 125px;
         }
       }
 

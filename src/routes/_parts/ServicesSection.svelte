@@ -49,6 +49,8 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  $mobile-breakpoint: 480px;
+
   :global {
     #medicine_book_card_wrapper .card-image_wrapper {
       background-size: 100%;
@@ -60,13 +62,19 @@
   }
 
   .cards {
-    > div:not(.double) {
-      aspect-ratio: 1 / 1;
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      > div:not(.double) {
+        aspect-ratio: 1 / 1;
+      }
     }
 
-    @media (max-width: map.get(env.$screen-size, tablet)) {
-      > div {
+    > div {
+      @media (max-width: map.get(env.$screen-size, tablet)) {
         aspect-ratio: 1 / 1;
+      }
+
+      @media (max-width: $mobile-breakpoint) {
+        aspect-ratio: 328 / 200;
       }
     }
 
@@ -105,7 +113,7 @@
         margin-top: 32px;
       }
 
-      @media (max-width: 480px) {
+      @media (max-width: $mobile-breakpoint) {
         grid-template-columns: 1fr;
       }
     }

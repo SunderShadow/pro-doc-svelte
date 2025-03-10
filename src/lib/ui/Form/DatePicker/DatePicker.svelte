@@ -224,12 +224,11 @@
     > button {
       cursor: pointer;
 
-      transition-property: background-color, color;
-      transition-duration: 300ms;
-
       &:hover {
         background-color: env.$color-bg-hover;
         color: env.$color-text-hover;
+        transition-property: background-color, color;
+        transition-duration: 300ms;
       }
 
       &.active {

@@ -294,7 +294,7 @@ const specialities = [
     },
 ]
 
-export const load = async ({params}) => {
+export const load = ({params}) => {
     let items = [], title = 'Не найдено'
 
     if (params.age === 'adults') {
@@ -305,6 +305,12 @@ export const load = async ({params}) => {
         items = child
     }
 
+    console.log({
+        title,
+        age: params.age,
+        items,
+        specialities
+    })
     return {
         title,
         age: params.age,

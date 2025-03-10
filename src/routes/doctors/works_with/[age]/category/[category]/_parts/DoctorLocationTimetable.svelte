@@ -19,7 +19,6 @@
 
     function setActiveTime(time) {
         activeTime = time
-        console.log(time)
     }
 
     const canGoToPrevPage = () => {
@@ -57,7 +56,7 @@
       <Phone type="primary"/>
       +7 930 999-17-56
     </div>
-    <span><Link href="" primary>Узнать подробнее о клинике</Link></span>
+    <span><Link href="/clinics/some_clinic_slug/about" primary>Узнать подробнее о клинике</Link></span>
   </div>
   <div class="address">
     <h6 class="title-3">МедЦентрСервис на Миклухо-Маклая</h6>
@@ -71,7 +70,7 @@
       <Phone type="primary"/>
       +7 930 999-17-56
     </div>
-    <span><Link href="" primary>Узнать подробнее о клинике</Link></span>
+    <span><Link href="/clinics/some_clinic_slug/about" primary>Узнать подробнее о клинике</Link></span>
   </div>
   <div class="sign-up">
     <div class="datepicker">
@@ -102,7 +101,7 @@
       </div>
       <div class="time-button">
         {#each registerTimeList[registerTimeCurrentPage] as registerTime}
-          <Button outline={activeTime === registerTime} onclick={() => {setActiveTime(registerTime)}} fullWidth>{registerTime}</Button>
+          <Button active={activeTime === registerTime} onclick={() => {setActiveTime(registerTime)}} fullWidth>{registerTime}</Button>
         {/each}
       </div>
     </div>

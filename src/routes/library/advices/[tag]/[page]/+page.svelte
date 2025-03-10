@@ -97,8 +97,9 @@
     }
   }
 
-  .new_advices {
+  #new_advices {
     margin-bottom: 64px;
+
     @media (max-width: map.get(env.$screen-size, tablet)) {
       margin-bottom: 32px;
     }

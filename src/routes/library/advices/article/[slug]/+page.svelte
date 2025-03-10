@@ -343,6 +343,12 @@
     }
   }
 
+  @media (max-width: map.get(env.$screen-size, mobile)) {
+    h2 {
+      scroll-margin-top: 70px;
+    }
+  }
+
   .thumbnail {
     width: 100%;
 

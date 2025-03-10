@@ -10,7 +10,8 @@
       label
   }: Props = $props()
 
-  function toggle() {
+  function toggle(e) {
+      e.preventDefault()
       checked = !checked && !disabled
   }
 </script>

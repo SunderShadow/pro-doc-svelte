@@ -1,8 +1,6 @@
 <script lang="ts">
   import type {Doctor} from "$lib/types"
 
-  import {preloadData, replaceState} from "$app/navigation"
-
   import {page} from "$app/state"
 
   import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
@@ -19,8 +17,9 @@
 
   let {data} = $props()
 
-  let items = $state(data.items)
-  let title = $state(data.title)
+  let items = $derived(data.items)
+  let title = $derived(data.title)
+  let age = $derived(data.age)
 
   let specialities: Array<Doctor.Speciality> = data.specialities
 
@@ -36,23 +35,7 @@
   ]
 
 
-  let category = $state(page.params.age)
   let openFilters = $state()
-
-  async function changePageState(e) {
-      e.preventDefault()
-
-      const {href} = e.currentTarget
-      const result = await preloadData(href)
-
-      if (result.type === 'loaded') {
-          title    = result.data.title
-          items    = result.data.items
-          category = result.data.category
-
-          replaceState(href)
-      }
-  }
 </script>
 
 <svelte:head>
@@ -83,8 +66,8 @@
 
     <main>
       <div class="switcher">
-        <a class:active={category === 'adults'} href="/doctors/works_with/adults" onclick={changePageState}>Взрослый врач</a>
-        <a class:active={category === 'children'} href="/doctors/works_with/children" onclick={changePageState}>Детский врач</a>
+        <a class:active={age === 'adults'} href="/doctors/works_with/adults" data-sveltekit-noscroll>Взрослый врач</a>
+        <a class:active={age === 'children'} href="/doctors/works_with/children" data-sveltekit-noscroll>Детский врач</a>
       </div>
 
       <h3 class="popular-title">{title}</h3>

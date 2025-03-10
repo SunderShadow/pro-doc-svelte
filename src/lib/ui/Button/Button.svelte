@@ -3,6 +3,7 @@
 
   type Props = any & {
       children: Snippet,
+      active?: boolean,
       fullWidth?: boolean,
       outline?: boolean,
       type?: "default" | "icon",
@@ -12,6 +13,7 @@
 
   const {
       children,
+      active = false,
       outline = false,
       fullWidth = false,
       type = "default",
@@ -22,6 +24,7 @@
 </script>
 
 <button
+    class:active
     class:outline
     class:fullWidth
     class:icon={type === 'icon'}
@@ -93,6 +96,7 @@
             box-shadow: none;
           }
 
+          &.active,
           &:active {
             background-color: env.$bg-pressing;
             color: #fff;
@@ -108,6 +112,7 @@
           box-shadow: 0 12px 24px rgba(env.$bg-pressing, .15);
         }
 
+        &.active,
         &:active {
           background-color: env.$bg-pressing;
         }
