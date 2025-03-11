@@ -29,6 +29,7 @@
         }
     ]
 
+    let openFilters = $state()
     let page = $state(1)
 </script>
 <svelte:head>
@@ -68,10 +69,10 @@
     </ul>
   </section>
 
-  <div class="filters_container"><FilterContainer/></div>
+  <div class="filters_container"><FilterContainer {openFilters}/></div>
 
   <div class="main-container">
-    <Filters/>
+    <Filters bind:open={openFilters}/>
     <div>
       <section class="filter-tags">
         <TagContainer/>

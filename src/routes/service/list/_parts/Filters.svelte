@@ -31,7 +31,7 @@
   let {
       open = $bindable(),
       close = $bindable()
-  } = $props()
+  }: Props = $props()
 
 </script>
 

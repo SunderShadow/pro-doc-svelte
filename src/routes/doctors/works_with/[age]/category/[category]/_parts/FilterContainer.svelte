@@ -29,7 +29,9 @@
     ]
 
     let activeFilter = $state(0);
-    let openFilters = $state()
+    let {
+        openFilters
+    } = $props()
 
     const handleActiveFilter = (id:number) => {
         activeFilter = id;
@@ -47,7 +49,6 @@
   </div>
 </section>
 <section class="filter-mobile">
-  <Filters bind:open={openFilters}/>
   <div class="filter-icon" onclick={openFilters}>
     <FiltersIcon size="sm"/>
     <span class="link-font-2">Фильтр</span>

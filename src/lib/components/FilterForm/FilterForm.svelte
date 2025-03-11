@@ -13,8 +13,6 @@
       isOpen = window.innerWidth > 768
   }
 
-  let container = $state()
-
   let {
       children,
       open  = $bindable(),
@@ -38,9 +36,8 @@
 
 </script>
 
-<svelte:window onresize={() => {isOpen = window.innerWidth > 768}}></svelte:window>
 {#if isOpen}
-  <aside {...props} class="filters_container" bind:this={container} transition:fly>
+  <aside {...props} class="filters_container" transition:fly>
     <header class="mobile_header">
       <span class="title-1">Фильтры</span>
       <button class="close_btn" onclick={close}><PlusIcon type="primary"/></button>
