@@ -31,15 +31,15 @@
   let {
       open = $bindable(),
       close = $bindable()
-  } = $props()
+  }: Props = $props()
 
 </script>
 
 <FilterForm bind:open bind:close>
   <div>
-    <Select placeholder="Специализация" data={specialityItems}/>
-    <Input placeholder="Город, округ, район, метро" />
-    <Input placeholder="ФИО врача" />
+    <Select placeholder="Специализация" data={specialityItems} withErase={false}/>
+    <Input placeholder="Город, округ, район, метро" withErase={false}/>
+    <Input placeholder="ФИО врача" withErase={false}/>
   </div>
   <div>
     <div class="title-3">Клиника</div>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {Snippet} from "svelte"
 
-  import {scale,  slide} from "svelte/transition"
+  import {scale, slide} from "svelte/transition"
 
   import ArrowDown from "$ui-kit/icons/ArrowDown.svelte"
   import Input from "$ui-kit/Form/Input.svelte"
@@ -37,20 +37,40 @@
       closed = true
   }
 
+  let active = $derived(!closed)
+  let inputEl = $state()
   let trs = useScaleTransition ? scale : slide
+
+  function toggle(e) {
+      e.stopPropagation()
+
+      if (closed) {
+          open()
+      } else {
+          close()
+      }
+  }
 </script>
 
-<svelte:window onclick={preventClose ? () => {} : close}></svelte:window>
+<svelte:window onclick={preventClose ? (e) => {console.log(e)} : close}></svelte:window>
+
+{#snippet chevronIcon()}
+  <div class:active class="select-input__chevron" onclick={toggle}>
+    <ArrowDown size="sm" />
+  </div>
+{/snippet}
 
 <div class="select-input" onclick={(e) => {e.stopPropagation()}}>
-  <div class="select-input__wrapper">
-    <Input active={!closed} {...props} {placeholder} onfocus={preventOpen ? () => {} : open} />
-    <div class="select-input__chevron" class:active={!closed} onclick={close}>
-      <ArrowDown size="sm" />
-    </div>
-  </div>
+  <Input
+      {...props}
+      postIcon={chevronIcon}
+      {active}
+      {placeholder}
+      onfocus={preventOpen ? () => {} : open}
+      bind:el={inputEl}
+  />
 
-  {#if !closed}
+  {#if active}
     <div class="select-input__dropdown" transition:trs>
       {@render dropdown?.()}
     </div>
@@ -67,16 +87,22 @@
 
       cursor: text;
 
-      &__wrapper {
-        position: relative;
-        width: 100%;
+      &__chevron {
+        opacity: .5;
 
-        @media (min-width: map.get(env.$screen-size, tablet) + 1px) {
-          height: 100%;
-        }
+        transition-property: transform, opacity;
+        transition-duration: 300ms;
+        transform-origin: center center;
 
-        .form-control-wrapper {
-          --wrapper-icon-padding: 20px;
+        cursor: pointer;
+
+        &.active {
+          opacity: 1;
+          transform: rotateX(180deg);
+
+          .svg-icon-container {
+            --color: #{map.get(env.$color, primary)};
+          }
         }
       }
 
@@ -111,30 +137,6 @@
         }
       }
 
-      &__chevron {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-
-        transform: translateY(-50%);
-
-        opacity: .5;
-
-        transition-property: transform, opacity;
-        transition-duration: 300ms;
-        transform-origin: center center;
-
-        cursor: pointer;
-
-        &.active {
-          opacity: 1;
-          transform: rotateX(180deg) translateY(50%);
-
-          .svg-icon-container {
-            --color: #{map.get(env.$color, primary)};
-          }
-        }
-      }
     }
   }
 </style>

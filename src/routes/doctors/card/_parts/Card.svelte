@@ -18,6 +18,17 @@
 
 <svelte:window bind:innerWidth={screenWidth} />
 
+{#snippet stats()}
+  <div class="doctor-links">
+    <a href="" class="active body-text-3">невролог</a>
+    <a href="" class="active body-text-3">рефлексотерапевт</a>
+  </div>
+  <div class="doctor-links">
+    <a href="" class="active body-text-3">взрослый</a>
+  </div>
+  <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
+{/snippet}
+
 <div class="card">
   <div class="card-container">
     <div class="card-content">
@@ -37,16 +48,14 @@
             </div>
             <a href="" class="link-font-1">4 отзыва</a>
           </div>
-          <div class="doctor-links">
-            <a href="" class="active body-text-3">невролог</a>
-            <a href="" class="active body-text-3">рефлексотерапевт</a>
-          </div>
-          <div class="doctor-links">
-            <a href="" class="active body-text-3">взрослый</a>
-          </div>
-          <p class="body-text-3">Стаж 24 года, высшая категория, доктор медицинских наук, профессор</p>
+          {#if screenWidth > 425}
+            {@render stats()}
+          {/if}
         </div>
       </section>
+      {#if screenWidth <= 425}
+        {@render stats()}
+      {/if}
       <section class="price">
         <PriceCards/>
       </section>
@@ -184,7 +193,7 @@
     gap: 16px;
 
     @media (max-width: map.get(env.$screen-size, mobile)) {
-      display: none;
+      margin-bottom: 16px;
     }
   }
 
@@ -203,6 +212,11 @@
 
     border: 1px solid rgba(map.get(env.$color, primary), 0.1);
     border-radius: 12px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      width: 130px;
+      height: 130px;
+    }
 
     .favorite_icon {
       position: absolute;
@@ -257,16 +271,27 @@
   }
 
   .doctor-links {
+    display: flex;
+    align-items: center;
+
     a {
+      display: inline-flex;
       color: map.get(env.$color, primary);
       line-height: 22.4px;
     }
 
+    a:first-child {
+      position: relative;
+      top: -1px;
+    }
+
     a + a::before {
-      content: "|";
+      content: "";
+      height: 24px;
+      width: 1px;
       margin: 0 8px;
 
-      color: rgba(map.get(env.$color, primary), 0.1);
+      background: rgba(map.get(env.$color, primary), .1);
     }
   }
 

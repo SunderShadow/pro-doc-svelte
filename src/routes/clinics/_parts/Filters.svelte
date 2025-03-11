@@ -44,7 +44,7 @@
   let {
       open = $bindable(),
       close = $bindable()
-  } = $props()
+  }: Props = $props()
 
 
   let discount = $state()
@@ -52,10 +52,10 @@
 
 <FilterForm bind:open bind:close>
   <div>
-    <Select placeholder="Категория клиники" data={categoryItems}/>
-    <Select placeholder="Специализация врача" data={specialityItems}/>
-    <Input placeholder="Город, округ, район, метро" />
-    <Input placeholder="ФИО врача" />
+    <Select placeholder="Категория клиники" data={categoryItems} withErase={false}/>
+    <Select placeholder="Специализация врача" data={specialityItems} withErase={false}/>
+    <Input placeholder="Город, округ, район, метро" withErase={false}/>
+    <Input placeholder="ФИО врача" withErase={false}/>
   </div>
   <div>
     <Checkbox label="Есть онлайн запись"/>

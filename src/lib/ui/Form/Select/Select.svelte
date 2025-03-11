@@ -59,7 +59,7 @@
 {#snippet dropdown()}
   <div class="dropdown">
     {#each filter(data) as item}
-      <button class:selected={isSelected(item)} onclick={(e) => {e.preventDefault(); select(item)}}>
+      <button class:selected={isSelected(item)} onclick={(e) => {e.preventDefault(); e.stopPropagation(); select(item)}}>
         <span class="title">{item.title}</span>
       </button>
     {/each}

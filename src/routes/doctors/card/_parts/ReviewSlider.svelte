@@ -4,21 +4,14 @@
     import ClientReview from "$lib/components/ClientReview.svelte"
 
     import PatientImage1 from "../_assets/img/patient-1.png?enhanced&format=webp"
-    import PatientImage2 from "../_assets/img/patient-2.png?enhanced&format=webp"
 
-    import Button from "$ui-kit/Button/Button.svelte"
     import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte"
 
     let screenWidth = $state(0);
 
-    let slider = $state()
-
-    let currentPage = $state(0)
-
     const options = {
         perPage: 2,
         gap: 28,
-        pagination: false,
         breakpoints: {
             1024: {
                 perPage: 1,
@@ -26,33 +19,11 @@
         }
     }
 
-    function goTo(page: number) {
-        slider.go(page)
-    }
-
-    function getCurrentPerPage() {
-        for (let breakpointWidth in options.breakpoints) {
-            if (breakpointWidth > screenWidth) {
-                return options.breakpoints[breakpointWidth].perPage
-            }
-        }
-
-        return 2
-    }
-
-    let paginationLengthRaw = $derived((slider?.splide?.length ?? 0) / getCurrentPerPage())
-    let paginationLength = $derived(Math.ceil(paginationLengthRaw))
-    let paginationAddOne = $derived(Number(!Number.isInteger(paginationLengthRaw) && paginationLengthRaw >= (paginationLength - 0.5)))
-
-    $inspect(paginationLengthRaw, paginationLength - 0.5, paginationAddOne)
-    function updatePage(e) {
-        currentPage = e.detail.dest
-    }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
 
-<Splide hasTrack={false} options={options} bind:this={slider} on:move={updatePage}>
+<Splide hasTrack={false} options={options} >
   <SplideTrack>
     {#each Array(5) as _}
       <SplideSlide>
@@ -75,14 +46,7 @@
           </svg>
         </SvgContainer>
       </button>
-      {#if paginationLength}
-        {#each Array(paginationLength + paginationAddOne) as _, i}
-          {@const pageNum = i + 1}
-          <Button type="icon" primary onclick={() => {goTo(i)}} outline={i !== currentPage}>
-            {pageNum}
-          </Button>
-        {/each}
-      {/if}
+      <ul class="splide__pagination splide__pagination--ltr splide__pagination-numeric" role="tablist" aria-label="Select a slide to show"></ul>
       <button class="splide__arrow splide__arrow--next">
         <SvgContainer type="primary" size="sm">
           <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

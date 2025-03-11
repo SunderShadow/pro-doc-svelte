@@ -17,8 +17,11 @@
     .input-group > * {
       width: 100%;
     }
-    .input-group .form-control-wrapper {
-      height: 100%;
+
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      .input-group .form-control-wrapper {
+        height: 100%;
+      }
     }
 
     @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {

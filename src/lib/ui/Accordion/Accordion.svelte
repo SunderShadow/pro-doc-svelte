@@ -23,7 +23,7 @@
 <div class="accordion">
     <button class="title-1" onclick={handleActiveAccordion}>
         {title}
-        <Button isActive={isActive}/>
+        <div class="round_btn"><Button isActive={isActive}/></div>
     </button>
     {#if isActive}
         <div class="accordion-dropdown" transition:slide>
@@ -36,48 +36,56 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
-    .accordion {
-      border: 1px solid rgba(map.get(env.$color, primary), 0.1);
-      border-radius: 20px;
 
-      font-family: "Gilroy", sans-serif;
+  .accordion {
+    --padding: 24px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      --padding: 16px;
+    }
+
+    border: 1px solid rgba(map.get(env.$color, primary), 0.1);
+    border-radius: 20px;
+
+    font-family: "Gilroy", sans-serif;
+    line-height: 36px;
+
+    &-dropdown {
+      padding: 0 var(--padding) var(--padding);
+    }
+
+    > button {
+      -webkit-tap-highlight-color: transparent;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
       font-weight: 600;
-      line-height: 36px;
 
-      &-dropdown {
-        padding: 32px;
+      gap: 16px;
+
+      text-align: left;
+      width: 100%;
+
+      padding: var(--padding);
+      font-family: inherit;
+
+      border: none;
+      border-radius: 20px;
+      outline: none;
+
+      background-color: map.get(env.$bg-color, primary);
+
+      @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+        cursor: pointer;
       }
 
-      > button {
-        -webkit-tap-highlight-color: transparent;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        gap: 16px;
-
-        text-align: left;
-        width: 100%;
-
-        padding: 32px;
-        font-family: inherit;
-
-        border: none;
-        border-radius: 20px;
-        outline: none;
-
-        background-color: map.get(env.$bg-color, primary);
-
-        @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
-          cursor: pointer;
-        }
-
-        @media (max-width: map.get(env.$screen-size, mobile)) {
-            font-size: 1.2rem;
-        }
+      @media (max-width: map.get(env.$screen-size, mobile)) {
+        font-size: 1.2rem;
       }
     }
+  }
 
   :global {
     @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {

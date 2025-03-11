@@ -115,8 +115,13 @@
       position: absolute;
       padding: var(--border-offset);
 
-      > * {
+      > h2 {
         max-width: 270px;
+      }
+      @media (min-width: 1600px) {
+        > p {
+          max-width: 270px;
+        }
       }
 
       top: 0;

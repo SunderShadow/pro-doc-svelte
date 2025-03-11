@@ -57,9 +57,6 @@
 
   .wrapper {
     flex-grow: 1;
-    @media (max-width: map.get(env.$screen-size, tablet)) {
-      padding: 16px;
-    }
   }
 
   .title {

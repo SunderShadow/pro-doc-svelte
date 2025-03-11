@@ -1,8 +1,9 @@
 <script>
-    import {page} from "$app/state"
+    import {replaceState} from "$app/navigation";
 
     import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
     import {getHTMLFormattedTime} from "$lib/helpers.js"
+    import {onDestroy, onMount} from "svelte";
 
     let {
         data
@@ -32,6 +33,43 @@
             href: '',
         }
     ]
+
+    let currentHeaderID = $state('intro')
+    onMount(() => {
+        const titlesNode = document.querySelectorAll('#advice_main_content h2')
+
+        currentHeaderID = titlesNode[0].id
+
+        let titles = []
+        for (let title of titlesNode) {
+            titles.push(title)
+        }
+
+        titles = titles.reverse()
+
+        for (const title of titles) {
+            title.scrollListener = function () {
+                let offsetY = title.getBoundingClientRect().top
+
+                if (
+                    offsetY > -1
+                    && offsetY < 200
+                ) {
+                    currentHeaderID = title.id
+                }
+            }
+
+            window.addEventListener('scroll', title.scrollListener)
+        }
+    })
+
+    onDestroy(() => {
+        const titlesNode = document.querySelectorAll('#advice_main_content h2')
+
+        for (const el of titlesNode) {
+            window.removeEventListener('scroll', el.scrollListener)
+        }
+    })
 </script>
 
 <svelte:head>
@@ -42,7 +80,7 @@
   <Breadcrumbs {list}/>
 </div>
 
-<main class="page-container">
+<main id="article_page" class="page-container">
   <div class="publish_time">
     <span>Дата публикации</span>
     <time datetime={getHTMLFormattedTime(date)}>{date.toLocaleDateString('ru-RU')}</time>
@@ -54,15 +92,27 @@
 
   <div class="main-wrapper">
     <div class="navigation">
-      <a class:active={page.url.href.includes('#intro')} href="#intro">Введение</a>
-      <a class:active={page.url.href.includes('#from')} href="#from">Откуда берётся холестерин, и когда диета не помогает?</a>
-      <a class:active={page.url.href.includes('#how')} href="#how">Как его потратить?</a>
-      <a class:active={page.url.href.includes('#analysis')} href="#analysis">Какой анализ на холестерин нужно сдавать?</a>
-      <a class:active={page.url.href.includes('#normal_1')} href="#normal_1">Нормы холестерина в крови</a>
-      <a class:active={page.url.href.includes('#normal_2')} href="#normal_2">Как снизить холестерин без лекарств?</a>
+      <div>
+        <a class:active={currentHeaderID === 'intro'} href="#intro">Введение</a>
+      </div>
+      <div>
+        <a class:active={currentHeaderID === 'from'} href="#from">Откуда берётся холестерин, и когда диета не помогает?</a>
+      </div>
+      <div>
+        <a class:active={currentHeaderID === 'how'} href="#how">Как его потратить?</a>
+      </div>
+      <div>
+        <a class:active={currentHeaderID === 'analysis'} href="#analysis">Какой анализ на холестерин нужно сдавать?</a>
+      </div>
+      <div>
+        <a class:active={currentHeaderID === 'normal_1'} href="#normal_1">Нормы холестерина в крови</a>
+      </div>
+      <div>
+        <a class:active={currentHeaderID === 'normal_2'} href="#normal_2">Как снизить холестерин без лекарств?</a>
+      </div>
     </div>
 
-    <div>
+    <div id="advice_main_content">
       <h2 id="intro" class="title-1">Введение</h2>
       <p class="body-text-2">
         Известно, что при атеросклерозе в стенках сосудов образуются утолщения, которые содержат большое количество
@@ -293,6 +343,12 @@
     }
   }
 
+  @media (max-width: map.get(env.$screen-size, mobile)) {
+    h2 {
+      scroll-margin-top: 70px;
+    }
+  }
+
   .thumbnail {
     width: 100%;
 
@@ -316,6 +372,11 @@
 
   .breadcrumbs {
     margin-bottom: 32px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
   }
 
   .main-wrapper {
@@ -338,7 +399,9 @@
     flex-direction: column;
     gap: 8px;
     padding: 32px;
+    flex-shrink: 0;
 
+    min-width: 208px;
     height: fit-content;
 
     font-weight: 600;

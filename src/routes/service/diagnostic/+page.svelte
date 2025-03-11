@@ -38,7 +38,9 @@
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Диагностика в клиниках Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} />
+  <div id="dignostic_page_preview">
+    <Preview title="Диагностика в клиниках Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} />
+  </div>
 </section>
 
 <section class="page-container page-section">
@@ -81,6 +83,13 @@
   @use "sass:map";
   @use "$ui-kit/env";
 
+  :global {
+    @media (max-width: 500px) {
+      #dignostic_page_preview .preview {
+        background-size: cover;
+      }
+    }
+  }
   .page-title {
     margin-bottom: 64px;
 
@@ -102,13 +111,21 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 32px;
 
-    > div:not(.double) {
-      aspect-ratio: 1 / 1;
+    @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      > div:not(.double) {
+        aspect-ratio: 1 / 1;
+      }
     }
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       > div {
         aspect-ratio: 1 / 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      > div {
+        aspect-ratio: 328 / 200;
       }
     }
 

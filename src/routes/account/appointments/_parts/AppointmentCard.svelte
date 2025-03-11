@@ -34,6 +34,10 @@
     border: 1px solid rgba(map.get(env.$color, primary), .1);
     border-radius: 12px;
     padding: 32px;
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      padding: 16px;
+    }
   }
 
 
@@ -60,6 +64,7 @@
 
   .actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
 
     margin-top: 32px;

@@ -125,7 +125,6 @@
     gap: 10vw;
 
     padding: 2rem;
-    margin-top: 32px;
 
     border: 1px solid rgba(map.get(env.$color, primary), 0.1);
     border-radius: 12px;

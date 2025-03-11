@@ -61,7 +61,7 @@
 
   article {
     display: flex;
-    gap: 16px;
+    gap: 32px;
 
     padding: 32px;
     border: 1px solid rgba(map.get(env.$color, primary), .1);
@@ -69,7 +69,14 @@
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       flex-direction: column;
+      gap: 16px;
+      padding: 24px;
     }
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      padding: 16px;
+    }
+
   }
 
   .thumbnail {

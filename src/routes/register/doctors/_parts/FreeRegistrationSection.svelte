@@ -1,7 +1,11 @@
 <script lang="ts">
   import ThumbnailImg from "../_assets/free_registration_thumbnail.jpg?enhanced&format=webp"
   import Button from "$ui-kit/Button/Button.svelte";
+
+  let screenWidth = $state(0)
 </script>
+
+<svelte:window bind:innerWidth={screenWidth} />
 
 <section class="page-container page-section">
   <h2>После бесплатной регистрации вы сможете</h2>
@@ -25,7 +29,7 @@
       <p class="body-text-2">Заполните страницу, добавьте адрес и стоимость приема, укажите телефон – пациенты найдут вас в выборках и запишутся на прием</p>
 
       <div class="send_request_btn">
-        <Button>Отправить заявку</Button>
+        <Button fullWidth={screenWidth <= 425}>Отправить заявку</Button>
       </div>
     </div>
   </div>
@@ -43,7 +47,9 @@
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       flex-direction: column;
-      gap: 32px
+      gap: 32px;
+
+      margin-top: 32px;
     }
   }
 

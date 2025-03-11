@@ -6,7 +6,7 @@
 
 <footer>
   <div class="page-container">
-    <div class="contacts">
+    <div id="contacts" class="contacts">
       <a class="logo" href="/">
         <img src={Logo} alt="Logo"/>
       </a>

@@ -97,8 +97,12 @@
     }
   }
 
-  h2 {
+  #new_advices {
     margin-bottom: 64px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-bottom: 32px;
+    }
   }
 
   .tags {
@@ -111,6 +115,7 @@
     margin-bottom: 32px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 16px;
       margin-bottom: 16px;
     }
   }

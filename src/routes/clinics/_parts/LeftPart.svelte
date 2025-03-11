@@ -36,12 +36,6 @@
     </div>
   </div>
 </div>
-<div class="show_on_map_btn">
-  <Button fullWidth>
-    <MagnifierIcon size="sm" />
-    Показать на карте
-  </Button>
-</div>
 
 <h2 class="title-1">О клинике</h2>
 <p class="body-text-2">
@@ -90,8 +84,8 @@
       position: relative;
       flex-shrink: 0;
 
-      width: 180px;
-      height: 180px;
+      width: min(278px, 50%);
+      height: min(278px, 50%);
 
       background-size: cover;
       background-position: center;
@@ -100,9 +94,9 @@
       border: 1px solid rgba(map.get(env.$color, primary), 0.1);
       border-radius: 12px;
 
-      @media (max-width: map.get(env.$screen-size, netbook)) and (min-width: map.get(env.$screen-size, tablet)) {
-        width: 278px;
-        height: 278px;
+      @media (max-width: map.get(env.$screen-size, tablet)){
+        width: 180px;
+        height: 180px;
       }
 
       @media (max-width: map.get(env.$screen-size, mobile)) {

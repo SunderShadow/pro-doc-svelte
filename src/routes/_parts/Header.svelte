@@ -58,7 +58,7 @@
           title: 'О нас'
       },
       {
-          href: '/c',
+          href: '#contacts',
           title: 'Контакты'
       },
   ]

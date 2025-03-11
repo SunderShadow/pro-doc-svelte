@@ -32,6 +32,9 @@
     flex-direction: column;
     position: relative;
 
+    border: 1px solid rgba(map.get(env.$color, primary), .1);
+    border-radius: 12px;
+
     @media (max-width: map.get(env.$screen-size, tablet)) {
       &:first-child .link {
         margin-left: auto;

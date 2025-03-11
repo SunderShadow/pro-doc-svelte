@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Breadcrumbs as BreadcrumbsType } from "\$lib/types";
+    import type {Breadcrumbs as BreadcrumbsType} from "\$lib/types";
     import PreviewSection from "./_parts/PreviewSection.svelte"
     import QuestionAnswerSection from "./_parts/QuestionAnswerSection.svelte"
     import ClientsSection from "./_parts/ClientsReviewSection.svelte"

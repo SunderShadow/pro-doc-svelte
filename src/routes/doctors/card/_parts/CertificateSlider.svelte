@@ -3,19 +3,13 @@
   import {Splide, SplideSlide, SplideTrack} from "@splidejs/svelte-splide"
 
   import CertificateImage from "../_assets/img/certificate.png?enhanced&format=webp"
-  import Button from "$ui-kit/Button/Button.svelte";
-  import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte";
+  import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte"
 
   let screenWidth = $state(0);
-
-  let slider = $state()
-
-  let currentPage = $state(0)
 
   const options = {
       perPage: 5,
       gap: 28,
-      pagination: false,
       breakpoints: {
           600: {
               perPage: 1,
@@ -32,32 +26,11 @@
           },
       }
   }
-
-  function goTo(page: number) {
-      slider.go(page)
-  }
-
-  function getCurrentPerPage() {
-      for (let breakpointWidth in options.breakpoints) {
-          if (breakpointWidth > screenWidth) {
-              return options.breakpoints[breakpointWidth].perPage
-          }
-      }
-
-  }
-
-  let paginationLengthRaw = $derived((slider?.splide?.length ?? 0) / getCurrentPerPage())
-  let paginationLength = $derived(Math.ceil(paginationLengthRaw) ?? 0)
-  let paginationAddOne = $derived(Number(!Number.isInteger(paginationLengthRaw) && paginationLengthRaw >= (paginationLength - 0.5)))
-
-  function updatePage(e) {
-      currentPage = e.detail.dest
-  }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
 
-<Splide hasTrack={false} options={options} bind:this={slider} on:move={updatePage}>
+<Splide hasTrack={false} options={options}>
   <SplideTrack>
     {#each Array(5) as _}
       <SplideSlide>
@@ -76,14 +49,7 @@
           </svg>
         </SvgContainer>
       </button>
-      {#if paginationLength}
-        {#each Array(paginationLength + paginationAddOne) as _, i}
-        {@const pageNum = i + 1}
-          <Button type="icon" primary onclick={() => {goTo(i)}} outline={i !== currentPage}>
-            {pageNum}
-          </Button>
-        {/each}
-      {/if}
+      <ul class="splide__pagination splide__pagination--ltr splide__pagination-numeric" role="tablist" aria-label="Select a slide to show"></ul>
       <button class="splide__arrow splide__arrow--next">
         <SvgContainer type="primary" size="sm">
           <svg class="fill-only" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

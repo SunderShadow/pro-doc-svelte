@@ -16,8 +16,4 @@
   .magnifier {
     opacity: .5;
   }
-
-  .search {
-    margin-top: 32px;
-  }
 </style>

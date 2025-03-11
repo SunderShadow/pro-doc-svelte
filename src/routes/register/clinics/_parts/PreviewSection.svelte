@@ -23,7 +23,7 @@
         imageMobile={PreviewImgMobileSrc.img.src}
         withGradient={true}
         gradientWidth={45}
-        contentWidth={screenSize > 700 ? 50 : 90}
+        contentWidth={screenSize > 700 ? 60 : 90}
     >
       <p class="body-text-2">Если вы представитель клиники,пройдите бесплатную регистрации управляйте страницей мед. центра</p>
       <Button fullWidth={screenSize <= 500}>Зарегистрироваться как врач</Button>

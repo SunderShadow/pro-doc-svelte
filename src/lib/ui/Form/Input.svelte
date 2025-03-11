@@ -1,9 +1,11 @@
 <script lang="ts">
   import Plus from "$ui-kit/icons/Plus.svelte"
   import {scale} from "svelte/transition"
+  import {onMount, type Snippet} from "svelte";
 
   type Props = any & {
       preIcon?: Snippet,
+      postIcon?: Snippet,
       label?: string,
       value?: any,
       active: boolean,
@@ -12,11 +14,13 @@
   }
   let {
       preIcon,
+      postIcon,
       label,
       active = false,
       value = $bindable(''),
       withErase = true,
       onErase = () => {},
+      el = $bindable(),
       ...props
   }: Props = $props()
 
@@ -24,20 +28,27 @@
       value = ''
       onErase()
   }
+
 </script>
 
-<div class="form-control-wrapper">
+<div class="form-control-wrapper" onclick={() => {el.focus()}}>
   {#if preIcon}
-    <div class="">
+    <div class="pre_icon">
       {@render preIcon()}
     </div>
   {/if}
 
-  <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value>
+  <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value bind:this={el}>
 
   {#if withErase && value.length}
     <div class="erase" transition:scale onclick={erase}>
       <Plus size="sm" type="primary"/>
+    </div>
+  {/if}
+
+  {#if postIcon}
+    <div class="post_icon">
+      {@render postIcon()}
     </div>
   {/if}
 </div>
@@ -47,6 +58,8 @@
   @use "$ui-kit/env";
 
   .form-control-wrapper {
+    width: 100% ;
+
     --border-opacity: .1;
     --wrapper-icon-padding: 0px;
     --erase-icon-right: calc(20px + var(--wrapper-icon-padding));
@@ -56,7 +69,7 @@
 
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 4px;
     position: relative;
     padding: .65em 1em;
 
@@ -65,8 +78,6 @@
   }
 
   input {
-    --erase-icon-offset: calc(24px + var(--erase-icon-right));
-
     width: 100%;
 
     border: none;
@@ -76,10 +87,6 @@
     line-height: 25.6px;
     outline: none;
 
-    &.withErase:not(:placeholder-shown) {
-        padding-right: calc(8px + var(--erase-icon-right));
-    }
-
     font-family: "Helvetica", Gilroy, sans-serif;
     font-size: 1rem;
   }
@@ -87,15 +94,15 @@
   .erase {
     -webkit-tap-highlight-color: transparent;
 
-    position: absolute;
-    right: var(--erase-icon-right);
-
-    top: 50%;
-
-    transform: translateY(-50%) rotate(45deg);
+    transform: rotate(45deg);
     cursor: pointer;
   }
 
+  .pre_icon,
+  .post_icon {
+    display: block;
+    flex-shrink: 0;
+  }
 
   @media (min-width: map.get(env.$screen-size, tablet)) {
     .form-control-wrapper:hover {

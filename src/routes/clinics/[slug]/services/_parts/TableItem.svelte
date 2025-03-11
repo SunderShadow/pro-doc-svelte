@@ -16,7 +16,7 @@ let screenSize = $state(0)
 
 <svelte:window bind:innerWidth={screenSize}/>
 <tr class="clinics_view_table-item">
-{#if screenSize > 425}
+{#if screenSize > 500}
     <td class="title">{title}</td>
     <td><span class="cost">от {cost} ₽</span></td>
     <td><Button>Записаться</Button></td>
@@ -33,7 +33,9 @@ let screenSize = $state(0)
   @use "sass:map";
   @use "$ui-kit/env";
 
-  @media (max-width: map.get(env.$screen-size, mobile)) {
+  $mobile-breakpoint: 500px;
+  
+  @media (max-width: $mobile-breakpoint) {
     td > * + * {
       margin-top: 8px;
     }
@@ -54,14 +56,14 @@ let screenSize = $state(0)
 
   td:first-child,
   th:first-child {
-    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+    @media (min-width: ($mobile-breakpoint + 1px)) {
       text-align: left;
     }
   }
 
   td:last-child,
   th:last-child {
-    @media (min-width: (map.get(env.$screen-size, mobile) + 1px)) {
+    @media (min-width: ($mobile-breakpoint + 1px)) {
       text-align: right;
     }
     width: 100%;

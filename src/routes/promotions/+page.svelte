@@ -52,9 +52,16 @@
 </main>
 
 <style lang="scss">
+  @use "sass:map";
+  @use "$ui-kit/env";
 
   .breadcrumbs {
     margin-bottom: 32px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 16px;
+      margin-bottom: 16px ;
+    }
   }
 
   .items {

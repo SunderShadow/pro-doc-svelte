@@ -21,12 +21,8 @@
         },
         {
             title: 'Личный кабинет',
-            href: '/account',
-        },
-        {
-            title: pageTitle,
             href: '',
-        }
+        },
     ])
 
     let {
@@ -70,7 +66,6 @@
   </aside>
   <div>
     <div class="header">
-      <div class="back"><ArrowRightIcon size="sm"/></div>
       <h2>{pageTitle}</h2>
     </div>
     <main>

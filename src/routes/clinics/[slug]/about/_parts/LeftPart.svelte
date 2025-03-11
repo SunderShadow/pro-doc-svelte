@@ -19,11 +19,6 @@
   }
 
   let screenSize = $state(0)
-
-  let licenseSliderOptions = $derived({
-      perPage: 1 + Number(screenSize > 425),
-      gap: 28
-  })
 </script>
 
 <svelte:window bind:innerWidth={screenSize}></svelte:window>
@@ -64,6 +59,7 @@
 {#if screenSize < 1200}
   <RightPart />
 {/if}
+
 <h2 class="title-1">О клинике</h2>
 <p class="body-text-2">
   Медицинский Центр «ДЧ Клиника» находится в 16-м микрорайоне города Мытищи, на территории Московской области. Мы осуществляем современную диагностику и врачебные услуги для всей семьи.
@@ -141,6 +137,10 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  .title-1 + div {
+    margin-top: 16px;
+  }
 
   :global {
     #clinics_about_splide_pagination {
@@ -255,8 +255,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 32px;
-
-    margin-top: 16px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
