@@ -10,3 +10,11 @@
   <slot />
   <Footer />
 </div>
+
+<style lang="scss">
+  :global {
+    :root {
+      scroll-behavior: smooth;
+    }
+  }
+</style>
