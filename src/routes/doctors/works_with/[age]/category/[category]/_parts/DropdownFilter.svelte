@@ -73,6 +73,8 @@
     position: absolute;
     top: 100%;
 
+    z-index: 5;
+
     padding: .25rem;
 
     width: 100%;

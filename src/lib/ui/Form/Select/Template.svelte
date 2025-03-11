@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {Snippet} from "svelte"
 
-  import {scale, slide} from "svelte/transition"
+  import {fade, fly, crossfade, slide, scale, blur} from "svelte/transition"
 
   import ArrowDown from "$ui-kit/icons/ArrowDown.svelte"
   import Input from "$ui-kit/Form/Input.svelte"
@@ -10,7 +10,6 @@
       dropdown: Snippet,
       placeholder: string,
       close: Function,
-      useScaleTransition: boolean,
       open: Function,
       preventClose: boolean,
       preventOpen: boolean,
@@ -23,7 +22,6 @@
       close = $bindable(),
       preventClose = false,
       preventOpen = false,
-      useScaleTransition = false,
       ...props
   }: Props = $props()
 
@@ -39,7 +37,6 @@
 
   let active = $derived(!closed)
   let inputEl = $state()
-  let trs = useScaleTransition ? scale : slide
 
   function toggle(e) {
       e.stopPropagation()
@@ -71,7 +68,7 @@
   />
 
   {#if active}
-    <div class="select-input__dropdown" transition:trs>
+    <div class="select-input__dropdown" transition:slide={{duration: 300}}>
       {@render dropdown?.()}
     </div>
   {/if}

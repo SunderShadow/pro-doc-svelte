@@ -79,11 +79,13 @@
       {/if}
       <div class="switcher-wrapper">
         {#if screenSize < 1200 && !page.url.pathname.includes(data.slug + '/doctors')}
-          <div class="filters_actions">
-            <button class="filters-open_btn" onclick={openFilters}>
-              <FiltersIcon size="sm"/>
-              Фильтры
-            </button>
+          <div class="filters_actions_wrapper">
+            <div class="filters_actions">
+              <button class="filters-open_btn" onclick={openFilters}>
+                <FiltersIcon size="sm"/>
+                Фильтры
+              </button>
+            </div>
             <FilterContainer/>
           </div>
         {/if}
@@ -119,6 +121,13 @@
     @media (max-width: map.get(env.$screen-size, tablet)) {
       font-size: 18px;
     }
+  }
+
+  .filters_actions_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   }
 
   .main-content {

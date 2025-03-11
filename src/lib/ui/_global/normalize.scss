@@ -9,3 +9,7 @@ body, html {
 a {
   color: map.get(env.$color, primary);
 }
+
+button {
+  color: inherit;
+}

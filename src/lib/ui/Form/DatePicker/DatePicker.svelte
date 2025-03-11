@@ -1,5 +1,6 @@
 <script lang="ts">
   import SvgContainer from "$ui-kit/SvgContainer/SvgContainer.svelte";
+  import {onMount, tick} from "svelte";
 
   type Props = {
       beforeToday?: boolean
@@ -32,14 +33,12 @@
 
   let year        = $state(0),
       month       = $state(''),
-      day         = $state(0),
       daysTotal   = $state(0),
       daysOffset  = $state(0)
 
-  $effect(() => {
+  const updateCurrentDate = () => {
       year = viewDate.getFullYear()
       month = monthTranslate[viewDate.getUTCMonth()]
-      day = viewDate.getDay()
 
       let tmp = new Date(viewDate)
       tmp.setMonth(tmp.getMonth() + 1)
@@ -49,7 +48,9 @@
 
       tmp.setUTCDate(1)
       daysOffset = tmp.getUTCDay()
-  })
+  }
+  updateCurrentDate()
+  $effect(updateCurrentDate)
 
   function goPrevMonth() {
       if (!canGoPrevMonth()) {
@@ -114,6 +115,7 @@
   function canBeSelected(day: number): boolean {
       return !earlierThanToday(day)
   }
+
 </script>
 
 <div class="date_picker">
@@ -138,23 +140,26 @@
   </div>
 
   <div class="week_days" style:--days-offset={daysOffset}>
-    <div class="title-3">Пн</div>
-    <div class="title-3">Вт</div>
-    <div class="title-3">Ср</div>
-    <div class="title-3">Чт</div>
-    <div class="title-3">Пт</div>
-    <div class="title-3">Сб</div>
-    <div class="title-3">Вс</div>
+      <div class="title-3">Пн</div>
+      <div class="title-3">Вт</div>
+      <div class="title-3">Ср</div>
+      <div class="title-3">Чт</div>
+      <div class="title-3">Пт</div>
+      <div class="title-3">Сб</div>
+      <div class="title-3">Вс</div>
 
-    {#each Array(daysTotal) as day, i}
-      {@const dayNum = i + 1}
-      <button
-          class="title-3"
-          class:active={isDaySelected(dayNum)}
-          class:disabled={!canBeSelected(dayNum)}
-          onclick={() => {if (canBeSelected(dayNum)) selectDate(dayNum) }}>{dayNum}</button>
-    {/each}
-  </div>
+      {#each Array(daysTotal) as _, i (i)}
+        {@const dayNum = i + 1}
+        <button
+            class="title-3"
+            class:active={isDaySelected(dayNum)}
+            class:disabled={!canBeSelected(dayNum)}
+            onclick={() => {if (canBeSelected(dayNum)) selectDate(dayNum) }}
+        >
+          {dayNum}
+        </button>
+      {/each}
+    </div>
 </div>
 
 <style lang="scss">
