@@ -13,17 +13,28 @@
     import FavoriteDoctorIcon from "$ui-kit/icons/FavoriteDoctor.svelte"
     import ArrowRightIcon from "$ui-kit/icons/ArrowRight.svelte"
 
-    let pageTitle = $state('Аккаунт')
-    let breadcrumbs = $derived([
-        {
-            title: 'Главная',
-            href: '/',
-        },
-        {
-            title: 'Личный кабинет',
-            href: '',
-        },
-    ])
+    let pageTitle = $state('')
+    let breadcrumbs = $derived.by(() => {
+        let breadcrumbs = [
+            {
+                title: 'Главная',
+                href: '/',
+            },
+            {
+                title: 'Личный кабинет',
+                href: '/account',
+            },
+        ]
+
+        if (pageTitle !== 'Личный кабинет') {
+            breadcrumbs.push({
+                title: pageTitle,
+                href: '',
+            })
+        }
+
+        return breadcrumbs
+    })
 
     let {
         children
@@ -66,6 +77,9 @@
   </aside>
   <div>
     <div class="header">
+      {#if pageTitle !== 'Личный кабинет'}
+        <a href="/account" class="back" data-sveltekit-noscroll><ArrowRightIcon size="sm"/></a>
+      {/if}
       <h2>{pageTitle}</h2>
     </div>
     <main>

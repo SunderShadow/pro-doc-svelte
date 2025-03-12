@@ -4,7 +4,7 @@
 </script>
 
 <section class="page-container">
-  <h2>О нас</h2>
+  <h2 id="about">О нас</h2>
   <div class="content">
     <div class="thumbnail">
       <img src={AboutUsImage.img.src} alt="" loading="lazy">

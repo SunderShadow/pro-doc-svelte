@@ -43,7 +43,7 @@
           title: 'Диагностика'
       },
       {
-          href: '/c',
+          href: '/consulting/works_with/adults',
           title: 'Онлайн-консультации'
       },
       {
@@ -55,7 +55,7 @@
           title: 'Акции'
       },
       {
-          href: '/c',
+          href: '/#about',
           title: 'О нас'
       },
       {
@@ -64,7 +64,7 @@
       },
   ]
 
-  let modalVisible = $state(true)
+  let modalVisible = $state(false)
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
