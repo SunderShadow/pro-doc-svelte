@@ -40,11 +40,11 @@
     </div>
     <div class="nav-section patient">
       <h5 class="title-3">Пациенту</h5>
-      <a href="/" class="body-text-3">Врачи</a>
-      <a href="/" class="body-text-3">Клиники</a>
-      <a href="/" class="body-text-3">Диагностика</a>
-      <a href="/" class="body-text-3">Услуги</a>
-      <a href="/" class="body-text-3">Медицинская библиотека</a>
+      <a href="/doctors/works_with/adults" class="body-text-3">Врачи</a>
+      <a href="/clinics" class="body-text-3">Клиники</a>
+      <a href="/service/diagnostic" class="body-text-3">Диагностика</a>
+      <a href="/service/list" class="body-text-3">Услуги</a>
+      <a href="/library" class="body-text-3">Медицинская библиотека</a>
       <a href="/" class="body-text-3">Как записаться</a>
       <a href="/" class="body-text-3">Защита данных пользователя</a>
       <a href="/" class="body-text-3">Как мы проверяем отзывы</a>
@@ -60,7 +60,7 @@
       <a href="/" class="body-text-3">Персональные данные</a>
 
       <h5 class="nav-section__clynic_doctor title-3">Врачу и клинике</h5>
-      <a href="/" class="body-text-3">Личный кабинет</a>
+      <a href="/account/profile" class="body-text-3">Личный кабинет</a>
       <a href="/" class="body-text-3">Регистрация</a>
     </div>
   </div>

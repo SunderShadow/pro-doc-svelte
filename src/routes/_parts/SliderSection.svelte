@@ -5,6 +5,7 @@
   import SliderImgMobileSrc from "$lib/assets/images/slider/mobile.png?enhanced&quality=80&format=webp"
   import {Splide, SplideSlide, SplideTrack} from '@splidejs/svelte-splide'
   import Button from "$ui-kit/Button/Button.svelte"
+  import {goto} from "$app/navigation";
 
   const sliderOptions = {
       type: 'loop',
@@ -29,7 +30,7 @@
                 <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
               </div>
               <div class="slider-button">
-                <Button>Выбрать врача</Button>
+                <Button onclick={() => goto("/doctors/works_with/adults")}>Выбрать врача</Button>
               </div>
             </div>
           </div>
@@ -42,7 +43,7 @@
                 <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
               </div>
               <div class="slider-button">
-                <Button>Выбрать врача</Button>
+                <Button onclick={() => goto("/doctors/works_with/adults")}>Выбрать врача</Button>
               </div>
             </div>
           </div>
@@ -55,7 +56,7 @@
                 <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
               </div>
               <div class="slider-button">
-                <Button>Выбрать врача</Button>
+                <Button onclick={() => goto("/doctors/works_with/adults")}>Выбрать врача</Button>
               </div>
             </div>
           </div>
@@ -68,7 +69,7 @@
                 <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
               </div>
               <div class="slider-button">
-                <Button>Выбрать врача</Button>
+                <Button onclick={() => goto("/doctors/works_with/adults")}>Выбрать врача</Button>
               </div>
             </div>
           </div>
