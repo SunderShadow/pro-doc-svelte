@@ -3,8 +3,8 @@
   import Link from "$ui-kit/Link/Link.svelte";
 </script>
 
-<section class="page-container">
-  <h2 id="about">О нас</h2>
+<section id="about" class="page-container">
+  <h2>О нас</h2>
   <div class="content">
     <div class="thumbnail">
       <img src={AboutUsImage.img.src} alt="" loading="lazy">

@@ -7,6 +7,7 @@
   import Vk         from "$ui-kit/icons/Vk.svelte"
 
   import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
+  import RegisterModal from "../RegisterModal.svelte";
 
 let {
     visible = $bindable(false),
@@ -27,8 +28,12 @@ toggleMobileMenuVisible = (e) => {
         ReEnableScrolling()
     }
 }
+  let modalVisible = $state(false)
 </script>
 
+{#if modalVisible}
+  <RegisterModal bind:isActive={modalVisible}/>
+{/if}
 <svelte:window onclick="{visible ? toggleMobileMenuVisible : () => {}}"></svelte:window>
 <div class="mobile-nav" class:visible style:--top={headerHeight + 'px'} bind:this={mobileNav}>
   <div class="mobile-nav__layer_1">
@@ -43,8 +48,8 @@ toggleMobileMenuVisible = (e) => {
     <div class="auth">
       <Account type="primary" size="sm"/>
 
-      <a href="/" class="link-font-2">Вход</a>
-      <a href="/" class="link-font-2">Регистрация</a>
+      <a onclick={() => {modalVisible = true}} href="" class="link-font-2">Вход</a>
+      <a onclick={() => {modalVisible = true}} href="" class="link-font-2">Регистрация</a>
     </div>
   </div>
 
@@ -61,11 +66,11 @@ toggleMobileMenuVisible = (e) => {
 
   <div class="mobile-nav__info">
     <span class="title-3">Телефоны</span>
-    <a class="active" href="tel:88004555515">8 (800) 455-55-15</a>
+    <a onclick={(e) => {e.stopPropagation()}} class="active" href="tel:88004555515">8 (800) 455-55-15</a>
   </div>
   <div class="mobile-nav__info">
     <span class="title-3">Адрес электронной почты</span>
-    <a class="active" href="mailto  :infodoc.pro@gmail.ru  ">infodoc.pro@gmail.ru</a>
+    <a onclick={(e) => {e.stopPropagation()}} class="active" href="mailto:infodoc.pro@gmail.ru  ">infodoc.pro@gmail.ru</a>
   </div>
   <hr>
   <div class="mobile-nav__social">

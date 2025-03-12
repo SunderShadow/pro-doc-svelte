@@ -15,7 +15,7 @@
 </svelte:head>
 
 <section class="page-container">
-    <h2>Что говорят о нас наши клиенты</h2>
+    <h2 id="reviews">Что говорят о нас наши клиенты</h2>
     <div class="reviews">
         <div class="left-comment">
             <ClientReview title="«Огромный выбор врачей, большой выбор‥»."

@@ -45,18 +45,23 @@
 
 <svelte:head>
   <title>{pageTitle}</title>
-  <link rel="preload" as="image" href={PreviewImg.img.src} />
+  {#if page.url.pathname === '/account'}
+    <link rel="preload" as="image" href={PreviewImg.img.src} />
+  {/if}
 </svelte:head>
 
 <section class="page-container">
   <div class="breadcrumbs">
     <Breadcrumbs list={breadcrumbs}/>
   </div>
-
-  <Preview title="Личный кабинет" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={90} />
+  {#if page.url.pathname === '/account'}
+    <div class="preview">
+      <Preview title="Личный кабинет" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={90} />
+    </div>
+  {/if}
 </section>
 
-<div class="main-wrapper page-container page-section">
+<div class="main-wrapper page-container ">
   <aside class="navigation">
     <a class:active={page.url.pathname === '/account/profile'} href="/account/profile" data-sveltekit-noscroll>
       <AccountIcon />
@@ -91,6 +96,10 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
+
+  .preview{
+    margin-bottom: 64px;
+  }
 
   .breadcrumbs {
     margin-bottom: 40px;

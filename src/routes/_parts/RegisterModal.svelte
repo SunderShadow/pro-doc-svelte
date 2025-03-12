@@ -1,13 +1,20 @@
 <script>
-import Modal from "$ui-kit/Modal/Modal.svelte"
-import Plus from "$ui-kit/icons/Plus.svelte";
-import Input from "$ui-kit/Form/Input.svelte";
-import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte";
-import Button from "$ui-kit/Button/Button.svelte";
+  import {goto} from "$app/navigation"
+
+  import Modal from "$ui-kit/Modal/Modal.svelte"
+  import Plus from "$ui-kit/icons/Plus.svelte"
+  import Input from "$ui-kit/Form/Input.svelte"
+  import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
+  import Button from "$ui-kit/Button/Button.svelte"
 
 let {
     isActive = $bindable()
 } = $props()
+
+function submit() {
+    goto('/account')
+    isActive = false
+}
 </script>
 
 <Modal bind:isActive>
@@ -29,7 +36,7 @@ let {
       </div>
 
       <div>
-        <Button fullWidth>Получить код по SMS</Button>
+        <Button onclick={submit} fullWidth>Получить код по SMS</Button>
       </div>
     </form>
 

@@ -31,12 +31,12 @@
     </div>
     <div class="nav-section about">
       <h5 class="title-3">О нас</h5>
-      <a href="/" class="body-text-3">О компании</a>
+      <a href="/#about" class="body-text-3">О компании</a>
       <a href="/" class="body-text-3">Карьера</a>
       <a href="/" class="body-text-3">Партнёры</a>
-      <a href="/" class="body-text-3">Отзывы о нас</a>
+      <a href="/#reviews" class="body-text-3">Отзывы о нас</a>
       <a href="/" class="body-text-3">Пресса</a>
-      <a href="/" class="body-text-3">Контакты</a>
+      <a href="/#contacts" class="body-text-3">Контакты</a>
     </div>
     <div class="nav-section patient">
       <h5 class="title-3">Пациенту</h5>
@@ -60,7 +60,7 @@
       <a href="/" class="body-text-3">Персональные данные</a>
 
       <h5 class="nav-section__clynic_doctor title-3">Врачу и клинике</h5>
-      <a href="/account/profile" class="body-text-3">Личный кабинет</a>
+      <a href="/" class="body-text-3">Личный кабинет</a>
       <a href="/" class="body-text-3">Регистрация</a>
     </div>
   </div>

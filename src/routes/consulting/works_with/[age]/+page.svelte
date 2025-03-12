@@ -93,9 +93,11 @@
   @use "$ui-kit/env";
 
   :global {
-    #consulting_preview .preview {
-      background-position: right;
-      background-size: auto 100%;
+    @media (min-width: 501px) {
+      #consulting_preview .preview {
+        background-position: right;
+        background-size: auto 100%;
+      }
     }
   }
 
