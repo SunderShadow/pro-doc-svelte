@@ -1,10 +1,14 @@
 <script lang="ts">
+  import type {Snippet} from "svelte";
+
   type Props = any & {
+      children: Snippet,
       checked: boolean,
       label: string
   }
 
   let {
+      children,
       checked = $bindable(false),
       disabled = false,
       label
@@ -27,6 +31,7 @@
   <label>
     <input type="checkbox" bind:checked {disabled}>
     {label}
+    {@render children?.()}
   </label>
 </div>
 
