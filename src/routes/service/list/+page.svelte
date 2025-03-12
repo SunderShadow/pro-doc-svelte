@@ -109,7 +109,7 @@
 
     @media (max-width: 600px) {
       .service_list_preview .preview {
-        background-size: cover;
+        background-size: contain;
       }
     }
   }

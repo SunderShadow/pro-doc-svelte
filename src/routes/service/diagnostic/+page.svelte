@@ -50,7 +50,7 @@
         На нашем портале вы можете выбрать врача из лучших клиник Москвы и получить скидку до 65%.
       </Card>
     </div>
-    <div>
+    <div class="ultrasound">
       <Card href="/service/diagnostic/usr" name="УЗИ" image={Services.img.src} >
         На нашем портале вы можете выбрать врача из лучших клиник Москвы
       </Card>
@@ -134,6 +134,17 @@
 
       @media (max-width: 1000px) {
         grid-column: span 1;
+      }
+    }
+
+    > .ultrasound {
+      :global {
+        @media (max-width: 475px) {
+          .card-image_wrapper {
+            background-size: contain;
+            background-position: right;
+          }
+        }
       }
     }
 
