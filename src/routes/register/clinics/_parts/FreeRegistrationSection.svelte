@@ -1,6 +1,10 @@
 <script lang="ts">
   import ThumbnailImg from "../_assets/free_registration_thumbnail.png?enhanced&format=webp"
   import Button from "$ui-kit/Button/Button.svelte";
+
+  let {
+      modalVisible = $bindable()
+  } = $props()
 </script>
 
 <section class="page-container page-section">
@@ -22,7 +26,7 @@
       <p class="body-text-2">Более 60% пользователей читают отзывы о клинике и врачах перед записью на прием – получайте мгновенные уведомления о новых отзывах и быстро реагируйте</p>
 
       <div class="send_request_btn">
-        <Button>Отправить заявку</Button>
+        <Button onclick={() => {modalVisible = true}}>Отправить заявку</Button>
       </div>
     </div>
   </div>

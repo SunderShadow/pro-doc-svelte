@@ -5,6 +5,7 @@
     import ClientsSection from "./_parts/ClientsReviewSection.svelte"
     import FreeRegistrationSection from "./_parts/FreeRegistrationSection.svelte"
     import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
+    import RegisterModal from "./_parts/RegisterModal.svelte";
 
     const breadcrumbs: BreadcrumbsType = [
         {
@@ -16,18 +17,23 @@
             href: ''
         }
     ]
+    let modalVisible = $state(false)
 </script>
 
 <svelte:head>
   <title>Главная</title>
 </svelte:head>
 
+{#if modalVisible}
+  <RegisterModal bind:isActive={modalVisible} />
+{/if}
+
 <main>
   <div class="breadcrumbs page-container">
     <Breadcrumbs list={breadcrumbs} />
   </div>
-  <PreviewSection />
-  <FreeRegistrationSection />
+  <PreviewSection bind:modalVisible/>
+  <FreeRegistrationSection bind:modalVisible/>
   <ClientsSection />
   <QuestionAnswerSection />
 </main>

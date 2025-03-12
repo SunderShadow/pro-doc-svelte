@@ -5,6 +5,9 @@
   import Preview from "$ui-kit/Preview/Preview.svelte"
   import Button from "$ui-kit/Button/Button.svelte"
 
+  let {
+      modalVisible = $bindable()
+  } = $props()
   let screenSize = $state(0)
 </script>
 
@@ -26,7 +29,7 @@
         contentWidth={screenSize > 700 ? 60 : 90}
     >
       <p class="body-text-2">Если вы представитель клиники,пройдите бесплатную регистрации управляйте страницей мед. центра</p>
-      <Button fullWidth={screenSize <= 500}>Зарегистрироваться как врач</Button>
+      <Button onclick={() => {modalVisible = true}} fullWidth={screenSize <= 500}>Зарегистрироваться как врач</Button>
     </Preview>
   </div>
 

@@ -1,25 +1,26 @@
 <script lang="ts">
-    import {onDestroy, onMount, type Snippet} from "svelte";
-    import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling";
+    import {blur} from "svelte/transition"
+    import {onDestroy, onMount, type Snippet} from "svelte"
+    import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
 
     type Props = {
         header: Snippet,
         children: Snippet,
-        isActive: boolean,
+        isActive?: boolean,
     }
 
     let {
-        header,
         children,
         isActive = $bindable(true),
     }: Props = $props();
 
     const toggleActive = () => {
-        isActive = !isActive;
+        isActive = !isActive
     }
 
+    let el = $state()
     onMount(() => {
-        PreventScrolling()
+        PreventScrolling(el)
     })
 
     onDestroy(() => {
@@ -27,13 +28,8 @@
     })
 </script>
 
-<div class="shadow" onclick={toggleActive}>
-  <section onclick={(e) => e.stopPropagation()}>
-    {#if header}
-      <div class="modal-header">
-        {@render header?.()}
-      </div>
-    {/if}
+<div class="shadow" onclick={toggleActive} transition:blur={{duration: 300}}>
+  <section onclick={(e) => e.stopPropagation()} bind:this={el}>
     {@render children?.()}
   </section>
 </div>
@@ -52,8 +48,9 @@
     z-index: 21;
 
     width: fit-content;
-    max-width: 80vw;
-    max-height: 80vw;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
 
     padding: 2rem;
 

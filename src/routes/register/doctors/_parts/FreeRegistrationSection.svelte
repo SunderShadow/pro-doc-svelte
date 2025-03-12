@@ -1,7 +1,10 @@
 <script lang="ts">
   import ThumbnailImg from "../_assets/free_registration_thumbnail.jpg?enhanced&format=webp"
-  import Button from "$ui-kit/Button/Button.svelte";
+  import Button from "$ui-kit/Button/Button.svelte"
 
+  let {
+      modalVisible = $bindable()
+  } = $props()
   let screenWidth = $state(0)
 </script>
 
@@ -29,7 +32,7 @@
       <p class="body-text-2">Заполните страницу, добавьте адрес и стоимость приема, укажите телефон – пациенты найдут вас в выборках и запишутся на прием</p>
 
       <div class="send_request_btn">
-        <Button fullWidth={screenWidth <= 425}>Отправить заявку</Button>
+        <Button onclick={() => {modalVisible = true}} fullWidth={screenWidth <= 425}>Отправить заявку</Button>
       </div>
     </div>
   </div>
