@@ -10,7 +10,7 @@
   import Preview     from "$ui-kit/Preview/Preview.svelte"
 
   import PreviewImg         from "./_assets/img/preview.jpg?enhanced&format=webp"
-  import PreviewImgMobile   from "./_assets/img/preview-mobile.jpg?enhanced&format=webp"
+  import PreviewImgMobile   from "./_assets/img/preview-mobile.png?enhanced&format=webp"
 
   import Card from "$ui-kit/ServiceCard/ServiceCard.svelte"
 

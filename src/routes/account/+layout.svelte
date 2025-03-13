@@ -6,7 +6,7 @@
     import Preview     from "$ui-kit/Preview/Preview.svelte"
 
     import PreviewImg       from "./_assets/img/preview.jpeg?enhanced&format=webp"
-    import PreviewImgMobile from "./_assets/img/preview-mobile.jpg?enhanced&format=webp"
+    import PreviewImgMobile from "./_assets/img/preview-mobile.png?enhanced&format=webp"
     import AccountIcon      from "$ui-kit/icons/Account.svelte"
 
     import AppointmentsIcon    from "$ui-kit/icons/Appointments.svelte"
@@ -26,7 +26,7 @@
             },
         ]
 
-        if (pageTitle !== 'Личный кабинет') {
+        if (page.url.pathname !== '/account') {
             breadcrumbs.push({
                 title: pageTitle,
                 href: '',
@@ -41,15 +41,19 @@
     } = $props()
 
     setContext('setPageTitle', (title) => {pageTitle = title})
+
+    let screenSize = $state(0)
 </script>
 
 <svelte:head>
   <title>{pageTitle}</title>
   {#if page.url.pathname === '/account'}
     <link rel="preload" as="image" href={PreviewImg.img.src} />
+    <link rel="preload" as="image" href={PreviewImgMobile.img.src} />
   {/if}
 </svelte:head>
 
+<svelte:window bind:innerWidth={screenSize}></svelte:window>
 <section class="page-container">
   <div class="breadcrumbs">
     <Breadcrumbs list={breadcrumbs}/>
@@ -62,42 +66,44 @@
 </section>
 
 <div class="main-wrapper page-container ">
-  <aside class="navigation">
-    <a class:active={page.url.pathname === '/account/profile'} href="/account/profile" data-sveltekit-noscroll>
-      <AccountIcon />
-      Профиль
-    </a>
-    <a class:active={['/account/favorite/doctors', '/account/favorite/clinics'].includes(page.url.pathname)} href="/account/favorite/doctors" data-sveltekit-noscroll>
-      <FavoriteDoctorIcon />
-      Избранное
-    </a>
-    <a class:active={page.url.pathname === '/account/appointments'} href="/account/appointments" data-sveltekit-noscroll>
-      <AppointmentsIcon />
-      Мои записи
-    </a>
-    <a class:active={page.url.pathname === '/account/reviews'} href="/account/reviews" data-sveltekit-noscroll>
-      <AccountIcon />
-      Мои отзывы
-    </a>
-  </aside>
-  <div>
-    <div class="header">
-      {#if pageTitle !== 'Личный кабинет'}
-        <a href="/account" class="back" data-sveltekit-noscroll><ArrowRightIcon size="sm"/></a>
-      {/if}
-      <h2>{pageTitle}</h2>
+  {#if page.url.pathname === '/account' || screenSize > 768}
+    <aside class="navigation">
+      <a class:active={page.url.pathname === '/account/profile'} href="/account/profile" data-sveltekit-noscroll>
+        <AccountIcon />
+        Профиль
+      </a>
+      <a class:active={['/account/favorite/doctors', '/account/favorite/clinics'].includes(page.url.pathname)} href="/account/favorite/doctors" data-sveltekit-noscroll>
+        <FavoriteDoctorIcon />
+        Избранное
+      </a>
+      <a class:active={page.url.pathname === '/account/appointments'} href="/account/appointments" data-sveltekit-noscroll>
+        <AppointmentsIcon />
+        Мои записи
+      </a>
+<!--      <a class:active={page.url.pathname === '/account/reviews'} href="/account/reviews" data-sveltekit-noscroll>-->
+<!--        <AccountIcon />-->
+<!--        Мои отзывы-->
+<!--      </a>-->
+    </aside>
+  {/if}
+  {#if page.url.pathname !== '/account'}
+    <div>
+      <div class="header">
+          <a href="/account" class="back" data-sveltekit-noscroll><ArrowRightIcon size="sm"/></a>
+        <h2>{pageTitle}</h2>
+      </div>
+      <main>
+        {@render children?.()}
+      </main>
     </div>
-    <main>
-      {@render children?.()}
-    </main>
-  </div>
+  {/if}
 </div>
 
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
 
-  .preview{
+  .preview {
     margin-bottom: 64px;
   }
 
@@ -123,11 +129,13 @@
   }
 
   .navigation {
-    height: fit-content;
     @media (min-width: (map.get(env.$screen-size, tablet) + 1px)) {
+      display: block;
       position: sticky;
       top: 32px;
     }
+
+    height: fit-content;
 
     width: 240px;
     flex-shrink: 0;
@@ -137,6 +145,8 @@
     border-radius: 12px;
 
     a {
+      width: fit-content;
+
       display: flex;
       align-items: center;
       font-weight: 600;

@@ -2,5 +2,5 @@
     import {getContext} from "svelte"
 
     let setPageTitle = getContext('setPageTitle')
-    setPageTitle('Личный кабинет')
+    setPageTitle('')
 </script>

@@ -11,7 +11,7 @@
   import SpecialitiesList from "./_parts/SpecialitiesList.svelte"
 
   import PreviewImg       from "./_assets/img/preview.png?enhanced&format=webp"
-  import PreviewImgMobile from "./_assets/img/preview-mobile.png?enhanced&format=webp"
+  import PreviewImgMobile from "./_assets/img/preview-mobile.jpg?enhanced&format=webp"
 
   import Card from "$lib/components/ServiceSearchCard.svelte"
 
