@@ -189,6 +189,9 @@
         align-items: center;
 
         &::before {
+          position: relative;
+          top: 1px;
+
           content: "";
           width: 8px;
           height: 8px;

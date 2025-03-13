@@ -9,32 +9,42 @@
   import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
   import RegisterModal from "../RegisterModal.svelte";
 
-let {
-    visible = $bindable(false),
-    toggleMobileMenuVisible = $bindable(),
-    headerHeight,
-    routes
-} = $props()
+  let {
+      visible = $bindable(false),
+      toggleMobileMenuVisible = $bindable(),
+      headerHeight,
+      routes
+  } = $props()
 
-let mobileNav = $state()
+  let mobileNav = $state()
 
-toggleMobileMenuVisible = (e) => {
-    e.stopPropagation()
-    visible = !visible
+  toggleMobileMenuVisible = (e) => {
+      e.stopPropagation()
+      visible = !visible
 
-    if (visible) {
-        PreventScrolling(mobileNav)
-    } else {
-        ReEnableScrolling()
-    }
-}
+      if (visible) {
+          PreventScrolling(mobileNav)
+      } else {
+          ReEnableScrolling()
+      }
+  }
+
   let modalVisible = $state(false)
+
+  function showRegisterModal(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    visible = false
+    modalVisible = true
+  }
 </script>
 
 {#if modalVisible}
-  <RegisterModal bind:isActive={modalVisible}/>
+  <RegisterModal bind:isActive={modalVisible} />
 {/if}
+
 <svelte:window onclick="{visible ? toggleMobileMenuVisible : () => {}}"></svelte:window>
+
 <div class="mobile-nav" class:visible style:--top={headerHeight + 'px'} bind:this={mobileNav}>
   <div class="mobile-nav__layer_1">
     <div class="city">
@@ -48,8 +58,8 @@ toggleMobileMenuVisible = (e) => {
     <div class="auth">
       <Account type="primary" size="sm"/>
 
-      <a onclick={() => {modalVisible = true}} href="" class="link-font-2">Вход</a>
-      <a onclick={() => {modalVisible = true}} href="" class="link-font-2">Регистрация</a>
+      <a onclick={showRegisterModal} href="" class="link-font-2">Вход</a>
+      <a onclick={showRegisterModal} href="" class="link-font-2">Регистрация</a>
     </div>
   </div>
 
@@ -102,7 +112,7 @@ toggleMobileMenuVisible = (e) => {
     top: var(--top);
     left: 0;
     width: 300px;
-    height: calc(100vh - var(--top));
+    height: calc(100svh - var(--top));
     background-color: #fff;
     z-index: 5;
 

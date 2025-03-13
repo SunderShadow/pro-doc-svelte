@@ -20,6 +20,7 @@
 
     let el = $state()
     onMount(() => {
+        ReEnableScrolling()
         PreventScrolling(el)
     })
 
@@ -49,7 +50,7 @@
 
     width: fit-content;
     max-width: 90vw;
-    max-height: 90vh;
+    max-height: 90dvh;
     overflow-y: auto;
 
     padding: 2rem;
@@ -73,6 +74,5 @@
 
     width: 100%;
     height: 100%;
-
   }
 </style>

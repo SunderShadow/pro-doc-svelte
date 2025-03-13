@@ -115,12 +115,14 @@ function submit() {
     gap: 32px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
-      width: min(95%, 330px);
+      width: min(100%, 330px);
     }
   }
 
   .header {
+    width: 100%;
     display: flex;
+    gap: 16px;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 32px;
