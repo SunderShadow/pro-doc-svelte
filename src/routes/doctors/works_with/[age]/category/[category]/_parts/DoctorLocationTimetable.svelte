@@ -101,7 +101,10 @@
       </div>
       <div class="time-button">
         {#each registerTimeList[registerTimeCurrentPage] as registerTime}
-          <Button active={activeTime === registerTime} onclick={() => {setActiveTime(registerTime)}} fullWidth>{registerTime}</Button>
+          <Button active={activeTime === registerTime}
+                  onclick={() => {setActiveTime(registerTime)}}
+                  fullWidth
+          >{registerTime}</Button>
         {/each}
       </div>
     </div>
@@ -154,6 +157,7 @@
 
           display: flex;
           align-items: center;
+          vertical-align: center;
 
           &::before {
             position: relative;

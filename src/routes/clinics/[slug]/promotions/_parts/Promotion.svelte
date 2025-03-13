@@ -185,8 +185,12 @@
       gap: 8px;
 
       > span {
+        -webkit-align-items: center;
+
         display: flex;
         align-items: center;
+
+        vertical-align: center;
 
         &::before {
           position: relative;

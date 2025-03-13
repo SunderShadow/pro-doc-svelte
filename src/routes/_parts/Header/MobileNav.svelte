@@ -22,10 +22,10 @@
       e.stopPropagation()
       visible = !visible
 
+      ReEnableScrolling()
+
       if (visible) {
           PreventScrolling(mobileNav)
-      } else {
-          ReEnableScrolling()
       }
   }
 

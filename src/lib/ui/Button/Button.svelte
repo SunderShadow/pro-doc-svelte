@@ -88,7 +88,12 @@
       border: 1px solid env.$bg-default;
       color: env.$bg-default;
 
-      &:not([disabled]) {
+      &.active {
+        background-color: env.$bg-pressing;
+        color: #fff;
+      }
+
+      &:not([disabled]):not(.active) {
         @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
           &:focus,
           &:hover {
@@ -96,7 +101,6 @@
             box-shadow: none;
           }
 
-          &.active,
           &:active {
             background-color: env.$bg-pressing;
             color: #fff;
@@ -105,14 +109,18 @@
       }
     }
 
+
+    &.active {
+      background-color: env.$bg-pressing;
+    }
+
     @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
-      &:not([disabled]) {
+      &:not([disabled]):not(.active) {
         &:hover {
           background-color: env.$bg-hover;
           box-shadow: 0 12px 24px rgba(env.$bg-pressing, .15);
         }
 
-        &.active,
         &:active {
           background-color: env.$bg-pressing;
         }
