@@ -145,8 +145,6 @@
     border-radius: 12px;
 
     a {
-      width: fit-content;
-
       display: flex;
       align-items: center;
       font-weight: 600;
