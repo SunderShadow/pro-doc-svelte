@@ -6,7 +6,8 @@
   import Telegram   from "$ui-kit/icons/Telegram.svelte"
   import Vk         from "$ui-kit/icons/Vk.svelte"
 
-  import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
+  import {disablePageScroll, enablePageScroll} from "@fluejs/noscroll"
+
   import RegisterModal from "../RegisterModal.svelte";
 
   let {
@@ -22,10 +23,10 @@
       e.stopPropagation()
       visible = !visible
 
-      ReEnableScrolling()
+      enablePageScroll()
 
       if (visible) {
-          PreventScrolling(mobileNav)
+            disablePageScroll(mobileNav)
       }
   }
 

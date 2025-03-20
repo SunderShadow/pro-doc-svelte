@@ -1,7 +1,7 @@
 <script lang="ts">
     import {blur} from "svelte/transition"
     import {onDestroy, onMount, type Snippet} from "svelte"
-    import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
+    import {disablePageScroll, enablePageScroll} from "@fluejs/noscroll"
 
     type Props = {
         header: Snippet,
@@ -20,12 +20,12 @@
 
     let el = $state()
     onMount(() => {
-        ReEnableScrolling()
-        PreventScrolling(el)
+        enablePageScroll()
+        disablePageScroll(el)
     })
 
     onDestroy(() => {
-        ReEnableScrolling()
+        disablePageScroll()
     })
 </script>
 

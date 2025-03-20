@@ -7,7 +7,7 @@
   import DatePickerSelect from "$ui-kit/Form/Select/DatePicker.svelte"
   import Titled from "$ui-kit/Form/Select/Sections.svelte"
   import {onDestroy, onMount} from "svelte"
-  import {PreventScrolling, ReEnableScrolling} from "prevent-scrolling"
+  import {disablePageScroll, enablePageScroll} from "@fluejs/noscroll"
   import Plus from "$ui-kit/icons/Plus.svelte";
 
   let colorsInputData = [
@@ -103,13 +103,13 @@
 
   onMount(() => {
       if (window.innerWidth <= 768) {
-          PreventScrolling(allowScrolling)
+          disablePageScroll(allowScrolling)
       }
   })
 
   onDestroy(() => {
       if (window.innerWidth <= 768) {
-          ReEnableScrolling()
+          enablePageScroll()
       }
   })
 

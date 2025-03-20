@@ -5,6 +5,7 @@
   import Footer from "./_parts/Footer.svelte"
 </script>
 
+
 <div class="safari_first_view_fix" >
   <Header />
   <slot />
