@@ -10,6 +10,14 @@ export type Breadcrumbs = Array<{
     href: string
 }>
 
+export namespace Layout {
+    export type Footer = {
+        phone: string,
+        vk: string,
+        tg: string,
+        email: string
+    }
+}
 export namespace Blog {
     export type Tag = {
         id: number,

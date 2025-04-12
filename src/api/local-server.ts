@@ -1,4 +1,4 @@
-import type {Blog} from "$lib/types"
+import type {Blog, Layout} from "$lib/types"
 
 import {PUBLIC_LOCAL_SERVER_API_BASE_URL} from "$env/static/public"
 import axios from "axios"
@@ -10,6 +10,10 @@ const apiClient = axios.create({
 export type getAdviceListResponseData = {
     total: number,
     list: Blog.Advice[]
+}
+
+export const getPageFooterLayout = () => {
+    return apiClient.get<Layout.Footer>('/page/layout/footer').then(r => r.data)
 }
 
 export const getAdviceSingle =  (slug: string) => {

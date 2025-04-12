@@ -1,7 +1,13 @@
 <script lang="ts">
     import Logo from "$lib/assets/Logo.png"
-    import Vk from "$ui-kit/icons/Vk.svelte";
-    import Telegram from "$ui-kit/icons/Telegram.svelte";
+    import Vk from "$ui-kit/icons/Vk.svelte"
+    import Telegram from "$ui-kit/icons/Telegram.svelte"
+
+    import type {Layout} from "$lib/types"
+
+    let {
+        tg, vk, phone, email
+    }: Layout.Footer = $props()
 </script>
 
 <footer>
@@ -13,18 +19,18 @@
       <h5 class="title-3">Связаться с нами</h5>
       <div>
         <p class="body-text-4">Телефоны: </p>
-        <a href="tel:88004555515" class="body-text-3 active">8 (800) 455-55-15</a>
+        <a href={'tel:' + phone} class="body-text-3 active">{phone}</a>
       </div>
       <div>
         <p class="body-text-4">Адрес эл. почты</p>
-        <a href="mailto:infodocpro@.gmail.ru" class="body-text-3 active">infodocpro@.gmail.ru</a>
+        <a href={'mailto:' + email} class="body-text-3 active">{email}</a>
       </div>
       <h5 class="title-3">Мы в соц. сетях</h5>
       <div class="social">
-        <a href="/">
+        <a href={'https://t.me/' + tg}>
           <Telegram type="primary"/>
         </a>
-        <a href="/">
+        <a href={vk}>
           <Vk type="primary"/>
         </a>
       </div>
