@@ -10,7 +10,21 @@ export type Breadcrumbs = Array<{
     href: string
 }>
 
-export type Tag = {
-    title: string,
-    key: string
+export namespace Blog {
+    export type Tag = {
+        id: number,
+        name: string,
+        slug: string
+    }
+
+    export type Advice = {
+        id: number,
+        title: string,
+        excerpt: string,
+        content: string,
+        thumbnail: string,
+        published_at: string,
+        tags: string[],
+        slug: string
+    }
 }

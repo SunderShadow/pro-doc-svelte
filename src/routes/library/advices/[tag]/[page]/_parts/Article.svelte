@@ -1,13 +1,13 @@
 <script lang="ts">
   import Link from "$ui-kit/Link/Link.svelte"
-  import type {Article as Props} from "../+page"
+  import type { Blog } from "$lib/types"
 
   const {
       thumbnail,
       title,
       excerpt,
       slug
-  }: Props = $props()
+  }: Blog.Advice = $props()
 
   const href = '/library/advices/article/' + slug
 </script>

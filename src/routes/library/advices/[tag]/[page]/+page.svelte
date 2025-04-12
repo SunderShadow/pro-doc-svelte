@@ -14,7 +14,7 @@
   } = $props()
 
   function setNewPage() {
-      return data.page
+      return data.pagination.page
   }
 
   function getNewPage(page: number) {
@@ -67,8 +67,8 @@
     </a>
 
     {#each data.tags as tag}
-      <a href={'/library/advices/' + tag.key + '/1'} data-sveltekit-noscroll>
-        <Tag isActive={data.tag === tag.key}>{tag.title}</Tag>
+      <a href={'/library/advices/' + tag.slug + '/1'} data-sveltekit-noscroll>
+        <Tag isActive={data.tag === tag.slug}>{tag.name}</Tag>
       </a>
     {/each}
   </div>
@@ -80,7 +80,7 @@
   </div>
 
   <div class="pagination">
-    <Pagination total={10} bind:value={setNewPage, getNewPage}/>
+    <Pagination total={data.pagination.total} bind:value={setNewPage, getNewPage}/>
   </div>
 </main>
 

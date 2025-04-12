@@ -69,7 +69,7 @@
 
   <Button type="icon">{value}</Button>
 
-  {#each Array(rightPagesCount) as i, k}
+  {#each rightPagesCount > 0 && Array(rightPagesCount) as i, k}
     {@const page = k + value + 1 }
     <Button onclick={() => {setPage(page)}} type="icon" outline>{page}</Button>
   {/each}

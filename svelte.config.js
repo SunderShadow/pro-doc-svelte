@@ -7,7 +7,8 @@ const config = {
 	kit: {
 		adapter: adapter(),
         alias: {
-            '$ui-kit': './src/lib/ui'
+            '$ui-kit': './src/lib/ui',
+            '$api': './src/api'
         }
 	}
 };
