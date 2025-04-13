@@ -1,8 +1,6 @@
 <script lang="ts">
   import type {Doctor} from "$lib/types"
 
-  import {page} from "$app/state"
-
   import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
   import Preview     from "$ui-kit/Preview/Preview.svelte"
   import FiltersIcon from "$ui-kit/icons/Filters.svelte"

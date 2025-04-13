@@ -12,6 +12,10 @@ export type getAdviceListResponseData = {
     list: Blog.Advice[]
 }
 
+export const getPageMeta = (uri: string) => {
+    return apiClient.get<string>('/page/meta', { params: {uri} }).then(r => r.data.meta)
+}
+
 export const getPageFooterLayout = () => {
     return apiClient.get<Layout.Footer>('/page/layout/footer').then(r => r.data)
 }

@@ -305,12 +305,6 @@ export const load = ({params}) => {
         items = child
     }
 
-    console.log({
-        title,
-        age: params.age,
-        items,
-        specialities
-    })
     return {
         title,
         age: params.age,
