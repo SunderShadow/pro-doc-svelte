@@ -31,13 +31,19 @@ importers:
         version: 10.4.21(postcss@8.5.3)
       axios:
         specifier: ^1.8.3
-        version: 1.8.3
+        version: 1.8.3(debug@4.4.0)
+      js-cookie:
+        specifier: ^3.0.5
+        version: 3.0.5
       sass:
         specifier: ^1.85.1
         version: 1.85.1
       scroll-lock:
         specifier: ^2.1.5
         version: 2.1.5
+      vite-plugin-mkcert:
+        specifier: ^1.17.8
+        version: 1.17.8(vite@6.2.1(sass@1.85.1))
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^4.0.0
@@ -870,6 +876,10 @@ packages:
   is-reference@3.0.3:
     resolution: {integrity: sha512-ixkJoqQvAP88E6wLydLGGqCJsrFUnqoH6HnaczB8XmDH1oaWU+xxdptvikTgaEhtZ53Ky6YXiBuUI2WXLMCwjw==}
 
+  js-cookie@3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
+
   kleur@4.1.5:
     resolution: {integrity: sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ==}
     engines: {node: '>=6'}
@@ -1042,6 +1052,12 @@ packages:
   vite-imagetools@7.0.5:
     resolution: {integrity: sha512-OOvVnaBTqJJ2J7X1cM1qpH4pj9jsfTxia1VSuWeyXtf+OnP8d0YI1LHpv8y2NT47wg+n7XiTgh3BvcSffuBWrw==}
     engines: {node: '>=18.0.0'}
+
+  vite-plugin-mkcert@1.17.8:
+    resolution: {integrity: sha512-S+4tNEyGqdZQ3RLAG54ETeO2qyURHWrVjUWKYikLAbmhh/iJ+36gDEja4OWwFyXNuvyXcZwNt5TZZR9itPeG5Q==}
+    engines: {node: '>=v16.7.0'}
+    peerDependencies:
+      vite: '>=3'
 
   vite@6.2.1:
     resolution: {integrity: sha512-n2GnqDb6XPhlt9B8olZPrgMD/es/Nd1RdChF6CBD/fHW6pUyUTt2sQW2fPRX5GiD9XEa6+8A6A4f2vT6pSsE7Q==}
@@ -1531,9 +1547,9 @@ snapshots:
       postcss: 8.5.3
       postcss-value-parser: 4.2.0
 
-  axios@1.8.3:
+  axios@1.8.3(debug@4.4.0):
     dependencies:
-      follow-redirects: 1.15.9
+      follow-redirects: 1.15.9(debug@4.4.0)
       form-data: 4.0.2
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -1675,7 +1691,9 @@ snapshots:
       to-regex-range: 5.0.1
     optional: true
 
-  follow-redirects@1.15.9: {}
+  follow-redirects@1.15.9(debug@4.4.0):
+    optionalDependencies:
+      debug: 4.4.0
 
   form-data@4.0.2:
     dependencies:
@@ -1753,6 +1771,8 @@ snapshots:
   is-reference@3.0.3:
     dependencies:
       '@types/estree': 1.0.6
+
+  js-cookie@3.0.5: {}
 
   kleur@4.1.5: {}
 
@@ -1959,6 +1979,15 @@ snapshots:
       sharp: 0.33.5
     transitivePeerDependencies:
       - rollup
+
+  vite-plugin-mkcert@1.17.8(vite@6.2.1(sass@1.85.1)):
+    dependencies:
+      axios: 1.8.3(debug@4.4.0)
+      debug: 4.4.0
+      picocolors: 1.1.1
+      vite: 6.2.1(sass@1.85.1)
+    transitivePeerDependencies:
+      - supports-color
 
   vite@6.2.1(sass@1.85.1):
     dependencies:

@@ -146,6 +146,6 @@
 
   button.disabled,
   button[disabled] {
-    opacity: .1;
+    opacity: .4;
   }
 </style>

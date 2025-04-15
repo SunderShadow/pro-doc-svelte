@@ -1,15 +1,86 @@
-import type {Blog, Layout} from "$lib/types"
+import type {Blog, Layout, User} from "$lib/types"
 
-import {PUBLIC_LOCAL_SERVER_API_BASE_URL} from "$env/static/public"
+import {PUBLIC_LOCAL_SERVER_BASE_URL} from "$env/static/public"
 import axios from "axios"
+import {browser} from "$app/environment";
+import auth from "$lib/storage/auth";
 
-const apiClient = axios.create({
-    baseURL: PUBLIC_LOCAL_SERVER_API_BASE_URL,
+
+export const authClient = axios.create({
+    baseURL: PUBLIC_LOCAL_SERVER_BASE_URL + '/',
+    withCredentials: true,
+    withXSRFToken: true,
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+})
+
+
+export const logout = () => {
+    return authClient.get('/api/auth/logout')
+}
+
+const setAuthToken = (token: string) => {
+    localStorage.setItem('sanctum-token', token)
+    authClient.defaults.headers.common['Authorization'] = 'Bearer ' + token
+    }
+
+if (browser) {
+    const token = localStorage.getItem('sanctum-token')
+
+    if (token) {
+        setAuthToken(token)
+    }
+}
+
+export const GOOGLE_AUTH_URL = PUBLIC_LOCAL_SERVER_BASE_URL + '/api/auth/google/redirect'
+
+export const apiClient = axios.create({
+    baseURL: PUBLIC_LOCAL_SERVER_BASE_URL + '/api',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    },
 })
 
 export type getAdviceListResponseData = {
     total: number,
     list: Blog.Advice[]
+}
+
+export const getCSRFCookie = () => {
+    return authClient.get('/sanctum/csrf-cookie')
+}
+
+export const authSMSCodeSend = (phone: string) => {
+    return authClient.post('/api/auth/sms/send', {
+        phone
+    })
+}
+
+export const authSMSCodeVerify = (phone: string, code: string) => {
+    return authClient.post('/api/auth/sms/verify', {
+        phone, code
+    })
+}
+
+export const authByGoogle = (queryParams: string) => {
+    return authClient.get<string>('/api/auth/google?' + queryParams).then(r => r.data.token)
+        .then(token => {
+            setAuthToken(token)
+        })
+}
+
+export const updateUserData = (data: User) => {
+
+    return authClient.patch('/api/user/info', data, {
+        withCredentials: true
+    }).then(r => r.data);
+}
+
+export const getUserData = () => {
+    return authClient.get('/api/user/info').then(r => r.data);
 }
 
 export const getPageMeta = (uri: string) => {

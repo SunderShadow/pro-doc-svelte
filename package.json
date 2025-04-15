@@ -29,7 +29,9 @@
 		"@sveltejs/enhanced-img": "^0.4.4",
 		"autoprefixer": "^10.4.21",
 		"axios": "^1.8.3",
+		"js-cookie": "^3.0.5",
 		"sass": "^1.85.1",
-		"scroll-lock": "^2.1.5"
+		"scroll-lock": "^2.1.5",
+		"vite-plugin-mkcert": "^1.17.8"
 	}
 }

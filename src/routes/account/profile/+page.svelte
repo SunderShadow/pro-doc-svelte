@@ -1,73 +1,97 @@
-<script>
+<script lang="ts">
+  import type {User} from "$lib/types"
   import {getContext} from "svelte"
 
-import PhotoUpload from "./_parts/PhotoUpload.svelte"
-import Input from "$ui-kit/Form/Input.svelte"
-import Select from "$ui-kit/Form/Select/Select.svelte"
-import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
-import Button from "$ui-kit/Button/Button.svelte"
+  import PhotoUpload from "./_parts/PhotoUpload.svelte"
+  import Input from "$ui-kit/Form/Input.svelte"
+  import Select from "$ui-kit/Form/Select/Select.svelte"
+  import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
+  import Button from "$ui-kit/Button/Button.svelte"
+  import auth from "$lib/storage/auth.js"
 
-let gender = [
-    {
-        title: 'Мужской',
-        value: 'man'
-    },
-    {
-        title: 'Женский',
-        value: 'woman'
-    }
-]
+  import {logout as authLogout} from "$lib/storage/auth"
+  import {updateUserData} from "$api/local-server"
+  import {goto} from "$app/navigation";
 
-let setPageTitle = getContext('setPageTitle')
-setPageTitle('Профиль')
+  let gender = [
+      {
+          title: 'Мужской',
+          value: 1
+      },
+      {
+          title: 'Женский',
+          value: 2
+      }
+  ]
 
+
+  let authData: User = $state($auth)
+
+  let setPageTitle = getContext('setPageTitle')
+
+  setPageTitle('Профиль')
+
+  function saveChanges() {
+      if (!authData.gender) {
+          authData.gender = undefined
+      }
+
+      updateUserData(authData)
+  }
+
+  function logout() {
+      authLogout()
+      goto('/')
+  }
 </script>
 
 
+{#if authData}
 <div class="wrapper">
   <h3>Мои данные</h3>
   <div class="content-wrapper">
     <div class="photo_upload">
-      <PhotoUpload />
+      <PhotoUpload bind:value={authData.avatar}/>
     </div>
     <form>
       <div>
         <label>ФИО</label>
-        <Input placeholder="Иван" withErase={false} />
+        <Input placeholder="Иван" withErase={false} bind:value={authData.name}/>
       </div>
       <div>
         <label>Пол</label>
-        <Select placeholder="Мужской" withErase={false} data={gender}/>
+        <Select placeholder="Мужской/Женский" withErase={false} data={gender} bind:value={authData.gender}/>
       </div>
       <div>
         <label>Email</label>
-        <Input placeholder="Docpro@gmail.com" withErase={false} />
+        <Input placeholder="Docpro@gmail.com" withErase={false} bind:value={authData.email}/>
       </div>
       <div>
         <label>Возраст</label>
-        <Input placeholder="31" withErase={false} />
+        <Input placeholder="31" withErase={false} bind:value={authData.age}/>
       </div>
       <div>
         <label>Телефон</label>
-        <Input placeholder="+7 (___) ___-__-__" withErase={false} />
+        <Input placeholder="+7 (___) ___-__-__" withErase={false} bind:value={authData.phone}/>
       </div>
       <div class="notifications">
         <h3>Настройки уведомлений</h3>
 
         <div class="checkboxes">
-          <Checkbox label="Получать уведомления по sms"/>
-          <Checkbox label="Получать уведомления на email"/>
+          <Checkbox label="Получать уведомления по sms" bind:checked={authData.notify_sms}/>
+          <Checkbox label="Получать уведомления на email" bind:checked={authData.notify_email}/>
         </div>
 
         <div class="actions">
-          <Button>Сохранить изменения</Button>
-          <Button outline>Выйти</Button>
+          <Button onclick={saveChanges}>Сохранить изменения</Button>
+          <Button onclick={logout} outline>Выйти</Button>
         </div>
       </div>
     </form>
   </div>
 </div>
 
+{/if}
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";

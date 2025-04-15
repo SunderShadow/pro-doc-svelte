@@ -54,6 +54,11 @@
       selected = null
       search = ''
   }
+
+  if (value) {
+      const preSelectedItem = filter(data).find(item => item.value === value)
+      selected = preSelectedItem
+  }
 </script>
 
 {#snippet dropdown()}

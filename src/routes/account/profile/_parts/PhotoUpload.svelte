@@ -1,21 +1,24 @@
 <script lang="ts">
   import Button from "$ui-kit/Button/Button.svelte"
 
-  let imageSrc = $state('')
+  let {
+      value = $bindable('')
+  } = $props()
+
   let photoInput = $state()
 
   function handlePhotoChange(e) {
       let reader = new FileReader()
 
       reader.onload = () => {
-          imageSrc = reader.result
+          value = reader.result
       }
 
       reader.readAsDataURL(e.target.files[0])
   }
 
   function removePhoto() {
-      imageSrc = null
+      value = null
   }
 
   function openFileManager() {
@@ -23,9 +26,9 @@
   }
 </script>
 <div class="photo_upload">
-  <div class="img" class:empty={imageSrc !== null && imageSrc.length > 0}>
-    {#if imageSrc !== null && imageSrc.length > 0}
-      <img src={imageSrc} alt="">
+  <div class="img" class:empty={value !== null && value.length > 0}>
+    {#if value !== null && value.length > 0}
+      <img src={value} alt="">
     {/if}
   </div>
 

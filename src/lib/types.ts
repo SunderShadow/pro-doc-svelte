@@ -36,3 +36,14 @@ export namespace Blog {
         slug: string
     }
 }
+
+export type User = {
+    avatar: string,
+    name: string,
+    email: string,
+    gender: number|null,
+    age: number,
+    phone: string,
+    notify_sms: boolean,
+    notify_email: boolean,
+}

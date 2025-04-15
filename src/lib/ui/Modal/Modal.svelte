@@ -25,7 +25,7 @@
     })
 
     onDestroy(() => {
-        disablePageScroll()
+        enablePageScroll()
     })
 </script>
 

@@ -11,6 +11,7 @@
       active: boolean,
       withErase: boolean,
       onErase: Function,
+      error: boolean
   }
   let {
       preIcon,
@@ -21,6 +22,7 @@
       withErase = true,
       onErase = () => {},
       el = $bindable(),
+      error,
       ...props
   }: Props = $props()
 
@@ -31,7 +33,7 @@
 
 </script>
 
-<div class="form-control-wrapper" onclick={() => {el.focus()}}>
+<div class="form-control-wrapper" class:error onclick={() => {el.focus()}}>
   {#if preIcon}
     <div class="pre_icon">
       {@render preIcon()}
@@ -73,8 +75,12 @@
     position: relative;
     padding: .65em 1em;
 
-    transition-property: border, box-shadow;
+    transition-property: border, box-shadow, border-color;
     transition-duration: 300ms;
+
+    &.error {
+      border-color: map.get(env.$color, error);
+    }
   }
 
   input {

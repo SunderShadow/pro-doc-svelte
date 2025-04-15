@@ -11,6 +11,7 @@
   import MobileNav from "./Header/MobileNav.svelte"
   import SearchSection from "./Header/SearchSection.svelte"
   import RegisterModal from "./RegisterModal.svelte";
+  import auth from "$lib/storage/auth";
 
   let headerHeight = $state(0)
 
@@ -65,11 +66,12 @@
   ]
 
   let modalVisible = $state(false)
+  let register = $state(false)
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
 {#if modalVisible}
-  <RegisterModal bind:isActive={modalVisible}/>
+  <RegisterModal bind:isActive={modalVisible} bind:register/>
 {/if}
 <header style:--height={headerHeight + 'px'}>
   <div class="layer_1">
@@ -95,8 +97,12 @@
       <div class="auth">
         <DoorArrowRight type="primary" size="sm"/>
 
-        <a href="" onclick={() => {modalVisible = true}}>Вход</a>
-        <a href="" onclick={() => {modalVisible = true}}>Регистрация</a>
+        {#if $auth}
+          <a href="/account">Личный кабинет</a>
+        {:else}
+          <a href="" onclick={() => {register = false; modalVisible = true;}}>Вход</a>
+          <a href="" onclick={() => {register = true; modalVisible = true;}}>Регистрация</a>
+        {/if}
       </div>
     </div>
   </div>
