@@ -2,7 +2,8 @@
   import Button from "$ui-kit/Button/Button.svelte"
 
   let {
-      value = $bindable('')
+      value = $bindable(''),
+      file = $bindable()
   } = $props()
 
   let photoInput = $state()
@@ -14,6 +15,7 @@
           value = reader.result
       }
 
+      file = e.target.files[0]
       reader.readAsDataURL(e.target.files[0])
   }
 

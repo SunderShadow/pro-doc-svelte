@@ -2,6 +2,8 @@
   import type {User} from "$lib/types"
   import {getContext} from "svelte"
 
+  import {fade} from "svelte/transition"
+
   import PhotoUpload from "./_parts/PhotoUpload.svelte"
   import Input from "$ui-kit/Form/Input.svelte"
   import Select from "$ui-kit/Form/Select/Select.svelte"
@@ -11,7 +13,7 @@
 
   import {logout as authLogout} from "$lib/storage/auth"
   import {updateUserData} from "$api/local-server"
-  import {goto} from "$app/navigation";
+  import {goto} from "$app/navigation"
 
   let gender = [
       {
@@ -25,18 +27,58 @@
   ]
 
 
+  let success = $state(false)
+
+  const errorsDefault = {
+      avatar: null,
+      name: null,
+      email: null,
+      gender: null,
+      age: null,
+      phone: null,
+  }
+
+  let errors = $state(errorsDefault)
   let authData: User = $state($auth)
 
   let setPageTitle = getContext('setPageTitle')
 
   setPageTitle('Профиль')
 
+  let avatarFile = $state()
+
   function saveChanges() {
-      if (!authData.gender) {
-          authData.gender = undefined
+      let formData = Object.assign({}, authData)
+
+      if (!formData.gender) {
+          formData.gender = undefined
       }
 
-      updateUserData(authData)
+      formData.notify_email = Number(formData.notify_email)
+      formData.notify_sms = Number(formData.notify_sms)
+
+      formData.avatar = avatarFile
+
+      updateUserData(formData)
+          .then(data => {
+              authData = data
+              success = true
+
+              authData.notify_email = Number(authData.notify_email)
+              authData.notify_sms = Number(authData.notify_sms)
+
+              setTimeout(() => {
+                  success = false
+              }, 3000)
+          })
+          .catch(err => {
+            success = false
+            errors = err.response.data.errors
+
+            setTimeout(() => {
+                errors = errorsDefault
+            }, 3000)
+        })
   }
 
   function logout() {
@@ -51,28 +93,43 @@
   <h3>Мои данные</h3>
   <div class="content-wrapper">
     <div class="photo_upload">
-      <PhotoUpload bind:value={authData.avatar}/>
+      <PhotoUpload bind:value={authData.avatar} bind:file={avatarFile}/>
     </div>
     <form>
       <div>
         <label>ФИО</label>
         <Input placeholder="Иван" withErase={false} bind:value={authData.name}/>
+        {#if errors.name}
+          <div class="error" transition:fade={{duration: 300}}>{errors.name}</div>
+        {/if}
       </div>
       <div>
         <label>Пол</label>
         <Select placeholder="Мужской/Женский" withErase={false} data={gender} bind:value={authData.gender}/>
+        {#if errors.gender}
+          <div class="error" transition:fade={{duration: 300}}>{errors.gender}</div>
+        {/if}
       </div>
       <div>
         <label>Email</label>
         <Input placeholder="Docpro@gmail.com" withErase={false} bind:value={authData.email}/>
+        {#if errors.email}
+          <div class="error" transition:fade={{duration: 300}}>{errors.email}</div>
+        {/if}
       </div>
       <div>
         <label>Возраст</label>
         <Input placeholder="31" withErase={false} bind:value={authData.age}/>
+        {#if errors.age}
+          <div class="error" transition:fade={{duration: 300}}>{errors.age}</div>
+        {/if}
       </div>
       <div>
         <label>Телефон</label>
         <Input placeholder="+7 (___) ___-__-__" withErase={false} bind:value={authData.phone}/>
+        {#if errors.phone}
+          <div class="error" transition:fade={{duration: 300}}>{errors.phone}</div>
+        {/if}
       </div>
       <div class="notifications">
         <h3>Настройки уведомлений</h3>
@@ -86,6 +143,10 @@
           <Button onclick={saveChanges}>Сохранить изменения</Button>
           <Button onclick={logout} outline>Выйти</Button>
         </div>
+
+        {#if success}
+          <div class="success" transition:fade={{duration: 300}}>Успешно обновлено</div>
+        {/if}
       </div>
     </form>
   </div>
@@ -102,6 +163,14 @@
     h3 {
       font-size: 18px;
     }
+  }
+
+  .success {
+    color: map.get(env.$color, 'success');
+  }
+
+  .error {
+    color: map.get(env.$color, 'error');
   }
 
   .wrapper {

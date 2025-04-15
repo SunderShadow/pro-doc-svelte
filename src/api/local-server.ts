@@ -3,8 +3,6 @@ import type {Blog, Layout, User} from "$lib/types"
 import {PUBLIC_LOCAL_SERVER_BASE_URL} from "$env/static/public"
 import axios from "axios"
 import {browser} from "$app/environment";
-import auth from "$lib/storage/auth";
-
 
 export const authClient = axios.create({
     baseURL: PUBLIC_LOCAL_SERVER_BASE_URL + '/',
@@ -88,11 +86,8 @@ export const authByGoogle = (queryParams: string) => {
         })
 }
 
-export const updateUserData = (data: User) => {
-
-    return authClient.patch('/api/user/info', data, {
-        withCredentials: true
-    }).then(r => r.data);
+export const updateUserData = (data: FormData) => {
+    return authClient.postForm('/api/user/info', data).then(r => r.data);
 }
 
 export const getUserData = () => {
