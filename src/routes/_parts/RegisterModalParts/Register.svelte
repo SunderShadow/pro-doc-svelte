@@ -1,14 +1,16 @@
 <script>
     import Plus from "$ui-kit/icons/Plus.svelte"
     import Button from "$ui-kit/Button/Button.svelte"
-    import {authSMSCodeSend, GOOGLE_AUTH_URL} from "$api/local-server.js"
+    import {GOOGLE_AUTH_URL} from "$api/local-server.js"
     import SmsCodeForm from "./Auth/SmsCodeForm.svelte";
+    import EmailCodeForm from "./Auth/EmailRegisterForm.svelte";
 
     function authGoogle() {
         window.location = GOOGLE_AUTH_URL
     }
 
     let {
+        type = $bindable(),
         toggleForm,
         close
     } = $props()
@@ -22,7 +24,11 @@
   </div>
 
   <div class="sms_form">
-    <SmsCodeForm {close}/>
+    {#if type === 'sms'}
+      <SmsCodeForm {close}/>
+    {:else if type === 'email'}
+      <EmailCodeForm {close}/>
+    {/if}
   </div>
 
   <div class="footer">
@@ -37,7 +43,12 @@
   </div>
 
   <div class="register_buttons">
-    <Button fullWidth outline>Зарегистрироваться по email</Button>
+    {#if type !== 'email'}
+      <Button fullWidth outline onclick={() => {type = 'email'}}>Зарегистрироваться по email</Button>
+    {/if}
+    {#if type !== 'sms'}
+      <Button fullWidth outline onclick={() => {type = 'sms'}}>Зарегистрироваться по sms</Button>
+    {/if}
     <Button onclick={authGoogle} fullWidth outline>
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_1363_29470)">

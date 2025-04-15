@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import {goto} from "$app/navigation"
 
   import Modal from "$ui-kit/Modal/Modal.svelte"
@@ -14,6 +14,8 @@
       register = $bindable(),
       isActive = $bindable()
   } = $props()
+
+  let type: 'sms' | 'email' = $state('email')
 
   let phone = $state('')
   function submit() {
@@ -34,9 +36,9 @@
 
 <Modal bind:isActive>
   {#if register}
-    <Register close={() => {isActive = false}} toggleForm={() => {register = !register}}/>
+    <Register bind:type close={() => {isActive = false}} toggleForm={() => {register = !register}}/>
   {:else}
-    <Login close={() => {isActive = false}} toggleForm={() => {register = !register}}/>
+    <Login bind:type close={() => {isActive = false}} toggleForm={() => {register = !register}}/>
   {/if}
 </Modal>
 

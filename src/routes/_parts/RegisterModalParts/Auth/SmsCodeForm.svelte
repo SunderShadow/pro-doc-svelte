@@ -70,13 +70,13 @@ function verifySMSCode() {
         <div class="error" transition:fade={{duration: 300}}>{error}</div>
       {/if}
     </div>
-    <div class="rule_accept_checkbox">
-      <Checkbox>
-        Даю <a class="active" href="">согласие</a> на обработку моих персональных данных и соглашаюсь с <a class="active" href="">правилами</a> сайта
-      </Checkbox>
-    </div>
+<!--    <div class="rule_accept_checkbox">-->
+<!--      <Checkbox>-->
+<!--        Даю <a class="active" href="">согласие</a> на обработку моих персональных данных и соглашаюсь с <a class="active" href="">правилами</a> сайта-->
+<!--      </Checkbox>-->
+<!--    </div>-->
     <div>
-      <Button onclick={sendSMSCode} fullWidth>Получить код по SMS</Button>
+      <Button onclick={sendSMSCode} fullWidth>Получить код</Button>
     </div>
   {:else}
     <div>

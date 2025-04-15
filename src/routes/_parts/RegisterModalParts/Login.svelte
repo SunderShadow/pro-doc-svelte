@@ -1,31 +1,33 @@
 <script>
     import Plus from "$ui-kit/icons/Plus.svelte"
     import Button from "$ui-kit/Button/Button.svelte"
-    import {authSMSCodeSend, GOOGLE_AUTH_URL} from "$api/local-server.js"
+    import {GOOGLE_AUTH_URL} from "$api/local-server.js"
     import SmsCodeForm from "./Auth/SmsCodeForm.svelte";
+    import EmailLoginForm from "./Auth/EmailLoginForm.svelte";
 
     function authGoogle() {
         window.location = GOOGLE_AUTH_URL
     }
 
     let {
+        type = $bindable(),
         toggleForm,
         close
     } = $props()
-
-
-    let phone = $state('')
-    let codeSent = $state('false');
 </script>
 
 <div class="modal" id="enter_account_modal">
   <div class="header">
-    <div class="title-1">Регистрация представителя клиники</div>
+    <div class="title-1">Вход представителя клиники</div>
     <button class="close" onclick={close}><Plus size="sm" type="primary"/></button>
   </div>
 
   <div class="sms_form">
-    <SmsCodeForm />
+    {#if type === 'sms'}
+      <SmsCodeForm {close}/>
+    {:else if type === 'email'}
+      <EmailLoginForm {close}/>
+    {/if}
   </div>
 
   <div class="footer">
@@ -40,7 +42,12 @@
   </div>
 
   <div class="register_buttons">
-    <Button fullWidth outline>Зарегистрироваться по email</Button>
+    {#if type !== 'email'}
+      <Button fullWidth outline onclick={() => {type = 'email'}}>Войти по email</Button>
+    {/if}
+    {#if type !== 'sms'}
+      <Button fullWidth outline onclick={() => {type = 'sms'}}>Войти по sms</Button>
+    {/if}
     <Button onclick={authGoogle} fullWidth outline>
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_1363_29470)">
@@ -57,7 +64,7 @@
           </clipPath>
         </defs>
       </svg>
-      Зарегистрироваться через Google
+      Войти через Google
     </Button>
     <Button fullWidth outline>
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +79,7 @@
         </defs>
       </svg>
 
-      Зарегистрироваться через ВКонтакте
+      Войти через ВКонтакте
     </Button>
   </div>
 </div>

@@ -53,6 +53,22 @@ export const getCSRFCookie = () => {
     return authClient.get('/sanctum/csrf-cookie')
 }
 
+export const authEmailRegister = (email: string, password: string) => {
+    return authClient.post('/api/auth/email/register', {
+        email, password
+    }).then(r => {
+        getCSRFCookie()
+
+        return r
+    })
+}
+
+export const authEmailLogin = (email: string, password: string) => {
+    return authClient.post('/api/auth/email/login', {
+        email, password
+    })
+}
+
 export const authSMSCodeSend = (phone: string) => {
     return authClient.post('/api/auth/sms/send', {
         phone
