@@ -4,7 +4,6 @@
     import {disablePageScroll, enablePageScroll} from "@fluejs/noscroll"
 
     type Props = {
-        header: Snippet,
         children: Snippet,
         isActive?: boolean,
     }

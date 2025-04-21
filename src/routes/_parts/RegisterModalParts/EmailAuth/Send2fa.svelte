@@ -3,12 +3,7 @@
     import Button from "$ui-kit/Button/Button.svelte"
 
     import {fade} from "svelte/transition"
-    import {authEmailLogin, authEmailRegister} from "$api/local-server.js";
-    import {fetchDataFromServer} from "$lib/storage/auth.js";
-    import {goto} from "$app/navigation";
-
-    let email = $state('sunundershadow@gmail.com')
-    let password = $state('12345678')
+    import {authEmailLogin} from "$api/local-server.ts"
 
     let error = $state(null)
 
@@ -20,16 +15,15 @@
     let errors = $state(errorsDefaultState)
 
     let {
-        close
+        email = $bindable(),
+        password = $bindable(),
+        nextStep
     } = $props()
 
     function submit() {
         authEmailLogin(email, password).then(() => {
             error = null
-            fetchDataFromServer().then(() => {
-                close()
-                goto('/account')
-            })
+            nextStep()
         }).catch(err => {
             if (err.response.data.errors) {
                 errors = err.response.data.errors

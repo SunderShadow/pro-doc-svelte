@@ -6,7 +6,7 @@ import Button from "$ui-kit/Button/Button.svelte"
 import {fade} from "svelte/transition"
 
 import {authSMSCodeSend, authSMSCodeVerify} from "$api/local-server.ts"
-import {fetchDataFromServer} from "$lib/storage/auth.js"
+import {fetchDataFromServer} from "$lib/storage/auth.ts"
 import {goto} from "$app/navigation"
 
 let phone = $state('+79210337277')
@@ -70,11 +70,11 @@ function verifySMSCode() {
         <div class="error" transition:fade={{duration: 300}}>{error}</div>
       {/if}
     </div>
-<!--    <div class="rule_accept_checkbox">-->
-<!--      <Checkbox>-->
-<!--        Даю <a class="active" href="">согласие</a> на обработку моих персональных данных и соглашаюсь с <a class="active" href="">правилами</a> сайта-->
-<!--      </Checkbox>-->
-<!--    </div>-->
+    <div class="rule_accept_checkbox">
+      <Checkbox required>
+        Даю <a class="active" href="">согласие</a> на обработку моих персональных данных и соглашаюсь с <a class="active" href="">правилами</a> сайта
+      </Checkbox>
+    </div>
     <div>
       <Button onclick={sendSMSCode} fullWidth>Получить код</Button>
     </div>

@@ -4,13 +4,15 @@
   type Props = any & {
       children: Snippet,
       checked: boolean,
-      label: string
+      required: boolean,
+      label: string,
   }
 
   let {
       children,
       checked = $bindable(false),
       disabled = false,
+      required = false,
       label
   }: Props = $props()
 
@@ -29,7 +31,7 @@
   </button>
 
   <label>
-    <input type="checkbox" bind:checked {disabled}>
+    <input type="checkbox" bind:checked {disabled} {required}>
     {label}
     {@render children?.()}
   </label>

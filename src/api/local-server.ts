@@ -33,6 +33,7 @@ if (browser) {
 }
 
 export const GOOGLE_AUTH_URL = PUBLIC_LOCAL_SERVER_BASE_URL + '/api/auth/google/redirect'
+export const VK_AUTH_URL = PUBLIC_LOCAL_SERVER_BASE_URL + '/api/auth/vkontakte/redirect'
 
 export const apiClient = axios.create({
     baseURL: PUBLIC_LOCAL_SERVER_BASE_URL + '/api',
@@ -51,9 +52,9 @@ export const getCSRFCookie = () => {
     return authClient.get('/sanctum/csrf-cookie')
 }
 
-export const authEmailRegister = (email: string, password: string) => {
-    return authClient.post('/api/auth/email/register', {
-        email, password
+export const authEmailCodeVerify = (email: string, code: string) => {
+    return authClient.post('/api/auth/email/login/code/verify', {
+        email, code
     }).then(r => {
         getCSRFCookie()
 
