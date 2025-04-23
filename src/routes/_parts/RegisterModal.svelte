@@ -13,6 +13,8 @@
 
   let type: 'sms' | 'email' = $state('email')
 
+  let authType: 'login' | 'register' | null = $state(null)
+
   function authGoogle() {
       window.location = GOOGLE_AUTH_URL
   }
@@ -30,7 +32,13 @@
 <Modal bind:isActive>
   <div class="modal" id="enter_account_modal">
     <div class="header">
-      <div class="title-1">Вход представителя клиники</div>
+      {#if !authType}
+        <div class="title-1">Вход / Регистрация</div>
+      {:else if authType === 'login'}
+        <div class="title-1">Вход</div>
+      {:else if authType === 'register'}
+        <div class="title-1">Регистрация</div>
+      {/if}
       <button class="close" onclick={close}><Plus size="sm" type="primary"/></button>
     </div>
 
@@ -38,7 +46,7 @@
       {#if type === 'sms'}
         <SmsCodeForm {close}/>
       {:else if type === 'email'}
-        <EmailAuthForm {close}/>
+        <EmailAuthForm {close} bind:authType/>
       {/if}
     </div>
 
@@ -102,7 +110,7 @@
     gap: 32px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
-      width: min(100%, 330px);
+      width: max(100%, 330px);
     }
   }
 

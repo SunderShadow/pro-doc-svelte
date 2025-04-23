@@ -1,9 +1,10 @@
-<script>
+<script lang="ts">
     import Input from "$ui-kit/Form/Input.svelte"
     import Button from "$ui-kit/Button/Button.svelte"
 
     import {fade} from "svelte/transition"
-    import {authEmailLogin} from "$api/local-server.ts"
+    import {authEmail2fa} from "$api/local-server.ts"
+    import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte";
 
     let error = $state(null)
 
@@ -12,18 +13,33 @@
         password: null
     }
 
+    let requestLoading = $state(false)
+
+    let conditionsAccepted = $state(false)
     let errors = $state(errorsDefaultState)
 
     let {
         email = $bindable(),
-        password = $bindable(),
-        nextStep
+        authType = $bindable(),
+        toNextStep,
     } = $props()
 
     function submit() {
-        authEmailLogin(email, password).then(() => {
+        requestLoading = true
+
+        if (!conditionsAccepted) {
+            error = 'Примите правила пользовательского соглашения'
+            requestLoading = false
+            setTimeout(() => {error = null}, 3000)
+
+            return
+        }
+
+        authEmail2fa(email).then(data => {
             error = null
-            nextStep()
+
+            authType = data.auth_type
+            toNextStep()
         }).catch(err => {
             if (err.response.data.errors) {
                 errors = err.response.data.errors
@@ -32,6 +48,8 @@
                 error = err.response.data.message
                 setTimeout(() => {error = null}, 3000)
             }
+        }).then(() => {
+            requestLoading = false
         })
     }
 </script>
@@ -44,18 +62,16 @@
       <div class="error" transition:fade={{duration: 300}}>{errors.email}</div>
     {/if}
   </div>
-  <div>
-    <label class="title-3">Пароль*</label>
-    <Input placeholder="********" type="password" bind:value={password} error={!!errors.password}/>
-    {#if errors.password}
-      <div class="error" transition:fade={{duration: 300}}>{errors.password}</div>
-    {/if}
-  </div>
   {#if error}
     <div class="error" transition:fade={{duration: 300}}>{error}</div>
   {/if}
+  <div class="rule_accept_checkbox">
+    <Checkbox bind:checked={conditionsAccepted} required>
+      Даю <a class="active" href="">согласие</a> на обработку моих персональных данных и соглашаюсь с <a class="active" href="">правилами</a> сайта
+    </Checkbox>
+  </div>
   <div>
-    <Button onclick={submit} fullWidth>Войти</Button>
+    <Button loading={requestLoading} onclick={submit} fullWidth>Войти</Button>
   </div>
 </form>
 

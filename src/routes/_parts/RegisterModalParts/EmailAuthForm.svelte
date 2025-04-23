@@ -1,26 +1,34 @@
-<script>
+<script lang="ts">
     import Send2fa from "./EmailAuth/Send2fa.svelte";
-    import EnterBy2fa from "./EmailAuth/EnterBy2fa.svelte";
+    import EnterBy2fa from "./EmailAuth/LoginBy2fa.svelte";
+    import RegisterBy2fa from "./EmailAuth/RegisterBy2fa.svelte";
 
     let {
+        authType = $bindable(),
         close
     } = $props()
 
+
     let step = $state(1)
 
-    function nextStep() {
+    function toNextStep() {
         step += 1
     }
 
+    function toPrevStep() {
+        step -= 1
+    }
+
     let email = $state('sunundershadow@gmail.com')
-    let password = $state('12345678')
 </script>
 
 <form>
   {#if step === 1}
-    <Send2fa {nextStep} bind:email bind:password/>
-  {:else if step === 2}
-    <EnterBy2fa {nextStep} {email} {password} {close}/>
+    <Send2fa {toNextStep} bind:authType bind:email/>
+  {:else if authType === 'login' && step === 2}
+    <EnterBy2fa {toPrevStep} {email} {close}/>
+  {:else if authType === 'register' && step === 2}
+    <RegisterBy2fa {toPrevStep} {email}  {close}/>
   {/if}
 </form>
 

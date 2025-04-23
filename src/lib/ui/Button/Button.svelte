@@ -7,6 +7,8 @@
       fullWidth?: boolean,
       outline?: boolean,
       type?: "default" | "icon",
+      loading?: boolean,
+      disabled?: boolean,
       _class?: string,
       _type?: "button" | "submit" | "reset"
   }
@@ -16,6 +18,8 @@
       active = false,
       outline = false,
       fullWidth = false,
+      loading = false,
+      disabled = false,
       type = "default",
       _class = '',
       _type = 'button',
@@ -28,6 +32,8 @@
     class:outline
     class:fullWidth
     class:icon={type === 'icon'}
+    class:loading
+    disabled={disabled || loading}
     type={_type}
     class={'ui_button ' + _class}
     {...props}
@@ -39,6 +45,15 @@
   @use "sass:map";
   @use "env";
   @use "$ui-kit/env" as env-global;
+
+  @keyframes button-loading {
+    100%, 0% {
+      opacity: .5;
+    }
+    50% {
+      opacity: .75;
+    }
+  }
 
   :global {
     .ui_button .svg-icon-container {
@@ -79,6 +94,11 @@
       cursor: pointer;
     }
 
+    &.loading {
+      opacity: .5;
+      animation: button-loading 2s infinite linear;
+    }
+
     &.fullWidth {
       width: 100%;
     }
@@ -115,7 +135,7 @@
     }
 
     @media (min-width: (map.get(env-global.$screen-size, tablet) + 1px)) {
-      &:not([disabled]):not(.active) {
+      &:not([disabled], .loading, .active) {
         &:hover {
           background-color: env.$bg-hover;
           box-shadow: 0 12px 24px rgba(env.$bg-pressing, .15);
