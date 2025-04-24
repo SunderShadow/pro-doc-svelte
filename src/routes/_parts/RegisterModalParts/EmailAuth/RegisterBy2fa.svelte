@@ -4,7 +4,7 @@
 
     import {fade} from "svelte/transition"
     import {goto} from "$app/navigation"
-    import {authEmailCodeVerify, authEmail2fa, authEmailCodeRegister} from "$api/local-server.ts"
+    import {authEmailCodeLogin, authEmail2fa, authEmailCodeRegister} from "$api/local-server.ts"
 
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
 

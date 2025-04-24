@@ -3,6 +3,7 @@ import type {Blog, Layout, User} from "$lib/types"
 import {PUBLIC_LOCAL_SERVER_BASE_URL} from "$env/static/public"
 import axios from "axios"
 import {browser} from "$app/environment";
+import {fetchDataFromServer} from "$lib/storage/auth";
 
 export const authClient = axios.create({
     baseURL: PUBLIC_LOCAL_SERVER_BASE_URL + '/',
@@ -52,23 +53,25 @@ export const getCSRFCookie = () => {
     return authClient.get('/sanctum/csrf-cookie')
 }
 
-export const authEmailCodeVerify = (email: string, code: string, password: string) => {
-    return authClient.post('/api/auth/email/login/code', {
-        email, code, password
-    }).then(r => {
-        getCSRFCookie()
-
-        return r
+export const authEmailCodeLogin = (email: string, code: string, password: string) => {
+    return new Promise(res => {
+        getCSRFCookie().then(() => {
+            res(authClient.post('/api/auth/email/login/code', {
+                email, code, password
+            }))
+        })
     })
 }
 
 export const authEmailCodeRegister = (email: string, code: string, password: string) => {
-    return authClient.post('/api/auth/email/register/code', {
-        email, code, password
-    }).then(r => {
-        getCSRFCookie()
-
-        return r
+    return new Promise(res => {
+        getCSRFCookie().then(() => {
+            res(authClient.post('/api/auth/email/register/code', {
+                email, code, password
+            }).then(r => {
+                return r
+            }))
+        })
     })
 }
 
@@ -78,16 +81,36 @@ export const authEmail2fa = (email: string) => {
     }).then(res => res.data)
 }
 
-export const authSMSCodeSend = (phone: string) => {
-    return authClient.post('/api/auth/sms/send', {
+export const authSMS2fa = (phone: string) => {
+    return authClient.post('/api/auth/sms/code/send', {
         phone
     })
 }
 
-export const authSMSCodeVerify = (phone: string, code: string) => {
-    return authClient.post('/api/auth/sms/verify', {
-        phone, code
+export const authSMSCodeLogin = (phone: string, code: string, password: string) => {
+    return new Promise(res => {
+        getCSRFCookie().then(() => {
+            res(authClient.post('/api/auth/sms/login/code', {
+                phone, code, password
+            }))
+        })
     })
+}
+
+export const authSMSCodeRegister = (phone: string, code: string, password: string) => {
+    return new Promise(res => {
+        getCSRFCookie().then(() => {
+            res(authClient.post('/api/auth/sms/register/code', {
+                phone, code, password
+            }))
+        })
+    })
+}
+
+export const authSMSCodeSend = (phone: string) => {
+    return authClient.post('/api/auth/sms/code/send', {
+        phone
+    }).then(res => res.data)
 }
 
 export const authByGoogle = (queryParams: string) => {

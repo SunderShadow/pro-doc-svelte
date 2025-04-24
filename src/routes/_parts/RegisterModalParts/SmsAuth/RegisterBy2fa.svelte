@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
     import Input from "$ui-kit/Form/Input.svelte"
     import Button from "$ui-kit/Button/Button.svelte"
 
     import {fade} from "svelte/transition"
-    import {authEmailCodeLogin, authEmail2fa} from "$api/local-server.ts"
-    import {fetchDataFromServer} from "$lib/storage/auth.ts"
     import {goto} from "$app/navigation"
-    import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
+    import {authEmailCodeRegister, authSMSCodeRegister, authSMSCodeSend} from "$api/local-server.ts"
+
+    import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
 
     let code = $state('')
 
@@ -16,28 +16,36 @@
 
     let {
         close,
-        email,
+        phone,
         toPrevStep
     } = $props()
+
+    type Errors = {
+        code: null|string,
+        password: null|string,
+        passwordCheck: null|string,
+    }
+
+    const errorsDefaultState: Errors = {
+        code: null,
+        password: null,
+        passwordCheck: null
+    }
+
+    let password = $state('')
+    let passwordCheck = $state('')
+
+    let errors = $state(errorsDefaultState)
 
     let requestLoading = $state({
         submit: false,
         resend: false
     })
 
-    const errorsDefaultState = {
-        code: null,
-        password: null
-    }
-
-    let errors = $state(errorsDefaultState)
-
-    let password = $state('')
-
     function resendCode() {
         requestLoading.resend = true
 
-        authEmail2fa(email).then(() => {
+        authSMSCodeSend(phone).then(() => {
             timer = 10
             let inter = setInterval(() => {
                 timer -= 1
@@ -54,24 +62,24 @@
     function submit() {
         requestLoading.submit = true
 
-        authEmailCodeLogin(email, code, password).then(() => {
-            fetchDataFromServer().then(() => {
-                goto('/account')
-                close()
-            })
+        if (passwordCheck !== password) {
+            errors.password = errors.passwordCheck = 'Пароли не совпадают'
+            setTimeout(() => {errors = errorsDefaultState}, 3000)
+            requestLoading.submit = false
+            return
+        }
+
+        authSMSCodeRegister(phone, code, password).then(() => {
+            goto('/account')
+            close()
         }).catch(err => {
             if (err.response.data.errors) {
                 errors = err.response.data.errors
-                console.log(err.response.data.errors)
                 setTimeout(() => {errors = errorsDefaultState}, 3000)
             } else {
                 error = err.response.data.message
                 setTimeout(() => {error = null}, 3000)
             }
-
-            setTimeout(() => {
-                error = null
-            }, 3000)
         }).then(() => {
             requestLoading.submit = false
         })
@@ -83,7 +91,7 @@
 
   <div>
     <label class="title-3">Код подтверждения*</label>
-    <Input placeholder="xxxxxx" bind:value={code} error={!!errors.code}/>
+    <Input placeholder="xxxxxx" bind:value={code}/>
     {#if errors.code}
       <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
     {/if}
@@ -94,6 +102,14 @@
     <Input placeholder="********" type="password" bind:value={password} error={!!errors.password}/>
     {#if errors.password}
       <div class="error" transition:fade={{duration: 300}}>{errors.password}</div>
+    {/if}
+  </div>
+
+  <div>
+    <label class="title-3">Пароль повторно*</label>
+    <Input placeholder="********" type="password" bind:value={passwordCheck} error={!!errors.passwordCheck}/>
+    {#if errors.passwordCheck}
+      <div class="error" transition:fade={{duration: 300}}>{errors.passwordCheck}</div>
     {/if}
   </div>
 

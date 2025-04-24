@@ -44,7 +44,7 @@
 
     <div class="sms_form">
       {#if type === 'sms'}
-        <SmsCodeForm {close}/>
+        <SmsCodeForm {close} bind:authType/>
       {:else if type === 'email'}
         <EmailAuthForm {close} bind:authType/>
       {/if}

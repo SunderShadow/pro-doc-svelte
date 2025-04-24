@@ -13,11 +13,11 @@ export const logout = () => {
 }
 
 export const fetchDataFromServer = () => {
-    if (get(store)) {
-        return Promise.resolve()
-    }
-
     return getUserData().then(data => {
         store.set(data)
+    }).catch(err => {
+        if (err.response.status === 401) {
+            store.set(undefined)
+        }
     })
 }

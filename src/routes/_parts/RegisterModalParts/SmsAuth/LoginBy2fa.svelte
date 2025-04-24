@@ -3,7 +3,7 @@
     import Button from "$ui-kit/Button/Button.svelte"
 
     import {fade} from "svelte/transition"
-    import {authEmailCodeLogin, authEmail2fa} from "$api/local-server.ts"
+    import {authEmailCodeLogin, authEmail2fa, authSMSCodeLogin, authSMSCodeSend} from "$api/local-server.ts"
     import {fetchDataFromServer} from "$lib/storage/auth.ts"
     import {goto} from "$app/navigation"
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
@@ -16,7 +16,7 @@
 
     let {
         close,
-        email,
+        phone,
         toPrevStep
     } = $props()
 
@@ -37,7 +37,7 @@
     function resendCode() {
         requestLoading.resend = true
 
-        authEmail2fa(email).then(() => {
+        authSMSCodeSend(phone).then(() => {
             timer = 10
             let inter = setInterval(() => {
                 timer -= 1
@@ -54,7 +54,7 @@
     function submit() {
         requestLoading.submit = true
 
-        authEmailCodeLogin(email, code, password).then(() => {
+        authSMSCodeLogin(phone, code, password).then(() => {
             fetchDataFromServer().then(() => {
                 goto('/account')
                 close()
