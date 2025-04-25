@@ -11,7 +11,7 @@
       isActive = $bindable()
   } = $props()
 
-  let type: 'sms' | 'email' = $state('email')
+  let type: 'sms' | 'email' = $state('sms')
 
   let authType: 'login' | 'register' | null = $state(null)
 
@@ -106,11 +106,12 @@
   @use "$ui-kit/env";
 
   .modal {
-    width: 552px;
+    width: 100%;
+    max-width: 552px;
     gap: 32px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
-      width: max(100%, 330px);
+      max-width: 330px;
     }
   }
 

@@ -21,7 +21,7 @@
         authType = null
     }
 
-    let phone = $state('+79118021934')
+    let phone = $state('')
 </script>
 
 <form>

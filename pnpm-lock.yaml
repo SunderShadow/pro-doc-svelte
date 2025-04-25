@@ -11,6 +11,9 @@ importers:
       '@fluejs/noscroll':
         specifier: ^1.0.0
         version: 1.0.0
+      '@imask/svelte':
+        specifier: ^7.6.1
+        version: 7.6.1(svelte@5.28.2)
       '@splidejs/splide':
         specifier: ^4.1.4
         version: 4.1.4
@@ -232,6 +235,11 @@ packages:
 
   '@fluejs/noscroll@1.0.0':
     resolution: {integrity: sha512-fyu6jPL/BzUWkrxpwmG8RC/8LM4Fp2GprYRco2BBTypIl7zDyuipRHg6NcuoTGh4s5fAV8D1DBDMS2aDhuGclg==}
+
+  '@imask/svelte@7.6.1':
+    resolution: {integrity: sha512-NVGhgV+endyrmG8srUmNjbULmZs8Wq9B7YFzV/jKtC3EYWhMzccgvQ27IEkRFQ9dcxaPjmwni9UejfrkK1oeow==}
+    peerDependencies:
+      svelte: ^4.2.12
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -1222,6 +1230,11 @@ snapshots:
     optional: true
 
   '@fluejs/noscroll@1.0.0': {}
+
+  '@imask/svelte@7.6.1(svelte@5.28.2)':
+    dependencies:
+      imask: 7.6.1
+      svelte: 5.28.2
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:

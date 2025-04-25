@@ -1,7 +1,11 @@
 <script lang="ts">
-  import Plus from "$ui-kit/icons/Plus.svelte"
+  import type {FactoryArg} from "imask"
+  import { imask as imaskUsable} from "@imask/svelte"
+
   import {scale} from "svelte/transition"
-  import {onMount, type Snippet} from "svelte";
+  import {type Snippet} from "svelte"
+
+  import Plus from "$ui-kit/icons/Plus.svelte"
 
   type Props = any & {
       preIcon?: Snippet,
@@ -11,8 +15,13 @@
       active: boolean,
       withErase: boolean,
       onErase: Function,
-      error: boolean
+      error: boolean,
+      imask?: FactoryArg,
+      onimaskAccept?: (value: string) => void,
+      onimaskComplete?: (value: string) => void,
   }
+
+
   let {
       preIcon,
       postIcon,
@@ -23,8 +32,22 @@
       onErase = () => {},
       el = $bindable(),
       error,
+      imask = null,
+      onimaskAccept = () => {},
+      onimaskComplete = () => {},
       ...props
   }: Props = $props()
+
+
+  function imaskAccept({ detail: maskRef }) {
+      value = maskRef.unmaskedValue;
+      onimaskAccept(maskRef)
+  }
+
+  function imaskComplete({ detail: maskRef }) {
+      value = maskRef.unmaskedValue;
+      onimaskComplete(maskRef)
+  }
 
   function erase() {
       value = ''
@@ -40,7 +63,27 @@
     </div>
   {/if}
 
-  <input class:withErase class="form-control" class:active={active} type="text" {...props} bind:value bind:this={el}>
+  {#if imask}
+    <input
+        oncomplete={imaskComplete}
+        onaccept={imaskAccept}
+        use:imaskUsable={imask}
+        class:withErase
+        class="form-control"
+        class:active={active}
+        type="text" {...props}
+        bind:this={el}
+    >
+  {:else}
+    <input
+        class:withErase
+        class="form-control"
+        class:active={active}
+        type="text" {...props}
+        bind:value
+        bind:this={el}
+    >
+  {/if}
 
   {#if withErase && value.length}
     <div class="erase" transition:scale onclick={erase}>

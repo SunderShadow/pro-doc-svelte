@@ -58,7 +58,9 @@
 <form>
   <div>
     <label class="title-3">Телефон*</label>
-    <Input placeholder="some@example.com" bind:value={phone} error={!!errors.phone}/>
+    <Input imask={{
+        mask: '+{7}-(000)-000-00-00'
+    }} placeholder="+7-(980)-777-55-22" bind:value={phone} error={!!errors.phone}/>
     {#if errors.phone}
       <div class="error" transition:fade={{duration: 300}}>{errors.phone}</div>
     {/if}

@@ -22,6 +22,7 @@
 	},
 	"dependencies": {
 		"@fluejs/noscroll": "^1.0.0",
+		"@imask/svelte": "^7.6.1",
 		"@splidejs/splide": "^4.1.4",
 		"@splidejs/svelte-splide": "^0.2.9",
 		"@sveltejs/adapter-node": "^5.2.12",
