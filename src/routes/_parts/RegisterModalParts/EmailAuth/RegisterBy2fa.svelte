@@ -119,11 +119,11 @@
 </div>
 
 <div class="actions">
-  <Button loading={requestLoading.submit} onclick={submit} fullWidth>Подтвердить код</Button>
+  <Button loading={requestLoading.submit} onclick={submit} fullWidth>Зарегистрироваться</Button>
 
   <div class="resend">
     <Button loading={requestLoading.resend} onclick={resendCode} fullWidth outline disabled={timer > 0}>
-      Выслать ещё раз
+      Выслать код повторно
       {#if timer > 0}
         (через {Math.floor(timer / 60)}:{timer % 60 < 10 ? '0' + (timer % 60) : timer % 60})
       {/if}

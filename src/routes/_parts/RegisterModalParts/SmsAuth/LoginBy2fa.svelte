@@ -62,7 +62,6 @@
         }).catch(err => {
             if (err.response.data.errors) {
                 errors = err.response.data.errors
-                console.log(err.response.data.errors)
                 setTimeout(() => {errors = errorsDefaultState}, 3000)
             } else {
                 error = err.response.data.message
