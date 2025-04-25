@@ -53,7 +53,6 @@
       width: 134px;
       height: 134px;
       border-radius: 100%;
-      padding: 4px;
       border: 1px solid transparent;
       margin-left: auto;
       margin-right: auto;
@@ -72,7 +71,6 @@
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
       }
     }
   }

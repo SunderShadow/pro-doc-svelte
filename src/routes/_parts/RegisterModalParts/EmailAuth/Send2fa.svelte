@@ -57,7 +57,7 @@
 <form>
   <div>
     <label class="title-3">Email*</label>
-    <Input placeholder="some@example.com" bind:value={email} error={!!errors.email}/>
+    <Input type="email" placeholder="some@example.com" bind:value={email} error={!!errors.email}/>
     {#if errors.email}
       <div class="error" transition:fade={{duration: 300}}>{errors.email}</div>
     {/if}

@@ -22,18 +22,11 @@
 
     type Errors = {
         code: null|string,
-        password: null|string,
-        passwordCheck: null|string,
     }
 
     const errorsDefaultState: Errors = {
         code: null,
-        password: null,
-        passwordCheck: null
     }
-
-    let password = $state('')
-    let passwordCheck = $state('')
 
     let errors = $state(errorsDefaultState)
 
@@ -45,7 +38,7 @@
     function resendCode() {
         requestLoading.resend = true
 
-        authEmail2fa(email, password).then(() => {
+        authEmail2fa(email).then(() => {
             timer = 10
             let inter = setInterval(() => {
                 timer -= 1
@@ -62,14 +55,7 @@
     function submit() {
         requestLoading.submit = true
 
-        if (passwordCheck !== password) {
-            errors.password = errors.passwordCheck = 'Пароли не совпадают'
-            setTimeout(() => {errors = errorsDefaultState}, 3000)
-            requestLoading.submit = false
-            return
-        }
-
-        authEmailCodeRegister(email, code, password).then(() => {
+        authEmailCodeRegister(email, code).then(() => {
             goto('/account')
             close()
         }).catch(err => {
@@ -94,22 +80,6 @@
     <Input placeholder="xxxxxx" bind:value={code}/>
     {#if errors.code}
       <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
-    {/if}
-  </div>
-
-  <div>
-    <label class="title-3">Пароль*</label>
-    <Input placeholder="********" type="password" bind:value={password} error={!!errors.password}/>
-    {#if errors.password}
-      <div class="error" transition:fade={{duration: 300}}>{errors.password}</div>
-    {/if}
-  </div>
-
-  <div>
-    <label class="title-3">Пароль повторно*</label>
-    <Input placeholder="********" type="password" bind:value={passwordCheck} error={!!errors.passwordCheck}/>
-    {#if errors.passwordCheck}
-      <div class="error" transition:fade={{duration: 300}}>{errors.passwordCheck}</div>
     {/if}
   </div>
 

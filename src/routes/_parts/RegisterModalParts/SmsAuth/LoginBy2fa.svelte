@@ -3,8 +3,8 @@
     import Button from "$ui-kit/Button/Button.svelte"
 
     import {fade} from "svelte/transition"
-    import {authEmailCodeLogin, authEmail2fa, authSMSCodeLogin, authSMSCodeSend} from "$api/local-server.ts"
-    import {fetchDataFromServer} from "$lib/storage/auth.ts"
+    import {authSMSCodeLogin, authSMSCodeSend} from "$api/local-server.ts"
+    import {fetchDataFromServer as fetchAccountDataFromServer} from "$lib/storage/auth.ts"
     import {goto} from "$app/navigation"
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
 
@@ -27,12 +27,9 @@
 
     const errorsDefaultState = {
         code: null,
-        password: null
     }
 
     let errors = $state(errorsDefaultState)
-
-    let password = $state('')
 
     function resendCode() {
         requestLoading.resend = true
@@ -54,8 +51,8 @@
     function submit() {
         requestLoading.submit = true
 
-        authSMSCodeLogin(phone, code, password).then(() => {
-            fetchDataFromServer().then(() => {
+        authSMSCodeLogin(phone, code).then(() => {
+            fetchAccountDataFromServer().then(() => {
                 goto('/account')
                 close()
             })
@@ -82,19 +79,12 @@
 
   <div>
     <label class="title-3">Код подтверждения*</label>
-    <Input placeholder="xxxxxx" bind:value={code} error={!!errors.code}/>
+    <Input  placeholder="xxxxxx" bind:value={code} error={!!errors.code}/>
     {#if errors.code}
       <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
     {/if}
   </div>
 
-  <div>
-    <label class="title-3">Пароль*</label>
-    <Input placeholder="********" type="password" bind:value={password} error={!!errors.password}/>
-    {#if errors.password}
-      <div class="error" transition:fade={{duration: 300}}>{errors.password}</div>
-    {/if}
-  </div>
 
   {#if error}
     <div class="error" transition:fade={{duration: 300}}>{error}</div>

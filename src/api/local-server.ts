@@ -53,21 +53,21 @@ export const getCSRFCookie = () => {
     return authClient.get('/sanctum/csrf-cookie')
 }
 
-export const authEmailCodeLogin = (email: string, code: string, password: string) => {
+export const authEmailCodeLogin = (email: string, code: string) => {
     return new Promise(res => {
         getCSRFCookie().then(() => {
             res(authClient.post('/api/auth/email/login/code', {
-                email, code, password
+                email, code
             }))
         })
     })
 }
 
-export const authEmailCodeRegister = (email: string, code: string, password: string) => {
+export const authEmailCodeRegister = (email: string, code: string) => {
     return new Promise(res => {
         getCSRFCookie().then(() => {
             res(authClient.post('/api/auth/email/register/code', {
-                email, code, password
+                email, code
             }).then(r => {
                 return r
             }))
@@ -87,21 +87,21 @@ export const authSMS2fa = (phone: string) => {
     })
 }
 
-export const authSMSCodeLogin = (phone: string, code: string, password: string) => {
+export const authSMSCodeLogin = (phone: string, code: string) => {
     return new Promise(res => {
         getCSRFCookie().then(() => {
             res(authClient.post('/api/auth/sms/login/code', {
-                phone, code, password
+                phone, code
             }))
         })
     })
 }
 
-export const authSMSCodeRegister = (phone: string, code: string, password: string) => {
+export const authSMSCodeRegister = (phone: string, code: string) => {
     return new Promise(res => {
         getCSRFCookie().then(() => {
             res(authClient.post('/api/auth/sms/register/code', {
-                phone, code, password
+                phone, code
             }))
         })
     })

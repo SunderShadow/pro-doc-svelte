@@ -106,12 +106,15 @@
   @use "$ui-kit/env";
 
   .modal {
-    width: 100%;
-    max-width: 552px;
+    width: 552px;
     gap: 32px;
 
     @media (max-width: map.get(env.$screen-size, tablet)) {
       max-width: 330px;
+    }
+
+    @media (max-width: map.get(env.$screen-size, mobile)) {
+      max-width: 100%;
     }
   }
 

@@ -4,9 +4,10 @@
 
     import {fade} from "svelte/transition"
     import {goto} from "$app/navigation"
-    import {authEmailCodeRegister, authSMSCodeRegister, authSMSCodeSend} from "$api/local-server.ts"
+    import {authSMSCodeRegister, authSMSCodeSend} from "$api/local-server.ts"
 
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
+    import {fetchDataFromServer as fetchAccountDataFromServer} from "$lib/storage/auth"
 
     let code = $state('')
 
@@ -22,18 +23,11 @@
 
     type Errors = {
         code: null|string,
-        password: null|string,
-        passwordCheck: null|string,
     }
 
     const errorsDefaultState: Errors = {
         code: null,
-        password: null,
-        passwordCheck: null
     }
-
-    let password = $state('')
-    let passwordCheck = $state('')
 
     let errors = $state(errorsDefaultState)
 
@@ -62,16 +56,12 @@
     function submit() {
         requestLoading.submit = true
 
-        if (passwordCheck !== password) {
-            errors.password = errors.passwordCheck = 'Пароли не совпадают'
-            setTimeout(() => {errors = errorsDefaultState}, 3000)
-            requestLoading.submit = false
-            return
-        }
+        authSMSCodeRegister(phone, code).then(() => {
+            fetchAccountDataFromServer().then(() => {
+                goto('/account')
+                close()
+            })
 
-        authSMSCodeRegister(phone, code, password).then(() => {
-            goto('/account')
-            close()
         }).catch(err => {
             if (err.response.data.errors) {
                 errors = err.response.data.errors
@@ -94,22 +84,6 @@
     <Input placeholder="xxxxxx" bind:value={code}/>
     {#if errors.code}
       <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
-    {/if}
-  </div>
-
-  <div>
-    <label class="title-3">Пароль*</label>
-    <Input placeholder="********" type="password" bind:value={password} error={!!errors.password}/>
-    {#if errors.password}
-      <div class="error" transition:fade={{duration: 300}}>{errors.password}</div>
-    {/if}
-  </div>
-
-  <div>
-    <label class="title-3">Пароль повторно*</label>
-    <Input placeholder="********" type="password" bind:value={passwordCheck} error={!!errors.passwordCheck}/>
-    {#if errors.passwordCheck}
-      <div class="error" transition:fade={{duration: 300}}>{errors.passwordCheck}</div>
     {/if}
   </div>
 

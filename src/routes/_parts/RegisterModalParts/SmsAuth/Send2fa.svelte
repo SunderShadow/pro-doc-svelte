@@ -5,6 +5,7 @@
     import {fade} from "svelte/transition"
     import {authSMSCodeSend} from "$api/local-server.ts"
     import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
+    import {onMount} from "svelte";
 
     let error = $state(null)
 
@@ -13,6 +14,7 @@
         password: null
     }
 
+    let phoneInputEl = $state()
     let requestLoading = $state(false)
 
     let conditionsAccepted = $state(false)
@@ -24,7 +26,14 @@
         toNextStep,
     } = $props()
 
-    function submit() {
+    onMount(() => {
+        setTimeout(() => {
+            phoneInputEl.focus()
+        }, 100)
+    })
+
+    function submit(e) {
+        e.preventDefault()
         requestLoading = true
 
         if (!conditionsAccepted) {
@@ -55,12 +64,22 @@
     }
 </script>
 
-<form>
+<form onsubmit={submit}>
   <div>
     <label class="title-3">Телефон*</label>
-    <Input imask={{
-        mask: '+{7}-(000)-000-00-00'
-    }} placeholder="+7-(980)-777-55-22" bind:value={phone} error={!!errors.phone}/>
+    <Input
+        name="phone"
+        bind:value={phone}
+        bind:el={phoneInputEl}
+
+        type="tel"
+        autocomplete="tel"
+        placeholder="+7-(980)-777-55-22"
+        error={!!errors.phone}
+        imask={{
+          mask: '+{7}-(000)-000-00-00'
+        }}
+    />
     {#if errors.phone}
       <div class="error" transition:fade={{duration: 300}}>{errors.phone}</div>
     {/if}
@@ -74,7 +93,7 @@
     </Checkbox>
   </div>
   <div>
-    <Button loading={requestLoading} onclick={submit} fullWidth>Войти</Button>
+    <Button _type="submit" loading={requestLoading} fullWidth>Войти</Button>
   </div>
 </form>
 

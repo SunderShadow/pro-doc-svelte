@@ -27,12 +27,9 @@
 
     const errorsDefaultState = {
         code: null,
-        password: null
     }
 
     let errors = $state(errorsDefaultState)
-
-    let password = $state('')
 
     function resendCode() {
         requestLoading.resend = true
@@ -54,7 +51,7 @@
     function submit() {
         requestLoading.submit = true
 
-        authEmailCodeLogin(email, code, password).then(() => {
+        authEmailCodeLogin(email, code).then(() => {
             fetchDataFromServer().then(() => {
                 goto('/account')
                 close()
@@ -85,14 +82,6 @@
     <Input placeholder="xxxxxx" bind:value={code} error={!!errors.code}/>
     {#if errors.code}
       <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
-    {/if}
-  </div>
-
-  <div>
-    <label class="title-3">Пароль*</label>
-    <Input placeholder="********" type="password" bind:value={password} error={!!errors.password}/>
-    {#if errors.password}
-      <div class="error" transition:fade={{duration: 300}}>{errors.password}</div>
     {/if}
   </div>
 

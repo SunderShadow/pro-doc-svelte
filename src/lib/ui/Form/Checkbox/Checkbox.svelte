@@ -129,7 +129,8 @@
   }
 
   @media (min-width: map.get(global-env.$screen-size, tablet)) {
-    .checkbox:not(.disabled):not(.checked):hover {
+    .checkbox:not(.disabled):not(.checked):hover,
+    .checkbox:not(.disabled):not(.checked):focus-within {
       label {
         opacity: 1;
       }

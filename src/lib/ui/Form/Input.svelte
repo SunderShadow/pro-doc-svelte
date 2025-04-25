@@ -8,6 +8,7 @@
   import Plus from "$ui-kit/icons/Plus.svelte"
 
   type Props = any & {
+      el: HTMLInputElement,
       preIcon?: Snippet,
       postIcon?: Snippet,
       label?: string,
@@ -65,21 +66,21 @@
 
   {#if imask}
     <input
+        {...props}
         oncomplete={imaskComplete}
         onaccept={imaskAccept}
         use:imaskUsable={imask}
         class:withErase
         class="form-control"
         class:active={active}
-        type="text" {...props}
         bind:this={el}
     >
   {:else}
     <input
+        {...props}
         class:withErase
         class="form-control"
         class:active={active}
-        type="text" {...props}
         bind:value
         bind:this={el}
     >
