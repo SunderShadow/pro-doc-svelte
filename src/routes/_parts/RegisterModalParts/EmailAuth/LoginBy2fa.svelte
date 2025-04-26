@@ -7,6 +7,7 @@
     import {fetchDataFromServer} from "$lib/storage/auth.ts"
     import {goto} from "$app/navigation"
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
+    import InputError from "$ui-kit/Form/InputError.svelte";
 
     let code = $state('')
 
@@ -80,14 +81,8 @@
   <div>
     <label class="title-3">Код подтверждения*</label>
     <Input placeholder="xxxxxx" bind:value={code} error={!!errors.code}/>
-    {#if errors.code}
-      <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
-    {/if}
+    <InputError message={errors.code}/>
   </div>
-
-  {#if error}
-    <div class="error" transition:fade={{duration: 300}}>{error}</div>
-  {/if}
 </div>
 
 <div class="actions">

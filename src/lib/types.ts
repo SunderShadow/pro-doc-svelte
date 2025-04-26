@@ -18,6 +18,7 @@ export namespace Layout {
         email: string
     }
 }
+
 export namespace Blog {
     export type Tag = {
         id: number,
@@ -35,6 +36,10 @@ export namespace Blog {
         tags: string[],
         slug: string
     }
+}
+
+export type Toast = {
+    type: "success" | "info" | "warning" | "error"
 }
 
 export type User = {

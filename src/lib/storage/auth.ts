@@ -7,14 +7,21 @@ const store = writable<User|undefined>()
 export default store
 
 export const logout = () => {
-    logoutRequest().then(() => {
+    return logoutRequest().then(() => {
         store.set(undefined)
     })
 }
 
 export const fetchDataFromServer = () => {
     return getUserData().then(data => {
+        for (let key in data) {
+            if (data[key] === null) {
+                data[key] = ''
+            }
+        }
+
         store.set(data)
+
     }).catch(err => {
         if (err.response.status === 401) {
             store.set(undefined)

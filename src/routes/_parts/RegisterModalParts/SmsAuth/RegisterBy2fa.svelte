@@ -8,6 +8,7 @@
 
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
     import {fetchDataFromServer as fetchAccountDataFromServer} from "$lib/storage/auth"
+    import InputError from "$ui-kit/Form/InputError.svelte";
 
     let code = $state('')
 
@@ -82,14 +83,10 @@
   <div>
     <label class="title-3">Код подтверждения*</label>
     <Input placeholder="xxxxxx" bind:value={code}/>
-    {#if errors.code}
-      <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
-    {/if}
+    <InputError message={errors.code}></InputError>
   </div>
 
-  {#if error}
-    <div class="error" transition:fade={{duration: 300}}>{error}</div>
-  {/if}
+  <InputError message={error}></InputError>
 </div>
 
 <div class="actions">
@@ -109,9 +106,6 @@
   @use "sass:map";
   @use "$ui-kit/env";
 
-  .error {
-    color: map.get(env.$color, 'error');
-  }
 
   .prev-link {
     position: relative;

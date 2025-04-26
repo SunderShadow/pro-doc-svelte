@@ -6,6 +6,8 @@
     import {authSMSCodeSend} from "$api/local-server.ts"
     import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte"
     import {onMount} from "svelte";
+    import {show} from "$lib/storage/toasts";
+    import InputError from "$ui-kit/Form/InputError.svelte";
 
     let error = $state(null)
 
@@ -37,7 +39,7 @@
         requestLoading = true
 
         if (!conditionsAccepted) {
-            error = 'Примите правила пользовательского соглашения'
+            show('error', 'Примите правила пользовательского соглашения')
             requestLoading = false
             setTimeout(() => {error = null}, 3000)
 
@@ -55,8 +57,7 @@
                 errors = err.response.data.errors
                 setTimeout(() => {errors = errorsDefaultState}, 3000)
             } else {
-                error = err.response.data.message
-                setTimeout(() => {error = null}, 3000)
+                show('error', err.response.data.message)
             }
         }).then(() => {
             requestLoading = false
@@ -80,15 +81,10 @@
           mask: '+{7}-(000)-000-00-00'
         }}
     />
-    {#if errors.phone}
-      <div class="error" transition:fade={{duration: 300}}>{errors.phone}</div>
-    {/if}
+    <InputError message={errors.phone} />
   </div>
-  {#if error}
-    <div class="error" transition:fade={{duration: 300}}>{error}</div>
-  {/if}
   <div class="rule_accept_checkbox">
-    <Checkbox bind:checked={conditionsAccepted} required>
+    <Checkbox bind:checked={conditionsAccepted}>
       Даю <a class="active" href="">согласие</a> на обработку моих персональных данных и соглашаюсь с <a class="active" href="">правилами</a> сайта
     </Checkbox>
   </div>
@@ -100,10 +96,6 @@
 <style lang="scss">
   @use "sass:map";
   @use "$ui-kit/env";
-
-  .error {
-    color: map.get(env.$color, 'error');
-  }
 
   form > div {
     margin-top: 16px;

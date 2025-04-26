@@ -121,7 +121,10 @@ export const authByGoogle = (queryParams: string) => {
 }
 
 export const updateUserData = (data: FormData) => {
-    return authClient.postForm('/api/user/info', data).then(r => r.data);
+    return authClient.postForm('/api/user/info', data).then(r => r.data).then(data => {
+        fetchDataFromServer()
+        return data
+    });
 }
 
 export const getUserData = () => {

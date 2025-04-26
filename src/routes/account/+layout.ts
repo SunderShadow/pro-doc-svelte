@@ -1,24 +1,22 @@
 import auth, {fetchDataFromServer} from "$lib/storage/auth"
 import {get} from "svelte/store"
 import {goto} from "$app/navigation"
-import {browser} from "$app/environment"
+
+export const ssr = false
 
 export const load = () => {
-    if (browser) {
-        return new Promise(resolve => {
-            if (get(auth)) {
-                resolve(null)
-            }
-
+    return new Promise<void>(resolve => {
+        if (!get(auth)) {
             fetchDataFromServer()
                 .then(() => {
-                    resolve({})
+                    resolve()
                 })
                 .catch(() => {
+                    resolve()
                     goto('/')
                 })
-        })
-    }
-
-    return Promise.resolve()
+        } else {
+            resolve()
+        }
+    })
 }

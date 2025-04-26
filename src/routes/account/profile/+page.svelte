@@ -13,7 +13,9 @@
 
   import {logout as authLogout} from "$lib/storage/auth"
   import {updateUserData} from "$api/local-server"
-  import {goto} from "$app/navigation"
+  import {goto, onNavigate} from "$app/navigation";
+  import InputError from "$ui-kit/Form/InputError.svelte";
+  import {show} from "$lib/storage/toasts";
 
   let gender = [
       {
@@ -27,8 +29,6 @@
   ]
 
 
-  let success = $state(false)
-
   const errorsDefault = {
       avatar: null,
       name: null,
@@ -39,15 +39,37 @@
   }
 
   let errors = $state(errorsDefault)
-  let authData: User = $state($auth)
+  let authData: User = $state()
+
+  auth.subscribe(data => {
+      authData = data
+  })
 
   let setPageTitle = getContext('setPageTitle')
 
   setPageTitle('Профиль')
 
   let avatarFile = $state()
+  let dataWasChanged = $state(false)
+
+  let saveLoading = $state(false)
+
+  function checkDataChanged() {
+      for (let key in authData) {
+          if ($auth[key] !== authData[key]) {
+              return true
+          }
+      }
+
+      return false
+  }
+
+  $effect(() => {
+      dataWasChanged = checkDataChanged()
+  })
 
   function saveChanges() {
+      saveLoading = true
       let formData = Object.assign({}, authData)
 
       if (!formData.gender) {
@@ -59,31 +81,55 @@
 
       formData.avatar = avatarFile
 
-      updateUserData(formData)
+      return updateUserData(formData)
           .then(data => {
+              saveLoading = false
+
               authData = data
-              success = true
+              show('success', 'Успешно обновлено')
 
               authData.notify_email = Number(authData.notify_email)
               authData.notify_sms = Number(authData.notify_sms)
-
-              setTimeout(() => {
-                  success = false
-              }, 3000)
           })
           .catch(err => {
-            success = false
-            errors = err.response.data.errors
+              saveLoading = false
+              errors = err.response.data.errors
 
-            setTimeout(() => {
-                errors = errorsDefault
-            }, 3000)
-        })
+              setTimeout(() => {
+                  errors = errorsDefault
+              }, 3000)
+
+              return Promise.reject(err)
+          })
   }
 
+  onNavigate(async () => {
+      return new Promise(res => {
+          if (dataWasChanged) {
+              let save = window.confirm('Есть несохраненные изменения. Сохранить?')
+
+              if (save) {
+                  saveChanges().then(() => {
+                      res()
+                  }).catch(() => {
+                      dataWasChanged = false
+                      goto('/account/profile', {
+                          noScroll: true
+                      }).then(() => {
+                          dataWasChanged = true
+                      })
+                  })
+              }
+          } else {
+              res()
+          }
+      })
+  })
+
   function logout() {
-      authLogout()
-      goto('/')
+      authLogout().then(() => {
+          window.location.href = '/'
+      })
   }
 </script>
 
@@ -98,38 +144,36 @@
     <form>
       <div>
         <label>ФИО</label>
-        <Input placeholder="Иван" withErase={false} bind:value={authData.name}/>
-        {#if errors.name}
-          <div class="error" transition:fade={{duration: 300}}>{errors.name}</div>
-        {/if}
+        <Input error={!!errors.name} placeholder="Иван" withErase={false} bind:value={authData.name}/>
+        <InputError message={errors.name}/>
       </div>
       <div>
         <label>Пол</label>
-        <Select placeholder="Мужской/Женский" withErase={false} data={gender} bind:value={authData.gender}/>
-        {#if errors.gender}
-          <div class="error" transition:fade={{duration: 300}}>{errors.gender}</div>
-        {/if}
+        <Select error={!!errors.gender} placeholder="Мужской/Женский" withErase={false} data={gender} bind:value={authData.gender}/>
+        <InputError message={errors.gender}/>
       </div>
       <div>
         <label>Email</label>
-        <Input placeholder="Docpro@gmail.com" withErase={false} bind:value={authData.email}/>
-        {#if errors.email}
-          <div class="error" transition:fade={{duration: 300}}>{errors.email}</div>
-        {/if}
+        <Input error={!!errors.email} placeholder="Docpro@gmail.com" withErase={false} bind:value={authData.email}/>
+        <InputError message={errors.email}/>
       </div>
       <div>
         <label>Возраст</label>
-        <Input placeholder="31" withErase={false} bind:value={authData.age}/>
-        {#if errors.age}
-          <div class="error" transition:fade={{duration: 300}}>{errors.age}</div>
-        {/if}
+        <Input error={!!errors.age} placeholder="31" withErase={false} bind:value={authData.age}/>
+        <InputError message={errors.age}/>
       </div>
       <div>
         <label>Телефон</label>
-        <Input placeholder="+7 (___) ___-__-__" withErase={false} bind:value={authData.phone}/>
-        {#if errors.phone}
-          <div class="error" transition:fade={{duration: 300}}>{errors.phone}</div>
-        {/if}
+        <Input
+            error={!!errors.phone}
+            placeholder="+7 (___) ___-__-__"
+            withErase={false}
+            bind:value={authData.phone}
+            imask={{
+              mask: '+{7}-(000)-000-00-00'
+            }}
+        />
+        <InputError message={errors.phone}/>
       </div>
       <div class="notifications">
         <h3>Настройки уведомлений</h3>
@@ -140,13 +184,9 @@
         </div>
 
         <div class="actions">
-          <Button onclick={saveChanges}>Сохранить изменения</Button>
+          <Button onclick={saveChanges} loading={saveLoading}>Сохранить изменения</Button>
           <Button onclick={logout} outline>Выйти</Button>
         </div>
-
-        {#if success}
-          <div class="success" transition:fade={{duration: 300}}>Успешно обновлено</div>
-        {/if}
       </div>
     </form>
   </div>
@@ -163,14 +203,6 @@
     h3 {
       font-size: 18px;
     }
-  }
-
-  .success {
-    color: map.get(env.$color, 'success');
-  }
-
-  .error {
-    color: map.get(env.$color, 'error');
   }
 
   .wrapper {
@@ -222,7 +254,7 @@
 
   form {
     display: grid;
-    gap: 32px;
+    gap: 8px 32px;
     grid-template-columns: 1fr 1fr;
 
     @media (max-width: 1200px) {

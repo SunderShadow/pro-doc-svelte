@@ -40,6 +40,7 @@
   }: Props = $props()
 
 
+  let imaskValueUseOnce = value
   function imaskAccept({ detail: maskRef }) {
       value = maskRef.unmaskedValue;
       onimaskAccept(maskRef)
@@ -67,6 +68,7 @@
   {#if imask}
     <input
         {...props}
+        value={imaskValueUseOnce}
         oncomplete={imaskComplete}
         onaccept={imaskAccept}
         use:imaskUsable={imask}

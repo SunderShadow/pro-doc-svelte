@@ -7,6 +7,7 @@
     import {fetchDataFromServer as fetchAccountDataFromServer} from "$lib/storage/auth.ts"
     import {goto} from "$app/navigation"
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
+    import InputError from "$ui-kit/Form/InputError.svelte";
 
     let code = $state('')
 
@@ -48,6 +49,7 @@
         })
     }
 
+    let errorsShowTimeout
     function submit() {
         requestLoading.submit = true
 
@@ -58,8 +60,9 @@
             })
         }).catch(err => {
             if (err.response.data.errors) {
+                clearTimeout(errorsShowTimeout)
                 errors = err.response.data.errors
-                setTimeout(() => {errors = errorsDefaultState}, 3000)
+                errorsShowTimeout = setTimeout(() => {errors = errorsDefaultState}, 3000)
             } else {
                 error = err.response.data.message
                 setTimeout(() => {error = null}, 3000)
@@ -80,15 +83,8 @@
   <div>
     <label class="title-3">Код подтверждения*</label>
     <Input  placeholder="xxxxxx" bind:value={code} error={!!errors.code}/>
-    {#if errors.code}
-      <div class="error" transition:fade={{duration: 300}}>{errors.code}</div>
-    {/if}
+    <InputError message={errors.code} />
   </div>
-
-
-  {#if error}
-    <div class="error" transition:fade={{duration: 300}}>{error}</div>
-  {/if}
 </div>
 
 <div class="actions">

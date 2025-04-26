@@ -5,6 +5,7 @@
     import {fade} from "svelte/transition"
     import {authEmail2fa} from "$api/local-server.ts"
     import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte";
+    import InputError from "$ui-kit/Form/InputError.svelte";
 
     let error = $state(null)
 
@@ -58,13 +59,8 @@
   <div>
     <label class="title-3">Email*</label>
     <Input type="email" placeholder="some@example.com" bind:value={email} error={!!errors.email}/>
-    {#if errors.email}
-      <div class="error" transition:fade={{duration: 300}}>{errors.email}</div>
-    {/if}
+    <InputError message={errors.email}></InputError>
   </div>
-  {#if error}
-    <div class="error" transition:fade={{duration: 300}}>{error}</div>
-  {/if}
   <div class="rule_accept_checkbox">
     <Checkbox bind:checked={conditionsAccepted} required>
       Даю <a class="active" href="">согласие</a> на обработку моих персональных данных и соглашаюсь с <a class="active" href="">правилами</a> сайта
