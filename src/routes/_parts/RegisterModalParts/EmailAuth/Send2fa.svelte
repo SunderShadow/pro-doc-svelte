@@ -3,7 +3,7 @@
     import Button from "$ui-kit/Button/Button.svelte"
 
     import {fade} from "svelte/transition"
-    import {authEmail2fa} from "$api/local-server.ts"
+    import {authEmailCodeSend} from "$api/local-server.ts"
     import Checkbox from "$ui-kit/Form/Checkbox/Checkbox.svelte";
     import InputError from "$ui-kit/Form/InputError.svelte";
 
@@ -36,7 +36,7 @@
             return
         }
 
-        authEmail2fa(email).then(data => {
+        authEmailCodeSend(email).then(data => {
             error = null
 
             authType = data.auth_type

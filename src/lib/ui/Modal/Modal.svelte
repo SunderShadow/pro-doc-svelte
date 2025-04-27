@@ -67,6 +67,7 @@
   .shadow {
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 20;
 
     background-color: rgba($shadow-color, 0.3);

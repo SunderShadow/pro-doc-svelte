@@ -16,6 +16,8 @@
   import {goto, onNavigate} from "$app/navigation";
   import InputError from "$ui-kit/Form/InputError.svelte";
   import {show} from "$lib/storage/toasts";
+  import EmailApproveModal from "./_parts/EmailApproveModal.svelte";
+  import PhoneApproveModal from "./_parts/PhoneApproveModal.svelte";
 
   let gender = [
       {
@@ -39,23 +41,34 @@
   }
 
   let errors = $state(errorsDefault)
+
+  // @ts-ignore
   let authData: User = $state()
 
+  let changeEmailModalVisible = $state(false)
+  let newEmail = $state('')
+
+  let changePhoneModalVisible = $state(false)
+  let newPhone = $state('')
+
   auth.subscribe(data => {
-      authData = data
+      authData = data!
   })
 
   let setPageTitle = getContext('setPageTitle')
 
+  //@ts-ignore
   setPageTitle('Профиль')
 
-  let avatarFile = $state()
+  //@ts-ignore
+  let avatarFile: File = $state()
   let dataWasChanged = $state(false)
 
   let saveLoading = $state(false)
 
   function checkDataChanged() {
       for (let key in authData) {
+          //@ts-ignore
           if ($auth[key] !== authData[key]) {
               return true
           }
@@ -73,7 +86,22 @@
       let formData = Object.assign({}, authData)
 
       if (!formData.gender) {
-          formData.gender = undefined
+          formData.gender = null
+      }
+
+      if ($auth!.email !== formData.email) {
+          newEmail = formData.email
+          changeEmailModalVisible = true
+
+          delete formData.email
+      }
+
+      console.log($auth!.phone)
+      if ($auth!.phone !== formData.phone) {
+          newPhone = formData.phone
+          changePhoneModalVisible = true
+
+          delete formData.phone
       }
 
       formData.notify_email = Number(formData.notify_email)
@@ -133,6 +161,13 @@
   }
 </script>
 
+{#if changeEmailModalVisible}
+  <EmailApproveModal email={newEmail} close={() => {changeEmailModalVisible = false}}/>
+{/if}
+
+{#if changePhoneModalVisible}
+  <PhoneApproveModal phone={newPhone} close={() => {changePhoneModalVisible = false}}/>
+{/if}
 
 {#if authData}
 <div class="wrapper">

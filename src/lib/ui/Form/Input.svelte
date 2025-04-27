@@ -17,6 +17,7 @@
       withErase: boolean,
       onErase: Function,
       error: boolean,
+      readonly: boolean,
       imask?: FactoryArg,
       onimaskAccept?: (value: string) => void,
       onimaskComplete?: (value: string) => void,
@@ -33,6 +34,7 @@
       onErase = () => {},
       el = $bindable(),
       error,
+      readonly,
       imask = null,
       onimaskAccept = () => {},
       onimaskComplete = () => {},
@@ -58,7 +60,7 @@
 
 </script>
 
-<div class="form-control-wrapper" class:error onclick={() => {el.focus()}}>
+<div class="form-control-wrapper" class:error onclick={() => {el.focus()}} class:readonly>
   {#if preIcon}
     <div class="pre_icon">
       {@render preIcon()}
@@ -68,6 +70,7 @@
   {#if imask}
     <input
         {...props}
+        {readonly}
         value={imaskValueUseOnce}
         oncomplete={imaskComplete}
         onaccept={imaskAccept}
@@ -80,6 +83,7 @@
   {:else}
     <input
         {...props}
+        {readonly}
         class:withErase
         class="form-control"
         class:active={active}
@@ -88,7 +92,7 @@
     >
   {/if}
 
-  {#if withErase && value.length}
+  {#if !readonly && withErase && value.length}
     <div class="erase" transition:scale onclick={erase}>
       <Plus size="sm" type="primary"/>
     </div>
@@ -141,6 +145,11 @@
 
     font-family: "Helvetica", Gilroy, sans-serif;
     font-size: 1rem;
+
+    &[readonly] {
+      cursor: default;
+      opacity: .5;
+    }
   }
 
   .erase {
@@ -156,14 +165,18 @@
     flex-shrink: 0;
   }
 
+  .form-control-wrapper.readonly {
+    cursor: default;
+  }
+
   @media (min-width: map.get(env.$screen-size, tablet)) {
-    .form-control-wrapper:hover {
+    .form-control-wrapper:not(.readonly):hover {
       --border-opacity: 1;
     }
   }
 
-  .form-control-wrapper.active,
-  .form-control-wrapper:focus-within {
+  .form-control-wrapper:not(.readonly).active,
+  .form-control-wrapper:not(.readonly):focus-within {
     --border-opacity: 1;
 
     box-shadow: 0 4px 6px rgba(map.get(env.$color, primary), .06);

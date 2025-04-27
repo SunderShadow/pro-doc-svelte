@@ -75,7 +75,7 @@ export const authEmailCodeRegister = (email: string, code: string) => {
     })
 }
 
-export const authEmail2fa = (email: string) => {
+export const authEmailCodeSend = (email: string) => {
     return authClient.post('/api/auth/email/login', {
         email
     }).then(res => res.data)
@@ -120,11 +120,33 @@ export const authByGoogle = (queryParams: string) => {
         })
 }
 
-export const updateUserData = (data: FormData) => {
+export const updateUserData = (data: User) => {
     return authClient.postForm('/api/user/info', data).then(r => r.data).then(data => {
         fetchDataFromServer()
         return data
     });
+}
+
+export const updateUserEmail = (email: string, code: string) => {
+    return authClient.postForm('/api/user/info/email', {
+        email, code
+    })
+        .then(r => r.data)
+        .then(data => {
+            fetchDataFromServer()
+            return data
+        });
+}
+
+export const updateUserPhone = (email: string, code: string) => {
+    return authClient.postForm('/api/user/info/phone', {
+        email, code
+    })
+        .then(r => r.data)
+        .then(data => {
+            fetchDataFromServer()
+            return data
+        });
 }
 
 export const getUserData = () => {

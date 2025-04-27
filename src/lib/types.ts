@@ -43,7 +43,7 @@ export type Toast = {
 }
 
 export type User = {
-    avatar: string,
+    avatar: File,
     name: string,
     email: string,
     gender: number|null,

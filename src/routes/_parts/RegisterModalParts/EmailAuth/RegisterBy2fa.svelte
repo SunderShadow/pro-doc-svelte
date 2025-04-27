@@ -4,7 +4,7 @@
 
     import {fade} from "svelte/transition"
     import {goto} from "$app/navigation"
-    import {authEmailCodeLogin, authEmail2fa, authEmailCodeRegister} from "$api/local-server.ts"
+    import {authEmailCodeLogin, authEmailCodeSend, authEmailCodeRegister} from "$api/local-server.ts"
 
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
     import InputError from "$ui-kit/Form/InputError.svelte";
@@ -39,7 +39,7 @@
     function resendCode() {
         requestLoading.resend = true
 
-        authEmail2fa(email).then(() => {
+        authEmailCodeSend(email).then(() => {
             timer = 10
             let inter = setInterval(() => {
                 timer -= 1

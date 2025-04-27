@@ -3,15 +3,13 @@
     import Button from "$ui-kit/Button/Button.svelte"
 
     import {fade} from "svelte/transition"
-    import {authEmailCodeLogin, authEmail2fa} from "$api/local-server.ts"
+    import {authEmailCodeLogin, authEmailCodeSend} from "$api/local-server.ts"
     import {fetchDataFromServer} from "$lib/storage/auth.ts"
     import {goto} from "$app/navigation"
     import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
     import InputError from "$ui-kit/Form/InputError.svelte";
 
     let code = $state('')
-
-    let error = $state(null)
 
     let timer = $state(0)
 
@@ -35,7 +33,7 @@
     function resendCode() {
         requestLoading.resend = true
 
-        authEmail2fa(email).then(() => {
+        authEmailCodeSend(email).then(() => {
             timer = 10
             let inter = setInterval(() => {
                 timer -= 1
