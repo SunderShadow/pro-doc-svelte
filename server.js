@@ -2,27 +2,27 @@ import {handler} from './build/handler.js';
 import express from 'express';
 import fs from 'fs';
 import http from 'http';
-import https from 'https';
+// import https from 'https';
 
-const privateKey = fs.readFileSync('./ssl/ssl.key', 'utf8');
-const certificate = fs.readFileSync('./ssl/ssl.crt', 'utf8');
-const credentials = {key: privateKey, cert: certificate};
+// const privateKey = fs.readFileSync('./ssl/ssl.key', 'utf8');
+// const certificate = fs.readFileSync('./ssl/ssl.crt', 'utf8');
+// const credentials = {key: privateKey, cert: certificate};
 
 const app = express();
 
 const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
+// const httpsServer = https.createServer(credentials, app);
 
 const PORT = 82;
-const SSLPORT = 444;
+// const SSLPORT = 444;
 
 httpServer.listen(PORT, function () {
     console.log('HTTP Server is running on: http://localhost:%s', PORT);
 });
 
-httpsServer.listen(SSLPORT, function () {
-    console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT);
-});
+// httpsServer.listen(SSLPORT, function () {
+//     console.log('HTTPS Server is running on: https://localhost:%s', SSLPORT);
+// });
 
 // add a route that lives separately from the SvelteKit app
 app.get('/healthcheck', (req, res) => {
