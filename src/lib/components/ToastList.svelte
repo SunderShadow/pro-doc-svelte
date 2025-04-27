@@ -15,11 +15,11 @@
     gap: 8px;
 
     position: fixed;
-    top: 0;
+    top: 20px;
     left: 50%;
     transform: translate(-50%);
     z-index: 1000;
 
-    width: min(300px, 100%);
+    min-width: min(300px, 100%);
   }
 </style>

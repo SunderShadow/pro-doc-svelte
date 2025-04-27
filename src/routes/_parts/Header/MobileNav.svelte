@@ -1,6 +1,8 @@
 <script>
   import {page} from "$app/state"
 
+  import auth from "$lib/storage/auth"
+
   import ArrowRight from "$ui-kit/icons/ArrowRight.svelte"
   import Account    from "$ui-kit/icons/Account.svelte"
   import Telegram   from "$ui-kit/icons/Telegram.svelte"
@@ -8,7 +10,7 @@
 
   import {disablePageScroll, enablePageScroll} from "@fluejs/noscroll"
 
-  import RegisterModal from "../RegisterModal.svelte";
+  import RegisterModal from "../RegisterModal.svelte"
 
   let {
       visible = $bindable(false),
@@ -59,8 +61,12 @@
     <div class="auth">
       <Account type="primary" size="sm"/>
 
-      <a onclick={showRegisterModal} href="" class="link-font-2">Вход</a>
-      <a onclick={showRegisterModal} href="" class="link-font-2">Регистрация</a>
+      {#if $auth}
+        <a href="/account" class="link-font-2">Личный кабинет</a>
+      {:else}
+        <a onclick={showRegisterModal} href="" class="link-font-2">Вход</a>
+        <a onclick={showRegisterModal} href="" class="link-font-2">Регистрация</a>
+      {/if}
     </div>
   </div>
 
@@ -113,7 +119,7 @@
     top: var(--top);
     left: 0;
     width: 300px;
-    height: calc(100svh - var(--top));
+    height: calc(100dvh -   var(--top));
     background-color: #fff;
     z-index: 5;
 
