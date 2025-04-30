@@ -28,6 +28,8 @@
     function submit() {
         requestLoading = true
 
+        email = email.toLowerCase().trim()
+
         if (!conditionsAccepted) {
             error = 'Примите правила пользовательского соглашения'
             requestLoading = false

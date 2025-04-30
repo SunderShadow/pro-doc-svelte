@@ -58,6 +58,9 @@ export const authEmailCodeLogin = (email: string, code: string) => {
         getCSRFCookie().then(() => {
             res(authClient.post('/api/auth/email/login/code', {
                 email, code
+            }).then(r => {
+                console.log(r.data)
+                setAuthToken(r.data.token)
             }))
         })
     })
@@ -69,6 +72,7 @@ export const authEmailCodeRegister = (email: string, code: string) => {
             res(authClient.post('/api/auth/email/register/code', {
                 email, code
             }).then(r => {
+                setAuthToken(r.data.token)
                 return r
             }))
         })
@@ -92,6 +96,9 @@ export const authSMSCodeLogin = (phone: string, code: string) => {
         getCSRFCookie().then(() => {
             res(authClient.post('/api/auth/sms/login/code', {
                 phone, code
+            }).then(r => {
+                setAuthToken(r.data.token)
+                return r
             }))
         })
     })
@@ -102,6 +109,9 @@ export const authSMSCodeRegister = (phone: string, code: string) => {
         getCSRFCookie().then(() => {
             res(authClient.post('/api/auth/sms/register/code', {
                 phone, code
+            }).then(r => {
+                setAuthToken(r.data.token)
+                return r
             }))
         })
     })
@@ -159,6 +169,10 @@ export const getPageMeta = (uri: string) => {
 
 export const getPageFooterLayout = () => {
     return apiClient.get<Layout.Footer>('/page/layout/footer').then(r => r.data)
+}
+
+export const getHomePageLayout = () => {
+    return apiClient.get<Layout.Home>('/page/layout/home').then(r => r.data)
 }
 
 export const getAdviceSingle =  (slug: string) => {

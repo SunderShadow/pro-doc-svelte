@@ -19,7 +19,7 @@
         step -= 1
     }
 
-    let email = $state('sunundershadow@gmail.com')
+    let email = $state('')
 </script>
 
 <form>

@@ -6,10 +6,18 @@
   import EmailAuthForm from "./RegisterModalParts/EmailAuthForm.svelte"
   import Button from "$ui-kit/Button/Button.svelte"
   import Plus from "$ui-kit/icons/Plus.svelte"
+  import type {Snippet} from "svelte";
+  import ArrowRight from "$ui-kit/icons/ArrowRight.svelte";
+
+  type Props = {
+      isActive: boolean,
+      goToHomeInsteadClose: boolean
+  }
 
   let {
-      isActive = $bindable()
-  } = $props()
+      isActive = $bindable(),
+      goToHomeInsteadClose = false
+  }: Props = $props()
 
   let type: 'sms' | 'email' = $state('sms')
 
@@ -39,7 +47,11 @@
       {:else if authType === 'register'}
         <div class="title-1">Регистрация</div>
       {/if}
-      <button class="close" onclick={close}><Plus size="sm" type="primary"/></button>
+      {#if goToHomeInsteadClose}
+        <a href="/" class="go_home"><ArrowRight /> На главную</a>
+      {:else}
+        <button class="close" onclick={close}><Plus size="sm" type="primary"/></button>
+      {/if}
     </div>
 
     <div class="sms_form">
@@ -162,6 +174,19 @@
     margin-top: 16px;
   }
 
+
+  .go_home {
+    display: flex;
+    gap: 1px;
+    align-items: center;
+
+    color: map.get(env.$color, primary);
+
+    :global(.svg-icon-container) {
+      --color: #{map.get(env.$color, primary)};
+      transform: rotate(180deg) translateY(1px);
+    }
+  }
 
   .close {
     transform: rotate(45deg);

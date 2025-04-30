@@ -2,6 +2,10 @@
     import {setContext} from "svelte"
     import {page} from "$app/state"
 
+    import auth from "$lib/storage/auth"
+
+    import RegisterModal from "../_parts/RegisterModal.svelte"
+
     import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
     import Preview     from "$ui-kit/Preview/Preview.svelte"
 
@@ -10,8 +14,8 @@
     import AccountIcon      from "$ui-kit/icons/Account.svelte"
 
     import AppointmentsIcon    from "$ui-kit/icons/Appointments.svelte"
-    import FavoriteDoctorIcon from "$ui-kit/icons/FavoriteDoctor.svelte"
-    import ArrowRightIcon from "$ui-kit/icons/ArrowRight.svelte"
+    import FavoriteDoctorIcon  from "$ui-kit/icons/FavoriteDoctor.svelte"
+    import ArrowRightIcon      from "$ui-kit/icons/ArrowRight.svelte"
 
     let pageTitle = $state('')
     let breadcrumbs = $derived.by(() => {
@@ -53,7 +57,11 @@
   {/if}
 </svelte:head>
 
-<svelte:window bind:innerWidth={screenSize}></svelte:window>
+<svelte:window bind:innerWidth={screenSize} />
+{#if !$auth}
+  <RegisterModal isActive={true} goToHomeInsteadClose/>
+{/if}
+
 <section class="page-container">
   <div class="breadcrumbs">
     <Breadcrumbs list={breadcrumbs}/>

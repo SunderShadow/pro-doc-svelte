@@ -1,46 +1,23 @@
 <script lang="ts">
-    import Accordion from "$ui-kit/Accordion/Accordion.svelte";
+    import Accordion from "$ui-kit/Accordion/Accordion.svelte"
+    import type {Layout} from "$lib/types"
+
+    type Props = {
+        items: Layout.Home['qa']
+    }
+    let {
+        items = []
+    }: Props = $props()
 </script>
 
 <section class="page-container">
     <h2>Вопросы и ответы</h2>
     <div class="accordion-container">
-        <Accordion title="Записываться у вас в медицинском центре дороже, чем в клинике?">
-            <p class="body-text-2">
-                Нет, цены на DocPro не отличаются от цен в клиниках.
-                Более того, во многие клиники записаться через СберЗдоровье даже дешевле,
-                чем по телефону медицинского центра. Максимальная скидка до 50%!
-            </p>
+      {#each items as item}
+        <Accordion title={item.title}>
+            <p class="body-text-2">{item.description}</p>
         </Accordion>
-        <Accordion title="Как записаться на приём?">
-            <p class="body-text-2">
-                Нет, цены на DocPro не отличаются от цен в клиниках.
-                Более того, во многие клиники записаться через СберЗдоровье даже дешевле,
-                чем по телефону медицинского центра. Максимальная скидка до 50%!
-            </p>
-        </Accordion>
-        <Accordion title="Сколько стоит услуги медицинского сервиса?">
-            <p class="body-text-2">
-                Нет, цены на DocPro не отличаются от цен в клиниках.
-                Более того, во многие клиники записаться через СберЗдоровье даже дешевле,
-                чем по телефону медицинского центра. Максимальная скидка до 50%!
-            </p>
-        </Accordion>
-        <Accordion title="Как оплачивается приём врача?">
-            <p class="body-text-2">
-                Нет, цены на DocPro не отличаются от цен в клиниках.
-                Более того, во многие клиники записаться через СберЗдоровье даже дешевле,
-                чем по телефону медицинского центра. Максимальная скидка до 50%!
-            </p>
-        </Accordion>
-        <Accordion title="Ваш медицинский сервис — клиника?">
-            <p class="body-text-2">
-                Нет, цены на DocPro не отличаются от цен в клиниках.
-                Более того, во многие клиники записаться через СберЗдоровье даже дешевле,
-                чем по телефону медицинского центра. Максимальная скидка до 50%!
-            </p>
-        </Accordion>
-
+      {/each}
     </div>
 </section>
 

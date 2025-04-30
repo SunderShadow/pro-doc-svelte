@@ -6,6 +6,13 @@
     import NewsLetterSection from "./_parts/NewsLetterSection.svelte"
     import QuestionAnswerSection from "./_parts/QuestionAnswerSection.svelte"
     import ClientsSection from "./_parts/ClientsReviewSection.svelte"
+    import {getHomePageLayout} from "$api/local-server";
+
+    let {
+        data
+    } = $props()
+
+    console.log(data.qa)
 </script>
 
 <svelte:head>
@@ -13,12 +20,12 @@
 </svelte:head>
 
 <main>
-  <SliderSection />
+  <SliderSection slides={data.slider ?? []}/>
   <ServicesSection />
   <ServiceUniqueSection />
   <AboutUsSection />
   <NewsLetterSection />
-  <QuestionAnswerSection />
+  <QuestionAnswerSection items={data.qa}/>
   <ClientsSection />
 </main>
 

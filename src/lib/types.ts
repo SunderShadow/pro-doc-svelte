@@ -17,6 +17,19 @@ export namespace Layout {
         tg: string,
         email: string
     }
+
+    export type Home = {
+        slider: Array<{
+            desktop: string, // Img
+            mobile: string,  // Img
+            title: string,
+            description: string
+        }>,
+        qa: Array<{
+            title: string,
+            description: string
+        }>
+    }
 }
 
 export namespace Blog {

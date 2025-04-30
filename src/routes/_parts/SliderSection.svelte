@@ -1,15 +1,30 @@
 <script lang="ts">
+  import type {Layout} from "$lib/types"
+  import type {Options} from "@splidejs/svelte-splide"
+
   import '@splidejs/svelte-splide/css/core'
 
   import SliderImgSrc from "$lib/assets/images/slider/1.webp?enhanced&quality=80&format=webp"
   import SliderImgMobileSrc from "$lib/assets/images/slider/mobile.png?enhanced&quality=80&format=webp"
   import {Splide, SplideSlide, SplideTrack} from '@splidejs/svelte-splide'
   import Button from "$ui-kit/Button/Button.svelte"
-  import {goto} from "$app/navigation";
+  import {goto} from "$app/navigation"
 
-  const sliderOptions = {
+
+  type Props = {
+      slides: Layout.Home['slider']
+  }
+
+  let {
+      slides = []
+  }: Props = $props()
+  const sliderOptions: Options = {
       type: 'loop',
       perPage: 1,
+      autoplay: true,
+      interval: 5000,
+      speed: 500,
+      easing: 'ease'
   }
 </script>
 
@@ -35,45 +50,18 @@
             </div>
           </div>
         </SplideSlide>
-        <SplideSlide>
-          <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
-            <div class="slider-info">
-              <div>
-                <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
-                <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
-              </div>
-              <div class="slider-button">
-                <Button onclick={() => goto("/doctors/works_with/adults")}>Выбрать врача</Button>
-              </div>
-            </div>
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
-            <div class="slider-info">
-              <div>
-                <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
-                <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
-              </div>
-              <div class="slider-button">
-                <Button onclick={() => goto("/doctors/works_with/adults")}>Выбрать врача</Button>
+        {#each slides as slide}
+          <SplideSlide>
+            <div class="slider-slide" style:--img={`url(${slide.desktop})`} style:--img-mobile={`url(${slide.mobile})`} >
+              <div class="slider-info">
+                <div>
+                  <h2 class="slider-title">{slide.title}</h2>
+                  <div class="slider-subtitle title-2">{slide.description}</div>
+                </div>
               </div>
             </div>
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div class="slider-slide" style:--img={`url(${SliderImgSrc.img.src})`} style:--img-mobile={`url(${SliderImgMobileSrc.img.src})`} >
-            <div class="slider-info">
-              <div>
-                <h2 class="slider-title">Найти врача за 5 минут <br> в твоём городе</h2>
-                <div class="slider-subtitle title-2">Мы поможем вам подобрать специалиста и записаться на приём</div>
-              </div>
-              <div class="slider-button">
-                <Button onclick={() => goto("/doctors/works_with/adults")}>Выбрать врача</Button>
-              </div>
-            </div>
-          </div>
-        </SplideSlide>
+          </SplideSlide>
+        {/each}
       </SplideTrack>
     </div>
 
@@ -248,6 +236,7 @@
 
   .slider {
     &-slide {
+      height: 100%;
       background-image: var(--img);
       background-size: 100% 100%;
       background-position: center;

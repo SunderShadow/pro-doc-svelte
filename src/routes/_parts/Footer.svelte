@@ -4,10 +4,19 @@
     import Telegram from "$ui-kit/icons/Telegram.svelte"
 
     import type {Layout} from "$lib/types"
+    import auth from "$lib/storage/auth";
+
+    type Props = Layout.Footer & {
+        showRegisterModal: Function
+    }
 
     let {
+        showRegisterModal,
         tg, vk, phone, email
-    }: Layout.Footer = $props()
+    }: Props = $props()
+
+
+    let formattedPhone = '+' + phone[0] + '-(' + phone[1] + phone[2] + phone[3] + ')-' + phone[4] + phone[5] + phone[6] + '-' + phone[7] + phone[8] + '-' + phone[9] + phone[10]
 </script>
 
 <footer>
@@ -19,7 +28,7 @@
       <h5 class="title-3">Связаться с нами</h5>
       <div>
         <p class="body-text-4">Телефоны: </p>
-        <a href={'tel:' + phone} class="body-text-3 active">{phone}</a>
+        <a href={'tel:+' + phone} class="body-text-3 active">{formattedPhone}</a>
       </div>
       <div>
         <p class="body-text-4">Адрес эл. почты</p>
@@ -38,10 +47,10 @@
     <div class="nav-section about">
       <h5 class="title-3">О нас</h5>
       <a href="/#about" class="body-text-3">О компании</a>
-      <a href="/" class="body-text-3">Карьера</a>
-      <a href="/" class="body-text-3">Партнёры</a>
+<!--      <a href="/" class="body-text-3">Карьера</a>-->
+<!--      <a href="/" class="body-text-3">Партнёры</a>-->
       <a href="/#reviews" class="body-text-3">Отзывы о нас</a>
-      <a href="/" class="body-text-3">Пресса</a>
+<!--      <a href="/" class="body-text-3">Пресса</a>-->
       <a href="/#contacts" class="body-text-3">Контакты</a>
     </div>
     <div class="nav-section patient">
@@ -51,23 +60,26 @@
       <a href="/service/diagnostic" class="body-text-3">Диагностика</a>
       <a href="/service/list" class="body-text-3">Услуги</a>
       <a href="/library" class="body-text-3">Медицинская библиотека</a>
-      <a href="/" class="body-text-3">Как записаться</a>
-      <a href="/" class="body-text-3">Защита данных пользователя</a>
-      <a href="/" class="body-text-3">Как мы проверяем отзывы</a>
-      <a href="/" class="body-text-3">Подписку «DocHeal»</a>
+<!--      <a href="/" class="body-text-3">Как записаться</a>-->
+<!--      <a href="/" class="body-text-3">Защита данных пользователя</a>-->
+<!--      <a href="/" class="body-text-3">Как мы проверяем отзывы</a>-->
+<!--      <a href="/" class="body-text-3">Подписку «DocHeal»</a>-->
 
     </div>
     <div class="nav-section doctor">
-      <h5 class="title-3">Клиникам и врачам</h5>
+<!--      <h5 class="title-3">Клиникам и врачам</h5>-->
 
-      <a href="/" class="body-text-3">Сотрудничество с врачами</a>
-      <a href="/" class="body-text-3">Сотрудничество с клиниками</a>
-      <a href="/" class="body-text-3">Правила сотрудничества</a>
-      <a href="/" class="body-text-3">Персональные данные</a>
+<!--      <a href="/" class="body-text-3">Сотрудничество с врачами</a>-->
+<!--      <a href="/" class="body-text-3">Сотрудничество с клиниками</a>-->
+<!--      <a href="/" class="body-text-3">Правила сотрудничества</a>-->
+<!--      <a href="/" class="body-text-3">Персональные данные</a>-->
 
       <h5 class="nav-section__clynic_doctor title-3">Врачу и клинике</h5>
-      <a href="/" class="body-text-3">Личный кабинет</a>
-      <a href="/" class="body-text-3">Регистрация</a>
+      {#if $auth}
+        <a href="/account" class="body-text-3">Личный кабинет</a>
+      {:else}
+        <a onclick={(e) => {e.preventDefault(); showRegisterModal}} href="/" class="body-text-3">Регистрация</a>
+      {/if}
     </div>
   </div>
 </footer>

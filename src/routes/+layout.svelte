@@ -8,6 +8,7 @@
   import Toast from "$ui-kit/Toast/Toast.svelte"
   import ToastList from "$lib/components/ToastList.svelte"
 
+  let showRegisterModal = $state(() => {})
   let {
       children,
       data
@@ -25,9 +26,9 @@
     {/each}
   </ToastList>
 
-  <Header />
+  <Header bind:showRegisterModal/>
   {@render children?.()}
-  <Footer {...data.footer}/>
+  <Footer showRegisterModal {...data.footer}/>
 </div>
 
 <style lang="scss">

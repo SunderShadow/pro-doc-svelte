@@ -13,6 +13,9 @@
   import RegisterModal from "./RegisterModal.svelte";
   import auth from "$lib/storage/auth";
 
+  let {
+      showRegisterModal = $bindable()
+  } = $props()
   let headerHeight = $state(0)
 
   let toggleMobileMenuVisible = $state()
@@ -67,6 +70,10 @@
 
   let modalVisible = $state(false)
   let register = $state(false)
+
+  showRegisterModal = () => {
+      modalVisible = true
+  }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>

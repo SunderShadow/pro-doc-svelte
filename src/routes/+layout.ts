@@ -1,6 +1,6 @@
 import {browser} from "$app/environment"
 import {fetchDataFromServer} from "$lib/storage/auth"
-import {getCSRFCookie} from "$api/local-server";
+import {getCSRFCookie, getHomePageLayout} from "$api/local-server";
 
 let fetched = false
 export const load = async ({data}) => {
