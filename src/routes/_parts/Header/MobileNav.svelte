@@ -75,9 +75,9 @@
       <a class:active={href === page.url.pathname} {href}>{title} <ArrowRight /></a>
     {/each}
 
-    <hr>
-    <a href="/register/clinics">Клиникам <ArrowRight /></a>
-    <a href="/register/doctors">Врачам   <ArrowRight /></a>
+<!--    <hr>-->
+<!--    <a href="/register/clinics">Клиникам <ArrowRight /></a>-->
+<!--    <a href="/register/doctors">Врачам   <ArrowRight /></a>-->
     <hr>
   </nav>
 

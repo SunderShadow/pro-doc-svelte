@@ -45,7 +45,13 @@
                           author="Ирина Смирнова" authorImage={ClientImage3.img.src} />
         </div>
         <div class="all-reviews">
-            <LinkBlock />
+          <ClientReview title="«Огромный выбор врачей, большой выбор‥»."
+                        description="Самый продуманный и постоянно развивающийся сервис по поиску вр чей и онлайн записи к ним.
+                   Есть все популярные клиники и даже государственные больницы,
+                    много услуг, отзывы про врачей и негативные и позитивные —
+                     можно составить своё сравнительно объективное мнение о враче и примерно
+                      представлять что тебя ждёт."
+                        author="Ирина Смирнова" authorImage={ClientImage3.img.src} />
         </div>
     </div>
 
@@ -95,15 +101,9 @@
         &.left-comment {
           grid-column: span 8;
         }
-
-        &.right-comment {
-          grid-row: span 4;
-        }
       }
 
       .all-reviews {
-        grid-row: span 2;
-
         @media (max-width: map.get(env.$screen-size, netbook)) {
           height: 150px;
         }

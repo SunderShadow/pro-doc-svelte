@@ -92,14 +92,14 @@
       </div>
 
       <div class="for">
-        <a href="/register/clinics" class="for-item">
-          <PolyclinicIcon type="primary" size="sm"/>
-          <span>Клиникам</span>
-        </a>
-        <a href="/register/doctors" class="for-item">
-          <DoctorIcon type="primary" size="sm"/>
-          <span>Врачам</span>
-        </a>
+<!--        <a href="/register/clinics" class="for-item">-->
+<!--          <PolyclinicIcon type="primary" size="sm"/>-->
+<!--          <span>Клиникам</span>-->
+<!--        </a>-->
+<!--        <a href="/register/doctors" class="for-item">-->
+<!--          <DoctorIcon type="primary" size="sm"/>-->
+<!--          <span>Врачам</span>-->
+<!--        </a>-->
       </div>
       <div class="auth">
         <DoorArrowRight type="primary" size="sm"/>

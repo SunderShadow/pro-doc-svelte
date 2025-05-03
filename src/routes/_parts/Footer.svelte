@@ -66,7 +66,7 @@
 <!--      <a href="/" class="body-text-3">Подписку «DocHeal»</a>-->
 
     </div>
-    <div class="nav-section doctor">
+<!--    <div class="nav-section doctor">-->
 <!--      <h5 class="title-3">Клиникам и врачам</h5>-->
 
 <!--      <a href="/" class="body-text-3">Сотрудничество с врачами</a>-->
@@ -74,13 +74,13 @@
 <!--      <a href="/" class="body-text-3">Правила сотрудничества</a>-->
 <!--      <a href="/" class="body-text-3">Персональные данные</a>-->
 
-      <h5 class="nav-section__clynic_doctor title-3">Врачу и клинике</h5>
-      {#if $auth}
-        <a href="/account" class="body-text-3">Личный кабинет</a>
-      {:else}
-        <a onclick={(e) => {e.preventDefault(); showRegisterModal}} href="/" class="body-text-3">Регистрация</a>
-      {/if}
-    </div>
+<!--      <h5 class="nav-section__clynic_doctor title-3">Врачу и клинике</h5>-->
+      <!--{#if $auth}-->
+      <!--  <a href="/account" class="body-text-3">Личный кабинет</a>-->
+      <!--{:else}-->
+      <!--  <a onclick={(e) => {e.preventDefault(); showRegisterModal}} href="/" class="body-text-3">Регистрация</a>-->
+      <!--{/if}-->
+<!--    </div>-->
   </div>
 </footer>
 
@@ -161,7 +161,7 @@
       }
 
       .about {
-        grid-column: 7 / 9;
+        grid-column: 9 / 11;
 
         @media (max-width: map.get(env.$screen-size, netbook)) {
           grid-column: span 2;
