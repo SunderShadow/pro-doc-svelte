@@ -13,6 +13,7 @@
       children,
       data
   } = $props()
+
 </script>
 
 <svelte:head>

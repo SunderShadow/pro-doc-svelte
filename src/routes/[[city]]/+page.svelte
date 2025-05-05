@@ -6,13 +6,13 @@
     import NewsLetterSection from "./_parts/NewsLetterSection.svelte"
     import QuestionAnswerSection from "./_parts/QuestionAnswerSection.svelte"
     import ClientsSection from "./_parts/ClientsReviewSection.svelte"
-    import {getHomePageLayout} from "$api/local-server";
+
+    import docProClient from "$api/doc-pro"
 
     let {
         data
     } = $props()
 
-    console.log(data.qa)
 </script>
 
 <svelte:head>

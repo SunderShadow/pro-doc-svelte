@@ -2,19 +2,20 @@
   import {page} from "$app/state"
   import Logo from "$lib/assets/Logo.png"
 
-  import PolyclinicIcon from "$ui-kit/icons/Polyclinic.svelte"
-  import DoctorIcon from "$ui-kit/icons/Doctor.svelte"
   import DoorArrowRight from "$ui-kit/icons/DoorArrowRight.svelte"
 
   import Magnifier from "$ui-kit/icons/Magnifier.svelte"
 
   import MobileNav from "./Header/MobileNav.svelte"
   import SearchSection from "./Header/SearchSection.svelte"
-  import RegisterModal from "./RegisterModal.svelte";
-  import auth from "$lib/storage/auth";
+  import RegisterModal from "./RegisterModal.svelte"
+  import auth from "$lib/storage/auth"
+  import {currentCity} from "$lib/storage/cities"
+  import {browser} from "$app/environment"
+  import ChooseCityModal from "./Header/ChooseCityModal.svelte"
 
   let {
-      showRegisterModal = $bindable()
+      showRegisterModal = $bindable(),
   } = $props()
   let headerHeight = $state(0)
 
@@ -46,18 +47,18 @@
           href: '/service/diagnostic',
           title: 'Диагностика'
       },
-      {
-          href: '/consulting/works_with/adults',
-          title: 'Онлайн-консультации'
-      },
+      // {
+      //     href: '/consulting/works_with/adults',
+      //     title: 'Онлайн-консультации'
+      // },
       {
           href: '/library',
           title: 'Библиотека'
       },
-      {
-          href: '/promotions',
-          title: 'Акции'
-      },
+      // {
+      //     href: '/promotions',
+      //     title: 'Акции'
+      // },
       {
           href: '/#about',
           title: 'О нас'
@@ -68,18 +69,25 @@
       },
   ]
 
-  let modalVisible = $state(false)
+  let chooseCityModalVisible = $state(false)
+
+  let registerModalVisible = $state(false)
   let register = $state(false)
 
   showRegisterModal = () => {
-      modalVisible = true
+      registerModalVisible = true
   }
 </script>
 
 <svelte:window bind:innerWidth={screenWidth}></svelte:window>
-{#if modalVisible}
-  <RegisterModal bind:isActive={modalVisible} bind:register/>
+{#if registerModalVisible}
+  <RegisterModal bind:isActive={registerModalVisible} bind:register/>
 {/if}
+
+{#if chooseCityModalVisible}
+  <ChooseCityModal bind:isActive={chooseCityModalVisible}/>
+{/if}
+
 <header style:--height={headerHeight + 'px'}>
   <div class="layer_1">
     <div class="page-container">
@@ -88,7 +96,9 @@
           <path d="M11.2497 0.75L7.45801 11.25C7.43241 11.3058 7.39132 11.3532 7.33962 11.3864C7.28792 11.4195 7.22778 11.4372 7.16634 11.4372C7.10491 11.4372 7.04476 11.4195 6.99306 11.3864C6.94136 11.3532 6.90027 11.3058 6.87467 11.25L4.83301 7.16667L0.749675 5.125C0.693826 5.09941 0.646499 5.05832 0.613318 5.00661C0.580138 4.95491 0.5625 4.89477 0.5625 4.83333C0.5625 4.7719 0.580138 4.71176 0.613318 4.66005C0.646499 4.60835 0.693826 4.56726 0.749675 4.54167L11.2497 0.75Z"/>
         </svg>
         <span class="city-text">Город:</span>
-        <span>Москва</span>
+        {#if browser}
+          <button onclick={() => {chooseCityModalVisible = true}} class="current_city link">{$currentCity.Name}</button>
+        {/if}
       </div>
 
       <div class="for">
@@ -107,8 +117,8 @@
         {#if $auth}
           <a href="/account">Личный кабинет</a>
         {:else}
-          <a href="" onclick={() => {register = false; modalVisible = true;}}>Вход</a>
-          <a href="" onclick={() => {register = true; modalVisible = true;}}>Регистрация</a>
+          <a href="" onclick={() => {register = false; registerModalVisible = true;}}>Вход</a>
+          <a href="" onclick={() => {register = true; registerModalVisible = true;}}>Регистрация</a>
         {/if}
       </div>
     </div>
@@ -153,6 +163,16 @@
   @use "sass:map";
   @use "$lib/ui/env";
 
+  .current_city {
+    padding: 0;
+
+    background: none;
+    border: none;
+    outline: none;
+    font: inherit;
+    cursor: pointer;
+  }
+
   .layer_1 {
     width: 100%;
     padding: 8px 0;
@@ -171,6 +191,8 @@
   }
 
   .city {
+    position: relative;
+
     display: flex;
     align-items: center;
     gap: 5px;

@@ -1,25 +1,22 @@
 <script lang="ts">
-  import type {Doctor} from "$lib/types"
-
   import Breadcrumbs from "$ui-kit/Breadcrumbs/Breadcrumbs.svelte"
   import Preview     from "$ui-kit/Preview/Preview.svelte"
   import FiltersIcon from "$ui-kit/icons/Filters.svelte"
 
-  import Filters          from "./_parts/Filters.svelte"
-  import SpecialitiesList from "./_parts/SpecialitiesList.svelte"
-
-  import PreviewImg       from "./_assets/img/preview.png?enhanced&format=webp"
-  import PreviewImgMobile from "./_assets/img/preview-mobile.jpg?enhanced&format=webp"
+  import PreviewImg         from "./_assets/img/preview.png?enhanced&format=webp"
+  import PreviewImgMobile   from "./_assets/img/preview-mobile.png?enhanced&format=webp"
+  import Filters            from "./_parts/Filters.svelte"
 
   import Card from "$lib/components/ServiceSearchCard.svelte"
 
+  import {currentCity} from "$lib/storage/cities"
+
   let {data} = $props()
 
-  let items = $derived(data.items)
-  let title = $derived(data.title)
-  let age = $derived(data.age)
-
-  let specialities: Array<Doctor.Speciality> = data.specialities
+  const {
+      popular,
+      clinic
+  } = data
 
   let breadcrumbs = [
       {
@@ -27,48 +24,58 @@
           href: '/'
       },
       {
-          title: 'Врачи',
+          title: 'Услуги',
           href: ''
       }
   ]
 
-
+  console.log(popular)
   let openFilters = $state()
 </script>
 
 <svelte:head>
-  <title>Врачи|{title}</title>
+  <title>Услуги</title>
   <link rel="preload" as="image" href={PreviewImg.img.src} />
+  <link rel="preload" as="image" href={PreviewImgMobile.img.src} />
 </svelte:head>
 
-<section class="page-container">
+<section class="page-container service_list_preview">
   <div class="breadcrumbs">
     <Breadcrumbs list={breadcrumbs}/>
   </div>
 
-  <Preview title="Запись к врачам Москвы" image={PreviewImg.img.src} imageMobile={PreviewImgMobile.img.src} contentWidth={90}>
-    <ul>
-      <li>157429 врачей в Москве, 108645 отзывов пациентов</li>
-      <li>Найдите хорошего врача и запишитесь на приём</li>
-      <li>Цена приёма от 1 до 34500 рублей (средняя 2700 рублей)</li>
-    </ul>
-  </Preview>
+  <Preview
+      title={'Медицинские услуги в клиниках города ' + $currentCity.Name}
+      image={PreviewImg.img.src}
+      imageMobile={PreviewImgMobile.img.src}
+      contentWidth={55}
+      gradientWidth={30}
+      withGradient
+  />
 </section>
 
 <section class="page-container page-section">
-  <h3 class="page-title">Запись к врачу в Москве</h3>
+  <h3 class="page-title">Услуги врачей города {$currentCity.Name}</h3>
   <div class="main_container">
     <div class="filters">
       <Filters bind:open={openFilters}/>
     </div>
 
     <main>
-      <div class="switcher">
-        <a class:active={age === 'adults'} href="/doctors/works_with/adults" data-sveltekit-noscroll>Взрослый врач</a>
-        <a class:active={age === 'children'} href="/doctors/works_with/children" data-sveltekit-noscroll>Детский врач</a>
-      </div>
+<!--      <h3 class="popular-title">Популярные услуги (топ 12)</h3>-->
 
-      <h3 class="popular-title">{title}</h3>
+<!--      <button class="filters-open_btn" onclick={openFilters}>-->
+<!--        <FiltersIcon size="sm"/>-->
+<!--        Фильтры-->
+<!--      </button>-->
+
+<!--      <div class="cards">-->
+<!--        {#each popular as item}-->
+<!--          <Card {...item}/>-->
+<!--        {/each}-->
+<!--      </div>-->
+
+      <h3 class="popular-title medical-title">Медицинские услуги в клиниках</h3>
 
       <button class="filters-open_btn" onclick={openFilters}>
         <FiltersIcon size="sm"/>
@@ -76,15 +83,13 @@
       </button>
 
       <div class="cards">
-        {#each items as item}
-          <Card title={item.title} img={item.img} href={'/doctors/works_with/' + data.age + '/category/' + item.speciality}/>
+        {#each clinic as item}
+          <Card {...item}/>
         {/each}
       </div>
     </main>
   </div>
 </section>
-
-<SpecialitiesList {specialities}/>
 
 <style lang="scss">
   @use "sass:map";
@@ -98,6 +103,19 @@
     }
   }
 
+  :global {
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      .service_list_preview .preview {
+        background-size: 100% 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .service_list_preview .preview {
+        background-size: contain;
+      }
+    }
+  }
   .breadcrumbs {
     margin-bottom: 40px;
 
@@ -122,8 +140,17 @@
     gap: 32px;
   }
 
+  .medical-title,
   .popular-title {
     margin-bottom: 32px;
+  }
+
+  .medical-title {
+    margin-top: 64px;
+
+    @media (max-width: map.get(env.$screen-size, tablet)) {
+      margin-top: 32px;
+    }
   }
 
   .main-wrapper {
@@ -131,34 +158,6 @@
 
     display: flex;
     gap: 32px;
-  }
-
-  .switcher {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-
-    font-weight: 600;
-
-    a {
-      transition-property: border-color, color;
-      padding-bottom: 4px;
-
-      border-bottom: 1px solid transparent;
-
-      @media (max-width: map.get(env.$screen-size, mobile)) {
-        text-align: center;
-        width: 100%;
-      }
-    }
-
-    a:hover {
-      border-bottom: 1px solid;
-    }
-
-    a.active {
-      border-bottom: 2px solid;
-    }
   }
 
   .page-container {
@@ -169,6 +168,12 @@
 
   .filters-open_btn {
     display: none;
+  }
+
+  @media (max-width: 900px) {
+    .cards {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
   }
 
   @media (max-width: map.get(env.$screen-size, tablet)) {
@@ -198,10 +203,6 @@
 
     .popular-title {
       font-size: 1.5rem
-    }
-
-    .cards {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
   }
 

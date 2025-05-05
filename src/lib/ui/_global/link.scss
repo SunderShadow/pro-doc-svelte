@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "$ui-kit/env";
 
-a {
+.link, a {
   --color: inherit;
   color: #000;
   text-decoration: none;

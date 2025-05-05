@@ -2,8 +2,8 @@ import type {Blog, Layout, User} from "$lib/types"
 
 import {PUBLIC_LOCAL_SERVER_BASE_URL} from "$env/static/public"
 import axios from "axios"
-import {browser} from "$app/environment";
-import {fetchDataFromServer} from "$lib/storage/auth";
+import {browser} from "$app/environment"
+import {fetchDataFromServer} from "$lib/storage/auth"
 
 export const authClient = axios.create({
     baseURL: PUBLIC_LOCAL_SERVER_BASE_URL + '/',

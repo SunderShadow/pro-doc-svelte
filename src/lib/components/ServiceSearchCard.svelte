@@ -1,5 +1,6 @@
 <script lang="ts">
 import Link from "$ui-kit/Link/Link.svelte"
+import type {DocPro} from "$lib/types"
 
 type Props = {
     img: string,
@@ -10,7 +11,7 @@ type Props = {
 const {
     img,
     title,
-    href
+    href,
 }: Props = $props()
 </script>
 

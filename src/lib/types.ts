@@ -1,10 +1,3 @@
-export namespace Doctor {
-    export type Speciality = {
-        title: string,
-        key: string
-    }
-}
-
 export type Breadcrumbs = Array<{
     title: string,
     href: string
@@ -64,4 +57,44 @@ export type User = {
     phone: string,
     notify_sms: boolean,
     notify_email: boolean,
+}
+
+export namespace DocPro {
+    export type City = {
+        Alias: string,
+        HasDiagnostic: boolean,
+        Id: string,
+        Latitude: string,
+        Longitude: string,
+        Name: string,
+        Phone: null,
+        RegistryCityId: number,
+        SearchType: number,
+        TimeZone: number
+    }
+
+    export type Service = {
+        Id: string,
+        Name: string,
+        Lft: string,
+        Rgt: string,
+        Depth: string,
+        SectorId: string,
+        DiagnosticaId: string,
+        HasMinTariff: boolean,
+        IsReceptionRequired: boolean
+    }
+
+    export type Speciality = {
+        Alias: string,
+        BranchAlias: string,
+        BranchName: string,
+        Id: string,
+        KidsReception: 1 | 2,
+        IsSimple: true,
+        Name: string,
+        NameGenetive: string,
+        NamePlural: string,
+        NamePluralGenitive: string
+    }
 }
